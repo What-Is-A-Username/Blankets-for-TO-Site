@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
@@ -36,7 +36,7 @@ class BlogPostTemplate extends React.Component {
             <div className={updateListStyles.updates}>
               <h2>Most Recent Updates and Articles</h2>
               <ArticlePreview articles={posts}></ArticlePreview>
-              <form action="./blog/">
+              <form action="/blog/">
                 <button className={updateListStyles.btn} type="submit">Browse all updates</button>
               </form>
             </div>

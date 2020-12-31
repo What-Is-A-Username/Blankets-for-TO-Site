@@ -35,6 +35,7 @@
 }
 .alink {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .alink div:hover {
