@@ -10,6 +10,8 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
+import ArticleEntry from '../components/blog-list'
+
 
 import styles from '../page-styles/index.module.css'
 
@@ -35,43 +37,46 @@ class RootIndex extends React.Component {
                         <h2>Our Organization</h2>
                         {/* {console.log(organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb)} */}
                         <p>{organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
+                        <div className={styles.btnRow}>
+                          <form action="./about/">
+                            <button className={styles.whiteBtn} type="submit">Learn More</button>
+                          </form>
+                          <form action="./team/">
+                            <button className={styles.whiteBtn} type="submit">Meet The Team</button>
+                          </form>
+                        </div>
                     </div>
 
                     {/* Updates */}
                     <div className={styles.updates}>
                         <h2>News and Updates</h2>
-                        <ul className="article-list">
-                            {posts.map(({ node }) => {
-                                return (
-                                    <li key={node.slug}>
-                                        <ArticlePreview article={node} />
-                                    </li>
-                                )
-                            })}
-                        </ul>
+                        <ArticlePreview articles={posts}/>
+                        <form action="./blog/">
+                          <button className={styles.btn} type="submit">Browse all updates</button>
+                        </form>
                     </div>
 
                     {/* Contact Us Widget  */}
                     <div className={styles.contactBox}>
                         {/* Volunteer */}
                         <div className={styles.contactBoxSide}>
-                            <img className={styles.backgroundImage} src={leftBackgroundImageSource} />
+                            {/* <img className={styles.backgroundImage} src={leftBackgroundImageSource} /> */}
                             <div>
                                 <h2>Join Us</h2>
-                                <p>Keep in touch with our organization to join the community and stay updated!</p>
-                                <form action="./contact/">
-                                    <button className={styles.btn} type="submit">Volunteering</button>
+                                <p>Become part of the Blankets for Toronto community and be part of the change! Looking to join as a member? Interested in volunteering at events? Click below.</p>
+                                <form action="./positions/">
+                                    <button className={styles.btn} type="submit">More Information</button>
                                 </form>
                             </div>
                         </div>
                         {/* Join */}
                         <div className={styles.contactBoxSide}>
-                            <img className={styles.backgroundImage} src={rightBackgroundImageSource} />
+                            {/* <img className={styles.backgroundImage} src={rightBackgroundImageSource} /> */}
                             <div>
-                                <h2>Volunteering</h2>
-                                <p>Volunteering is a great way to contribute to a great cause!</p>
-                                <form action="./positions/">
-                                    <button className={styles.btn} type="submit">Volunteering</button>
+                                <h2>Contact Us</h2>
+                                <p>Keep in touch with our organization to join the community and stay updated! Got an idea for an initiative? Want to collaborate with BTO? Send us a message via email or message us over social media!</p>
+                                <form action="./contact/">
+                                    <button className={styles.btn} type="submit">Contact Us</button>
                                 </form>
                             </div>
                         </div>
@@ -91,7 +96,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 3) {
       edges {
         node {
           title

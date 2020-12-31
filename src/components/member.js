@@ -41,10 +41,10 @@ export default ({ data }) => (
                         : null
                     }
                     {
-                        data.instagramHandle != null ? 
+                        data.insta != null ? 
                         <div>
                             <img src={instagramImage} alt="Instagram Icon" />
-                            <a href={data.instagramLink}>{data.instagramHandle}</a>
+                            <a href={data.instagramLink}>{data.insta}</a>
                         </div>
                         : null
                     } 

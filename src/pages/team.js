@@ -18,19 +18,10 @@ class Team extends React.Component {
                 <div className="sidebarabove"></div>
                 <div className="white-background">
                     <div className="wrapper">
-                        <h2>Founders</h2>
-                        <div className={styles.positionList}>
-                            {members.map(({ node }) => {
-                                return (node.isFounder === true ? <Member key={node.title} data={node} /> : null)
-                            })}
-
-                        </div>
-                    {/* </div>
-                    <div className="wrapper"> */}
                         <h2>Executive Team</h2>
                         <div className={styles.positionList}>
                             {members.map(({ node }) => {
-                                return (node.isFounder === true ? null : <Member key={node.title} data={node} />)
+                                return (node.name !== "John Doe" ? <Member key={node.name} data={node} /> : null)
                             })}
 
                         </div>
@@ -50,7 +41,7 @@ export const teamPositionQuery = graphql`
         title
       }
     }
-    allContentfulExecutive {
+    allContentfulExecutive(sort : {fields: [isFounder, name], order: DESC}) {
       edges {
         node {
           name
@@ -64,7 +55,7 @@ export const teamPositionQuery = graphql`
           email
           facebook
           facebookLink
-          instagramHandle
+          insta
           instagramLink
           twitter
           twitterLink

@@ -21,11 +21,12 @@ class About extends React.Component {
         return (
             <Layout location={this.props.location}>
                 <div className="white-background">
-
+                    <div className="wrapper">
                     {/* Description, centered  */}
                     <div className={styles.description}>
                         <h2>Our Organization</h2>
                         {node.json !== undefined ? documentToReactComponents(node.json) : <p>Error: Articles not found.</p>}
+                    </div>
                     </div>
                 </div>
             </Layout>

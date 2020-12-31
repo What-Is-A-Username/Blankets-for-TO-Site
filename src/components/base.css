@@ -37,13 +37,18 @@ a {
   padding: 5vmin 0;
 }
 
+
+
 @media(min-width: 760px) {
+  .wrapper h2{
+    text-align: left;
+  } 
 }
 
 @media(max-width: 760px) {
-    /* .wrapper{
-        padding-top: 20vh
-    } */
+   .wrapper h2{
+      text-align: center;
+    } 
 }
 
 .white-background {
@@ -52,7 +57,9 @@ a {
 
 @media(max-width: 760px) {
     .white-background {
+        position: fixed;
         padding-top: 100px;
+        width: 100vw;
     }
 }
 

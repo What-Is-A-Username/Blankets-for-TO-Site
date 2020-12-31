@@ -6,9 +6,10 @@ import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 
-
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import updateListStyles from '../page-styles/index.module.css'
+import styles from '../templates/blog-post.module.css'
+import { update } from 'lodash'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -21,45 +22,25 @@ class BlogPostTemplate extends React.Component {
           
         {/* {console.log(post)} */}
         <div className="white-background">
-        <div style={{marginTop: "50px"}}></div>
+        <div className="wrapper"></div>
           <Helmet title={`${post.title} | ${siteTitle}`} />
-          {/* <div className={heroStyles.hero}>
-            <Img
-              className={heroStyles.heroImage}
-              alt={post.title}
-              fluid={post.heroImage.fluid}
-            />
-          </div> */}
           <div className="wrapper">
             <h1 className="section-headline">{post.title}</h1>
-            <p
-              style={{
-                display: 'block',
-              }}
-            >
-              {post.publishDate}
-            </p>
-            {/* <div
-              dangerouslySetInnerHTML={{
-                __html: post.description.childMarkdownRemark.html,
-              }}
-            /> */}
+            <p className={styles.publishDate}> {post.publishDate} </p>
+            <div>
             {post.richTextBody != null ? documentToReactComponents(post.richTextBody.json) : <p>Error: Article not found.</p>}
+            </div>
           </div>
+          <hr className={styles.horizontalLine}></hr>
             {/* Updates */}
             <div className={updateListStyles.updates}>
-                        <h2>Other Updates</h2>
-                        <ul className="article-list">
-                            {posts.map(({ node }) => {
-                                return (
-                                    <li key={node.slug}>
-                                        <ArticlePreview article={node} />
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
-        </div>
+              <h2>Most Recent Updates and Articles</h2>
+              <ArticlePreview articles={posts}></ArticlePreview>
+              <form action="./blog/">
+                <button className={updateListStyles.btn} type="submit">Browse all updates</button>
+              </form>
+            </div>
+          </div>
       </Layout>
     )
   }
@@ -87,7 +68,7 @@ export const pageQuery = graphql`
           }
         }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 3) {
         edges {
           node {
             title

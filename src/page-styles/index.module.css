@@ -4,7 +4,6 @@
     justify-content: center;
     height: 300px;    
     width: 100%;
-    background-size: cover;
 }
 
 .backgroundImage {
@@ -16,13 +15,16 @@
 }
 
 .title h1 {
+    font-weight: bold;
     position: absolute;
     color: white;
     font-size: 50px;
     text-align: center;
     align-self: center;
     justify-self: center;
-    width: 100%;
+    width: 75%;
+    background-color: darkcyan;
+    background-size: cover;
 }
 
 .description {
@@ -52,10 +54,10 @@
 
 .updates {
     background-color: white;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .updates p {
@@ -71,16 +73,8 @@
 
 .contactBox {
     height: auto;
-    margin-bottom: 200xpx;
-    margin-top: 150px;
-    padding-left: 0px;
-    margin: 0px;
-    padding-right: 0px;
     display: flex;
     justify-content: space-evenly;
-
-    
-    
 }
 
 @media(min-width: 760px) {
@@ -105,18 +99,20 @@
 
 .contactBoxSide {
     position: relative;
-    justify-content: center;
-    justify-items: center;
-    justify-self: center;
-    height: 400px;
+    height: 300px;
     background-size: cover;
     display: flex;
+    margin: 20px;
+}
+
+.contactBoxSide img {
+    border-radius: 15px;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);;
 }
 
 .contactBoxSide div {
-    position: absolute;
     text-align: center;
-    align-self: center;
+    width: 100%;
 }
 
 .contactBoxSide div h2 {
@@ -126,69 +122,90 @@
 }
 
 .contactBoxSide div p {
-    margin-top: 0px;
+    margin: 20px;
     text-align: center;
 }
 
+.whiteBtn {
+    margin: auto;
+    display: block;
+    width: 250px;
+    min-height: 50px;
+    font-size: 1.2em;
+    border-width: 0;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px rgba(84, 84, 84, 0.6);
+    background-color: white;
+    color: #2b2d30;
+    transition: background-color .2s;
+    transition: color .1s;
+    cursor: pointer;
+}
+
+.whiteBtn:hover, .whiteBtn:focus {
+    background-color: #A0A0A0;
+    color: darkcyan;
+}
 
 .btn {
-    position: relative;
-    display: block;
     margin: auto;
-    padding: 0;
+    display: block;
     width: 300px;
     min-height: 50px;
-    overflow: hidden;
-  
+    font-size: 1.2em;
     border-width: 0;
-    outline: none;
     border-radius: 2px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-    
     background-color: darkcyan;
     color: #ecf0f1;
-    
-    transition: background-color .3s;
-  }
-  
-  .btn:hover, .btn:focus {
+    transition: background-color .2s;
+    cursor: pointer;
+}
+
+.btn:hover, .btn:focus {
     background-color: rgb(0, 97, 97);
-  }
-  
-  .btn > * {
-    position: relative;
-  }
-  
-  .btn span {
+}
+
+.btn span {
     display: block;
     padding: 12px 24px;
-  }
-  
-  .btn:before {
-    content: "";
-    
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    
-    display: block;
-    width: 0;
-    padding-top: 0;
-      
-    border-radius: 100%;
-    
-    background-color: rgba(236, 240, 241, .3);
-    
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
-  
-  .btn:active:before {
-    width: 120%;
-    padding-top: 120%;
-    
-    transition: width .2s ease-out, padding-top .2s ease-out;
-  }
+}
+
+@media(min-width: 760px) {
+    .btnRow {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 760px) {
+    .btnRow {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+    }
+}
+
+
+/* .team {
+    background-color: white;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.team h2 {
+    color: darkcyan;
+    display: flex;
+    justify-content: center;
+}
+
+.team p {
+    color: black;
+    display: flex;
+    text-align: center;
+} */

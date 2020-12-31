@@ -1,7 +1,8 @@
 .description {
     background-color: white;
-    padding-top: 50px;
     padding-bottom: 50px;
-    padding-left: 5%;
-    padding-right: 5%;
+}
+
+.description p {
+    font-size: 1.0em;
 }

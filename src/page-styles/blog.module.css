@@ -8,3 +8,9 @@
   font-size: 2em;
   overflow: hidden;
 }
+
+.blog_list {
+  display: flex;
+  flex-direction: column;
+  pointer-events: all;
+}

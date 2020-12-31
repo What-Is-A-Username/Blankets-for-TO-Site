@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
+import ArticleEntry from '../components/blog-list'
 
 import styles from '../page-styles/blog.module.css'
 
@@ -19,16 +19,16 @@ class BlogIndex extends React.Component {
           <Helmet title={siteTitle} />
           {/* <div className={styles.hero}>Blog</div> */}
           <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
-            <ul className="article-list">
+            <h2 className="section-headline">All Updates and Articles</h2>
+            <div className={styles.blog_list}>
               {posts.map(({ node }) => {
                 return (
-                  <li key={node.slug}>
-                    <ArticlePreview article={node} />
-                  </li>
+                  <div key={node.slug}>
+                    <ArticleEntry article={node}/>
+                  </div>
                 )
               })}
-            </ul>
+            </div>
           </div>
         </div>
       </Layout>
@@ -45,7 +45,7 @@ export const blogPageQuery = graphql`
         title
       }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 20) {
       edges {
         node {
           title

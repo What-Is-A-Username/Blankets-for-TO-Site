@@ -7,7 +7,7 @@
   }
   
   .footerTitle {
-    color: white;
+    color: darkcyan;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -41,7 +41,12 @@
   }
   
   .navigationItem a {
-    color: currentColor;
+    color: white;
+    text-decoration: none;
+  }
+
+  .navigationItem a:hover {
+    color:rgb(0, 172, 172);
   }
   
   @media(max-width: 760px) {

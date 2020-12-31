@@ -3,13 +3,14 @@ import { Link } from 'gatsby'
 import styles from './footer.module.css'
 
 const pages = [
-  {to: "/", desc: "Home" },
-  {to: "/about/", desc: "About"},
-  {to: "/team/", desc: "Team"},
-  {to: "/positions/", desc: "Positions"},
-  {to: "/contact/", desc:"Contact Us"},
-  {to: "/blog/", desc: "Updates"}, 
+  { to: "/", desc: "Home" },
+  { to: "/about/", desc: "About" },
+  { to: "/team/", desc: "Team" },
+  { to: "/positions/", desc: "Volunteers and Positions" },
+  { to: "/contact/", desc: "Contact" },
+  { to: "/blog/", desc: "Updates" },
 ]
+
 
 export default () => (
   <footer role="footer" className={styles.footer}>
@@ -17,12 +18,12 @@ export default () => (
       Blankets for Toronto
     </h1>
     <p className={styles.footerInfo}>
-      An Organization at SomeLocation, 333 SomeAddress, SomeCity, SomeCountry
+      An Organization at UTSC
     </p>
     <ul className={styles.navigation}>
       {
         pages.map((page) => { return (
-          <li className={styles.navigationItem}>
+          <li className={styles.navigationItem} key={page.desc}>
             <Link to={page.to}>{page.desc}</Link>
           </li>
           )})

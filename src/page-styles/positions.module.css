@@ -10,6 +10,11 @@
 
 }
 
+.noPositionText {
+    font-size: 1.0em;
+    color: black;
+}
+
 @media (min-width: 1024px) {
     .positionList {
         grid-template-columns: repeat(2, 2fr);
@@ -27,4 +32,8 @@
         
 
     }
+}
+
+.membershipInfo p {
+    font-size: 1.0em;
 }

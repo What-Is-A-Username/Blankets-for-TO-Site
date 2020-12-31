@@ -1,17 +1,15 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styles from './navigation.module.css'
-import Sidebar from './navigation-sidebar'
-
 
 const pages = [
     { to: "/", desc: "Home" },
     { to: "/about/", desc: "About" },
     { to: "/team/", desc: "Team" },
-    { to: "/positions/", desc: "Positions" },
+    { to: "/positions/", desc: "Volunteers and Positions" },
     { to: "/contact/", desc: "Contact" },
     { to: "/blog/", desc: "Updates" },
-]
+  ]
 
 export default () => {
 
@@ -40,7 +38,7 @@ export default () => {
                 {
                     pages.map((page) => {
                         return (
-                            <li className={styles.navigationItem}>
+                            <li className={styles.navigationItem} key={page.desc}>
                                 <Link to={page.to}>{page.desc}</Link>
                             </li>
                         )
@@ -52,19 +50,6 @@ export default () => {
                         Close Menu
                 </li> : null}
             </ul>
-
-            {/* {drawerActive ? 
-            <Sidebar width={300} height={100} className={styles.sideBarParent}> 
-                {
-                    pages.map((page) => {
-                        return (
-                            <h1 className={styles.sideBarNavigationItem}>
-                                <Link to={page.to}>{page.desc}</Link>
-                            </h1>
-                        )
-                    })
-                }
-            </Sidebar> : null } */}
 
         </nav>)
 }
