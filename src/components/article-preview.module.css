@@ -2,6 +2,10 @@
   font-size: 1.5em;
 }
 
+.preview {
+    padding: 20px;
+}
+
 .tag {
   color: #A0A0A0;
   text-decoration: none;

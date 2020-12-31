@@ -37,6 +37,25 @@ a {
   padding: 5vmin 0;
 }
 
+@media(min-width: 760px) {
+}
+
+@media(max-width: 760px) {
+    /* .wrapper{
+        padding-top: 20vh
+    } */
+}
+
+.white-background {
+    background: #fff;
+}
+
+@media(max-width: 760px) {
+    .white-background {
+        padding-top: 100px;
+    }
+}
+
 /**
  * article grid
  */

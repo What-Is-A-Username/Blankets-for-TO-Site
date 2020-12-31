@@ -3,6 +3,9 @@ import { Link } from 'gatsby'
 import base from './base.css'
 import Container from './container'
 import Navigation from './navigation'
+import Footer from './footer'
+
+import navstyles from './navigation.module.css'
 
 class Template extends React.Component {
   render() {
@@ -14,11 +17,17 @@ class Template extends React.Component {
       rootPath = __PATH_PREFIX__ + `/`
     }
 
+
     return (
-      <Container>
-        <Navigation />
+      <Container styles={{width: "auto", display: "inline-flex"}}>
+          {/* <div style={{height: "10vh"}}></div> */}
+        <Navigation>
+            </Navigation>         
         {children}
+        <Footer/> 
+       
       </Container>
+      
     )
   }
 }

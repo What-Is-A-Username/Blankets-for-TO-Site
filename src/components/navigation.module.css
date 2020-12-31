@@ -1,20 +1,105 @@
+.logo {
+  height: 50px; 
+  padding: 10px 0px;
+  margin: 0px;
+  background-color: black;
+  width: 100%;
+}
+
+.logo h1 {
+  color: darkcyan;
+  width: 100%;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
+
 .navigation {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  height: 20vh;
-  max-height: 100px;
-  font-size: 1.25em;
+display: flex;
+justify-content: center;
+list-style: none;
+padding: 0;
+margin: 0;
+height: 50px;
+font-size: 1.25em;
+background-color: black;
 }
 
 .navigationItem {
-  display: inline-flex;
-  align-items: center;
-  margin: 0 1em;
+display: inline-flex;
+align-items: center;
+margin: 0 1em;
+color: white;
 }
 
 .navigationItem a {
-  color: currentColor;
+color: currentColor;
+}
+
+.toggle {
+  display: inline-flex;
+align-items: center;
+margin: 0 1em;
+color: white;
+}
+
+.sideBarParent {
+  display: flex;
+  flex-direction: column;
+}
+
+.sideBarNavigationItem {
+  display: inline-flex;
+align-items: center;
+margin: 0 1em;
+color: darkcyan;
+}
+
+@media(max-width: 760px) {
+  .logo {
+      position: fixed;
+      z-index: 5;
+  }
+
+  .toggle {
+      display: flex;
+      justify-content: center;
+      height: 10vh;
+      font-size: 1.25em;
+      background-color: black;
+      z-index: 5;
+      width: 100%;
+      margin: 0px;
+      padding: 0px;
+      position: fixed;
+      top: 8vh;
+  }
+
+  .navigation {
+      flex-direction: column;
+      height: auto;
+      position: fixed;
+      width: 100%;
+      z-index: 1;
+      /* visibility: hidden; */
+  }
+
+  .navigationItem {
+      justify-content: center;
+      font-size: 1.25em;
+  }
+}
+
+@media(min-width: 760px) {
+  .toggle {
+      visibility: hidden;
+      position: absolute;
+      width: 0;
+      top: -100%;
+  }
+
+  .navigation {
+      max-height: 100px;
+  }
 }

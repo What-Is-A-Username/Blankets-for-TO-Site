@@ -1,0 +1,30 @@
+.positionList {
+    display: grid;
+    grid-auto-columns: auto;
+    gap: 10px;
+    overflow: visible;
+    width:100%;
+    height: auto;    
+    padding: 0px; 
+    justify-items: center;
+
+}
+
+@media (min-width: 1024px) {
+    .positionList {
+        grid-template-columns: repeat(2, 2fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .positionList { 
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 760px) { 
+    .positionList {
+        
+
+    }
+}
