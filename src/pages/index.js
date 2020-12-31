@@ -57,9 +57,9 @@ class RootIndex extends React.Component {
                         <div className={styles.contactBoxSide}>
                             <img className={styles.backgroundImage} src={leftBackgroundImageSource} />
                             <div>
-                                <h2>Volunteering</h2>
-                                <p>Help us run our events and initiatives!</p>
-                                <form action="/positions">
+                                <h2>Join Us</h2>
+                                <p>Keep in touch with our organization to join the community and stay updated!</p>
+                                <form action="./contact/">
                                     <button className={styles.btn} type="submit">Volunteering</button>
                                 </form>
                             </div>
@@ -69,8 +69,8 @@ class RootIndex extends React.Component {
                             <img className={styles.backgroundImage} src={rightBackgroundImageSource} />
                             <div>
                                 <h2>Volunteering</h2>
-                                <p>Help us run our events and initiatives!Help us run our events and initiatives!Help us run our events and initiatives!Help us run our events and initiatives!Help us run our events and initiatives!Help us run our events and initiatives!Help us run our events and initiatives!Help us run our events and initiatives!Help us run our events and initiatives!</p>
-                                <form action="/positions">
+                                <p>Volunteering is a great way to contribute to a great cause!</p>
+                                <form action="./positions/">
                                     <button className={styles.btn} type="submit">Volunteering</button>
                                 </form>
                             </div>
