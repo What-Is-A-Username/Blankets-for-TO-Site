@@ -36,4 +36,5 @@
 
 .membershipInfo p {
     font-size: 1.0em;
+    max-width: 100%;
 }

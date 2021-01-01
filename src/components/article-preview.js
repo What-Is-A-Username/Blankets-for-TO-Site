@@ -12,10 +12,10 @@ export default ({ articles }) => (
           <div className={styles.preview} >
               <h3 className={styles.previewTitle}>{article.node.title}</h3>
               <small className={styles.previewPublishDate}>{article.node.publishDate}</small>
-              <p
+              <div className={styles.previewDescription}
               dangerouslySetInnerHTML={{
                   __html: article.node.description.childMarkdownRemark.html,
-              }} style={{color: "black"}}
+              }} 
               />
           </div>
         </a>

@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-auto-columns: auto;
-    gap: 10px;
+    gap: 50px;
     overflow: visible;
     height: auto;
 }

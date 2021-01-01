@@ -9,18 +9,15 @@
     font-size: 1.0em;
 }
 
-.alink div:hover {
-    background-color: #d8d8d8;
+.previewDescription {
+    padding: 0px;
+
 }
 
-.alink div {
-    -moz-transition: all .2s ease-in;
-    -o-transition: all .2s ease-in;
-    -webkit-transition: all .2s ease-in;
-    transition: all .2s ease-in;
-    background: #ffffff; 
-    padding: 20px;
+.previewDescription p {
+    color: black
 }
+
 
 .alink {
     cursor: pointer;
@@ -28,6 +25,9 @@
     
 }
 
+.preview:hover {
+    background-color: #d8d8d8;
+}
 .preview {
     text-decoration: none;
     margin: 10px;
@@ -36,6 +36,12 @@
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
     border-radius: 15px;
     border-color: #A0A0A0;
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    background: #ffffff; 
+    padding: 20px;
 }
 
 .tag {
