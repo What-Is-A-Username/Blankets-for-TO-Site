@@ -7,12 +7,12 @@
 }
 
 .logo h1 {
-  color: darkcyan;
   width: 100%;
   text-align: center;
   padding: 0px;
   margin: 0px;
   height: 100%;
+  font-weight: 400;
 }
 
 .navigation {
@@ -24,7 +24,6 @@
   height: 50px;
   font-size: 1.25em;
   width: 100%;
-  background-color: black;
 }
 
 .navigationItem {
@@ -43,11 +42,21 @@
   color:rgb(0, 172, 172);
 }
 
+.closeItem {
+  display: inline-flex;
+  font-size: .9em;
+  color: red;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
 .toggle {
   display: inline-flex;
-align-items: center;
-margin: 0 1em;
-color: white;
+  align-items: center;
+  margin: 0 1em;
+  color: white;
 }
 
 .sideBarParent {
@@ -66,20 +75,26 @@ color: darkcyan;
   .logo {
       position: fixed;
       z-index: 5;
+      background-color: darkcyan;
+  }
+
+  .logo h1 {
+    color: white;
   }
 
   .toggle {
       display: flex;
       justify-content: center;
-      height: 10vh;
+      height: 50px;
       font-size: 1.25em;
-      background-color: black;
+      background-color: darkcyan;
       z-index: 5;
       width: 100%;
       margin: 0px;
       padding: 0px;
       position: fixed;
-      top: 8vh;
+      top: 70px;
+      background-color: black;
   }
 
   .navigation {
@@ -88,8 +103,9 @@ color: darkcyan;
       position: fixed;
       width: 100%;
       z-index: 1;
+      background-color: black;
       /* visibility: hidden; */
-  }
+  } 
 
   .navigationItem {
       justify-content: center;
@@ -98,6 +114,16 @@ color: darkcyan;
 }
 
 @media(min-width: 760px) {
+
+  .closeItem {
+    position: absolute;
+    top: -100%;
+  }
+
+  .logo h1 {
+    color: darkcyan;
+  }
+
   .toggle {
       visibility: hidden;
       position: absolute;
@@ -106,6 +132,8 @@ color: darkcyan;
   }
 
   .navigation {
+    background-color: black;
       max-height: 100px;
+
   }
 }

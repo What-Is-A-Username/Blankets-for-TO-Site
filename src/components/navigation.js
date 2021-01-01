@@ -38,19 +38,19 @@ export default () => {
                 </div>
                 : null}
             <ul className={styles.navigation}
-                style={drawerActive ? { top: "17vh" } : { top: "-150%" }}
+                style={drawerActive ? { top: "120px" } : { top: "-150%" }}
             >
                 {
                     pages.map((page) => {
                         return (
-                            <li className={styles.navigationItem} key={page.desc}>
+                            <li className={styles.navigationItem} key={page.desc} onClick={changeState}>
                                 <Link to={page.to}>{page.desc}</Link>
                             </li>
                         )
                     })
                 }
                 {drawerActive ?
-                    <li className={styles.navigationItem}
+                    <li className={styles.closeItem}
                         onClick={changeState}>
                         Close Menu
                 </li> : null}
