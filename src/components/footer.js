@@ -4,11 +4,11 @@ import styles from './footer.module.css'
 
 const pages = [
   { to: "/", desc: "Home" },
-  { to: "/about/", desc: "About" },
-  { to: "/team/", desc: "Team" },
-  { to: "/positions/", desc: "Volunteers and Positions" },
-  { to: "/contact/", desc: "Contact" },
-  { to: "/blog/", desc: "Updates" },
+  { to: "/about", desc: "About" },
+  { to: "/team", desc: "Team" },
+  { to: "/positions", desc: "Volunteers and Positions" },
+  { to: "/contact", desc: "Contact" },
+  { to: "/blog", desc: "Updates" },
 ]
 
 

@@ -1,10 +1,11 @@
 import React from 'react'
-import { graphql, navigate } from 'gatsby'
+import { graphql, navigate, Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
+import Nav from '../components/navigation'
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import updateListStyles from '../page-styles/index.module.css'
@@ -12,6 +13,7 @@ import styles from '../templates/blog-post.module.css'
 import { update } from 'lodash'
 
 class BlogPostTemplate extends React.Component {
+
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
@@ -19,8 +21,6 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location}>
-          
-        {/* {console.log(post)} */}
         <div className="white-background">
         <div className="wrapper"></div>
           <Helmet title={`${post.title} | ${siteTitle}`} />
@@ -36,9 +36,9 @@ class BlogPostTemplate extends React.Component {
             <div className={updateListStyles.updates}>
               <h2>Most Recent Updates and Articles</h2>
               <ArticlePreview articles={posts}></ArticlePreview>
-              <form action="/blog/">
+              <Link to="/blog" className={styles.links}>
                 <button className={updateListStyles.btn} type="submit">Browse all updates</button>
-              </form>
+              </Link>
             </div>
           </div>
       </Layout>

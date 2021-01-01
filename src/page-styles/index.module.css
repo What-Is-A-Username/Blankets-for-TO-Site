@@ -162,6 +162,11 @@
     cursor: pointer;
 }
 
+.links
+{
+    text-decoration: none;
+}
+
 .btn:hover, .btn:focus {
     background-color: rgb(0, 97, 97);
 }

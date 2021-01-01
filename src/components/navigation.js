@@ -1,14 +1,14 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import styles from './navigation.module.css'
 
 const pages = [
     { to: "/", desc: "Home" },
-    { to: "/about/", desc: "About" },
-    { to: "/team/", desc: "Team" },
-    { to: "/positions/", desc: "Volunteers and Positions" },
-    { to: "/contact/", desc: "Contact" },
-    { to: "/blog/", desc: "Updates" },
+    { to: "/about", desc: "About" },
+    { to: "/team", desc: "Team" },
+    { to: "/positions", desc: "Volunteers and Positions" },
+    { to: "/contact", desc: "Contact" },
+    { to: "/blog", desc: "Updates" },
   ]
 
 export default () => {
@@ -18,6 +18,11 @@ export default () => {
     const changeState = () => {
         setDrawer(!drawerActive);
         console.log(drawerActive);
+    }
+
+    const navigateToBlog = () => 
+    {
+        navigate("/blog");
     }
 
     return (

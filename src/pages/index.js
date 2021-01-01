@@ -38,12 +38,12 @@ class RootIndex extends React.Component {
                         {/* {console.log(organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb)} */}
                         <p>{organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
                         <div className={styles.btnRow}>
-                          <form action="./about/">
+                          <Link to="/about" className={styles.links}>
                             <button className={styles.whiteBtn} type="submit">Learn More</button>
-                          </form>
-                          <form action="./team/">
+                          </Link>
+                          <Link to="/team" className={styles.links}>
                             <button className={styles.whiteBtn} type="submit">Meet The Team</button>
-                          </form>
+                          </Link>
                         </div>
                     </div>
 
@@ -51,9 +51,9 @@ class RootIndex extends React.Component {
                     <div className={styles.updates}>
                         <h2>News and Updates</h2>
                         <ArticlePreview articles={posts}/>
-                        <form action="./blog/">
+                        <Link to="/blog" className={styles.links}>
                           <button className={styles.btn} type="submit">Browse all updates</button>
-                        </form>
+                        </Link>
                     </div>
 
                     {/* Contact Us Widget  */}
@@ -64,9 +64,9 @@ class RootIndex extends React.Component {
                             <div>
                                 <h2>Join Us</h2>
                                 <p>Become part of the Blankets for Toronto community and be part of the change! Looking to join as a member? Interested in volunteering at events? Click below.</p>
-                                <form action="./positions/">
+                                <Link to="/positions" className={styles.links}>
                                     <button className={styles.btn} type="submit">More Information</button>
-                                </form>
+                                </Link>
                             </div>
                         </div>
                         {/* Join */}
@@ -75,9 +75,9 @@ class RootIndex extends React.Component {
                             <div>
                                 <h2>Contact Us</h2>
                                 <p>Keep in touch with our organization to join the community and stay updated! Got an idea for an initiative? Want to collaborate with BTO? Send us a message via email or message us over social media!</p>
-                                <form action="./contact/">
+                                <Link to="/contact" className={styles.links}>
                                     <button className={styles.btn} type="submit">Contact Us</button>
-                                </form>
+                                </Link>
                             </div>
                         </div>
                     </div>
