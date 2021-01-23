@@ -1,6 +1,6 @@
 .title 
 {
-    color: darkcyan
+    color: var(--primary)
 }
 
 .description

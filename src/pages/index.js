@@ -1,8 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 
-import leftBackgroundImageSource from '../components/images/skyline.jpg'
-import rightBackgroundImageSource from '../components/images/skyline.jpg'
+import transparentLogo from '../components/images/blanketsLogoTransparent.png'
 
 import { Link } from 'gatsby'
 import { graphql } from 'gatsby'
@@ -28,8 +27,7 @@ class RootIndex extends React.Component {
 
                     <div className={styles.title}>
                         <Img className={styles.backgroundImage} fluid={organizationBlurb[0].node.frontPageImage.fluid}></Img>
-                        {/* <img className={styles.backgroundImage} src="https://www.flaticon.com/svg/static/icons/svg/124/124021.svg" /> */}
-                        <h1>Blankets for Toronto</h1>
+                        <img className={styles.logoImage} src={transparentLogo}/>
                     </div>
 
                     {/* Description, centered  */}
@@ -63,7 +61,7 @@ class RootIndex extends React.Component {
                             {/* <img className={styles.backgroundImage} src={leftBackgroundImageSource} /> */}
                             <div>
                                 <h2>Join Us</h2>
-                                <p>Become part of the Blankets for Toronto community and be part of the change! Looking to join as a member? Interested in volunteering at events? Click below.</p>
+                                <p>Become part of the Blankets For T.O. community and be part of the change! Looking to join as a member? Interested in volunteering at events? Click below.</p>
                                 <Link to="/positions" className={styles.links}>
                                     <button className={styles.btn} type="submit">More Information</button>
                                 </Link>

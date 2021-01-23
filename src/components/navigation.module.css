@@ -39,7 +39,7 @@
 }
 
 .navigationItem a:hover{
-  color:rgb(0, 172, 172);
+  color:var(--primary);
 }
 
 .closeItem {
@@ -68,14 +68,14 @@
   display: inline-flex;
 align-items: center;
 margin: 0 1em;
-color: darkcyan;
+color: var(--primary);
 }
 
 @media(max-width: 760px) {
   .logo {
       position: fixed;
       z-index: 5;
-      background-color: darkcyan;
+      background-color: var(--primary);
   }
 
   .logo h1 {
@@ -87,7 +87,7 @@ color: darkcyan;
       justify-content: center;
       height: 50px;
       font-size: 1.25em;
-      background-color: darkcyan;
+      background-color: var(--primary);
       z-index: 5;
       width: 100%;
       margin: 0px;
@@ -121,7 +121,7 @@ color: darkcyan;
   }
 
   .logo h1 {
-    color: darkcyan;
+    color: var(--primary);
   }
 
   .toggle {

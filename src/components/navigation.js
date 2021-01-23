@@ -28,7 +28,7 @@ export default () => {
     return (
         <nav role="navigation">
             <div className={styles.logo}>
-                <h1>Blankets For Toronto</h1>
+                <h1>Blankets For T.O.</h1>
             </div>
 
             {true ?

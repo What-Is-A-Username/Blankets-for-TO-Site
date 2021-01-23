@@ -14,21 +14,21 @@
     width: 100%;
 }
 
-.title h1 {
-    font-weight: bold;
+.logoImage {
     position: absolute;
     color: white;
     font-size: 50px;
+    width: 450px !important;
+    height: 270px !important; 
     text-align: center;
     align-self: center;
     justify-self: center;
-    width: 75%;
-    background-color: darkcyan;
+    background-color: transparent;
     background-size: cover;
 }
 
 .description {
-    background-color: darkcyan;
+    background-color: var(--primary);
     padding-top: 50px;
     padding-bottom: 50px;
     padding-left: 5%;
@@ -66,7 +66,7 @@
 }
 
 .updates h2 {
-    color: darkcyan;
+    color: var(--primary);
     display: flex;
     justify-content: center;
 }
@@ -135,7 +135,7 @@
     min-height: 50px;
     font-size: 1.2em;
     border-width: 0;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 1px 4px rgba(84, 84, 84, 0.6);
     background-color: white;
     color: #2b2d30;
@@ -146,7 +146,7 @@
 
 .whiteBtn:hover, .whiteBtn:focus {
     background-color: #A0A0A0;
-    color: darkcyan;
+    color: var(--primary);
 }
 
 .btn {
@@ -156,9 +156,9 @@
     min-height: 50px;
     font-size: 1.2em;
     border-width: 0;
-    border-radius: 2px;
+    border-radius: 10px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-    background-color: darkcyan;
+    background-color: var(--primary);
     color: #ecf0f1;
     transition: background-color .2s;
     cursor: pointer;
@@ -170,7 +170,7 @@
 }
 
 .btn:hover, .btn:focus {
-    background-color: rgb(0, 97, 97);
+    background-color: rgb(240, 0, 60);
 }
 
 .btn span {

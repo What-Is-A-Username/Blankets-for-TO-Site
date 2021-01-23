@@ -15,7 +15,7 @@ const pages = [
 export default () => (
   <footer role="footer" className={styles.footer}>
     <h1 className={styles.footerTitle}>
-      Blankets for Toronto
+      Blankets for T.O.
     </h1>
     <p className={styles.footerInfo}>
       An Organization at UTSC

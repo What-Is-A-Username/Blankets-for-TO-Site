@@ -5,6 +5,7 @@ import emailImage from './images/emailicon.png'
 import twitterImage from './images/twittericon.png'
 import facebookImage from './images/facebook.png'
 import instagramImage from './images/instagram.svg'
+import linkedInImage from './images/linkedInIcon.png'
 // https://www.flaticon.com/svg/static/icons/svg/124/124021.svg
 import placeholderPortrait from './images/placeholderperson.png';
 
@@ -12,7 +13,7 @@ export default ({ data }) => (
     <div className={styles.memberCard}>
             <div style={{height:"100%"}}>
             {data.photo === null ? 
-            <img src={placeholderPortrait}></img> : 
+            <img className={styles.memberPortrait} src={placeholderPortrait}></img> : 
             <Img className={styles.memberPortrait} fluid={data.photo.fluid} /> }
             </div>
             <div className={styles.memberInformation}>
@@ -53,6 +54,14 @@ export default ({ data }) => (
                         <div>
                             <img src={twitterImage} alt="Twitter Icon" />
                             <a href={data.twitterLink}>{data.twitter}</a>
+                        </div>
+                        : null 
+                    }
+                    {
+                        data.linkedIn != null ? 
+                        <div>
+                            <img src={linkedInImage} alt="LinkedIn Icon" />
+                            <a href={data.linkedInLink}>{data.linkedIn}</a>
                         </div>
                         : null 
                     }

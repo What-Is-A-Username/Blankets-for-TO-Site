@@ -1,11 +1,12 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import get from 'lodash/get'
 import Layout from '../components/layout'
 import Position from '../components/position'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 
+import btnStyles from '../page-styles/index.module.css'
 import styles from '../page-styles/positions.module.css'
 
 class Positions extends React.Component {
@@ -14,20 +15,24 @@ class Positions extends React.Component {
     const positions = get(this, 'props.data.allContentfulPosition.edges')
     const membershipInfo = get(this, 'props.data.allContentfulOrganizationInformationMembershipInformationRichTextNode.edges')[0].node
 
+    const formLink = "https://docs.google.com/forms/d/e/1FAIpQLSeHwKycp_JU4hGtpMlzKGP6idBUBnUVRUewN12Ak7zX6PwAEQ/viewform?usp=sf_link"
+
     return (
       <Layout location={this.props.location}>
         <div className="white-background">
           <div className="wrapper">
             <div className={styles.membershipInfo}>
-              <h2>Membership</h2>
+              <h2>Membership and Volunteering</h2>
               {membershipInfo.json !== undefined ? documentToReactComponents(membershipInfo.json) : <p>Error: Articles not found.</p>}
+              <Link to={formLink} className={btnStyles.links} target="_blank" rel="noopener noreferrer">
+                <button className={btnStyles.btn} type="submit">Sign Up Now</button>
+              </Link>
             </div>
-            <h2>Volunteering and Executive Positions</h2>
-            {positions.length == 0 ? 
+            {/* {positions.length == 0 ? 
             <ul className={styles.positionList}>
             { positions.map( ({node}) => {
                 return(<Position key={node.title} data={node}/>)}) }
-            </ul> : <h3 className={styles.noPositionText}>Unfortunately, Blankets for Toronto is not currently recruiting for new volunteer roles or executive positions.</h3>}
+            </ul> : <h3 className={styles.noPositionText}>Unfortunately, Blankets for T.O. is not currently recruiting for new volunteer roles or executive positions.</h3>} */}
           </div>
         </div>
       </Layout>

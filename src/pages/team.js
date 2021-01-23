@@ -59,10 +59,12 @@ export const teamPositionQuery = graphql`
           instagramLink
           twitter
           twitterLink
+          linkedIn
+          linkedInLink
           photo {
             fluid(
-                maxWidth: 1180
-                maxHeight: 480
+                maxWidth: 540
+                maxHeight: 540
                 resizingBehavior: PAD
                 background: "rgb:000000"
               ) {
