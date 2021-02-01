@@ -39,7 +39,7 @@ class BlogPostTemplate extends React.Component {
             <h1 className="section-headline">{post.title}</h1>
             <p className={styles.publishDate}> {post.publishDate} </p>
             <div className={styles.richText} >
-              {console.log(post.richTextBody.json)}
+              {/* {console.log(post.richTextBody.json)} */}
             {post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
             </div>
           </div>

@@ -17,7 +17,7 @@ export default () => {
 
     const changeState = () => {
         setDrawer(!drawerActive);
-        console.log(drawerActive);
+        // console.log(drawerActive);
     }
 
     const navigateToBlog = () => 

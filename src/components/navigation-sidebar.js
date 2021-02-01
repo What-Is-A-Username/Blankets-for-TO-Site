@@ -11,7 +11,7 @@ export default ({ width, height, children }) => {
     } else {
       setX(-width);
     }
-    console.log("width to " + xPosition)
+    // console.log("width to " + xPosition)
   };
 
   React.useEffect(() => {

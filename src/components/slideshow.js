@@ -31,7 +31,7 @@ export default class Slideshow extends React.Component {
     startCycle = () => {
         if (!this.state.cycle || !this.state.starting) 
             return
-        console.log(this.slide)
+        // console.log(this.slide)
         this.setState({
             slide: (this.state.slide + 1) % this.props.menuItems.length, starting: false
         })
@@ -56,7 +56,7 @@ export default class Slideshow extends React.Component {
     componentDidMount()
     {
         this.cycleAround();
-        console.log(this.props.menuItems[0].node)
+        // console.log(this.props.menuItems[0].node)
     }
 
     render() {
