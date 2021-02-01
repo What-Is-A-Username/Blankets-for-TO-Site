@@ -33,10 +33,10 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location}>
         <div className="white-background">
-        <div className="wrapper"></div>
+        
           <Helmet title={`${post.title} | ${siteTitle}`} />
           <div className="wrapper">
-            <h1 className="section-headline">{post.title}</h1>
+            <h1 className={styles.title}>{post.title}</h1>
             <p className={styles.publishDate}> {post.publishDate} </p>
             <div className={styles.richText} >
               {/* {console.log(post.richTextBody.json)} */}
