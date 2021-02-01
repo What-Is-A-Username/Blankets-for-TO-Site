@@ -1,5 +1,8 @@
 :root {
   --primary: #fc5c5c; 
+  --slideshowFadeDuration: 2.0s;
+  --slideshowFadeOutDuration: 0.5s;
+  --slideshowButtonFadeDuration: 3.0s;
 }
 
 @font-face {

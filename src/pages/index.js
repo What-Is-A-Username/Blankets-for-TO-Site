@@ -9,16 +9,15 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
-import ArticleEntry from '../components/blog-list'
-
-
 import styles from '../page-styles/index.module.css'
+import Slideshow from '../components/slideshow'
 
 class RootIndex extends React.Component {
     render() {
         const siteTitle = get(this, 'props.data.site.siteMetadata.title')
         const posts = get(this, 'props.data.allContentfulBlogPost.edges')
         const organizationBlurb = get(this, 'props.data.allContentfulOrganizationInformation.edges')
+        const slides = get(this, 'props.data.allContentfulHomeSlide.edges')
 
         return (
             <Layout location={this.props.location}>
@@ -53,6 +52,8 @@ class RootIndex extends React.Component {
                           <button className={styles.btn} type="submit">Browse all updates</button>
                         </Link>
                     </div>
+
+                    <Slideshow menuItems={slides}></Slideshow>
 
                     {/* Contact Us Widget  */}
                     <div className={styles.contactBox}>
@@ -92,6 +93,18 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    allContentfulHomeSlide { 
+      edges {
+        node {
+          title
+          childContentfulHomeSlideDescriptionRichTextNode {
+            json
+          }
+          buttonText
+          buttonLink
+        }
       }
     }
     allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 3) {

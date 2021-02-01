@@ -1,16 +1,15 @@
 import React from 'react'
-import { graphql, navigate, Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
-import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
-import Nav from '../components/navigation'
 
+import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+
 import updateListStyles from '../page-styles/index.module.css'
 import styles from '../templates/blog-post.module.css'
-import { update } from 'lodash'
 
 class BlogPostTemplate extends React.Component {
 
@@ -18,6 +17,18 @@ class BlogPostTemplate extends React.Component {
     const post = get(this.props, 'data.contentfulBlogPost')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+
+    const options = {
+      renderNode: {
+        [BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields }}}) =>
+        <img src={fields.file['en-US'].url} 
+          style={{
+            width: fields.file['en-US'].details.image.width, 
+          }}
+          alt={fields.description}
+        />,
+      },
+    };
 
     return (
       <Layout location={this.props.location}>
@@ -27,8 +38,9 @@ class BlogPostTemplate extends React.Component {
           <div className="wrapper">
             <h1 className="section-headline">{post.title}</h1>
             <p className={styles.publishDate}> {post.publishDate} </p>
-            <div>
-            {post.richTextBody != null ? documentToReactComponents(post.richTextBody.json) : <p>Error: Article not found.</p>}
+            <div className={styles.richText} >
+              {console.log(post.richTextBody.json)}
+            {post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
             </div>
           </div>
           <hr className={styles.horizontalLine}></hr>

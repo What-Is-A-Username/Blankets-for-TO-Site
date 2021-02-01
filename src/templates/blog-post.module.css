@@ -22,3 +22,17 @@
 {
   text-decoration: none;
 }
+
+.richText 
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.richText img 
+{
+  max-width: 500px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-self: center;
+}

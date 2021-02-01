@@ -57,6 +57,7 @@
   align-items: center;
   margin: 0 1em;
   color: white;
+  width: 100vw;
 }
 
 .sideBarParent {
@@ -89,7 +90,7 @@ color: var(--primary);
       font-size: 1.25em;
       background-color: var(--primary);
       z-index: 5;
-      width: 100%;
+      width: 100vw;
       margin: 0px;
       padding: 0px;
       position: fixed;
