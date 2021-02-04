@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
-import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import Member from '../components/member'
 import SEO from '../components/SEO'
@@ -15,8 +14,8 @@ class Team extends React.Component {
 
         return (
             <Layout location={this.props.location}>
-                <SEO title="Team"/>
-
+                <SEO title="Team"
+                  description="Meet the talented and motivated members of the team at Blankets for T.O. that makes all of our events possible."/>
                 <div className="sidebarabove"></div>
                 <div className="white-background">
                     <div className="wrapper">

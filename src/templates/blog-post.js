@@ -33,7 +33,8 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location}>
         <div className="white-background">
-          <SEO title={post.title} metaType={`article`}/>
+          <SEO title={post.title} metaType={`article`} 
+            description={`${post.publishDate} - ${post.description.childMarkdownRemark.rawMarkdownBody}`}/>
           <div className="wrapper">
             <h1 className={styles.title}>{post.title}</h1>
             <p className={styles.publishDate}> {post.publishDate} </p>
@@ -75,6 +76,7 @@ export const pageQuery = graphql`
         description {
           childMarkdownRemark {
             html
+            rawMarkdownBody
           }
         }
     }

@@ -14,7 +14,8 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={this.props.location}>
-        <SEO title="Updates"/>
+        <SEO title="Updates"
+          description="Browse articles published by Blankets for T.O., including summaries of past initiatives, photos of past events, and everything else associated with us."/>
         <div className="white-background">
             <div style={{padding: "20px"}}></div>
           {/* <div className={styles.hero}>Blog</div> */}

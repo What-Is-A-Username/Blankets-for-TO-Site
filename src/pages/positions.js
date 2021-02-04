@@ -19,7 +19,8 @@ class Positions extends React.Component {
 
     return (
       <Layout location={this.props.location}>
-        <SEO title="Membership and Volunteering"/>
+        <SEO title="Membership and Volunteering"
+          description="Support Blankets for T.O. by signing up to become a member today! Join the community to be eligible for exclusive offers and volunteering opportunities."/>
         <div className="white-background">
           <div className="wrapper">
             <div className={styles.membershipInfo}>
