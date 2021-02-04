@@ -6,7 +6,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 export default class Slideshow extends React.Component {
 
-    state = { slide: 0, cycle: true, starting: false }
+    state = { slide: 0, cycle: true, starting: false, timers: [] }
     interruptDelay = 5000
     slideDelay = 5000
     slideTransition = 500 
@@ -15,13 +15,14 @@ export default class Slideshow extends React.Component {
         if (newSlide < 0) newSlide = 0 
         else if (newSlide >= this.props.menuItems.length) newSlide = 0
         this.setState({ cycle: false, slide: newSlide });
-        setTimeout(() => { 
+        this.interruptTimer = setTimeout(() => { 
             if (!this.state.cycle)
             {
                 this.setState({
                     slide: this.state.slide,
                     cycle: false
                 });
+                this.state.timers.pop(this.interruptTimer); 
                 // if (this.state.cycle)
                 //     this.cycleAround()
             }
@@ -35,9 +36,10 @@ export default class Slideshow extends React.Component {
         this.setState({
             slide: (this.state.slide + 1) % this.props.menuItems.length, starting: false
         })
-        setTimeout(() => {
+        this.startCycleTimer = setTimeout(() => {
             if (this.state.cycle)
                 this.cycleAround()
+            this.state.timers.pop(this.startCycleTimer); 
         }, this.slideDelay);
     }
 
@@ -47,16 +49,17 @@ export default class Slideshow extends React.Component {
         this.setState({
             starting : true,
         })
-        setTimeout(() => {
+        this.cycleAroundTimer = setTimeout(() => {
             if (this.state.cycle)
                 this.startCycle()
+            this.state.timers.pop(this.cycleAroundTimer); 
         }, this.slideTransition); 
+        this.state.timers.push(this.cycleAroundTimer);
     }
 
     componentDidMount()
     {
         this.cycleAround();
-        // console.log(this.props.menuItems[0].node)
     }
 
     render() {
@@ -96,5 +99,13 @@ export default class Slideshow extends React.Component {
                 
             </div>
         )
+    }
+
+    componentWillUnmount()
+    {
+        this.state.timers.map( x => clearTimeout(clearTimeout(x)))
+        this.setState = (state,callback)=>{
+            return;
+        };
     }
 }

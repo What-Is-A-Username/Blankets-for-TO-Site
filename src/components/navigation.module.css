@@ -126,6 +126,7 @@ color: var(--primary);
   }
 
   .toggle {
+      pointer-events: none;
       visibility: hidden;
       position: absolute;
       width: 0;

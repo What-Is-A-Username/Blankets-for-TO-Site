@@ -31,12 +31,10 @@ export default () => {
                 <h1>Blankets For T.O.</h1>
             </div>
 
-            {true ?
-                <div className={styles.toggle}>
-                    <li className={styles.navigationItem} onClick={changeState}>Navigation
-                    </li>
-                </div>
-                : null}
+            <div className={styles.toggle} onClick={changeState}>
+                <li className={styles.navigationItem}>Navigation
+                </li>
+            </div>
             <ul className={styles.navigation}
                 style={drawerActive ? { top: "120px" } : { top: "-150%" }}
             >
