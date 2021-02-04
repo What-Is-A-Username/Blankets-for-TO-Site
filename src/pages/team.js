@@ -4,7 +4,7 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import Member from '../components/member'
-import Sidebar from '../components/navigation-sidebar'
+import SEO from '../components/SEO'
 
 import styles from '../page-styles/team.module.css'
 
@@ -15,6 +15,8 @@ class Team extends React.Component {
 
         return (
             <Layout location={this.props.location}>
+                <SEO title="Team"/>
+
                 <div className="sidebarabove"></div>
                 <div className="white-background">
                     <div className="wrapper">

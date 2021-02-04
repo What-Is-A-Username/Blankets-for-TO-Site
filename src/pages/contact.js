@@ -2,9 +2,8 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
-import Helmet from 'react-helmet'
+import SEO from '../components/SEO'
 import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
 
 import styles from '../page-styles/contact.module.css'
 
@@ -16,6 +15,7 @@ class Contact extends React.Component {
 
     return (
       <Layout location={this.props.location}>
+        <SEO title="Contact Us"/>
         <div className="white-background">
           {/* Image + Organization Title in Center  */}
 

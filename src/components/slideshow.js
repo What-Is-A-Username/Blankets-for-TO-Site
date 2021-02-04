@@ -8,7 +8,7 @@ export default class Slideshow extends React.Component {
 
     state = { slide: 0, cycle: true, starting: false }
     interruptDelay = 5000
-    slideDelay = 3000
+    slideDelay = 5000
     slideTransition = 500 
 
     interrupt = (newSlide) => {

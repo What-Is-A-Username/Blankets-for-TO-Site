@@ -1,7 +1,7 @@
 :root {
   --primary: #fc5c5c; 
   --slideshowFadeDuration: 2.0s;
-  --slideshowFadeOutDuration: 0.5s;
+  --slideshowFadeOutDuration: 1.0s;
   --slideshowButtonFadeDuration: 3.0s;
 }
 

@@ -6,11 +6,11 @@ import transparentLogo from '../components/images/blanketsLogoTransparent.png'
 import { Link } from 'gatsby'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
-import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 import styles from '../page-styles/index.module.css'
 import Slideshow from '../components/slideshow'
+import SEO from '../components/SEO'
 
 class RootIndex extends React.Component {
     render() {
@@ -21,6 +21,7 @@ class RootIndex extends React.Component {
 
         return (
             <Layout location={this.props.location}>
+                <SEO title="Home"/>
                 <div className="white-background">
                     {/* Image + Organization Title in Center  */}
 

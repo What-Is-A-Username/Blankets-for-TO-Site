@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
-import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import ArticleEntry from '../components/blog-list'
+import SEO from '../components/SEO'
 
 import styles from '../page-styles/blog.module.css'
 
@@ -14,9 +14,9 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={this.props.location}>
+        <SEO title="Updates"/>
         <div className="white-background">
             <div style={{padding: "20px"}}></div>
-          <Helmet title={siteTitle} />
           {/* <div className={styles.hero}>Blog</div> */}
           <div className="wrapper">
             <h2 className="section-headline">All Updates and Articles</h2>

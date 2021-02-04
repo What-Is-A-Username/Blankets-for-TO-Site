@@ -26,6 +26,16 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     title: 'Blankets for T.O.',
+    author: 'Blankets for T.O.', 
+    titleTemplate: '%s | Blankets for T.O.', 
+    description: 'A student organization at UTSC aimed at helping and advocating for the homeless of Toronto, through awareness initiatives and donations.',
+    url: "https://www.blanketsforto.ca", 
+    image: '/blanketsLogoTransparent.png',
+    lang: 'en',
+    keywords: [ 
+      'Blankets for T.O.', 'BTO', 'blanketsforto.ca', 'Blankets for TO', 'Blankets for Toronto', 'homeless', 'UTSC'
+    ],
+    twitterUsername: '@blanketsforto',
   },
   pathPrefix: '',
   plugins: [

@@ -4,7 +4,7 @@ import get from 'lodash/get'
 import Layout from '../components/layout'
 // import Position from '../components/position'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Slideshow from '../components/slideshow'
+import SEO from '../components/SEO'
 
 import btnStyles from '../page-styles/index.module.css'
 import styles from '../page-styles/positions.module.css'
@@ -19,6 +19,7 @@ class Positions extends React.Component {
 
     return (
       <Layout location={this.props.location}>
+        <SEO title="Membership and Volunteering"/>
         <div className="white-background">
           <div className="wrapper">
             <div className={styles.membershipInfo}>

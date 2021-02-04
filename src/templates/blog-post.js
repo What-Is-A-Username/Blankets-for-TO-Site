@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Helmet from 'react-helmet'
+import SEO from '../components/SEO'
 import get from 'lodash/get'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
@@ -33,13 +33,11 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location}>
         <div className="white-background">
-        
-          <Helmet title={`${post.title} | ${siteTitle}`} />
+          <SEO title={post.title} metaType={`article`}/>
           <div className="wrapper">
             <h1 className={styles.title}>{post.title}</h1>
             <p className={styles.publishDate}> {post.publishDate} </p>
             <div className={styles.richText} >
-              {/* {console.log(post.richTextBody.json)} */}
             {post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
             </div>
           </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '../components/layout'
 import { Link } from 'gatsby'
+import SEO from '../components/SEO'
 
 import styles from '../page-styles/index.module.css'
 import styles404 from '../page-styles/404.module.css'
@@ -10,6 +11,7 @@ class FourOFourPage extends React.Component {
 
     return (
       <Layout location={this.props.location}>
+        <SEO title="Error 404"/>
         <div className="white-background">
           <div className="wrapper">
             <h2 className={styles404.title}>Page not found</h2>

@@ -2,12 +2,9 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
-import Helmet from 'react-helmet'
+import SEO from '../components/SEO'
 import Layout from '../components/layout'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-
-import ArticlePreview from '../components/article-preview'
-
 import styles from '../page-styles/about.module.css'
 
 class About extends React.Component {
@@ -20,6 +17,7 @@ class About extends React.Component {
 
         return (
             <Layout location={this.props.location}>
+                <SEO title="About"/>
                 <div className="white-background">
                     <div className="wrapper">
                     {/* Description, centered  */}
