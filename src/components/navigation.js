@@ -29,14 +29,14 @@ export default () => {
         <nav role="navigation">
             <div className={styles.logo}>
                 <h1>Blankets For T.O.</h1>
+                <div className={styles.toggle} onClick={changeState}>
+                <div className={styles.hamburger + ' ' + (drawerActive ? styles.menuOpen : styles.menuClosed)}>
+                </div>
+            </div>
             </div>
 
-            <div className={styles.toggle} onClick={changeState}>
-                <li className={styles.navigationItem}>Navigation
-                </li>
-            </div>
             <ul className={styles.navigation}
-                style={drawerActive ? { top: "120px" } : { top: "-150%" }}
+                style={drawerActive ? { top: "70px" } : { top: "-150%" }}
             >
                 {
                     pages.map((page) => {
@@ -53,6 +53,9 @@ export default () => {
                         Close Menu
                 </li> : null}
             </ul>
+
+            {/* { drawerActive && <div className={styles.blocker}></div>} */}
+
 
         </nav>)
 }
