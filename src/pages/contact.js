@@ -5,6 +5,13 @@ import get from 'lodash/get'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
 
+import emailImage from '../components/images/contact/emailTransparent.svg'
+import twitterImage from '../components/images/contact/twitterTransparent.svg'
+import facebookImage from '../components/images/contact/facebookTransparent.svg'
+import instagramImage from '../components/images/contact/instagramTransparent.svg'
+import tikTokImage from '../components/images/contact/tiktokTransparent.svg'
+
+
 import styles from '../page-styles/contact.module.css'
 
 class Contact extends React.Component {
@@ -13,49 +20,34 @@ class Contact extends React.Component {
     const node = contactInfo[0].node
     const officeHours = get(this, 'props.data.allContentfulOrganizationInformationOfficeHoursTextNode.edges')
 
+    const platform = ["Email", "Facebook", "Instagram", "Twitter", "TikTok"] 
+    const nameEntry = [ node.emailAddress, node.facebook, node.instagram, node.twitter, node.tikTok]
+    const link = [ 'mailto:' + node.emailAddress, node.facebookLink, node.instagramLink, node.twitterLink, ""] 
+    const icon = [ emailImage, facebookImage, instagramImage, twitterImage, tikTokImage ]
+
     return (
       <Layout location={this.props.location}>
         <SEO title="Contact Us"
           description="Want to reach out to Blankets for T.O. to join, collaborate, or ask a question? Connect to us through any of contact details or social media links shown here."/>
         <div className="white-background">
-          {/* Image + Organization Title in Center  */}
-
-          {/* { console.log(officeHours[0].node.childMarkdownRemark) }  */}
           <div>
             <div className="wrapper">
               <h2>Contact Us</h2>
-
+              <div className={styles.socialMedia}>
+            {
+              nameEntry.map((x, i) => { return(
+                x != "null" &&
+                <div className={styles.socialMediaEntry}>
+                  <a href={link[i] != "" ? link[i] : null} target="_blank" rel="noopener noreferrer">
+                  <img src={icon[i]} alt={platform[i] + ' Icon'}/>
+                  <p>{x + (link[i] != "" ? '  \u2197' : "")} </p>
+                  </a>
+                </div>
+              )} 
+              )
+            }
+          </div>
               <div className={styles.contactDetails}>
-                {node.emailAddress != "null" ? 
-                  <div>
-                    <h4>{`Email `}</h4>
-                    <a>{node.emailAddress}</a>
-                  </div> : null
-                }
-                {node.facebook != "null" ? 
-                  <div>
-                    <h4>{`Facebook `}</h4>
-                    <a href={node.facebookLink}>{node.facebook}</a>
-                  </div> : null
-                }
-                {node.instagram != "null" ? 
-                  <div>
-                    <h4>{`Instagram`}</h4>
-                    <a href={node.instagramLink}>{node.instagram}</a>
-                  </div> : null
-                }
-                {node.twitter != "null" ? 
-                  <div>
-                    <h4>{`Twitter`}</h4>
-                    <a href={node.twitterLink}>{node.twitter}</a>
-                  </div> : null
-                }
-                {node.tikTok != "null" ? 
-                  <div>
-                    <h4>{`Tiktok`}</h4>
-                    <a>{node.tikTok}</a>
-                  </div> : null
-                }
                 {node.officeAddress != "null" ? 
                   <div>
                     <h4>{`Office`}</h4>

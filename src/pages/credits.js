@@ -9,18 +9,27 @@ class Credits extends React.Component {
     render() {
         return(
         <Layout location={this.props.location}>
-            <SEO title="Image Credits"
-                description="Links to media and sources used on this site."/>
+            <SEO title="Media Credits"
+                description="Links and attributions to creators of images and other media used on this site."/>
             <div className="white-background">
                 <div className="wrapper">
-                    <h2>Credits for Media Elements Used</h2>
+                    <h2>Media Credits</h2>
+                    <p>This page contains attributions to media resources used on this site.</p>
+                    <div style={{paddingBottom:'10px'}}></div>
                     <div id="#hamburger">
-                        <p>Hamburger Menu Icon: </p>
+                        <p>Social Media and Navigation Icons: </p>
                         {/* https://www.flaticon.com/free-icon/menu-button-of-three-horizontal-lines_56763 */}
-                        <div>Icons made by <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com
-                            </a>
-                        </div>
+                        <div style={{paddingLeft:'10px'}}>Icons made by <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                        <p>Social Media Icons (Footer, Contact page)</p>
+                        {/* https://www.iconfinder.com */}
+                        <div style={{paddingLeft:'10px'}}>Icons made by <a href="https://www.iconfinder.com/social-media-icons/" title="Iconfinder Users"> Flatart, Iconfinder, mattbadal, Anton D </a> from <a href="https://www.iconfinder.com/social-media-icons/" title="IconFinder">www.iconfinder.com</a></div>
+                        <p>Email Icon</p>
+                        {/* https://www.flaticon.com/packs/social-media-icons */}
+                        <div style={{paddingLeft:'10px'}}>Icons made by <a href="https://www.flaticon.com/authors/cursor-creative" title="Cursor Creative">Cursor Creative</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                        <div style={{paddingTop:'50px'}}></div>
+                        <p>If you are a creator and believe that your content was unfairly used or attributed, please contact us at <a href="mailto:blanketsforto@gmail.com">blanketsforto@gmail.com</a></p>
                     </div> 
+                    
                 </div>
             </div> 
         </Layout>

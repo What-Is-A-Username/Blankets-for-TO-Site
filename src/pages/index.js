@@ -26,8 +26,8 @@ class RootIndex extends React.Component {
                     {/* Image + Organization Title in Center  */}
 
                     <div className={styles.title}>
-                        <Img className={styles.backgroundImage} fluid={organizationBlurb[0].node.frontPageImage.fluid}></Img>
-                        <img className={styles.logoImage} src={transparentLogo}/>
+                        <Img className={styles.backgroundImage} fluid={organizationBlurb[0].node.frontPageImage.fluid} alt='Background image behind Blankets for T.O. organization logo.'></Img>
+                        <img className={styles.logoImage} src={transparentLogo} alt="Blankets for T.O. organization logo image."/>
                     </div>
 
                     {/* Description, centered  */}
@@ -37,7 +37,7 @@ class RootIndex extends React.Component {
                         <p>{organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
                         <div className={styles.btnRow}>
                           <Link to="/about" className={styles.links}>
-                            <button className={styles.whiteBtn} type="submit">Learn More</button>
+                            <button className={styles.whiteBtn} type="submit">Read Our Mission</button>
                           </Link>
                           <Link to="/team" className={styles.links}>
                             <button className={styles.whiteBtn} type="submit">Meet The Team</button>
@@ -65,7 +65,7 @@ class RootIndex extends React.Component {
                                 <h2>Join Us</h2>
                                 <p>Become part of the Blankets For T.O. community and be part of the change! Looking to join as a member? Interested in volunteering at events? Click below.</p>
                                 <Link to="/positions" className={styles.links}>
-                                    <button className={styles.btn} type="submit">More Information</button>
+                                    <button className={styles.btn} type="submit">Become a Volunteer or Member</button>
                                 </Link>
                             </div>
                         </div>

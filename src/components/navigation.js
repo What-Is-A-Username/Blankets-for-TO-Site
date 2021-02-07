@@ -6,7 +6,7 @@ const pages = [
     { to: "/", desc: "Home" },
     { to: "/about", desc: "About" },
     { to: "/team", desc: "Team" },
-    { to: "/positions", desc: "Volunteers and Positions" },
+    { to: "/positions", desc: "Membership/Volunteering" },
     { to: "/contact", desc: "Contact" },
     { to: "/blog", desc: "Updates" },
   ]

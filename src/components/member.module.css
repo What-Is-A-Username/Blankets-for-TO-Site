@@ -26,9 +26,15 @@
   min-height: 150px;
 }
 
+.memberContact {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
 .memberContact div {
   display: flex;
-  
+  flex-direction: row;
 }
 
 .memberContact div img { 
@@ -45,8 +51,10 @@
 }
 
 .memberContact a {
+    display: flex;
+    flex-direction: row;
     color: gray;
-    margin: 0px 0px 0px 10px;
+    gap: 10px;
     align-self: center;
     padding: 0px;
     pointer-events:all;

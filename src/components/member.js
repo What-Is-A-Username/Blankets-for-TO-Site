@@ -1,21 +1,31 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import styles from './member.module.css'
-import emailImage from './images/emailicon.png'
-import twitterImage from './images/twittericon.png'
-import facebookImage from './images/facebook.png'
+import emailImage from './images/email.svg'
+import twitterImage from './images/twitter.svg'
+import facebookImage from './images/facebook.svg'
 import instagramImage from './images/instagram.svg'
-import linkedInImage from './images/linkedInIcon.png'
-// https://www.flaticon.com/svg/static/icons/svg/124/124021.svg
+import linkedInImage from './images/linkedin.svg'
 import placeholderPortrait from './images/placeholderperson.png';
 
-export default ({ data }) => (
+export default ({ data }) => { 
+
+    const contact = [
+        { alt: "Email", platform: data.email, link: data.email, icon: emailImage },
+        { alt: "Facebook", platform: data.facebook, link: data.facebookLink, icon: facebookImage },
+        { alt: "Instagram", platform: data.insta, link: data.instagramLink, icon: instagramImage },
+        { alt: "Twitter", platform: data.twitter, link: data.twitterLink, icon: twitterImage },
+        { alt: "LinkedIn", platform: data.linkedIn, link: data.linkedInLink, icon: linkedInImage },
+    ]
+    
+    return(
     <div className={styles.memberCard}>
             <div style={{height:"100%"}}>
             {data.photo === null ? 
-            <img className={styles.memberPortrait} src={placeholderPortrait}></img> : 
-            <Img className={styles.memberPortrait} fluid={data.photo.fluid} /> }
+            <img className={styles.memberPortrait} src={placeholderPortrait} alt="Placeholder portrait."></img> : 
+            <Img className={styles.memberPortrait} fluid={data.photo.fluid} alt={`Portrait of ${data.name} (${data.title})`}/> }
             </div>
+            
             <div className={styles.memberInformation}>
                 <h3 className={styles.name}>{data.name}</h3>
                 <h4 className={styles.title}>{data.title}</h4>
@@ -26,46 +36,15 @@ export default ({ data }) => (
               />
                 <div className={styles.memberContact}>
                     {
-                        data.email != null ? 
-                        <div>
-                            <img src={emailImage} alt="Email Icon" />
-                            <p>{data.email}</p>
-                        </div> 
-                        : null
+                        contact.map(x => { return(
+                            x.platform && 
+                            <div>
+                                <a href={x.alt != "Email" ? x.link : `mailto:${x.platform}`}><img src={x.icon} alt={`${x.alt} Icon`}/>{x.platform}
+                                </a>
+                            </div> 
+                        )})
                     } 
-                    {
-                        data.facebook != null ? 
-                        <div>
-                            <img src={facebookImage} alt="Facebook Icon" />
-                            <a href={data.facebookLink}>{data.facebook}</a>
-                        </div>
-                        : null
-                    }
-                    {
-                        data.insta != null ? 
-                        <div>
-                            <img src={instagramImage} alt="Instagram Icon" />
-                            <a href={data.instagramLink}>{data.insta}</a>
-                        </div>
-                        : null
-                    } 
-                    {
-                        data.twitter != null ? 
-                        <div>
-                            <img src={twitterImage} alt="Twitter Icon" />
-                            <a href={data.twitterLink}>{data.twitter}</a>
-                        </div>
-                        : null 
-                    }
-                    {
-                        data.linkedIn != null ? 
-                        <div>
-                            <img src={linkedInImage} alt="LinkedIn Icon" />
-                            <a href={data.linkedInLink}>{data.linkedIn}</a>
-                        </div>
-                        : null 
-                    }
                 </div>
         </div>
     </div>
-)
+)}
