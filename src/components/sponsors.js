@@ -8,7 +8,6 @@ const constructSponsorRow = (sponsorList) => {
     return(
         
         <div className={styles.logoContainer}>
-            {console.log(sponsorList)}
             {sponsorList.map(x => {
                 return(
                     <a href={x.linkUrl} target="_blank" rel="noopener noreferrer">

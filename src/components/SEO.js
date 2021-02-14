@@ -7,7 +7,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import MailChimpPopup from './popup'
 
 const SEO = ({ title, description, metaImage, metaType, meta, useMailChimp }) => {
-
     const { pathname } = useLocation()
     const { site } = useStaticQuery(query)
     const {
@@ -102,11 +101,11 @@ const SEO = ({ title, description, metaImage, metaType, meta, useMailChimp }) =>
             }
         >
             <link rel="icon" href='/favicon.ico'></link>
-            <link href="cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css"/>
-            <script id="mcjs" dangerouslySetInnerHTML={{
+            {typeof window !== `undefined` && <script id="mcjs" dangerouslySetInnerHTML={{
               __html:
-              function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/abe6f10b44a3ec1a18292149f/322285f5f5098e08d69ed314a.js")}}
-            />
+              function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}
+              (document,"script","https://chimpstatic.com/mcjs-connected/js/users/abe6f10b44a3ec1a18292149f/322285f5f5098e08d69ed314a.js")}}
+            />}
         </Helmet>
     )
 }
