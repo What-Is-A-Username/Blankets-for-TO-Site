@@ -71,64 +71,7 @@
     justify-content: center;
 }
 
-.contactBox {
-    height: auto;
-    display: flex;
-    justify-content: space-evenly;
-}
 
-@media(min-width: 760px) {
-    .contactBox {
-        flex-direction: row;
-    }
-
-    .contactBoxSide {
-        width: 50%;
-        margin: 20px;
-        padding-top: 100px;
-        padding-bottom: 50px;
-    }
-}
-
-@media(max-width: 760px) {
-    .contactBox {
-        flex-direction: column;
-    }
-
-    .contactBoxSide {
-        width: 100%;
-        margin-bottom: 50px;
-    }
-}
-
-.contactBoxSide {
-    position: relative;
-    height: 300px;
-    background-size: cover;
-    display: flex;
-    
-}
-
-.contactBoxSide img {
-    border-radius: 15px;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);;
-}
-
-.contactBoxSide div {
-    text-align: center;
-    width: 100%;
-}
-
-.contactBoxSide div h2 {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.contactBoxSide div p {
-    margin: 20px;
-    text-align: center;
-}
 
 .whiteBtn {
     margin: auto;

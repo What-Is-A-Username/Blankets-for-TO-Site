@@ -4,7 +4,9 @@ import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ title, description, metaImage, metaType, meta }) => {
+import MailChimpPopup from './popup'
+
+const SEO = ({ title, description, metaImage, metaType, meta, useMailChimp }) => {
 
     const { pathname } = useLocation()
     const { site } = useStaticQuery(query)
@@ -100,6 +102,11 @@ const SEO = ({ title, description, metaImage, metaType, meta }) => {
             }
         >
             <link rel="icon" href='/favicon.ico'></link>
+            <link href="cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css"/>
+            <script id="mcjs" dangerouslySetInnerHTML={{
+              __html:
+              function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/abe6f10b44a3ec1a18292149f/322285f5f5098e08d69ed314a.js")}}
+            />
         </Helmet>
     )
 }
@@ -109,6 +116,7 @@ SEO.defaultProps = {
     description: ``,
     metaImage: null,
     metaType: `website`,
+    useMailChimp: false,
 }
 
 SEO.propTypes = {
@@ -121,6 +129,7 @@ SEO.propTypes = {
     }),
     metaType: PropTypes.string, 
     meta: PropTypes.arrayOf(PropTypes.object),
+    useMailChimp: PropTypes.bool, 
 }
 export default SEO
 

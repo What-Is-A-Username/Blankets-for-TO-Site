@@ -42,7 +42,7 @@ a {
   width: calc(100% - 10vmin);
   margin: 0 auto;
   padding-top: 2vmin; 
-  padding-bottom: 10vmin;
+  padding-bottom: 25px;
   /* padding: 5vmin 0; */
 }
 
@@ -67,6 +67,7 @@ a {
 @media(max-width: 760px) {
     .white-background {
         padding-top: 70px;
+        padding-bottom: 0px;
         width: 100vw;
     }
 }

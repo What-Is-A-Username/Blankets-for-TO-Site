@@ -1,14 +1,17 @@
 import React, { useEffect, useState, setState } from 'react'
 import styles from './slideshow.module.css'
 import { Link } from 'gatsby'
+import Img from 'gatsby-image'
+
 import btnStyles from '../page-styles/index.module.css'
+import slideStyles from './slideshow-slide.module.css'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 export default class Slideshow extends React.Component {
 
     state = { slide: 0, cycle: true, starting: false, timers: [] }
     interruptDelay = 5000
-    slideDelay = 5000
+    slideDelay = 10000;
     slideTransition = 500 
 
     interrupt = (newSlide) => {
@@ -59,23 +62,26 @@ export default class Slideshow extends React.Component {
 
     componentDidMount()
     {
-        this.cycleAround();
+        // this.cycleAround();
     }
 
     render() {
         return (
             
             <div className={styles.slideshow}>
-                {/* <img className={styles.image} src={this.menuItems[this.state.slide]}/> */}
-                <div className={this.state.starting ? styles.slideTextBoxFadeOut : styles.slideTextBox}>
-                    <h2 className={styles.slideTitle}>{this.props.menuItems[this.state.slide].node.title}</h2>
-                    <div>
+                <div className={styles.imageCover}>
+                    <Img style={{position: 'absolute'}} fluid={this.props.menuItems[this.state.slide].node.backgroundImage.fluid}/>
+                    <div className={styles.imageLayer}></div>
+                </div>
+                <div className={this.state.starting ? slideStyles.slideTextBoxFadeOut : slideStyles.slideTextBox}>
+                    <h2 className={slideStyles.slideTitle}>{this.props.menuItems[this.state.slide].node.title}</h2>
+                    <div className={slideStyles.slideDescription}>
                     {this.props.menuItems[this.state.slide].node.childContentfulHomeSlideDescriptionRichTextNode != null ? 
                         documentToReactComponents(this.props.menuItems[this.state.slide].node.childContentfulHomeSlideDescriptionRichTextNode.json) : <p>Error: Article not found.</p>}
                     </div>
                 </div>
                 { !this.state.starting && this.props.menuItems[this.state.slide].node.buttonLink != null ? 
-                    <a className={this.state.starting ? styles.aButton : styles.aButton + " " + styles.buttonFadeIn} href={this.props.menuItems[this.state.slide].node.buttonLink}>
+                    <a className={this.state.starting ? slideStyles.aButton : slideStyles.aButton + " " + slideStyles.buttonFadeIn} href={this.props.menuItems[this.state.slide].node.buttonLink}>
                         <button className={btnStyles.btn} type="submit">{this.props.menuItems[this.state.slide].node.buttonText}</button> 
                     </a> : <div/> }  
                 <div className={styles.dots}>
@@ -93,10 +99,7 @@ export default class Slideshow extends React.Component {
                                 }
                                 )
                             }
-                </div>
-                {/* <a className={styles.prev} onClick={() => this.interrupt(this.state.slide - 1)}>&#10094;</a>
-                <a className={styles.next} onClick={() => this.interrupt(this.state.slide + 1)}>&#10095;</a> */}
-                
+                </div>                
             </div>
         )
     }

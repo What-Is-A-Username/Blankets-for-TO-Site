@@ -6,106 +6,23 @@
     justify-content: center;
 }
 
-.image {
-    width: 100%;
-    height: 100%;
+.imageCover {
     position: absolute;
     top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.imageLayer {
+    background-color: rgba(24, 24, 24, 0.7);
     z-index: 0;
+    position: absolute;
 }
 
-@keyframes fadeIn {
-    0% { opacity:0; } 100% { opacity:1; } 
-}
-
-@-moz-keyframes fadeIn {
-0% { opacity:0; } 100% { opacity:1; } 
-}
-
-@-webkit-keyframes fadeIn {
-    0% { opacity:0; } 100% { opacity:1; } 
-}
-
-@-o-keyframes fadeIn {
-    0% { opacity:0; } 100% { opacity:1; } 
-}
-
-@-ms-keyframes fadeIn {
-    0% { opacity:0; } 100% { opacity:1; } 
-}
-
-@keyframes fadeOut {
-    100% { opacity:0; } 0% { opacity:1; } 
-}
-
-@-moz-keyframes fadeOut {
-100% { opacity:0; } 0% { opacity:1; } 
-}
-
-@-webkit-keyframes fadeOut {
-    100% { opacity:0; } 0% { opacity:1; } 
-}
-
-@-o-keyframes fadeOut {
-    100% { opacity:0; } 0% { opacity:1; } 
-}
-
-@-ms-keyframes fadeOut {
-    100% { opacity:0; } 0% { opacity:1; } 
-}
-
-.slideTextBoxFadeOut { 
-    justify-content: center;
-    text-align: center;
-    z-index: 1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    row-gap: 0px;
-
-    animation: fadeOut ease var(--slideshowFadeOutDuration);
-    -webkit-animation: fadeOut ease var(--slideshowFadeOutDuration);
-    -moz-animation: fadeOut ease var(--slideshowFadeOutDuration);
-    -o-animation: fadeOut ease var(--slideshowFadeOutDuration);
-    -ms-animation: fadeOut ease var(--slideshowFadeOutDuration);
-}
-
-.slideTextBoxFadeOut button { 
-    height: 20px;
-}
-
-.slideTextBox { 
-    justify-content: center;
-    text-align: center;
-    z-index: 1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    row-gap: 0px;
-
-    animation: fadeIn ease var(--slideshowFadeDuration);
-    -webkit-animation: fadeIn ease var(--slideshowFadeDuration);
-    -moz-animation: fadeIn ease var(--slideshowFadeDuration);
-    -o-animation: fadeIn ease var(--slideshowFadeDuration);
-    -ms-animation: fadeIn ease var(--slideshowFadeDuration);
-}
-
-.slideTextBox button { 
-    height: 20px;
-}
-
-.slideTitle {
-    font-weight: 300;
-    color: var(--primary);
-    font-size: 2.5em;
-    justify-content:  center;
-    display: flex;
-    margin: 0px;
-}
-
-.slideDescription {
-    z-index: 1;
-    font-size: 1.0em;
+.imageCover > div {
+    height: 100%;
+    width: 100%;
 }
 
 .dots {
@@ -118,7 +35,7 @@
 }
 
 .slideshowHighlightedDot {
-    background-color: rgb(92, 92, 92);
+    background-color: rgb(206, 112, 112);
 
 }
 
@@ -171,34 +88,7 @@
     text-justify: center;
 }
 
-.buttonFadeIn {
-    animation: fadeIn ease var(--slideshowButtonFadeDuration);
-    -webkit-animation: fadeIn ease var(--slideshowButtonFadeDuration);
-    -moz-animation: fadeIn ease var(--slideshowButtonFadeDuration);
-    -o-animation: fadeIn ease var(--slideshowButtonFadeDuration);
-    -ms-animation: fadeIn ease var(--slideshowButtonFadeDuration);
-}
-
-.aButton {
-    text-decoration: none;
-    position: absolute;
-    bottom: 100px;
-    width: 100%;
-    justify-content: center;
-
-    
-}
-
 @media(min-width: 760px) {
-    .slideTextBox {
-        height: 80%;
-        width: 50%;
-    }
-
-    .slideTextBoxFadeOut {
-        height: 80%;
-        width: 50%;
-    }
 
     .slideshow {
         height: 300px;
@@ -208,15 +98,6 @@
 }
 
 @media(max-width: 760px) {
-    .slideTextBox {
-        height: 80%;
-        width: 90%;
-    }
-
-    .slideTextBoxFadeOut {
-        height: 80%;
-        width: 90%;
-    }
 
     .slideshow { 
         height: 400px;

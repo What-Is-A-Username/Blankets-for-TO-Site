@@ -11,17 +11,20 @@ import ArticlePreview from '../components/article-preview'
 import styles from '../page-styles/index.module.css'
 import Slideshow from '../components/slideshow'
 import SEO from '../components/SEO'
+import ContactBox from '../components/contact-box'
+import Sponsors from '../components/sponsors'
+import MailChimp from '../components/popup'
+
 
 class RootIndex extends React.Component {
     render() {
-        const siteTitle = get(this, 'props.data.site.siteMetadata.title')
         const posts = get(this, 'props.data.allContentfulBlogPost.edges')
         const organizationBlurb = get(this, 'props.data.allContentfulOrganizationInformation.edges')
         const slides = get(this, 'props.data.allContentfulHomeSlide.edges')
 
         return (
             <Layout location={this.props.location}>
-                <SEO title="Home"/>
+                <SEO title="Home" useMailChimp={true}/>
                 <div className="white-background">
                     {/* Image + Organization Title in Center  */}
 
@@ -33,7 +36,6 @@ class RootIndex extends React.Component {
                     {/* Description, centered  */}
                     <div className={styles.description}>
                         <h2>Our Organization</h2>
-                        {/* {console.log(organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb)} */}
                         <p>{organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
                         <div className={styles.btnRow}>
                           <Link to="/about" className={styles.links}>
@@ -44,6 +46,7 @@ class RootIndex extends React.Component {
                           </Link>
                         </div>
                     </div>
+                      <Slideshow menuItems={slides}></Slideshow>
 
                     {/* Updates */}
                     <div className={styles.updates}>
@@ -54,37 +57,14 @@ class RootIndex extends React.Component {
                         </Link>
                     </div>
 
-                    <Slideshow menuItems={slides}></Slideshow>
-
-                    {/* Contact Us Widget  */}
-                    <div className={styles.contactBox}>
-                        {/* Volunteer */}
-                        <div className={styles.contactBoxSide}>
-                            {/* <img className={styles.backgroundImage} src={leftBackgroundImageSource} /> */}
-                            <div>
-                                <h2>Join Us</h2>
-                                <p>Become part of the Blankets For T.O. community and be part of the change! Looking to join as a member? Interested in volunteering at events? Click below.</p>
-                                <Link to="/positions" className={styles.links}>
-                                    <button className={styles.btn} type="submit">Become a Volunteer or Member</button>
-                                </Link>
-                            </div>
-                        </div>
-                        {/* Join */}
-                        <div className={styles.contactBoxSide}>
-                            {/* <img className={styles.backgroundImage} src={rightBackgroundImageSource} /> */}
-                            <div>
-                                <h2>Contact Us</h2>
-                                <p>Keep in touch with our organization to join the community and stay updated! Got an idea for an initiative? Want to collaborate with BTO? Send us a message via email or message us over social media!</p>
-                                <Link to="/contact" className={styles.links}>
-                                    <button className={styles.btn} type="submit">Contact Us</button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
+                    <ContactBox left={organizationBlurb[0].node.leftBackgroundImage.fluid} right={organizationBlurb[0].node.leftBackgroundImage.fluid}></ContactBox>
+                    
+                    <Sponsors/>
+                    
                 </div>
             </Layout>
         )
-    }
+      }
 }
 
 export default RootIndex
@@ -105,6 +85,15 @@ export const pageQuery = graphql`
           }
           buttonText
           buttonLink
+          backgroundImage {
+            fluid(
+                maxWidth: 1980
+                resizingBehavior: FILL
+                background: "rgb:000000"
+              ) {
+                ...GatsbyContentfulFluid_tracedSVG
+              }
+          }
         }
       }
     }
@@ -127,10 +116,9 @@ export const pageQuery = graphql`
           node {
             childContentfulOrganizationInformationOrganizationFrontBlurbTextNode {
               organizationFrontBlurb
-              
             }
             frontPageImage {
-                fluid(
+                fluid(maxWidth: 1900, maxHeight: 1080
                     resizingBehavior: FILL
                     background: "rgb:000000"
                   ) {
@@ -138,20 +126,13 @@ export const pageQuery = graphql`
                   }
             }
             leftBackgroundImage {
-                fluid(
-                    resizingBehavior: FILL
-                    background: "rgb:000000"
-                  ) {
-                    ...GatsbyContentfulFluid_tracedSVG
-                  }
-            }
-            rightBackgroundImage {
-                fluid(
-                    resizingBehavior: FILL
-                    background: "rgb:000000"
-                  ) {
-                    ...GatsbyContentfulFluid_tracedSVG
-                  }
+              fluid(
+                maxHeight: 500
+                resizingBehavior: FILL
+                background: "rgb:000000"
+              ) {
+                ...GatsbyContentfulFluid_tracedSVG
+              }
             }
           }
         }

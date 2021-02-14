@@ -39,7 +39,8 @@ export default ({ data }) => {
                         contact.map(x => { return(
                             x.platform && 
                             <div>
-                                <a href={x.alt != "Email" ? x.link : `mailto:${x.platform}`}><img src={x.icon} alt={`${x.alt} Icon`}/>{x.platform}
+                                <a href={x.alt != "Email" ? x.link : `mailto:${x.platform}`} target="_blank" rel="noopener noreferrer">
+                                    <img src={x.icon} alt={`${x.alt} Icon`}/>{x.platform}
                                 </a>
                             </div> 
                         )})

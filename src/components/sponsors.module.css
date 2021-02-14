@@ -1,0 +1,36 @@
+.sponsorBox {
+    padding: 50px;
+}
+
+.preferredSponsorsTitle {
+    text-align: center;
+    color: var(--primary);
+    margin: 5px;
+}
+
+.logo {
+    height: 100%; 
+}
+
+.logoContainer { 
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    width: 100%;
+}
+
+.preferredSponsorLogo {
+    max-height: 100px;
+}
+
+.secondarySponsorsTitle { 
+    margin: 5px;
+    font-size: 1.5em;
+    text-align: center;
+    color: var(--primary)
+}
+
+.secondarySponsorLogo {
+    max-height: 100px;
+}

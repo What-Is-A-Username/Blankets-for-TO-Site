@@ -1,0 +1,136 @@
+
+@media(min-width: 760px) {
+    .contactBox {
+        height: 500px;
+        flex-direction: row;
+    }
+
+    .imageCover {
+        height: 500px;
+    }
+
+    .imageCover > div {
+        height: 500px; 
+        width: 100%; 
+    }
+    
+}
+
+@media(max-width: 760px) {
+
+    .slideshow {
+        height: 750px;
+    }
+
+    .contactBox {
+        height: 700px;
+        flex-direction: column;
+    }
+    
+    .contactBoxSide {
+        width: 100%;
+    }
+
+    .imageCover {
+        height: 750px;
+    }
+
+    .imageCover > div {
+        height: 750px; 
+        width: 100%; 
+    }
+
+    .contactBoxDescription {
+        margin-bottom: 5px;
+    }
+}
+
+.contactBox {
+    top: 0px;
+    position: relative;
+    left: 0px;
+    display: flex;
+}
+
+.contactBoxSide {
+    position: relative;
+    top: 0px;
+    height: 100%;
+    background-size: cover;
+    display: flex;
+}
+
+.contactBoxSideText {
+    align-self: center;
+    height: fit-content;
+    z-index: 2;
+}
+
+.contactBoxTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: var(--primary);
+}
+
+.contactBoxDescription {
+    margin: 40px;
+    text-align: center;
+    color: white;
+}
+
+.slideshow {
+    width: 100%;
+    position: relative;
+    background-color: rgb(209, 209, 209);
+    display: flex;
+    justify-content: center;
+}
+
+.imageCover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.imageLayer {
+    background-color: rgba(24, 24, 24, 0.7);
+    z-index: 0;
+    position: absolute;
+}
+
+.imageCover > div {
+    height: 100%;
+    width: 100%;
+}
+
+
+.btn {
+    margin: auto;
+    display: block;
+    width: 300px;
+    min-height: 50px;
+    font-size: 1.2em;
+    border-width: 0;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    background-color: var(--primary);
+    color: #ecf0f1;
+    transition: background-color .2s;
+    cursor: pointer;
+}
+
+.links
+{
+    text-decoration: none;
+}
+
+.btn:hover, .btn:focus {
+    background-color: rgb(240, 0, 60);
+}
+
+.btn span {
+    display: block;
+    padding: 12px 24px;
+}
