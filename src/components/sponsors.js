@@ -46,7 +46,7 @@ const SponsorsQuery = graphql`
                     name 
                     logo {
                         resize(
-                            height: 100
+                            height: 120
                             resizingBehavior: FILL
                             background: "rgb:000000")
                         {

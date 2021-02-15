@@ -3,6 +3,9 @@
   --slideshowFadeDuration: 2.0s;
   --slideshowFadeOutDuration: 1.0s;
   --slideshowButtonFadeDuration: 3.0s;
+  
+  --popupFadeInDuration: 1.0s;
+  --popupFadeOutDuration: 2.0s;
 }
 
 @font-face {

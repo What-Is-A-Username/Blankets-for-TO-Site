@@ -99,6 +99,7 @@
     display: block;
     width: 300px;
     min-height: 50px;
+    max-height: 60px;
     font-size: 1.2em;
     border-width: 0;
     border-radius: 10px;
@@ -127,7 +128,7 @@
     .btnRow {
         display: flex;
         flex-direction: row;
-        gap: 50px;
+        gap: 60px;
         justify-content: center;
     }
 }
@@ -136,8 +137,7 @@
     .btnRow {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 50px;
         justify-content: center;
-        margin-bottom: 10px;
     }
 }

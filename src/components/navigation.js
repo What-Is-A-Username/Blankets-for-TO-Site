@@ -17,12 +17,6 @@ export default () => {
 
     const changeState = () => {
         setDrawer(!drawerActive);
-        // console.log(drawerActive);
-    }
-
-    const navigateToBlog = () => 
-    {
-        navigate("/blog");
     }
 
     return (
@@ -30,9 +24,9 @@ export default () => {
             <div className={styles.logo}>
                 <h1>Blankets For T.O.</h1>
                 <div className={styles.toggle} onClick={changeState}>
-                <div className={styles.hamburger + ' ' + (drawerActive ? styles.menuOpen : styles.menuClosed)}>
+                    <div className={styles.hamburger + ' ' + (drawerActive ? styles.menuOpen : styles.menuClosed)}>
+                    </div>
                 </div>
-            </div>
             </div>
 
             <ul className={styles.navigation}
@@ -47,15 +41,6 @@ export default () => {
                         )
                     })
                 }
-                {drawerActive ?
-                    <li className={styles.closeItem}
-                        onClick={changeState}>
-                        Close Menu
-                </li> : null}
             </ul>
-
-            {/* { drawerActive && <div className={styles.blocker}></div>} */}
-
-
         </nav>)
 }

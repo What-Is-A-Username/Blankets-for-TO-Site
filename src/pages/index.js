@@ -13,18 +13,16 @@ import Slideshow from '../components/slideshow'
 import SEO from '../components/SEO'
 import ContactBox from '../components/contact-box'
 import Sponsors from '../components/sponsors'
-import MailChimp from '../components/popup'
-
 
 class RootIndex extends React.Component {
-    render() {
+        render() {
         const posts = get(this, 'props.data.allContentfulBlogPost.edges')
         const organizationBlurb = get(this, 'props.data.allContentfulOrganizationInformation.edges')
         const slides = get(this, 'props.data.allContentfulHomeSlide.edges')
 
         return (
             <Layout location={this.props.location}>
-                <SEO title="Home" useMailChimp={true}/>
+                <SEO title="Home"/>
                 <div className="white-background">
                     {/* Image + Organization Title in Center  */}
 

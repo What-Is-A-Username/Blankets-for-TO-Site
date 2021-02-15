@@ -16,12 +16,12 @@
     justify-content: center;
     display: flex;
     flex-direction: row;
-    height: 100px;
+    height: 120px;
     width: 100%;
 }
 
 .preferredSponsorLogo {
-    max-height: 100px;
+    max-height: 120px;
 }
 
 .secondarySponsorsTitle { 
@@ -32,5 +32,5 @@
 }
 
 .secondarySponsorLogo {
-    max-height: 100px;
+    max-height: 120px;
 }
