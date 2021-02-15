@@ -11,7 +11,7 @@ export default class Slideshow extends React.Component {
 
     state = { slide: 0, cycle: true, starting: false, timers: [] }
     interruptDelay = 5000
-    slideDelay = 10000;
+    slideDelay = 8000;
     slideTransition = 500 
 
     interrupt = (newSlide) => {
@@ -69,7 +69,7 @@ export default class Slideshow extends React.Component {
         return (
             
             <div className={styles.slideshow}>
-                <div className={styles.imageCover}>
+                <div className={styles.imageCover + ' ' + (this.state.starting ? slideStyles.imageFadeOut : slideStyles.imageFadeIn)}>
                     <Img style={{position: 'absolute'}} fluid={this.props.menuItems[this.state.slide].node.backgroundImage.fluid}/>
                     <div className={styles.imageLayer}></div>
                 </div>
