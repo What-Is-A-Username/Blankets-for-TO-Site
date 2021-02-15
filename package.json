@@ -49,7 +49,7 @@
     "url": "git+https://github.com/What-Is-A-Username/website-gatsby-starter.git"
   },
   "scripts": {
-    "predeploy": "npm run build && cp CNAME build/CNAME",
+    "predeploy": "npm run build",
     "dev": "npm run develop",
     "develop": "gatsby develop",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
