@@ -9,10 +9,7 @@ import styles from '../page-styles/about.module.css'
 
 class About extends React.Component {
     render() {
-        const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-        const posts = get(this, 'props.data.allContentfulBlogPost.edges')
         const aboutPage = get(this, 'props.data.allContentfulOrganizationInformationAboutPageRichTextNode.edges')
-
         const node = aboutPage[0].node;
 
         return (
@@ -40,20 +37,6 @@ export const aboutPageQuery = graphql`
     site {
       siteMetadata {
         title
-      }
-    }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
-      edges {
-        node {
-          title
-          slug
-          publishDate(formatString: "MMMM Do, YYYY")
-          description {
-            childMarkdownRemark {
-              html
-            }
-          }
-        }
       }
     }
     allContentfulOrganizationInformationAboutPageRichTextNode {

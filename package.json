@@ -1,5 +1,5 @@
 {
-  "homepage": "https://blanketsforto.ca",
+  "homepage": "blanketsforto.ca",
   "name": "blankets-for-t.o",
   "description": "Blankets for T.O Site",
   "version": "1.0.0",
@@ -17,6 +17,7 @@
     "gatsby-source-contentful": "^2.2.9",
     "gatsby-transformer-remark": "^2.7.3",
     "gatsby-transformer-sharp": "^2.4.6",
+    "jquery": "^3.5.1",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -40,9 +41,7 @@
   "engines": {
     "node": ">=10.13.0"
   },
-  "keywords": [
-
-  ],
+  "keywords": [],
   "license": "MIT",
   "main": "n/a",
   "repository": {
@@ -50,7 +49,7 @@
     "url": "git+https://github.com/What-Is-A-Username/website-gatsby-starter.git"
   },
   "scripts": {
-    "predeploy": "npm run build", 
+    "predeploy": "npm run build && cp CNAME build/CNAME",
     "dev": "npm run develop",
     "develop": "gatsby develop",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",

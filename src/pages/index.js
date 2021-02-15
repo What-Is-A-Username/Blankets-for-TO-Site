@@ -22,7 +22,7 @@ class RootIndex extends React.Component {
 
         return (
             <Layout location={this.props.location}>
-                <SEO title="Home"/>
+                <SEO title="Home" useMailChimp={true}/>
                 <div className="white-background">
                     {/* Image + Organization Title in Center  */}
 
@@ -95,7 +95,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 3) {
+    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 3, filter: {articleType: {ne: "Page"}}) {
       edges {
         node {
           title

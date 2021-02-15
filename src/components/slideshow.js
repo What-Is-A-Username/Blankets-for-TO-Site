@@ -62,7 +62,7 @@ export default class Slideshow extends React.Component {
 
     componentDidMount()
     {
-        // this.cycleAround();
+        this.cycleAround();
     }
 
     render() {

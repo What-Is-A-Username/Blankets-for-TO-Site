@@ -46,7 +46,7 @@ export const blogPageQuery = graphql`
         title
       }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 20) {
+    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 20, filter: {articleType: {ne: "Page"}}) {
       edges {
         node {
           title

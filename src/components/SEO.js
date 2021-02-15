@@ -5,6 +5,7 @@ import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 
 const SEO = ({ title, description, metaImage, metaType, meta, useMailChimp }) => {
+ 
     const { pathname } = useLocation()
     const { site } = useStaticQuery(query)
     const {
@@ -97,8 +98,18 @@ const SEO = ({ title, description, metaImage, metaType, meta, useMailChimp }) =>
                   ]
             ).concat(meta)
             }
-        >
-          <link rel="icon" href='/favicon.ico'></link>
+
+            script={[useMailChimp && { 
+              id: 'mcjs',
+              type: 'text/javascript', 
+              innerHTML: '!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/c190e10f2b62c767274e1197b/52a4a6cc65ff988eefff98c51.js");' 
+            }]} 
+
+            link={[{
+              rel: 'icon',
+              href: '/favicon.ico'
+            }]}
+        >          
         </Helmet>
     )
 }

@@ -15,7 +15,6 @@ class BlogPostTemplate extends React.Component {
 
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
 
     const options = {
@@ -80,7 +79,7 @@ export const pageQuery = graphql`
           }
         }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 3) {
+    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 3, filter: {articleType: {ne: "Page"}}) {
         edges {
           node {
             title

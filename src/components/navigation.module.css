@@ -20,7 +20,6 @@
   display: flex;
   justify-content: center;
   list-style: none;
-  padding: 0px 0px 10px 0px; 
   margin: 0px;
   height: 50px;
   font-size: 1.25em;
@@ -92,7 +91,6 @@ color: var(--primary);
       top: 0px;
       margin-left: 15px;
       margin-right: 0px;
-      /* padding-left: 15px; */
       left: 0px;
       background-color: transparent;
   }
@@ -103,8 +101,8 @@ color: var(--primary);
       position: fixed;
       width: 100%;
       background-color: black;
-      /* visibility: hidden; */
-  } 
+      padding: 0px 0px 10px 0px; 
+    } 
 
   .navigationItem {
       justify-content: center;
@@ -162,5 +160,6 @@ color: var(--primary);
     background-color: black;
     max-height: 100px;
     width: 100%;
+    padding: 0px 0px 0px 0px; 
   }
 }
