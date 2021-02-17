@@ -19,8 +19,8 @@ class About extends React.Component {
                 <div className="white-background">
                     <div className="wrapper">
                     {/* Description, centered  */}
+                    <h2>Our Organization</h2>
                     <div className={styles.description}>
-                        <h2>Our Organization</h2>
                         {node.json !== undefined ? documentToReactComponents(node.json) : <p>Error: Articles not found.</p>}
                     </div>
                     </div>

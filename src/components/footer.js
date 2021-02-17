@@ -29,7 +29,7 @@ const stuff = (props) => {
   return (
     <footer role="contentinfo" className={styles.footer}>
       <h1 className={styles.footerTitle}>
-        Blankets for T.O.
+        Blankets For T.O.
       </h1>
       <div className={styles.socialMedia}>
         {

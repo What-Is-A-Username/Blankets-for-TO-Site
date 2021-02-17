@@ -13,6 +13,11 @@
         height: 500px; 
         width: 100%; 
     }
+
+    .contactBoxSide
+    {
+        width: 50%;
+    }
     
 }
 
@@ -71,10 +76,11 @@
     display: flex;
     justify-content: center;
     color: var(--primary);
+    margin-bottom: 0px;
 }
 
 .contactBoxDescription {
-    margin: 40px;
+    margin: 20px 5vw 30px 5vw;
     text-align: center;
     color: white;
 }
@@ -103,34 +109,4 @@
 .imageCover > div {
     height: 100%;
     width: 100%;
-}
-
-
-.btn {
-    margin: auto;
-    display: block;
-    width: 300px;
-    min-height: 50px;
-    font-size: 1.2em;
-    border-width: 0;
-    border-radius: 10px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-    background-color: var(--primary);
-    color: #ecf0f1;
-    transition: background-color .2s;
-    cursor: pointer;
-}
-
-.links
-{
-    text-decoration: none;
-}
-
-.btn:hover, .btn:focus {
-    background-color: rgb(240, 0, 60);
-}
-
-.btn span {
-    display: block;
-    padding: 12px 24px;
 }

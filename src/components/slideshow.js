@@ -81,8 +81,9 @@ export default class Slideshow extends React.Component {
                     </div>
                 </div>
                 { !this.state.starting && this.props.menuItems[this.state.slide].node.buttonLink != null ? 
-                    <a className={this.state.starting ? slideStyles.aButton : slideStyles.aButton + " " + slideStyles.buttonFadeIn} href={this.props.menuItems[this.state.slide].node.buttonLink}>
-                        <button className={btnStyles.btn} type="submit">{this.props.menuItems[this.state.slide].node.buttonText}</button> 
+                    <a className={this.state.starting ? slideStyles.aButton : (slideStyles.aButton + " " + slideStyles.buttonFadeIn)} 
+                        href={this.props.menuItems[this.state.slide].node.buttonLink} target="_blank" rel="noopener noreferrer">
+                        <button className='btn' type="submit">{this.props.menuItems[this.state.slide].node.buttonText}</button> 
                     </a> : <div/> }  
                 <div className={styles.dots}>
                     {

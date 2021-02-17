@@ -3,7 +3,6 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 import styles from './contact-box.module.css'
-import slides from './slideshow.module.css'
 
 export default (props) => {
 
@@ -36,8 +35,8 @@ export default (props) => {
                     <div className={styles.contactBoxSideText}>
                         <h2 className={styles.contactBoxTitle}>{x.title}</h2>
                         <p  className={styles.contactBoxDescription}>{x.description}</p>
-                        <Link to={x.link} className={styles.links}>
-                            <button className={styles.btn} type="submit">{x.buttonText}</button>
+                        <Link to={x.link} className='links'>
+                            <button className='btn' type="submit">{x.buttonText}</button>
                         </Link>
                     </div>
                 </div>
@@ -47,35 +46,3 @@ export default (props) => {
         </div> 
     )
 }
-
-/*
-
-<div className={styles.contactBox}>
-            {console.log(props)}
-            <div className={styles.imageCover}>
-                <Img style={{ height: "100%", width: "100%" }}
-                     fluid={props.left}> 
-                     </Img>
-            <div className={styles.imageLayer}></div>
-                
-            </div>
-            {/* { contactInfo.map(x => {
-                return(
-                <div className={styles.contactBoxSide}>
-                    { <div className={styles.imageCover}>
-                        <Img style={{position: 'absolute'}} fluid={organizationBlurb[0].node.leftBackgroundImage.fluid} />
-                        <div className={styles.imageLayer}/>
-                    </div> }
-                    <div className={styles.contactBoxSideText}>
-                        <h2 className={styles.contactBoxTitle}>{x.title}</h2>
-                        <p  className={styles.contactBoxDescription}>{x.description}</p>
-                        <Link to={x.link} className={styles.links}>
-                            <button className={styles.btn} type="submit">{x.buttonText}</button>
-                        </Link>
-                    </div>
-                </div>
-                )
-            }) 
-            </div>
-
-*/

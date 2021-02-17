@@ -81,16 +81,16 @@
   gap: 10px;
   justify-content: center;
   flex-direction: row;
-  height: 50px;
+  height: 40px;
   align-items: center;
 }
 
 .socialMediaEntry img {
-  width: 50px;
+  width: 40px;
   opacity: 0.9;
 }
 
 .socialMediaEntry img:hover {
-  width: 60px;
+  width: 50px;
   opacity: 1.0;
 }

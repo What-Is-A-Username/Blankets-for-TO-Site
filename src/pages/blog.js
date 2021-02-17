@@ -20,7 +20,7 @@ class BlogIndex extends React.Component {
             <div style={{padding: "20px"}}></div>
           {/* <div className={styles.hero}>Blog</div> */}
           <div className="wrapper">
-            <h2 className="section-headline">All Updates and Articles</h2>
+            <h2 className={styles.sectionHeadline}>All Updates and Articles</h2>
             <div className={styles.blog_list}>
               {posts.map(({ node }) => {
                 return (

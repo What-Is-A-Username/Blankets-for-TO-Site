@@ -36,11 +36,11 @@ class RootIndex extends React.Component {
                         <h2>Our Organization</h2>
                         <p>{organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
                         <div className={styles.btnRow}>
-                          <Link to="/about" className={styles.links}>
-                            <button className={styles.whiteBtn} type="submit">Read Our Mission</button>
+                          <Link to="/about" className='links'>
+                            <button className='whiteBtn' type="submit">Read Our Mission</button>
                           </Link>
-                          <Link to="/team" className={styles.links}>
-                            <button className={styles.whiteBtn} type="submit">Meet The Team</button>
+                          <Link to="/team" className='links'>
+                            <button className='whiteBtn' type="submit">Meet The Team</button>
                           </Link>
                         </div>
                     </div>
@@ -50,8 +50,8 @@ class RootIndex extends React.Component {
                     <div className={styles.updates}>
                         <h2>News and Updates</h2>
                         <ArticlePreview articles={posts}/>
-                        <Link to="/blog" className={styles.links}>
-                          <button className={styles.btn} type="submit">Browse all updates</button>
+                        <Link to="/blog" className='links'>
+                          <button className='btn' type="submit">Browse all updates</button>
                         </Link>
                     </div>
 
@@ -85,7 +85,7 @@ export const pageQuery = graphql`
           buttonLink
           backgroundImage {
             fluid(
-                maxWidth: 1980
+                maxWidth: 1000
                 resizingBehavior: FILL
                 background: "rgb:000000"
               ) {
@@ -125,8 +125,8 @@ export const pageQuery = graphql`
             }
             leftBackgroundImage {
               fluid(
-                maxHeight: 500
-                resizingBehavior: FILL
+                maxHeight: 1000
+                resizingBehavior: PAD
                 background: "rgb:000000"
               ) {
                 ...GatsbyContentfulFluid_tracedSVG

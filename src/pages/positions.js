@@ -2,11 +2,8 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import get from 'lodash/get'
 import Layout from '../components/layout'
-// import Position from '../components/position'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import SEO from '../components/SEO'
-
-import btnStyles from '../page-styles/index.module.css'
 import styles from '../page-styles/positions.module.css'
 
 class Positions extends React.Component {
@@ -26,8 +23,8 @@ class Positions extends React.Component {
             <div className={styles.membershipInfo}>
               <h2>Membership and Volunteering</h2>
               {membershipInfo.json !== undefined ? documentToReactComponents(membershipInfo.json) : <p>Error: Articles not found.</p>}
-              <Link to={formLink} className={btnStyles.links} target="_blank" rel="noopener noreferrer">
-                <button className={btnStyles.btn} type="submit">Sign Up Now</button>
+              <Link to={formLink} className='links' target="_blank" rel="noopener noreferrer">
+                <button className='btn' type="submit">Sign Up Now</button>
               </Link>
             </div>
             {/* {positions.length == 0 ? 

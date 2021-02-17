@@ -49,17 +49,51 @@
     text-decoration-color: var(--primary)
 }
 
-/* @media(max-width: 760px)
-{
-    .socialMedia { 
-        padding-left: 0px;
-    }
-} */
-
 @media(min-width: 760px)
 {
     .socialMedia { 
         padding-left: 50px;
+    }
+}
+
+.contactDirectly {
+    margin: 15px 0px 5px 0px;
+
+}
+
+.contactDirectly h3
+{
+    font-size: 1.5em;
+}
+
+
+@media (min-width: 760px)
+{
+    .contactDirectly a {
+        display: inline-flex;
+        justify-content: left;
+        padding-left: 50px;
+    }
+
+    .contactDirectly {
+        display: inline-flex;
+        align-content: center;
+    }
+
+    .contactDirectly h3 {
+        text-justify: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 760px)
+{
+    .contactDirectly h3 {
+        text-align: center;
+    }
+
+    .contactDirectly a {
+        justify-content: center;
     }
 }
 

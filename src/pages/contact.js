@@ -11,7 +11,6 @@ import facebookImage from '../components/images/contact/facebookTransparent.svg'
 import instagramImage from '../components/images/contact/instagramTransparent.svg'
 import tikTokImage from '../components/images/contact/tiktokTransparent.svg'
 
-
 import styles from '../page-styles/contact.module.css'
 
 class Contact extends React.Component {
@@ -61,6 +60,13 @@ class Contact extends React.Component {
                     </div>
                   </div> : null
                 }
+              </div>
+
+              <div className={styles.contactDirectly}> 
+                <h3>Send Us a Direct Message</h3>
+                  <Link to='https://us7.list-manage.com/contact-form?u=c190e10f2b62c767274e1197b&form_id=ff96bfbc82a7a31d98bb442faba2bbca' className='links' target="_blank" rel="noopener noreferrer">
+                <button className='btn' type="submit">Fill out our contact form</button>
+              </Link>
               </div>
             </div>
           </div>

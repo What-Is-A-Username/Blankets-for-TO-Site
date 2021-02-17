@@ -46,8 +46,8 @@ class BlogPostTemplate extends React.Component {
             <div className={updateListStyles.updates}>
               <h2>Most Recent Updates and Articles</h2>
               <ArticlePreview articles={posts}></ArticlePreview>
-              <Link to="/blog" className={styles.links}>
-                <button className={updateListStyles.btn} type="submit">Browse all updates</button>
+              <Link to="/blog" className='links'>
+                <button className='btn' type="submit">Browse all updates</button>
               </Link>
             </div>
           </div>
