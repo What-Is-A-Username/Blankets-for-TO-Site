@@ -1,0 +1,37 @@
+.linkContainer {
+    padding: 10px;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    gap: 1px;
+    height: 20px
+}
+
+.linkField {
+    margin-left: 2px;
+    display: inline-flex;
+    height: 24px;
+    border-radius: 4px;
+    border: 2px solid gray;
+    background-color: gray;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.linkField button {
+    height: 100%;
+    background-color: darkgray;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.linkField input {
+    display: flex;
+    align-content: center;
+    border: none;
+    max-width: 200px;
+    background-color: transparent;
+    color: rgb(253, 253, 253);
+}

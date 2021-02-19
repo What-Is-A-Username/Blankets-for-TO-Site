@@ -21,7 +21,7 @@ class Contact extends React.Component {
 
     const platform = ["Email", "Facebook", "Instagram", "Twitter", "TikTok"] 
     const nameEntry = [ node.emailAddress, node.facebook, node.instagram, node.twitter, node.tikTok]
-    const link = [ 'mailto:' + node.emailAddress, node.facebookLink, node.instagramLink, node.twitterLink, ""] 
+    const link = [ 'mailto:' + node.emailAddress, node.facebookLink, node.instagramLink, node.twitterLink, node.tiktokLink] 
     const icon = [ emailImage, facebookImage, instagramImage, twitterImage, tikTokImage ]
 
     return (

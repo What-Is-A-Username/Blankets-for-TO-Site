@@ -15,125 +15,140 @@ import ContactBox from '../components/contact-box'
 import Sponsors from '../components/sponsors'
 
 class RootIndex extends React.Component {
-        render() {
-        const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-        const organizationBlurb = get(this, 'props.data.allContentfulOrganizationInformation.edges')
-        const slides = get(this, 'props.data.allContentfulHomeSlide.edges')
-
-        return (
-            <Layout location={this.props.location}>
-                <SEO title="Home" useMailChimp={true}/>
-                <div className="white-background">
-                    {/* Image + Organization Title in Center  */}
-
-                    <div className={styles.title}>
-                        <Img className={styles.backgroundImage} fluid={organizationBlurb[0].node.frontPageImage.fluid} alt='Background image behind Blankets for T.O. organization logo.'></Img>
-                        <img className={styles.logoImage} src={transparentLogo} alt="Blankets for T.O. organization logo image."/>
-                    </div>
-
-                    {/* Description, centered  */}
-                    <div className={styles.description}>
-                        <h2>Our Organization</h2>
-                        <p>{organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
-                        <div className={styles.btnRow}>
-                          <Link to="/about" className='links'>
-                            <button className='whiteBtn' type="submit">Read Our Mission</button>
-                          </Link>
-                          <Link to="/team" className='links'>
-                            <button className='whiteBtn' type="submit">Meet The Team</button>
-                          </Link>
-                        </div>
-                    </div>
-                      <Slideshow menuItems={slides}></Slideshow>
-
-                    {/* Updates */}
-                    <div className={styles.updates}>
-                        <h2>News and Updates</h2>
-                        <ArticlePreview articles={posts}/>
-                        <Link to="/blog" className='links'>
-                          <button className='btn' type="submit">Browse all updates</button>
-                        </Link>
-                    </div>
-
-                    <ContactBox left={organizationBlurb[0].node.leftBackgroundImage.fluid} right={organizationBlurb[0].node.leftBackgroundImage.fluid}></ContactBox>
-                    
-                    <Sponsors/>
-                    
-                </div>
-            </Layout>
-        )
-      }
-}
-
-export default RootIndex
-
-export const pageQuery = graphql`
-  query HomeQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allContentfulHomeSlide { 
-      edges {
-        node {
-          title
-          childContentfulHomeSlideDescriptionRichTextNode {
-            json
-          }
-          buttonText
-          buttonLink
-          backgroundImage {
-            fluid(
-                maxWidth: 1000
-                resizingBehavior: FILL
-                background: "rgb:000000"
-              ) {
-                ...GatsbyContentfulFluid_tracedSVG
-              }
-          }
-        }
-      }
-    }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 3, filter: {articleType: {ne: "Page"}}) {
-      edges {
-        node {
-          title
-          slug
-          publishDate(formatString: "MMMM Do, YYYY")
-          description {
-            childMarkdownRemark {
-              html
-            }
-          }
-        }
-      }
-    }
-    allContentfulOrganizationInformation {
-        edges {
-          node {
-            childContentfulOrganizationInformationOrganizationFrontBlurbTextNode {
-              organizationFrontBlurb
-            }
-            frontPageImage {
-                fluid(maxWidth: 1900, maxHeight: 1080
-                    resizingBehavior: FILL
-                    background: "rgb:000000"
-                  ) {
-                    ...GatsbyContentfulFluid_tracedSVG
-                  }
-            }
-            leftBackgroundImage {
-              fluid(
-                maxHeight: 1000
-                resizingBehavior: PAD
-                background: "rgb:000000"
-              ) {
-                ...GatsbyContentfulFluid_tracedSVG
-              }
-            }
-          }
-        }
-      }
-  }
+	render() {
+		const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+		const organizationBlurb = get(this, 'props.data.allContentfulOrganizationInformation.edges')
+		const slides = get(this, 'props.data.allContentfulHomeSlide.edges')
+		
+		
+		const setVidSpeed = () => { 
+			var vid = document.getElementById("titleVideo");
+			vid.playbackRate = 2.0;
+		} 
+		
+		
+		return (
+			<Layout location={this.props.location}>
+				<SEO title="Home" useMailChimp={true}>
+					<meta name="google-site-verification" content="H85FiZN3YyU6tHavccegyjHzxSSC6kc_7d22i6IDx2Y" />
+				</SEO>
+				<div className="white-background">
+					{/* Image + Organization Title in Center  */}
+					<div className={styles.title}>
+						<video onPlay={setVidSpeed} muted autoPlay src={organizationBlurb[0].node.homePageVideo.file.url} className={styles.backgroundVideo} id='titleVideo'></video>
+					</div>
+					{/* Description, centered  */}
+					<div className={styles.description}>
+						<h2>Our Organization</h2>
+						<p>{organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
+						<div className={styles.btnRow}>
+							<Link to="/about" className='links'>
+								<button className='whiteBtn' type="submit">Read Our Mission</button>
+							</Link>
+							<Link to="/team" className='links'>
+								<button className='whiteBtn' type="submit">Meet The Team</button>
+							</Link>
+						</div>
+					</div>
+					{/* Slideshow */}
+					<Slideshow menuItems={slides}></Slideshow>
+					{/* Updates */}
+					<div className={styles.updates}>
+						<h2>News and Updates</h2>
+						<ArticlePreview articles={posts}/>
+						<Link to="/blog" className='links'>
+							<button className='btn' type="submit">Browse all updates</button>
+						</Link>
+					</div>
+					{/* Join Us and Contact Us Box */}
+					<ContactBox left={organizationBlurb[0].node.leftBackgroundImage.fluid} right={organizationBlurb[0].node.leftBackgroundImage.fluid}></ContactBox>
+					
+					{/* Sponsor and Partner Logos */}
+					<Sponsors/>
+				
+				</div>
+			</Layout>
+			)
+		}
+	}
+	
+	export default RootIndex
+	
+	export const pageQuery = graphql`
+	query HomeQuery {
+		site {
+			siteMetadata {
+				title
+			}
+		}
+		allContentfulHomeSlide { 
+			edges {
+				node {
+					title
+					childContentfulHomeSlideDescriptionRichTextNode {
+						json
+					}
+					buttonText
+					buttonLink
+					backgroundImage {
+						fluid(
+							maxWidth: 1000
+							resizingBehavior: FILL
+							background: "rgb:000000"
+							) {
+								...GatsbyContentfulFluid_tracedSVG
+							}
+						}
+					}
+				}
+			}
+			allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 3, filter: {articleType: {ne: "Page"}}) {
+				edges {
+					node {
+						title
+						slug
+						publishDate(formatString: "MMMM Do, YYYY")
+						description {
+							childMarkdownRemark {
+								html
+							}
+						}
+					}
+				}
+			}
+			allContentfulOrganizationInformation {
+				edges {
+					node {
+						childContentfulOrganizationInformationOrganizationFrontBlurbTextNode {
+							organizationFrontBlurb
+						}
+						homePageVideo {
+							file {
+								url
+							}
+						}
+						leftBackgroundImage {
+							fluid(
+								maxHeight: 1000
+								resizingBehavior: PAD
+								background: "rgb:000000"
+								) {
+									...GatsbyContentfulFluid_tracedSVG
+								}
+							}
+						}
+					}
+				}
+			}
 `
+
+const unused = 
+`
+frontPageImage {
+	fluid(maxWidth: 1900, maxHeight: 1080
+		resizingBehavior: FILL
+		background: "rgb:000000"
+		) {
+			...GatsbyContentfulFluid_tracedSVG
+		}
+	}`
