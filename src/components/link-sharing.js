@@ -17,7 +17,7 @@ const LinkSharing = ({location}) => {
     return(
         <div className={styles.linkContainer}>
             
-
+            <div className={styles.socials}>
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-related="blanketsforto" data-show-count="false">
                 Tweet
             </a>
@@ -28,10 +28,13 @@ const LinkSharing = ({location}) => {
             <div class="fb-share-button" data-href={location} data-layout="button" data-size="large">
                 <a href={facebookShareLink} target="_blank" alt="Share on Facebook" class="fb-xfbml-parse-ignore">Share</a>
             </div>
-            
-            <div className={styles.linkField}>
-                <input style={{width: location.length + 'ch'}} type="text" value={location} id="linkAddress" readonly/>
-                <button onClick={copyLink}>Copy URL</button>
+            </div>
+            <div className={styles.link}>
+
+                <div className={styles.linkField}>
+                    <input style={{width: location.length + 'ch'}} type="text" value={location} id="linkAddress" readonly/>
+                    <button onClick={copyLink}>Copy URL</button>
+                </div>
             </div>
 
         </div>
@@ -39,6 +42,8 @@ const LinkSharing = ({location}) => {
 }
 
 export default LinkSharing;
+
+LinkSharing.defaultProps = 
 
 LinkSharing.propTypes = {
     location: PropTypes.string.isRequired, 

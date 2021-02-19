@@ -52,17 +52,17 @@ class BlogPostTemplate extends React.Component {
 						<div className={styles.richText} >
 							{post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
 						</div>
-						<LinkSharing location={this.props.location.href} />
-					</div>
+						<LinkSharing location={'https://blanketsforto.ca/blog/' + post.slug} />
 
-					<hr className={styles.horizontalLine}></hr>
-					{/* Updates */}
-					<div className={updateListStyles.updates}>
-						<h2>Keep updated with our latest posts</h2>
-						<ArticlePreview articles={posts}></ArticlePreview>
-						<Link to="/blog" className='links'>
-							<button className='btn' type="submit">Browse all updates</button>
-						</Link>
+						<hr className={styles.horizontalLine}></hr>
+						{/* Updates */}
+						<div className={updateListStyles.updates}>
+							<h2>Keep updated with our latest posts</h2>
+							<ArticlePreview articles={posts}></ArticlePreview>
+							<Link to="/blog" className='links'>
+								<button className='btn' type="submit">Browse all updates</button>
+							</Link>
+						</div>
 					</div>
 				</div>
 			</Layout>

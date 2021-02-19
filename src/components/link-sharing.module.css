@@ -1,16 +1,18 @@
-.linkContainer {
+.linkContainer, .socials {
     padding: 10px;
     justify-content: center;
     align-content: center;
     display: flex;
     gap: 1px;
-    height: 20px
+    height: 20px;
 }
 
 .linkField {
+    max-width: 200px;
+    height: 24px;
+    padding: 0px;
     margin-left: 2px;
     display: inline-flex;
-    height: 24px;
     border-radius: 4px;
     border: 2px solid gray;
     background-color: gray;
@@ -21,17 +23,40 @@
     height: 100%;
     background-color: darkgray;
     border-radius: 4px;
+    width: 70px;
     border: none;
     color: white;
     font-weight: 500;
     font-size: 13px;
 }
 
+.link {
+    display: flex;
+    justify-content: center;
+}
+
 .linkField input {
     display: flex;
     align-content: center;
     border: none;
-    max-width: 200px;
+    max-width: 130px;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
     background-color: transparent;
     color: rgb(253, 253, 253);
+}
+
+@media (max-width: 760px)
+{
+    .linkContainer {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 760px)
+{
+    .linkContainer {
+        flex-direction: column;
+    }
 }
