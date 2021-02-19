@@ -26,11 +26,11 @@ class RootIndex extends React.Component {
 			vid.playbackRate = 2.0;
 		} 
 		
+		const googleSearchConsoleID = [<meta name="google-site-verification" content="H85FiZN3YyU6tHavccegyjHzxSSC6kc_7d22i6IDx2Y" />] 
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="Home" useMailChimp={true}>
-					<meta name="google-site-verification" content="H85FiZN3YyU6tHavccegyjHzxSSC6kc_7d22i6IDx2Y" />
+				<SEO title="Home" useMailChimp={true} childElements={googleSearchConsoleID}>
 				</SEO>
 				<div className="white-background">
 					{/* Image + Organization Title in Center  */}
