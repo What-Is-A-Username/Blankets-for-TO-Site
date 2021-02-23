@@ -30,8 +30,9 @@ export default () => {
 
     return(
     <div className={styles.sponsorBox}>
-        {preferredSponsors.length > 0 && <h2 className={styles.preferredSponsorsTitle}>Preferred Sponsors</h2> }
+        {preferredSponsors.length > 0 && <h2 className={styles.preferredSponsorsTitle}>Preferred Sponsor</h2> }
         {preferredSponsors.length > 0 && constructSponsorRow(preferredSponsors)}
+        {defaultSponsors.length > 0 && <div className={styles.divider}></div>}
         {defaultSponsors.length > 0 && <h2 className={styles.secondarySponsorsTitle}>Sponsors</h2>}
         {defaultSponsors.length > 0 && constructSponsorRow(defaultSponsors)}
     </div>
@@ -46,7 +47,7 @@ const SponsorsQuery = graphql`
                     name 
                     logo {
                         resize(
-                            height: 120
+                            height: 80
                             resizingBehavior: FILL
                             background: "rgb:000000")
                         {

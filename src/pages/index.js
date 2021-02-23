@@ -30,12 +30,12 @@ class RootIndex extends React.Component {
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="Home" useMailChimp={true} childElements={googleSearchConsoleID}>
+				<SEO title="Home" useMailChimp={true} childElements={googleSearchConsoleID} useCurator={true}>
 				</SEO>
 				<div className="white-background">
-					{/* Image + Organization Title in Center  */}
 					<div className={styles.title}>
-						<video onPlay={setVidSpeed} muted autoPlay src={organizationBlurb[0].node.homePageVideo.file.url} className={styles.backgroundVideo} id='titleVideo'></video>
+                        <Img className={styles.backgroundImage} fluid={organizationBlurb[0].node.frontPageImage.fluid} alt='Background image behind Blankets for T.O. organization logo.'>			
+						</Img>
 					</div>
 					{/* Description, centered  */}
 					<div className={styles.description}>
@@ -65,6 +65,12 @@ class RootIndex extends React.Component {
 					
 					{/* Sponsor and Partner Logos */}
 					<Sponsors/>
+
+					{/* <div id="curator-feed-default-feed-layout">
+						<a href="https://curator.io" target="_blank" class="crt-logo crt-tag">
+							Powered by Curator.io
+						</a>
+					</div> */}
 				
 				</div>
 			</Layout>
@@ -92,7 +98,7 @@ class RootIndex extends React.Component {
 					buttonLink
 					backgroundImage {
 						fluid(
-							maxWidth: 1000
+							maxWidth: 100
 							resizingBehavior: FILL
 							background: "rgb:000000"
 							) {
@@ -122,11 +128,18 @@ class RootIndex extends React.Component {
 						childContentfulOrganizationInformationOrganizationFrontBlurbTextNode {
 							organizationFrontBlurb
 						}
-						homePageVideo {
-							file {
-								url
-							}
+						
+						frontPageImage {
+							fluid(
+								maxHeight: 1920
+								resizingBehavior: PAD
+								background: "rgb:000000"
+								) {
+									...GatsbyContentfulFluid_tracedSVG
+								}
+							
 						}
+
 						leftBackgroundImage {
 							fluid(
 								maxHeight: 1000
@@ -144,6 +157,12 @@ class RootIndex extends React.Component {
 
 const unused = 
 `
+// homePageVideo {
+						// 	file {
+						// 		url
+						// 	}
+						// }
+
 frontPageImage {
 	fluid(maxWidth: 1900, maxHeight: 1080
 		resizingBehavior: FILL

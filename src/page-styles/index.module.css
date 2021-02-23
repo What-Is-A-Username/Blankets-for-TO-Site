@@ -2,8 +2,7 @@
     position: relative;
     display: flex;
     justify-content: center;
-    height: 100vh;    
-    max-height: 900px;
+    height: 500px;
     width: 100%;
 }
 

@@ -5,23 +5,46 @@
 .preferredSponsorsTitle {
     text-align: center;
     color: var(--primary);
-    margin: 5px;
+    margin: 0px;
 }
 
-.logo {
-    height: 100%; 
+.divider {
+    height: 20px;
+}
+
+@media (max-width: 760px)
+{
+    .logoContainer {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+    }
+    .logo {
+        height: 80px;
+        max-height: 80px;
+        display: flex;
+        justify-content: center;
+    }
+    .logo img {
+        width: auto;
+    }
+}
+
+@media (min-width: 760px)
+{
+    .logo{
+        height: 100%; 
+    }
+    .logoContainer {
+        display: flex;
+        flex-direction: row;
+        height: 100px;
+    }
 }
 
 .logoContainer { 
     justify-content: center;
-    display: flex;
-    flex-direction: row;
-    height: 120px;
     width: 100%;
-}
-
-.preferredSponsorLogo {
-    max-height: 120px;
 }
 
 .secondarySponsorsTitle { 
@@ -29,8 +52,4 @@
     font-size: 1.5em;
     text-align: center;
     color: var(--primary)
-}
-
-.secondarySponsorLogo {
-    max-height: 120px;
 }
