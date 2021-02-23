@@ -98,7 +98,7 @@ class RootIndex extends React.Component {
 					buttonLink
 					backgroundImage {
 						fluid(
-							maxWidth: 100
+							maxWidth: 1000
 							resizingBehavior: FILL
 							background: "rgb:000000"
 							) {
