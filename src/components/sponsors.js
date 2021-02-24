@@ -30,10 +30,18 @@ export default () => {
 
     return(
     <div className={styles.sponsorBox}>
-        {preferredSponsors.length > 0 && <h2 className={styles.preferredSponsorsTitle}>Preferred Sponsor</h2> }
+        {preferredSponsors.length > 0 && 
+            <h2 className={styles.preferredSponsorsTitle}>
+                {"Preferred Sponsor" + (preferredSponsors.length > 1 ? "s" : "")}
+            </h2> 
+        }
         {preferredSponsors.length > 0 && constructSponsorRow(preferredSponsors)}
         {defaultSponsors.length > 0 && <div className={styles.divider}></div>}
-        {defaultSponsors.length > 0 && <h2 className={styles.secondarySponsorsTitle}>Sponsors</h2>}
+        {defaultSponsors.length > 0 && 
+            <h2 className={styles.secondarySponsorsTitle}>
+                {"Sponsor" + (defaultSponsors.length > 1 ? "s" : "")}
+            </h2>
+        }
         {defaultSponsors.length > 0 && constructSponsorRow(defaultSponsors)}
     </div>
     )

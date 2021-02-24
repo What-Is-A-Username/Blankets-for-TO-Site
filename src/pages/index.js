@@ -1,8 +1,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
 
-import transparentLogo from '../components/images/blanketsLogoTransparent.png'
-
 import { Link } from 'gatsby'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
