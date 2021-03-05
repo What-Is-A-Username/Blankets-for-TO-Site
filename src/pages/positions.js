@@ -22,7 +22,9 @@ class Positions extends React.Component {
           <div className="wrapper">
             <div className={styles.membershipInfo}>
               <h2>Membership and Volunteering</h2>
+              <div className="richText">
               {membershipInfo.json !== undefined ? documentToReactComponents(membershipInfo.json) : <p>Error: Articles not found.</p>}
+              </div>
               <Link to={formLink} className='links' target="_blank" rel="noopener noreferrer">
                 <button className='btn' type="submit">Sign Up Now</button>
               </Link>

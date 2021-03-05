@@ -77,6 +77,23 @@
     justify-content: center;
 }
 
+.instagram {
+    padding: 50px;
+    background-color: #f2f2f28c;
+}
+
+.instagram > h2 {
+    text-align: center;
+    color: var(--primary);
+    margin-top: 10px;
+    margin-bottom: 10px; 
+}
+
+.instagram > div > div > div > div > div
+{
+    padding: 5px !important;
+}
+
 @media(min-width: 760px) {
     .btnRow {
         display: flex;

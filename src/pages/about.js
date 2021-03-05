@@ -20,8 +20,10 @@ class About extends React.Component {
                     <div className="wrapper">
                     {/* Description, centered  */}
                     <h2>Our Organization</h2>
-                    <div className={styles.description}>
+                    <div className={"richText" + ' ' + styles.description} >
+                    <div>
                         {node.json !== undefined ? documentToReactComponents(node.json) : <p>Error: Articles not found.</p>}
+                    </div>
                     </div>
                     </div>
                 </div>

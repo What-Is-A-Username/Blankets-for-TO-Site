@@ -49,11 +49,10 @@ class BlogPostTemplate extends React.Component {
 					<div className="wrapper">
 						<h1 className={styles.title}>{post.title}</h1>
 						<p className={styles.publishDate}> {post.publishDate} </p>
-						<div className={styles.richText} >
+						<div className="richText">
 							{post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
 						</div>
 						<LinkSharing location={'https://blanketsforto.ca/blog/' + post.slug} />
-
 						<hr className={styles.horizontalLine}></hr>
 						{/* Updates */}
 						<div className={updateListStyles.updates}>

@@ -3,37 +3,56 @@ import styles from './popup.module.css'
 
 export default class Popup extends React.Component {
 
-    state = { open: true }
-    
+    state = { open: true, visible: true }
+
     close = () => {
+        if (!this.state.open) return; 
         console.log(this.state)
         this.setState({ open: false });
+        this.turnoff = setTimeout(() => {
+            this.setState({
+                open: false,
+                visible: false,
+            });
+        }, 1900);
     }
 
+    componentDidMount() {
+        // var visitedBefore = localStorage.getItem('firstentry') 
+        // if (!visitedBefore)
+        //     localStorage.setItem('firstentry', 'true')
+        // else if (visitedBefore !== 'true')
+        //     localStorage.setItem('firstentry', 'true')
+        // else 
+        //     this.setState({open: false, visible: false})
+        // console.log('Not new visitor to site? ' + visitedBefore + '. Welcome.');
+      }
+
     render() {
-        return(
-        <div className={styles.popupBlocker + ' ' + (this.state.open ? styles.open : styles.closed)}>
+        return (
             
-        <div className={styles.popup}>
-            {/* <link href="cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css"/> */}
-            <div className={styles.mc_embed_signup} id="mc_embed_signup">
-                <form action="https://gmail.us7.list-manage.com/subscribe/post?u=c190e10f2b62c767274e1197b&amp;id=bb77b2010f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                    <div id="mc_embed_signup_scroll" className='mc_embed_signup scroll'>
-                        <h2 for="mce-EMAIL">Sign up for our mailing list!</h2>
-                        <input className={styles.emailBox} type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required/>
-                        {/* <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--> */}
-                        <div style= {{position:'absolute', left:'-5000px' }} aria-hidden="true">
-                            <input type="text" name="b_c190e10f2b62c767274e1197b_bb77b2010f" tabindex="-1" value=""/>
+            <div className={styles.popupBlocker + ' ' + (this.state.open ? styles.open : styles.closed) + ' ' + (this.state.visible ? '' : styles.invisible)}>
+                <div className={styles.popup}>
+                {console.log("rendering")}
+                    <h2>Sign up to our newsletter for updates on our latest updates.</h2>
+                        <form action="https://us1.list-manage.com/contact-form?u=abe6f10b44a3ec1a18292149f&form_id=6ec166e1addeeda3c5f7a56d6b12b26d" method="POST">
+                            <input type="hidden" name="u" value="abe6f10b44a3ec1a18292149f" />
+                            <input type="hidden" name="id" value="990e8d7286" />
+                            <div id="mergeTable" class="mergeTable">
+                                <div class="mergeRow dojoDndItem mergeRow-email" id="mergeRow-0">
+                                    <label for="fields.134">Email Address <span class="req asterisk">*</span></label>
+                                    <div className={"field-group " + styles.emailBox}>
+                                        <input type="email" autocapitalize="none" autocorrect="off" name="fields.134" id="fields.134"/>
+                                    </div>
+                                </div>
+                                    <input className={'formEmailButton ' + styles.button} type="submit" name="submit" value="Subscribe"/>
+                            </div>
+                        </form>
+                        <div style={{display:'flex', justifyContent:'right'}}>
+                            <a className={styles.escapeButton} onClick={() => this.close()}>Maybe later...</a>
                         </div>
-                        <div class="clear" className={styles.button}>
-                            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"/>
-                        </div>
-                    </div>
-                </form>
-                <a className={styles.escapeButton} onClick={() => this.close()}>Maybe later...</a>
+                </div>
             </div>
-        </div>
-        </div>
-        ) 
+        )
     }
 }

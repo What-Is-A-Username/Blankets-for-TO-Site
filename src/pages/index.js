@@ -18,7 +18,6 @@ class RootIndex extends React.Component {
 		const organizationBlurb = get(this, 'props.data.allContentfulOrganizationInformation.edges')
 		const slides = get(this, 'props.data.allContentfulHomeSlide.edges')
 		
-		
 		const setVidSpeed = () => { 
 			var vid = document.getElementById("titleVideo");
 			vid.playbackRate = 2.0;
@@ -64,11 +63,17 @@ class RootIndex extends React.Component {
 					{/* Sponsor and Partner Logos */}
 					<Sponsors/>
 
-					{/* <div id="curator-feed-default-feed-layout">
-						<a href="https://curator.io" target="_blank" class="crt-logo crt-tag">
-							Powered by Curator.io
-						</a>
-					</div> */}
+					<div className={styles.instagram}>
+						<h2>Keep updated with our feed</h2>
+						<div id="curator-feed-default-feed-layout">
+							<a href="https://curator.io" target="_blank" class="crt-logo crt-tag">
+								Powered by Curator.io
+							</a>
+						</div>
+						<Link to="https://www.instagram.com/blanketsforto" className='links'>
+								<button className='btn' type="submit">Visit us on Instagram</button>
+							</Link>
+					</div>
 				
 				</div>
 			</Layout>

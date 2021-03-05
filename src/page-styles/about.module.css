@@ -1,10 +1,5 @@
 .description {
-    background-color: white;
     padding-bottom: 50px;
-}
-
-.description p {
-    font-size: 1.0em;
 }
 
 .description h3 
@@ -14,21 +9,3 @@
   margin-bottom: 0px;
 }
 
-.description h4
-{
-  font-size: 1.4em;
-  font-weight: bold;
-  margin-bottom: 0px;
-}
-
-.description h5
-{
-  font-size: 1.1em;
-  font-weight: bold;
-  margin-bottom: 0px;
-}
-
-.description a 
-{
-  color:#2828fd;
-}
