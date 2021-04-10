@@ -12,6 +12,8 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import updateListStyles from '../page-styles/index.module.css'
 import styles from '../templates/blog-post.module.css'
 
+import { BlogTagBar } from '../components/tag'
+
 class BlogPostTemplate extends React.Component {
 
 	render() {
@@ -49,6 +51,7 @@ class BlogPostTemplate extends React.Component {
 					<div className="wrapper">
 						<h1 className={styles.title}>{post.title}</h1>
 						<p className={styles.publishDate}> {post.publishDate} </p>
+						<BlogTagBar tags={post.tags}></BlogTagBar>
 						<div className="richText">
 							{post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
 						</div>
@@ -80,6 +83,7 @@ export const pageQuery = graphql`
 		}
 		contentfulBlogPost(slug: { eq: $slug }) {
 				title
+				tags
 				slug
 				richTextBody {
 						json

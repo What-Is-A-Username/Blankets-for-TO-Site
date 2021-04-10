@@ -7,7 +7,7 @@ export default class Popup extends React.Component {
 
     close = () => {
         if (!this.state.open) return; 
-        console.log(this.state)
+        // console.log(this.state)
         this.setState({ open: false });
         this.turnoff = setTimeout(() => {
             this.setState({
@@ -33,7 +33,7 @@ export default class Popup extends React.Component {
             
             <div className={styles.popupBlocker + ' ' + (this.state.open ? styles.open : styles.closed) + ' ' + (this.state.visible ? '' : styles.invisible)}>
                 <div className={styles.popup}>
-                {console.log("rendering")}
+                {/* {console.log("rendering")} */}
                     <h2>Sign up to our newsletter for updates on our latest updates.</h2>
                         <form action="https://us1.list-manage.com/contact-form?u=abe6f10b44a3ec1a18292149f&form_id=6ec166e1addeeda3c5f7a56d6b12b26d" method="POST">
                             <input type="hidden" name="u" value="abe6f10b44a3ec1a18292149f" />

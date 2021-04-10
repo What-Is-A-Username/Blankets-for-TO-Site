@@ -36,7 +36,7 @@ const stuff = (props) => {
           nameEntry.map((x, i) => {
             return (
               x != "null" &&
-              <div className={styles.socialMediaEntry}>
+              <div className={styles.socialMediaEntry} key={platform[i]}>
                 <a href={link[i] != "" ? link[i] : '/contact'}
                    target={link[i] != "" ? '_blank' : ''}
                    rel="noopener noreferrer">

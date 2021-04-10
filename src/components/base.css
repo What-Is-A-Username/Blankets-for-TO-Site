@@ -1,5 +1,6 @@
 :root {
   --primary: #fc5c5c; 
+  --primary_darker: rgb(240, 0, 60);
   --slideshowFadeDuration: 2.0s;
   --slideshowFadeOutDuration: 1.0s;
   --slideshowButtonFadeDuration: 3.0s;
@@ -21,7 +22,7 @@ body {
   font-size: 1em;
   line-height: 1.65;
   color: #373F49;
-  background: #eee;
+  background: #fff;
   margin: 0;
 }
 
@@ -118,7 +119,7 @@ a {
 }
 
 .btn:hover, .btn:focus {
-  background-color: rgb(240, 0, 60);
+  background-color: var(--primary_darker);
 }
 
 .btn span {
