@@ -68,8 +68,8 @@
 
 .title {
     align-self: flex-start;
-    margin-top: 0px;
-    color: rgb(72, 72, 72);
+    margin: 0px auto 0px auto;
+    color: black;
 }
 
 .description {
