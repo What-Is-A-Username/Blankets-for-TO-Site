@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, navigate } from 'gatsby'
+import { graphql, navigate, navigateTo } from 'gatsby'
 import get from 'lodash/get'
 import Layout from '../components/layout'
 import ArticleEntry from '../components/blog-list'
@@ -9,14 +9,23 @@ import { SearchTools } from '../components/tag'
 import styles from '../page-styles/blog.module.css'
 import { search } from 'core-js/fn/symbol'
 import { addLocale } from 'core-js'
-import { filter } from 'lodash'
+import { clamp, filter, range } from 'lodash'
+import { ceil } from 'lodash'
+import PageControls from '../components/page-controls'
+
 
 class BlogIndex extends React.Component {
 
+	
+
 	render() {
 		const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+		let filteredPosts = [] 
+		let visiblePosts = []
 		const searchQuery = get(this, 'props.location.search');
 		const searchParams = QueryString.parse(searchQuery);
+		const postsPerPage = 10;
+		let numberOfPages = 1;
 
 		var allTags = []
 		posts.forEach(post => allTags = allTags.concat(post.node.tags));
@@ -24,14 +33,16 @@ class BlogIndex extends React.Component {
 
 		if (searchParams['tags'] === undefined) searchParams['tags'] = [];
 		else if (typeof (searchParams['tags']) === 'string') searchParams['tags'] = [searchParams['tags']]
-		if (searchParams['sort'] === undefined) searchParams['sort'] = 'recent';
+		if (searchParams['sort'] === undefined || typeof (searchParams['sort']) !== 'string') searchParams['sort'] = 'recent';
 		searchParams.tags = searchParams.tags.filter(tag => uniqueTags.includes(tag));
+		if (searchParams['page'] === undefined || typeof (searchParams['page']) !== 'string') searchParams['page'] = "1"; 
+		searchParams.page = parseInt(searchParams.page); 
 
 		const meetsFilter = (post) => {
 			if (searchParams.tags.length == 0) return true;
 			for (var i = 0; i < searchParams.tags.length; i++)
-				if (!post.tags.incldues(searchParams.tags[i])) return false;
-			return false;
+				if (!post.tags.includes(searchParams.tags[i])) return false;
+			return true;
 		}
 
 		const comparePosts = (a, b) => {
@@ -48,29 +59,44 @@ class BlogIndex extends React.Component {
 				return 0;
 		}
 
-		const filterAndSort = (allPosts) => {
-			return posts.filter(({ node }) => meetsFilter(node)).sort(comparePosts)
+		const filterPages = (filteredAndSortedPosts) => {
+			return filteredAndSortedPosts.filter((node, index) => node !== undefined && (searchParams.page-1) * postsPerPage <= index && index < (searchParams.page) * postsPerPage)
 		}
 
-		const onSelect = (data) => {
-			searchParams.sort = data.value;
-			let new_query = `/blog/` + "?" + QueryString.stringify({ tags: searchParams.tags, sort: searchParams.sort }, { arrayFormat: 'comma' });
-			console.log(searchParams);
-			console.log("Moving to query " + new_query + " based on search params");
+		const filterAndSort = (allPosts) => {
+			return allPosts.filter(({ node }) => meetsFilter(node)).sort(comparePosts);
+		}
+
+		const navigateToQuery = () => {
+			let new_query = `/blog/` + "?" + QueryString.stringify({ tags: searchParams.tags, sort: searchParams.sort, page: searchParams.page }, { arrayFormat: 'comma' });
 			navigate(new_query);
 		}
 
+		// on change sorting method
+		const onSelect = (data) => {
+			searchParams.sort = data.value;
+			navigateToQuery(); 
+		}
+
+		// on post tag click
 		const onClickTag = (clicked) => {
 			if (searchParams.tags.includes(clicked)) // if unselecting 
 				searchParams.tags = searchParams.tags.filter(tag => (tag != clicked));
 			else
 				searchParams.tags.push(clicked);
-			let new_query = `/blog/` + "?" + QueryString.stringify({ tags: searchParams.tags, sort: searchParams.sort }, { arrayFormat: 'comma' });
-			console.log(searchParams);
-			console.log("Moving to query " + new_query + " based on search params");
-			navigate(new_query);
+			navigateToQuery(); 
 		}
 
+		const onPageClick = (newPage) => {
+			searchParams.page = newPage;
+			navigateToQuery(); 
+		}
+
+		filteredPosts = filterAndSort(posts);
+		numberOfPages = ceil((filteredPosts.length)/postsPerPage);
+		searchParams.page = clamp(searchParams.page, 1, numberOfPages); 		
+		visiblePosts = filterPages(filteredPosts); 
+		
 		return (
 			<Layout location={this.props.location}>
 				<SEO title="Updates"
@@ -79,8 +105,9 @@ class BlogIndex extends React.Component {
 					<div className="wrapper">
 						<h2>All Updates and Articles</h2>
 						<SearchTools onDropdownChange={onSelect} dropdownPlaceholder={searchParams.sort} tags={uniqueTags} clickTagFunc={onClickTag} activeTags={searchParams.tags} />
+						<PageControls numPages={numberOfPages} onPageClick={onPageClick} currentPage={searchParams.page}/>
 						<div className={styles.blog_list}>
-							{filterAndSort(posts).map(({ node }) => {
+							{visiblePosts.map(({ node }) => {
 								return (
 									<div key={node.slug}>
 										<ArticleEntry article={node} />
@@ -88,6 +115,7 @@ class BlogIndex extends React.Component {
 								)
 							})}
 						</div>
+						<PageControls numPages={numberOfPages} onPageClick={onPageClick} currentPage={searchParams.page}/>
 					</div>
 				</div>
 			</Layout>

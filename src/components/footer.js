@@ -7,19 +7,12 @@ import twitterImage from './images/contact/twitterTransparent.svg'
 import facebookImage from './images/contact/facebookTransparent.svg'
 import instagramImage from './images/contact/instagramTransparent.svg'
 import tikTokImage from './images/contact/tiktokTransparent.svg'
-
-const pages = [
-  { to: "/", desc: "Home" },
-  { to: "/about", desc: "About" },
-  { to: "/team", desc: "Team" },
-  { to: "/positions", desc: "Membership/Volunteering" },
-  { to: "/contact", desc: "Contact" },
-  { to: "/blog", desc: "Updates" },
-]
+import pageData from '../pages/page-data.json'
 
 const stuff = (props) => {
   var contactInfo = props.allContentfulOrganizationInformation.edges
   const node = contactInfo[0].node
+  const pages = pageData.pages
 
   const platform = ["Email", "Facebook", "Instagram", "Twitter", "TikTok"] 
   const nameEntry = [node.emailAddress, node.facebook, node.instagram, node.twitter, node.tikTok]

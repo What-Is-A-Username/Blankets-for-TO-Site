@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styles from './tag.module.css'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import { navigate } from 'gatsby-link';
 
 const SearchTagItem = ({tagText, clickTagFunc, active}) => {
 
@@ -24,9 +25,9 @@ const SearchTagItem = ({tagText, clickTagFunc, active}) => {
     )
 }
 
-const BlogTagItem = ({tagText}) => {
+const BlogTagItem = ({tagText, clickable}) => {
     return(
-        <div className={styles.blogTag}>
+        <div className={clickable ? styles.clickableBlogTag : styles.blogTag} onClick={clickable ? () => navigate("/blog/?tags=" + tagText) : () => {}}>
             <p>{tagText}</p>
         </div>
     )
@@ -58,7 +59,7 @@ const SearchTools = ({tags, clickTagFunc, activeTags, onDropdownChange, dropdown
                 {
                     tags.map(tagText => {
                         var active = activeTags.includes(tagText); 
-                        return(<SearchTagItem active={active} tagText={tagText} clickTagFunc={clickTagFunc}/>)
+                        return(<SearchTagItem active={active} tagText={tagText} clickTagFunc={clickTagFunc} key={tagText}/>)
                     })
                 }
             </div>
@@ -67,7 +68,7 @@ const SearchTools = ({tags, clickTagFunc, activeTags, onDropdownChange, dropdown
 }
 
 SearchTagItem.propTypes = {
-    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+    tagText: PropTypes.string.isRequired,
     clickTagFunc: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
 }
@@ -79,12 +80,12 @@ SearchTools.propTypes = {
     dropdownPlaceholder: PropTypes.string.isRequired,
 }
 
-const BlogTagBar = ({tags}) => {
+const BlogTagBar = ({tags, clickable}) => {
     return(
         <div className={styles.blogTagContainer}>
             {
                 tags.map(tagText => {
-                    return(<BlogTagItem tagText={tagText}/>)
+                    return(<BlogTagItem tagText={tagText} clickable={clickable} key={tagText}/>)
                 })
             }   
         </div>
@@ -93,6 +94,7 @@ const BlogTagBar = ({tags}) => {
 
 BlogTagBar.propTypes = {
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+    clickable: PropTypes.bool.isRequired,
 }
 
 export {

@@ -1,7 +1,8 @@
 .title {
-  padding: 20px 10px 0.4em 0;
-  margin: 0 0 10px 0;
-  border-bottom: 1px solid #ddd;
+  padding: 20px 10px 0.1em 0;
+  margin: 0px;
+  font-weight: bold;
+  font-size: 2.3em;
 }
 
 .horizontalLine 

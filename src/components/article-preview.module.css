@@ -1,46 +1,77 @@
+.updates {
+  background-color: white;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.updates > h2 {
+  color: var(--primary);
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+}
+
 .previewParent {
   display: flex;
+  gap: 10px;
+}
+
+.previewImage img {
+  border-radius: 15px;
 }
 
 @media(min-width: 760px) {
-  .previewParent {
+  .preview {
     flex-direction: row;
+    gap: 20px;
   }
-  .alink {
-    width: 33%;
+  .previewParent {
+    flex-direction: column;
+  }
+  .previewImage {
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 200px;
+    max-height: 100%;
+    align-self: center;
   }
 }
 
 @media(max-width: 760px) {
   .previewParent {
     flex-direction: column;
+    
   }
-  .alink {
-    width: 100%;
+  .preview {
+    flex-direction: column;
+  }
+  .previewImage {
+    width: 70vw;
+    height: 70vw;
+    max-width: 300px !important;
+    max-height: 300px !important;
+    align-self: center;
   }
 }
 
 .previewTitle {
   font-size: 1.5em;
-  font-size: 1.5em;
-    font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    /* min-height: 100px; */
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
-
-.previewDescription {
-  padding: 0px;
-}
-
 .previewDescription p {
+  padding: 0px;
+  margin: 0px;
   color: black;
 }
-
 
 .previewPublishDate {
   font-size: 1.0em;
 }
+
 .alink {
   text-decoration: none;
   cursor: pointer;
@@ -51,19 +82,19 @@
 }
 
 .preview {
-    text-decoration: none;
-    margin: 15px;
-    height: 80%;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-    border-radius: 15px;
-    border-color: #A0A0A0;
-    -moz-transition: all .2s ease-in;
-    -o-transition: all .2s ease-in;
-    -webkit-transition: all .2s ease-in;
-    transition: all .2s ease-in;
-    background: #ffffff; 
-    padding: 20px;
+  display: flex;
+  text-decoration: none;
+  padding: 5px;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  border-radius: 15px;
+  border-color: #A0A0A0;
+  -moz-transition: all .2s ease-in;
+  -o-transition: all .2s ease-in;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+  background: #ffffff; 
+  padding: 20px;
 }
 
 .tag {

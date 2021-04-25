@@ -50,13 +50,7 @@ class RootIndex extends React.Component {
 					{/* Slideshow */}
 					<Slideshow menuItems={slides}></Slideshow>
 					{/* Updates */}
-					<div className={styles.updates}>
-						<h2>News and Updates</h2>
-						<ArticlePreview articles={posts}/>
-						<Link to="/blog" className='links'>
-							<button className='btn' type="submit">Browse all updates</button>
-						</Link>
-					</div>
+					<ArticlePreview articles={posts}/>
 					{/* Join Us and Contact Us Box */}
 					<ContactBox left={organizationBlurb[0].node.leftBackgroundImage.fluid} right={organizationBlurb[0].node.leftBackgroundImage.fluid}></ContactBox>
 					

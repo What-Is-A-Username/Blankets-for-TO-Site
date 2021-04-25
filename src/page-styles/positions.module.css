@@ -27,14 +27,3 @@
     }
 }
 
-@media (max-width: 760px) { 
-    .positionList {
-        
-
-    }
-}
-
-.membershipInfo p {
-    font-size: 1.0em;
-    max-width: 100%;
-}

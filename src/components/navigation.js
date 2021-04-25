@@ -1,21 +1,13 @@
 import React from 'react'
 import { Link, navigate } from 'gatsby'
 import styles from './navigation.module.css'
-
-
-const pages = [
-    { to: "/", desc: "Home" },
-    { to: "/about", desc: "About" },
-    { to: "/team", desc: "Team" },
-    { to: "/positions", desc: "Membership/Volunteering" },
-    { to: "/contact", desc: "Contact" },
-    { to: "/blog", desc: "Updates" },
-  ]
+import pageData from '../pages/page-data.json'
 
 export default (props) => {
 
     const [drawerActive, setDrawer] = React.useState(false);
     const { location, children } = props
+    const pages = pageData.pages
 
     const changeState = () => {
         setDrawer(!drawerActive);

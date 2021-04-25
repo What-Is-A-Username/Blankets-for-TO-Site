@@ -9,7 +9,6 @@ import styles from '../page-styles/team.module.css'
 
 class Team extends React.Component {
     render() {
-        const siteTitle = get(this, 'props.data.site.siteMetadata.title')
         const members = get(this, 'props.data.allContentfulExecutive.edges')
 
         return (

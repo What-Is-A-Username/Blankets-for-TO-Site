@@ -1,0 +1,29 @@
+{
+    "pages": [
+        {
+            "to": "/",
+            "desc": "Home"
+        },
+        {
+            "to": "/about",
+            "desc": "About"
+        },
+        {
+            "to": "/blog",
+            "desc": "Events"
+        },
+        {
+            "to": "/team",
+            "desc": "Team"
+        },
+        {
+            "to": "/positions",
+            "desc": "Join"
+        },
+        {
+            "to": "/contact",
+            "desc": "Contact"
+        }
+        
+    ]
+}

@@ -42,7 +42,7 @@
     color: var(--primary_darker)
 }
 
-.activeTag, .blogTag
+.activeTag, .blogTag, .clickableBlogTag
 {
     display: flex;
     gap: 5px;
@@ -53,9 +53,15 @@
 }
 
 /* Styling for tag items that are seen under each article title*/
-.blogTag {
+.blogTag, .clickableBlogTag {
     background-color: rgb(212, 212, 212);
     color: rgb(109, 109, 109); 
+    cursor: pointer;
+}
+
+.clickableBlogTag:hover {
+    background-color: var(--primary);
+    color: white;
 }
 
 /* Styling when currently not selected for filtering */

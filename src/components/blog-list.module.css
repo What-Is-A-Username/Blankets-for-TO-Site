@@ -5,7 +5,6 @@
     margin-bottom: 5px;
 }
 
-
 .previewPublishDate {
     font-size: 1.0em;
     padding: auto auto 5px auto;
@@ -24,7 +23,6 @@
 .alink {
     cursor: pointer;
     text-decoration: none;
-    
 }
 
 .preview:hover {

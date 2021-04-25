@@ -42,6 +42,10 @@ a {
   color: currentColor;
 }
 
+p {
+  font-size: 17px;
+}
+
 .wrapper {
   width: calc(100% - 10vmin);
   margin: 0 auto;
@@ -197,8 +201,27 @@ Rich Text Display
   margin-bottom: 0px;
 }
 
-.richText a 
+.richText p
 {
-  color:#2828fd;
+  font-size: 17px;
 }
 
+.richText a
+{
+  text-decoration: none;
+}
+
+.richText a:link
+{
+  color:#136bcf;
+}
+
+.richText a:hover 
+{
+  text-decoration: underline;
+}
+
+.richText a:visited
+{
+  color: #8924c4; 
+}

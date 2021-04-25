@@ -32,7 +32,7 @@ const LinkSharing = ({location}) => {
             <div className={styles.link}>
 
                 <div className={styles.linkField}>
-                    <input style={{width: location.length + 'ch'}} type="text" value={location} id="linkAddress" readonly/>
+                    <input style={{width: location.length + 'ch'}} type="text" value={location} id="linkAddress" readOnly/>
                     <button onClick={copyLink}>Copy URL</button>
                 </div>
             </div>

@@ -30,15 +30,15 @@ export default ({ data }) => {
                 <h3 className={styles.name}>{data.name}</h3>
                 <h4 className={styles.title}>{data.title}</h4>
                 <div className={styles.description}
-                dangerouslySetInnerHTML={{
-                  __html: data.shortBio.childMarkdownRemark.html,
-                }}
-              />
+                    dangerouslySetInnerHTML={{
+                    __html: data.shortBio.childMarkdownRemark.html,
+                    }}
+                />
                 <div className={styles.memberContact}>
                     {
                         contact.map(x => { return(
                             x.platform && 
-                            <div>
+                            <div key={data.name+" "+x.platform}>
                                 <a href={x.alt != "Email" ? x.link : `mailto:${x.platform}`} target="_blank" rel="noopener noreferrer">
                                     <img src={x.icon} alt={`${x.alt} Icon`}/>{x.platform}
                                 </a>
