@@ -105,6 +105,7 @@ class BlogIndex extends React.Component {
 					<div className="wrapper">
 						<h2>All Updates and Articles</h2>
 						<SearchTools onDropdownChange={onSelect} dropdownPlaceholder={searchParams.sort} tags={uniqueTags} clickTagFunc={onClickTag} activeTags={searchParams.tags} />
+						{numberOfPages == 0 && <div>No results match your filter query.</div>}
 						<PageControls numPages={numberOfPages} onPageClick={onPageClick} currentPage={searchParams.page}/>
 						<div className={styles.blog_list}>
 							{visiblePosts.map(({ node }) => {
