@@ -1,6 +1,6 @@
 .updates {
   background-color: white;
-  padding: 50px;
+  padding: 50px 10px 50px 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
