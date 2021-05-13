@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link, StaticQuery, graphql, navigate } from 'gatsby'
 import styles from './article-preview.module.css'
-import { BlogTagBar } from './tag'
+import { BlogTagBar } from './blog_search/tag'
 import PropTypes from "prop-types"
-
 
 const renderFunc = (articles, excludeSlug) => {
 	return (
@@ -85,7 +84,7 @@ export const ArticlePreview = ({excludeSlug}) => {
 	)
 };
 
-ArticlePreview.PropTypes = {
+ArticlePreview.propTypes = {
 	excludeSlug: PropTypes.string, 
 }
 

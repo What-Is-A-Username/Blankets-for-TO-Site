@@ -1,17 +1,17 @@
 import React from 'react'
-import { graphql, navigate, navigateTo } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import get from 'lodash/get'
 import Layout from '../components/layout'
 import ArticleEntry from '../components/blog-list'
 import SEO from '../components/SEO'
 import QueryString from 'query-string'
-import { SearchTools } from '../components/tag'
+import { SearchTools } from '../components/blog_search/tag'
 import styles from '../page-styles/blog.module.css'
 import { search } from 'core-js/fn/symbol'
 import { addLocale } from 'core-js'
 import { clamp, filter, range } from 'lodash'
 import { ceil } from 'lodash'
-import PageControls from '../components/page-controls'
+import PageControls from '../components/blog_search/page-controls'
 
 
 class BlogIndex extends React.Component {

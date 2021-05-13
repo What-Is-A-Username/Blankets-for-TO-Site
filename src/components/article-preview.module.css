@@ -1,9 +1,20 @@
 .updates {
   background-color: white;
-  padding: 50px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+@media (min-width: 760px) { 
+  .updates {
+    padding: 50px;
+  }
+}
+
+@media (max-width: 760px) { 
+  .updates {
+    padding: 50px 10px 50px 10px;
+  }
 }
 
 .updates > h2 {
@@ -11,6 +22,7 @@
   display: flex;
   justify-content: center;
   margin: 0px;
+  text-align: center;
 }
 
 .previewParent {
@@ -75,6 +87,8 @@
 .alink {
   text-decoration: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 
 .preview:hover {
@@ -95,6 +109,7 @@
   transition: all .2s ease-in;
   background: #ffffff; 
   padding: 20px;
+  max-width: 1300px;
 }
 
 .tag {

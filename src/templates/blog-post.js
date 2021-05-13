@@ -8,11 +8,9 @@ import LinkSharing from '../components/link-sharing'
 
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-
-import updateListStyles from '../page-styles/index.module.css'
 import styles from '../templates/blog-post.module.css'
 
-import { BlogTagBar } from '../components/tag'
+import { BlogTagBar } from '../components/blog_search/tag'
 
 class BlogPostTemplate extends React.Component {
 
@@ -35,8 +33,7 @@ class BlogPostTemplate extends React.Component {
 		const requiredHead = [
 			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>,
 			<div id="fb-root"></div>,
-			<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="mMCLlyqT">
-			</script>,
+			<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" nonce="9bOR49xF"></script>,
 		]
 
 		return (

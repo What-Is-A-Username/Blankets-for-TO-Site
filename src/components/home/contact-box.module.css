@@ -1,0 +1,128 @@
+
+@media(min-width: 760px) {
+
+    .contactBox {
+        display: flex;
+        height: 500px;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .slideshow > div {
+        margin: 50px;
+        max-width: 1300px;
+    }
+
+    .imageCover {
+        height: 500px;
+    }
+
+    .imageCover > div {
+        height: 500px; 
+        width: 100%; 
+    }
+
+    .contactBoxSide
+    {
+        width: 50%;
+    }
+
+    .imageCover, .imageLayer, .imageCover > div {
+        border-radius: 10px;
+    }
+    
+}
+
+@media(max-width: 760px) {
+
+    .slideshow {
+        height: 750px;
+    }
+
+    .contactBox {
+        height: 700px;
+        flex-direction: column;
+    }
+    
+    .contactBoxSide {
+        width: 100%;
+    }
+
+    .imageCover {
+        height: 750px;
+    }
+
+    .imageCover > div {
+        height: 750px; 
+        width: 100%; 
+    }
+
+    .contactBoxDescription {
+        margin-bottom: 5px;
+    }
+
+    .imageCover, .imageLayer, .imageCover > div {
+        border-radius: 0px;
+    }
+}
+
+.contactBox {
+    top: 0px;
+    position: relative;
+    left: 0px;
+    display: flex;
+}
+
+.contactBoxSide {
+    position: relative;
+    top: 0px;
+    height: 100%;
+    background-size: cover;
+    display: flex;
+}
+
+.contactBoxSideText {
+    align-self: center;
+    height: fit-content;
+    z-index: 2;
+}
+
+.contactBoxTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: var(--primary);
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.contactBoxDescription {
+    margin: 20px 5vw 30px 5vw;
+    text-align: center;
+    color: white;
+}
+
+.slideshow {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.imageCover {
+    position: absolute;
+    top: 0;
+    /* left: 0; */
+    width: 100%;
+}
+
+.imageLayer {
+    background-color: rgba(24, 24, 24, 0.7);
+    z-index: 0;
+    position: absolute;
+}
+
+.imageCover > div {
+    height: 100%;
+    width: 100%;
+}

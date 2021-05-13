@@ -10,89 +10,87 @@ import tikTokImage from './images/contact/tiktokTransparent.svg'
 import pageData from '../pages/page-data.json'
 
 const stuff = (props) => {
-  var contactInfo = props.allContentfulOrganizationInformation.edges
-  const node = contactInfo[0].node
-  const pages = pageData.pages
+	var contactInfo = props.allContentfulOrganizationInformation.edges
+	const node = contactInfo[0].node
+	const pages = pageData.pages
 
-  const platform = ["Email", "Facebook", "Instagram", "Twitter", "TikTok"] 
-  const nameEntry = [node.emailAddress, node.facebook, node.instagram, node.twitter, node.tikTok]
-  const link = ['mailto:' + node.emailAddress, node.facebookLink, node.instagramLink, node.twitterLink, node.tiktokLink]
-  const icon = [emailImage, facebookImage, instagramImage, twitterImage, tikTokImage]
+	const platform = ["Email", "Facebook", "Instagram", "Twitter", "TikTok"]
+	const nameEntry = [node.emailAddress, node.facebook, node.instagram, node.twitter, node.tikTok]
+	const link = ['mailto:' + node.emailAddress, node.facebookLink, node.instagramLink, node.twitterLink, node.tiktokLink]
+	const icon = [emailImage, facebookImage, instagramImage, twitterImage, tikTokImage]
 
-  return (
-    <footer role="contentinfo" className={styles.footer}>
-      <h1 className={styles.footerTitle}>
-        Blankets For T.O.
-      </h1>
-      <div className={styles.socialMedia}>
-        {
-          nameEntry.map((x, i) => {
-            return (
-              x != "null" &&
-              <div className={styles.socialMediaEntry} key={platform[i]}>
-                <a href={link[i] != "" ? link[i] : '/contact'}
-                   target={link[i] != "" ? '_blank' : ''}
-                   rel="noopener noreferrer">
-                  <img src={icon[i]} alt={platform[i] + " Icon"} />
-                </a>
-              </div>
-            )
-          }
-          )
-        }
-      </div>
-      <p className={styles.footerInfo}>
-        An organization at the University of Toronto Scarborough.
-      </p>
-      <ul className={styles.navigation}>
-        {
-          pages.map((page) => {
-            return (
-              <li className={styles.navigationItem} key={page.desc}>
-                <Link to={page.to}>{page.desc}</Link>
-              </li>
-            )
-          })
-        }
-      </ul>
-      
-      <div className={styles.credits}>
-        <Link to={'/credits'}>Media Credits and Attribution</Link>
-      </div>
-      <div>
+	return (
+		<footer role="contentinfo" className={styles.footer}>
+			<h1 className={styles.footerTitle}>
+				Blankets For T.O.
+      		</h1>
+			<div className={styles.socialMedia}>
+				{
+					nameEntry.map((x, i) => {
+						return (
+							x != "null" &&
+							<div className={styles.socialMediaEntry} key={platform[i]}>
+								<a href={link[i] != "" ? link[i] : '/contact'}
+									target={link[i] != "" ? '_blank' : ''}
+									rel="noopener noreferrer">
+									<img src={icon[i]} alt={platform[i] + " Icon"} />
+								</a>
+							</div>
+						)
+					}
+					)
+				}
+			</div>
+			<p className={styles.footerInfo}>
+				An organization at the University of Toronto Scarborough.
+      		</p>
+			<ul className={styles.navigation}>
+				{
+					pages.map((page) => {
+						return (
+							<li className={styles.navigationItem} key={page.desc}>
+								<Link to={page.to}>{page.desc}</Link>
+							</li>
+						)
+					})
+				}
+			</ul>
 
-      </div>
-    </footer>
-  )
+			<div className={styles.credits}>
+				<Link to={'/credits'}>Media Credits and Attribution</Link>
+			</div>
+			<div>
+			</div>
+		</footer>
+	)
 }
 
 export default () => {
-  return (
-    <StaticQuery
-      query={graphql`
-    query FooterQuery {
-        allContentfulOrganizationInformation {
-          edges {
-            node {
-              emailAddress
-              facebook
-              facebookLink
-              instagram
-              instagramLink
-              officeAddress
-              phoneNumber
-              tikTok
-              tiktokLink
-              twitter
-              twitterLink
-            }
-          }
-        }
-      }
-    `}
-      render={data => stuff(data)
-      }
-    />
-  )
+	return (
+		<StaticQuery
+			query={graphql`
+				query FooterQuery {
+					allContentfulOrganizationInformation {
+						edges {
+							node {
+								emailAddress
+								facebook
+								facebookLink
+								instagram
+								instagramLink
+								officeAddress
+								phoneNumber
+								tikTok
+								tiktokLink
+								twitter
+								twitterLink
+							}
+						}
+					}
+				}
+			`}
+			render={data => stuff(data)}
+		/>
+	)
 }
 

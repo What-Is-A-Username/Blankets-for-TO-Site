@@ -47,20 +47,24 @@ p {
 }
 
 .wrapper {
-  width: calc(100% - 10vmin);
   margin: 0 auto;
   padding-top: 2vmin; 
   padding-bottom: 25px;
-  /* padding: 5vmin 0; */
 }
 
 @media(min-width: 760px) {
+  .wrapper {
+    width: 70%;
+  }
   .wrapper h2{
     text-align: left;
   } 
 }
 
 @media(max-width: 760px) {
+  .wrapper {
+    width: 90%;
+  }
    .wrapper h2{
       text-align: center;
     } 
@@ -77,8 +81,6 @@ p {
         width: 100vw;
     }
 }
-
-
 
 .whiteBtn {
   margin: auto;
@@ -97,7 +99,7 @@ p {
 }
 
 .whiteBtn:hover, .whiteBtn:focus {
-  background-color: #A0A0A0;
+  background-color: #ffffff;
   color: var(--primary);
 }
 

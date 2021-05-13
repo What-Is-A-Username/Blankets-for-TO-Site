@@ -1,10 +1,10 @@
-import React from "react"
+	import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator}) => {
+const SEO = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, useSharing}) => {
 	
 	const { pathname } = useLocation()
 	const { site } = useStaticQuery(query)
@@ -36,6 +36,7 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		}}
 		title={title}
 		titleTemplate={titleTemplate}
+		key="seo"
 		
 		meta={[
 			{
@@ -120,6 +121,7 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 	>
 
 		{childElements}
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 	</Helmet>
 	)
 }
@@ -132,6 +134,7 @@ SEO.defaultProps = {
 	metaType: `website`,
 	useMailChimp: false,
 	useCurator: false,
+	useSharing: false,
 }
 
 SEO.propTypes = {
@@ -147,6 +150,7 @@ SEO.propTypes = {
 	meta: PropTypes.arrayOf(PropTypes.object),
 	useMailChimp: PropTypes.bool,
 	useCurator: PropTypes.bool,
+	useSharing: PropTypes.bool,
 }
 export default SEO
 

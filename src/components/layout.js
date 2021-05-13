@@ -4,35 +4,33 @@ import base from './base.css'
 import Container from './container'
 import Navigation from './navigation'
 
-import navstyles from './navigation.module.css'
+import styles from './layout.module.css'
 import Footer from './footer'
 
-
 class Template extends React.Component {
-  render() {
-    const { location, children } = this.props
-    let header
+	render() {
+		const { location, children } = this.props
+		let header
 
-    let rootPath = `/`
-    if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
-      rootPath = __PATH_PREFIX__ + `/`
-    }
+		let rootPath = `/`
+		if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
+			rootPath = __PATH_PREFIX__ + `/`
+		}
 
 
-    return (
-      <Container styles={{width: "auto", display: "inline-flex"}}>
-          {/* <div style={{height: "10vh"}}></div> */}
-        <Navigation>
-        {children}  
-        <Footer/>
-            </Navigation>  
-                 
-        
-       
-      </Container>
-      
-    )
-  }
+		return (
+			<div style={{ width: "100%"}}>
+				<Navigation>
+					<div className={styles.innerContainer}>
+						{children}
+					</div>
+					<Footer/>
+				</Navigation>
+				
+			</div>
+
+		)
+	}
 }
 
 export default Template

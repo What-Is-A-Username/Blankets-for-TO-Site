@@ -1,0 +1,115 @@
+.memberCard {
+    pointer-events: none;
+    background: #fff;
+    cursor: pointer;
+    width: 90%; 
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap: 50px;
+}
+
+.memberInformation {
+    display: flex;
+    flex-direction: column;
+    align-self: baseline;
+    justify-content: stretch;
+    width: 100%;
+    font-size: 1.0em;
+}
+
+.memberPortrait {
+    margin-top: 15px;
+    width: 200px !important;
+    height: 200px !important;
+    min-width: 150px;
+    min-height: 150px;
+}
+
+.memberContact {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.memberContact div {
+  display: flex;
+  flex-direction: row;
+}
+
+.memberContact div img { 
+  width: 20px;
+  height: 20px;
+  align-self: center;
+}
+
+.memberContact p {
+  color: gray;
+  margin: 0px 0px 0px 10px;
+  align-self: center;
+  padding: 0px;
+}
+
+.memberContact a {
+    display: flex;
+    flex-direction: row;
+    color: gray;
+    gap: 10px;
+    align-self: center;
+    padding: 0px;
+    pointer-events:all;
+    text-decoration: none;
+  }
+
+.memberContact a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.title {
+    align-self: flex-start;
+    margin: 0px auto 0px 0px;
+    color: black;
+}
+
+.description {
+    margin-top: 0px;
+    color: black;
+}
+
+.name {
+    margin: 0px;
+    color:black;
+}
+
+@media (min-width: 768px) {
+    .memberCard {
+        border-radius: 5px;
+        flex-direction: row;
+        box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        text-align: center;
+        width: 100%
+    }
+    .name {
+        text-align: center;
+    }
+    .description
+    {
+        text-align: center;
+    }
+    .memberCard { 
+        border-radius: 0px;
+        box-shadow: 0 0px 5px rgba(0,0,0,.08), 0 0 1px rgba(0,0,0,.05);
+        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+        flex-direction: column;
+        padding: 15px;
+    }
+}
+

@@ -26,8 +26,7 @@ export default (props) => {
                 </div>
 
                 <ul className={styles.navigation + ' ' + (drawerActive ? styles.fadeIn : styles.fadeOut)}
-                    style={drawerActive ? { top: "70px" } : { top: "-150%" }}
-                >
+                    style={drawerActive ? { top: "70px" } : { top: "-150%" }}>
                     {
                         pages.map((page) => {
                             return (
@@ -39,6 +38,7 @@ export default (props) => {
                     }
                 </ul>
             </nav>
+            {drawerActive && <div className={styles.blocker}></div>}
             {children}
         </div>)
 }

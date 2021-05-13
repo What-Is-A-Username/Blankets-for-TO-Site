@@ -8,7 +8,7 @@
 }
 
 .linkField {
-    max-width: 200px;
+    max-width: 300px;
     height: 24px;
     padding: 0px;
     margin-left: 2px;
@@ -30,6 +30,11 @@
     font-size: 13px;
 }
 
+.linkField button:hover {
+    background-color: var(--primary);
+    cursor: pointer;
+}
+
 .link {
     display: flex;
     justify-content: center;
@@ -39,12 +44,17 @@
     display: flex;
     align-content: center;
     border: none;
-    max-width: 130px;
+    max-width: 200px;
     padding: 0px;
     margin: 0px;
+    font-size: 14px;
     height: 100%;
     background-color: transparent;
     color: rgb(253, 253, 253);
+}
+
+.linkField input:focus-visible {
+    outline: none;
 }
 
 @media (max-width: 760px)

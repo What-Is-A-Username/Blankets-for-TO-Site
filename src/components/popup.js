@@ -7,7 +7,6 @@ export default class Popup extends React.Component {
 
     close = () => {
         if (!this.state.open) return; 
-        // console.log(this.state)
         this.setState({ open: false });
         this.turnoff = setTimeout(() => {
             this.setState({
@@ -30,7 +29,6 @@ export default class Popup extends React.Component {
 
     render() {
         return (
-            
             <div className={styles.popupBlocker + ' ' + (this.state.open ? styles.open : styles.closed) + ' ' + (this.state.visible ? '' : styles.invisible)}>
                 <div className={styles.popup}>
                 {/* {console.log("rendering")} */}
@@ -38,8 +36,8 @@ export default class Popup extends React.Component {
                         <form action="https://us1.list-manage.com/contact-form?u=abe6f10b44a3ec1a18292149f&form_id=6ec166e1addeeda3c5f7a56d6b12b26d" method="POST">
                             <input type="hidden" name="u" value="abe6f10b44a3ec1a18292149f" />
                             <input type="hidden" name="id" value="990e8d7286" />
-                            <div id="mergeTable" class="mergeTable">
-                                <div class="mergeRow dojoDndItem mergeRow-email" id="mergeRow-0">
+                            <div id="mergeTable" className="mergeTable">
+                                <div className="mergeRow dojoDndItem mergeRow-email" id="mergeRow-0">
                                     <label for="fields.134">Email Address <span class="req asterisk">*</span></label>
                                     <div className={"field-group " + styles.emailBox}>
                                         <input type="email" autocapitalize="none" autocorrect="off" name="fields.134" id="fields.134"/>
