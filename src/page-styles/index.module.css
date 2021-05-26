@@ -17,6 +17,12 @@
         border-radius: 15px;
         margin-top: 30px;
     }
+
+    .backgroundImage {
+        border-radius: 15px;
+        margin-top: 30px;
+        max-width: 1300px;
+    }
 }
 
 .backgroundImage {

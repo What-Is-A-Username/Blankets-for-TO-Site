@@ -11,21 +11,21 @@ import Slideshow from '../components/home/slideshow'
 import SEO from '../components/SEO'
 import ContactBox from '../components/home/contact-box'
 import Sponsors from '../components/home/sponsors'
-import $ from "jquery"
+// import $ from "jquery"
 
 class RootIndex extends React.Component {
 
-	componentDidMount() {
-		$(function () {
-			var mainVideo = document.getElementById("titleVideo");
-			var source = document.createElement("source"); 
-			if ($(window).width() < 760) 
-				source.src = "BTO Timelapse Mobile Version 400x800.mp4"; 
-			else 
-				source.src = "BTO TIMELAPSE.mp4"; 
-			mainVideo.append(source); 
-		})
-	}
+	// componentDidMount() {
+	// 	$(function () {
+	// 		var mainVideo = document.getElementById("titleVideo");
+	// 		var source = document.createElement("source"); 
+	// 		if ($(window).width() < 760) 
+	// 			source.src = "BTO Timelapse Mobile Version 400x800.mp4"; 
+	// 		else 
+	// 			source.src = "BTO TIMELAPSE.mp4"; 
+	// 		mainVideo.append(source); 
+	// 	})
+	// }
 
 	render() {
 		const posts = get(this, 'props.data.allContentfulBlogPost.edges')
@@ -45,9 +45,9 @@ class RootIndex extends React.Component {
 				<div className="white-background">
 					{/* Background Image or Video */}
 					<div className={styles.title}>
-                        {/* <Img className={styles.backgroundImage} fluid={organizationBlurb[0].node.frontPageImage.fluid} alt='Background image behind Blankets for T.O. organization logo.'>			
-						</Img> */}
-						<video onPlay={setVidSpeed} muted autoPlay className={styles.backgroundVideo} id='titleVideo'/>
+                        <Img className={styles.backgroundImage} fluid={organizationBlurb[0].node.frontPageImage.fluid} alt='Background image behind Blankets for T.O. organization logo.'>			
+						</Img>
+						{/* <video onPlay={setVidSpeed} muted autoPlay className={styles.backgroundVideo} id='titleVideo'/> */}
 					</div>
 					{/* Description */}
 					<div className={styles.description}>

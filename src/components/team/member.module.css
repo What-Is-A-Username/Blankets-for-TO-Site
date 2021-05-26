@@ -32,12 +32,11 @@
     gap: 2px;
 }
 
-.memberContact div {
+.memberContactEntry {
   display: flex;
-  flex-direction: row;
 }
 
-.memberContact div img { 
+.memberContactIcon { 
   width: 20px;
   height: 20px;
   align-self: center;
@@ -50,7 +49,7 @@
   padding: 0px;
 }
 
-.memberContact a {
+.memberContactLink {
     display: flex;
     flex-direction: row;
     color: gray;
@@ -61,7 +60,7 @@
     text-decoration: none;
   }
 
-.memberContact a:hover {
+.memberContactLink:hover {
     text-decoration: underline;
     color: black;
 }
@@ -74,7 +73,7 @@
 
 .description {
     margin-top: 0px;
-    color: black;
+    color: black;    
 }
 
 .name {
@@ -85,10 +84,10 @@
 @media (min-width: 768px) {
     .memberCard {
         border-radius: 5px;
-        flex-direction: row;
         box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
         transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
         padding: 30px;
+        flex-direction: row;
     }
 }
 

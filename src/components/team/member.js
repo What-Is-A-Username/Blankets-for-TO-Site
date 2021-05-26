@@ -38,9 +38,9 @@ export default ({ data }) => {
                 {
                     contact.map(x => { return(
                         x.platform && 
-                        <div key={data.name+" "+x.platform}>
-                            <a href={x.alt !== "Email" ? x.link : `mailto:${x.platform}`} target="_blank" rel="noopener noreferrer">
-                                <img src={x.icon} alt={`${x.alt} Icon`}/>{x.platform}
+                        <div className={styles.memberContactEntry} key={data.name+" "+x.platform}>
+                            <a className={styles.memberContactLink} href={x.alt !== "Email" ? x.link : `mailto:${x.platform}`} target="_blank" rel="noopener noreferrer">
+                                <img className={styles.memberContactIcon} src={x.icon} alt={`${x.alt} Icon`}/>{x.platform}
                             </a>
                         </div> 
                     )})

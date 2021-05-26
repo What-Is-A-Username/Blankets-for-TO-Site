@@ -54,7 +54,7 @@ p {
 
 @media(min-width: 760px) {
   .wrapper {
-    width: 70%;
+    width: 80%;
   }
   .wrapper h2{
     text-align: left;
@@ -74,11 +74,18 @@ p {
     background: #fff;
 }
 
+@media(min-width: 760px)
+{
+  .white-background {
+    width: 100%;
+  }
+}
+
 @media(max-width: 760px) {
     .white-background {
         padding-top: 70px;
         padding-bottom: 0px;
-        width: 100vw;
+        width: 100%; /* 100vw does not work*/
     }
 }
 

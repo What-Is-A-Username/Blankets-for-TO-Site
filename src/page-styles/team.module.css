@@ -1,20 +1,9 @@
-.positionList {
+.executiveList {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    align-items: top;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-auto-columns: auto;
-    gap: 50px;
+    gap: 30px;
     overflow: visible;
     height: auto;
-}
-
-@media (min-width: 1024px) {
-    .positionList {
-        margin: calc(3vw);
-    }
-}
-
-@media (max-width: 1024px) {
-    .positionList {
-        margin: 0px; 
-    }
 }
