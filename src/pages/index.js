@@ -15,6 +15,7 @@ import Sponsors from '../components/home/sponsors'
 
 class RootIndex extends React.Component {
 
+	// Previous functionality to play video on site
 	// componentDidMount() {
 	// 	$(function () {
 	// 		var mainVideo = document.getElementById("titleVideo");
@@ -41,7 +42,7 @@ class RootIndex extends React.Component {
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="Home" useMailChimp={true} childElements={googleSearchConsoleID} useCurator={false}/>
+				<SEO title="Home" useMailChimp={true} childElements={googleSearchConsoleID} useCurator={true}/>
 				<div className="white-background">
 					{/* Background Image or Video */}
 					<div className={styles.title}>
@@ -71,7 +72,7 @@ class RootIndex extends React.Component {
 					{/* Sponsor and Partner Logos */}
 					<Sponsors/>
 					{/* Instagram Feed */}
-					{/* <div className={styles.instagram}>
+					<div className={styles.instagram}>
 						<h2>Keep updated with our feed</h2>
 						<div id="curator-feed-default-feed-layout">
 							<a href="https://curator.io" target="_blank" className="crt-logo crt-tag">
@@ -81,7 +82,7 @@ class RootIndex extends React.Component {
 						<Link to="https://www.instagram.com/blanketsforto" className='links'>
 							<button className='btn' type="submit">Visit us on Instagram</button>
 						</Link>
-					</div> */}
+					</div>
 				</div>
 			</Layout>
 			)
