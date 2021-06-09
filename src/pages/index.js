@@ -42,7 +42,7 @@ class RootIndex extends React.Component {
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="Home" useMailChimp={true} childElements={googleSearchConsoleID} useCurator={true}/>
+				<SEO title="Home" useMailChimp={true}  useCurator={true}/>
 				<div className="white-background">
 					{/* Background Image or Video */}
 					<div className={styles.title}>
@@ -75,7 +75,7 @@ class RootIndex extends React.Component {
 					<div className={styles.instagram}>
 						<h2>Keep updated with our feed</h2>
 						<div id="curator-feed-default-feed-layout">
-							<a href="https://curator.io" target="_blank" className="crt-logo crt-tag">
+							<a href="https://curator.io" target="_blank" class="crt-logo crt-tag" className="crt-logo crt-tag">
 								Powered by Curator.io
 							</a>
 						</div>
