@@ -19,7 +19,7 @@ class Team extends React.Component {
 				<div className="white-background">
 					<div className="wrapper">
 						<h2>Executive Team</h2>
-						<p>Due to current COVID-19 restrictions, we are unable at this time to complete photo of all our members. We expect that you will be able to meet our team in the near future!</p>
+						<p>Due to current COVID-19 restrictions, we are unable at this time to organize photos for all of our members. However, we expect that you will be able to meet our team in the near future. Thank you for your patience.</p>
 						<div className={styles.executiveList}>
 							{members.map(({ node }) => {
 								return (node.name !== "John Doe" ? <Member key={node.name} data={node} /> : null)
