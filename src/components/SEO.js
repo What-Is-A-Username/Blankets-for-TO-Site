@@ -1,10 +1,10 @@
-	import React from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, useSharing}) => {
+const SEO = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, useSharing, cannonical}) => {
 	
 	const { pathname } = useLocation()
 	const { site } = useStaticQuery(query)
@@ -37,7 +37,6 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		title={title}
 		titleTemplate={titleTemplate}
 		key="seo"
-		
 		meta={[
 			{
 				name: `description`,
@@ -103,6 +102,10 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		link={[{
 			rel: 'icon',
 			href: '/favicon.ico',
+		},
+		{
+			rel: 'canonical',
+			href: cannonical ?? seo.url, 
 		}]
 	}
 	>
@@ -110,6 +113,7 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		{useCurator && <script type="text/javascript" src="https://cdn.curator.io/published/18d8088e-b13e-4fbe-a348-e56d6fcbf0a6.js"></script>}
 		{useMailChimp && <script type="text/javascript" src="https://chimpstatic.com/mcjs-connected/js/users/c190e10f2b62c767274e1197b/52a4a6cc65ff988eefff98c51.js"></script>}
 		{childElements}
+		{console.log("pathname: " + (cannonical !== undefined ? cannonical : seo.url))}
 	</Helmet>
 	)
 }
@@ -123,6 +127,7 @@ SEO.defaultProps = {
 	useMailChimp: false,
 	useCurator: false,
 	useSharing: false,
+	cannonical: undefined, 
 }
 
 SEO.propTypes = {
@@ -139,6 +144,7 @@ SEO.propTypes = {
 	useMailChimp: PropTypes.bool,
 	useCurator: PropTypes.bool,
 	useSharing: PropTypes.bool,
+	cannonical: PropTypes.string,
 }
 export default SEO
 

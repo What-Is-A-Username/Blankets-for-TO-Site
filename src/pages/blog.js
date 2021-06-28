@@ -15,9 +15,6 @@ import PageControls from '../components/blog_search/page-controls'
 
 
 class BlogIndex extends React.Component {
-
-	
-
 	render() {
 		const posts = get(this, 'props.data.allContentfulBlogPost.edges')
 		let filteredPosts = [] 
@@ -100,7 +97,7 @@ class BlogIndex extends React.Component {
 		return (
 			<Layout location={this.props.location}>
 				<SEO title="Updates"
-					description="Browse articles published by Blankets for T.O., including summaries of past initiatives, photos of past events, and everything else associated with us." />
+					description="Browse articles published by Blankets for T.O., including summaries of past initiatives, photos of past events, and everything else associated with us."/>
 				<div className="white-background">
 					<div className="wrapper">
 						<h2>All Updates and Articles</h2>

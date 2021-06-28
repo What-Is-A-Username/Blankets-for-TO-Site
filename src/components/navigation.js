@@ -32,6 +32,11 @@ export default (props) => {
                             return (
                                 <li className={styles.navigationItem} key={page.desc} onClick={changeState}>
                                     <Link to={page.to}>{page.desc}</Link>
+                                    <div className={styles.dropdownContainer}>
+                                        <Link to={page.to}>{page.desc}</Link>
+                                        <Link to={page.to}>{page.desc}</Link>    
+                                        <Link to={page.to}>{page.desc}</Link>
+                                    </div>
                                 </li>
                             )
                         })
