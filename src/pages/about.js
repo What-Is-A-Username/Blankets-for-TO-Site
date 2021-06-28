@@ -15,7 +15,7 @@ class About extends React.Component {
 		return (
 			<Layout location={this.props.location}>
 				<SEO title="About"
-					description="Read more about Blankets for T.O., including its primary objective of helping and advocating for the homeless through charitable events, donations, and awareness initiatives." />
+					description="Read more about Blankets for T.O., including its primary objective of helping and advocating for the homeless through charitable events, donations, and awareness initiatives."/>
 				<div className="white-background">
 					<div className="wrapper">
 						{/* Description, centered  */}

@@ -27,7 +27,7 @@ class Contact extends React.Component {
 		return (
 			<Layout location={this.props.location}>
 				<SEO title="Contact Us"
-					description="Want to reach out to Blankets for T.O. to join, collaborate, or ask a question? Connect to us through any of contact details or social media links shown here." />
+					description="Want to reach out to Blankets for T.O. to join, collaborate, or ask a question? Connect to us through any of contact details or social media links shown here."/>
 				<div className="white-background">
 						<div className="wrapper">
 							<h2>Contact Us</h2>

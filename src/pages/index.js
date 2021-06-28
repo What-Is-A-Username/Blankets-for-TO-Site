@@ -42,7 +42,7 @@ class RootIndex extends React.Component {
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="Home" useMailChimp={true}  useCurator={true}/>
+				<SEO title="Home" useMailChimp={true} useCurator={true}/>
 				<div className="white-background">
 					{/* Background Image or Video */}
 					<div className={styles.title}>
