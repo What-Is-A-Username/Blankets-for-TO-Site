@@ -113,7 +113,7 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		{useCurator && <script type="text/javascript" src="https://cdn.curator.io/published/18d8088e-b13e-4fbe-a348-e56d6fcbf0a6.js"></script>}
 		{useMailChimp && <script type="text/javascript" src="https://chimpstatic.com/mcjs-connected/js/users/c190e10f2b62c767274e1197b/52a4a6cc65ff988eefff98c51.js"></script>}
 		{childElements}
-		{console.log("pathname: " + (cannonical !== undefined ? cannonical : seo.url))}
+		{/* {console.log("pathname: " + (cannonical !== undefined ? cannonical : seo.url))} */}
 	</Helmet>
 	)
 }

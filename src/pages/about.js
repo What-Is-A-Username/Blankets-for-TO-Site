@@ -7,10 +7,24 @@ import Layout from '../components/layout'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../page-styles/about.module.css'
 
+import { BLOCKS } from '@contentful/rich-text-types';
+
 class About extends React.Component {
 	render() {
 		const aboutPage = get(this, 'props.data.allContentfulOrganizationInformationAboutPageRichTextNode.edges')
 		const node = aboutPage[0].node;
+
+		const options = {
+			renderNode: {
+				[BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields } } }) =>
+					<img src={fields.file['en-US'].url}
+						style={{
+							width: fields.file['en-US'].details.image.width,
+						}}
+						alt={fields.description}
+					/>,
+			},
+		};
 
 		return (
 			<Layout location={this.props.location}>
@@ -20,10 +34,8 @@ class About extends React.Component {
 					<div className="wrapper">
 						{/* Description, centered  */}
 						<h2>Our Organization</h2>
-						<div className={"richText" + ' ' + styles.description} >
-							<div>
-								{node.json !== undefined ? documentToReactComponents(node.json) : <p>Error: Articles not found.</p>}
-							</div>
+						<div className={"richText " + styles.description} >
+							{node.json !== undefined ? documentToReactComponents(node.json, options) : <p>Error: Articles not found.</p>}
 						</div>
 					</div>
 				</div>

@@ -30,14 +30,15 @@ export default (props) => {
                     {
                         pages.map((page) => {
                             return (
-                                <li className={styles.navigationItem} key={page.desc} onClick={changeState}>
-                                    <Link to={page.to}>{page.desc}</Link>
-                                    <div className={styles.dropdownContainer}>
-                                        <Link to={page.to}>{page.desc}</Link>
-                                        <Link to={page.to}>{page.desc}</Link>    
+                                <div className={styles.navigationItem} key={page.desc} onClick={changeState}>
+                                    <div className={styles.parentItem}>
                                         <Link to={page.to}>{page.desc}</Link>
                                     </div>
-                                </li>
+                                    {/* <div className={styles.dropdownContainer}>
+                                        <Link to={page.to}>{page.desc}</Link>    
+                                        <Link to={page.to}>{page.desc}</Link>
+                                    </div> */}
+                                </div>
                             )
                         })
                     }

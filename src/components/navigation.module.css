@@ -29,13 +29,11 @@
 .navigationItem {
 	display: inline-block;
 	align-items: center;
-	margin: 0 1em;
 	color: white;
 }
 
 .navigationItem a {
 	width: 100%;
-	
 	text-align: center;
 	color: white;
 	text-decoration: none;
@@ -63,10 +61,6 @@
 	margin: 0 1em;
 }
 
-.dropdownContainer a 
-{
-	margin: 0 1em;
-}
 
 @media(max-width: 760px) {
 	.logo {
@@ -104,12 +98,17 @@
 		justify-content: center;
 		font-size: 1.25em;
 	}
+
+	.parentItem {
+		display: grid;
+		justify-content: center;
+	}
 	
 	.hamburger {
 		color: transparent;
 		width: 30px;
 		height: 30px;
-		
+		cursor: pointer;
 		background-size: cover
 	}
 	
@@ -189,6 +188,17 @@
 		padding: 0px 0px 0px 0px; 
 	}
 
+	.navigationItem {
+		position: relative;
+		display: inline-block;
+		margin: 0 1em; 
+	}
+
+	.parentItem a { 
+		min-width: 50px;
+	}
+
+	/* Visibility of nested menu items */
 	.navigationItem .dropdownContainer {
 		visibility: hidden; 
 	}
@@ -199,11 +209,15 @@
 	
 	/* Dropdown items */
 	.dropdownContainer {
-		position: relative;
+		position: absolute;
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
+	}	
+
+	.dropdownContainer a {
+		margin: 0 5em;
 	}
-	
 }
 
 @keyframes fadeIn {
