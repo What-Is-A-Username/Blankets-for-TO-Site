@@ -2,17 +2,23 @@ import React from 'react'
 import { Link, StaticQuery, graphql, navigate } from 'gatsby'
 import styles from './article-preview.module.css'
 import { BlogTagBar } from './blog_search/tag'
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types'
+import Fade from 'react-reveal/Fade'
+import Bounce from 'react-reveal/Bounce'
 
 const renderFunc = (articles, excludeSlug) => {
 	return (
 		<div className={styles.updates}>
-			<h2>Keep updated with our latest events</h2>
+			<Bounce left>
+				<h2>Keep updated with our latest events</h2>
+			</Bounce>
+			<Fade>
 			<div className={styles.previewParent}>
-				{articles.map((article) => {
+				{articles.map((article, index) => {
 					return (
 						article.node.slug === excludeSlug ?
 						null :  
+						<Fade delay={100*index}>
 						<a onClick={() => navigate(`/blog/${article.node.slug}`)} className={styles.alink} key={article.node.title}>
 							<div className={styles.preview} >
 								<div className={styles.previewImage}>
@@ -34,12 +40,16 @@ const renderFunc = (articles, excludeSlug) => {
 								</div>
 							</div>
 						</a>
+						</Fade>
 					)
 				})}
 			</div>
-			<Link to="/blog" className='links'>
-				<button className='btn' type="submit">Browse all updates</button>
-			</Link>
+			</Fade>
+			<Fade delay={500}>
+				<Link to="/blog" className='links'>
+					<button className='btn' type="submit">Browse all updates</button>
+				</Link>
+			</Fade>
 		</div>)
 }
 

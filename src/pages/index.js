@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Img from 'gatsby-image'
 
 import { Link } from 'gatsby'
@@ -6,11 +6,16 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
+import StatsHighlight from '../components/home/stats-highlight'
 import styles from '../page-styles/index.module.css'
 import Slideshow from '../components/home/slideshow'
 import SEO from '../components/SEO'
 import ContactBox from '../components/home/contact-box'
 import Sponsors from '../components/home/sponsors'
+import Fade from 'react-reveal/Fade'
+import Bounce from 'react-reveal/Bounce'
+import { set } from 'lodash'
+
 // import $ from "jquery"
 
 class RootIndex extends React.Component {
@@ -43,45 +48,70 @@ class RootIndex extends React.Component {
 		return (
 			<Layout location={this.props.location}>
 				<SEO title="Home" useMailChimp={true} useCurator={true}/>
+
 				<div className="white-background">
 					{/* Background Image or Video */}
-					<div className={styles.title}>
-                        <Img className={styles.backgroundImage} fluid={organizationBlurb[0].node.frontPageImage.fluid} alt='Background image behind Blankets for T.O. organization logo.'>			
-						</Img>
-						{/* <video onPlay={setVidSpeed} muted autoPlay className={styles.backgroundVideo} id='titleVideo'/> */}
-					</div>
-					{/* Description */}
-					<div className={styles.description}>
-						<h2>Our Organization</h2>
-						<p>{organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
-						<div className={styles.btnRow}>
-							<Link to="/about" className='links'>
-								<button className='whiteBtn' type="submit">Read more</button>
-							</Link>
-							<Link to="/team" className='links'>
-								<button className='whiteBtn' type="submit">Meet the team</button>
-							</Link>
+					<Fade>
+						<div className={styles.title}>
+							<Img className={styles.backgroundImage} fluid={organizationBlurb[0].node.frontPageImage.fluid} alt='Background image behind Blankets for T.O. organization logo.'>			
+							</Img>
+							{/* <video onPlay={setVidSpeed} muted autoPlay className={styles.backgroundVideo} id='titleVideo'/> */}
 						</div>
-					</div>
+					</Fade>
+					{/* Description */}
+					<Bounce left>
+						<div className={styles.description}>
+							<h2>Our Organization</h2>
+							<p>{organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
+							<div className={styles.btnRow}>
+								<Link to="/about" className='links'>
+									<button className='whiteBtn' type="submit">Read more</button>
+								</Link>
+								<Link to="/team" className='links'>
+									<button className='whiteBtn' type="submit">Meet the team</button>
+								</Link>
+							</div>
+						</div>
+					</Bounce>
+					<StatsHighlight/>
 					{/* Slideshow */}
-					<Slideshow menuItems={slides}></Slideshow>
+					<Bounce left>
+						<Slideshow menuItems={slides}></Slideshow>
+					</Bounce>
 					{/* Updates */}
-					<ArticlePreview articles={posts}/>
+					<Fade>
+						<ArticlePreview articles={posts}/>
+					</Fade>
+						
 					{/* Join Us and Contact Us Box */}
-					<ContactBox left={organizationBlurb[0].node.leftBackgroundImage.fluid} right={organizationBlurb[0].node.leftBackgroundImage.fluid}></ContactBox>
-					{/* Sponsor and Partner Logos */}
-					<Sponsors/>
+					<Bounce right>
+						<ContactBox left={organizationBlurb[0].node.leftBackgroundImage.fluid} right={organizationBlurb[0].node.leftBackgroundImage.fluid}></ContactBox>
+						{/* Sponsor and Partner Logos */}
+					</Bounce>
+
+					<Bounce left>
+						<Sponsors/>
+					</Bounce>
+
 					{/* Instagram Feed */}
 					<div className={styles.instagram}>
-						<h2>Keep updated with our feed</h2>
-						<div id="curator-feed-default-feed-layout">
-							<a href="https://curator.io" target="_blank" class="crt-logo crt-tag" className="crt-logo crt-tag">
-								Powered by Curator.io
-							</a>
+						<Bounce top>
+							<h2 className={styles.instagramTitle}>Keep updated with our feed</h2>
+						</Bounce>
+						<Fade delay={250}>
+						<div className={styles.instagramPosts}>
+							<div id="curator-feed-default-feed-layout">
+								<a href="https://curator.io" target="_blank" class="crt-logo crt-tag" className="crt-logo crt-tag">
+									Powered by Curator.io
+								</a>
+							</div>
 						</div>
-						<Link to="https://www.instagram.com/blanketsforto" className='links'>
-							<button className='btn' type="submit">Visit us on Instagram</button>
-						</Link>
+						</Fade>
+						<Bounce left delay={300}>
+							<Link to="https://www.instagram.com/blanketsforto" className={'links' + ' ' + styles.instagramLink}>
+								<button className='btn' type="submit">Visit us on Instagram</button>
+							</Link>
+						</Bounce>
 					</div>
 				</div>
 			</Layout>

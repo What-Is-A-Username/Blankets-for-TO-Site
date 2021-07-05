@@ -10,7 +10,18 @@
         },
         {
             "to": "/blog",
-            "desc": "Updates"
+            "desc": "Updates",
+            "children": 
+            [
+                { 
+                    "to": "/blog", 
+                    "desc": "Updates" 
+                }, 
+                {
+                    "to": "/blog/podcasts", 
+                    "desc": "Podcasts" 
+                }
+            ]
         },
         {
             "to": "/team",

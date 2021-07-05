@@ -3,18 +3,19 @@
     display: flex;
     flex-direction: column;
     margin: 0px 0px 30px 15px;
-    gap: 5px;
 }
 
 .filterTitle 
 {
     margin: 0px;
     color: var(--primary);
+    padding-bottom: 5px;
 }
 
 .dropdownRoot
 {
     max-width: 300px;
+    padding-bottom: 5px;
 }
 
 .dropdownArrow
@@ -25,12 +26,19 @@
 .activeTagContainer, .blogTagContainer
 {
     display: flex;
-    gap: 5px;
+    padding-bottom: 5px;
     flex-wrap: wrap;
+}
+
+/* Spacing between tag elements */
+.activeTagContainer > div, .blogTagContainer > div 
+{
+    margin: 5px;
 }
 
 .selectTagButton {
     font-size: 1.5em;
+    padding-left: 5px;
     margin: 0px auto 0px auto;
     align-self: center;
 }
@@ -45,9 +53,7 @@
 .activeTag, .blogTag, .clickableBlogTag
 {
     display: flex;
-    gap: 5px;
     border-radius: 20px;
-    margin: 0px;
     line-height: 1px;
     padding: 0px 15px 0px 15px;
 }

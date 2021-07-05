@@ -4,6 +4,7 @@
 	margin: 0px;
 	background-color: black;
 	width: 100%;
+	max-width: 100%;
 	z-index: 10;
 }
 
@@ -26,25 +27,6 @@
 	z-index: 9;
 }
 
-.navigationItem {
-	display: inline-block;
-	align-items: center;
-	color: white;
-}
-
-.navigationItem a {
-	width: 100%;
-	text-align: center;
-	color: white;
-	text-decoration: none;
-	background-color: black;
-	z-index: 1;
-}
-
-.navigationItem a:hover{
-	color:var(--primary);
-}
-
 .closeItem {
 	display: inline-flex;
 	font-size: .9em;
@@ -61,12 +43,11 @@
 	margin: 0 1em;
 }
 
-
 @media(max-width: 760px) {
 	.logo {
 		position: fixed;
 		background-color: black;
-		width: 100%;
+		width: 100vw;
 	}
 	
 	.logo h1 {
@@ -89,20 +70,10 @@
 		flex-direction: column;
 		height: auto;
 		position: fixed;
-		width: 100%;
+		width: 100vw;
 		background-color: black;
 		padding: 0px 0px 10px 0px; 
 	} 
-	
-	.navigationItem {
-		justify-content: center;
-		font-size: 1.25em;
-	}
-
-	.parentItem {
-		display: grid;
-		justify-content: center;
-	}
 	
 	.hamburger {
 		color: transparent;
@@ -157,7 +128,6 @@
 }
 
 @media(min-width: 760px) {
-	
 	.blocker {
 		height: 0px;
 		width: 0px;
@@ -186,37 +156,6 @@
 		max-height: 100px;
 		width: 100%;
 		padding: 0px 0px 0px 0px; 
-	}
-
-	.navigationItem {
-		position: relative;
-		display: inline-block;
-		margin: 0 1em; 
-	}
-
-	.parentItem a { 
-		min-width: 50px;
-	}
-
-	/* Visibility of nested menu items */
-	.navigationItem .dropdownContainer {
-		visibility: hidden; 
-	}
-
-	.navigationItem:hover .dropdownContainer {
-		visibility:visible; 
-	}
-	
-	/* Dropdown items */
-	.dropdownContainer {
-		position: absolute;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}	
-
-	.dropdownContainer a {
-		margin: 0 5em;
 	}
 }
 

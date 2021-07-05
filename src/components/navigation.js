@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, navigate } from 'gatsby'
 import styles from './navigation.module.css'
 import pageData from '../pages/page-data.json'
+import NavigationItem from './navigation-item'
 
 export default (props) => {
 
@@ -24,21 +25,12 @@ export default (props) => {
                         <div className={styles.hamburger + ' ' + styles.menuClosed}></div>}
                     </div>
                 </div>
-
                 <ul className={styles.navigation + ' ' + (drawerActive ? styles.fadeIn : styles.fadeOut)}
                     style={drawerActive ? { top: "70px" } : { top: "-150%" }}>
                     {
                         pages.map((page) => {
                             return (
-                                <div className={styles.navigationItem} key={page.desc} onClick={changeState}>
-                                    <div className={styles.parentItem}>
-                                        <Link to={page.to}>{page.desc}</Link>
-                                    </div>
-                                    {/* <div className={styles.dropdownContainer}>
-                                        <Link to={page.to}>{page.desc}</Link>    
-                                        <Link to={page.to}>{page.desc}</Link>
-                                    </div> */}
-                                </div>
+                                <NavigationItem page={page} onChangeState={changeState}/>
                             )
                         })
                     }
@@ -46,5 +38,6 @@ export default (props) => {
             </nav>
             {drawerActive && <div className={styles.blocker}></div>}
             {children}
-        </div>)
+        </div>
+    )
 }

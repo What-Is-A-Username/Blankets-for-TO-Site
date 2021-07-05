@@ -13,11 +13,10 @@ export default () => {
     
     const constructSponsorRow = (sponsorList) => {
         return(
-            
             <div className={styles.logoContainer}>
                 {sponsorList.map(x => {
                     return(
-                        <a href={x.linkUrl} target="_blank" rel="noopener noreferrer">
+                        <a className={styles.alink} href={x.linkUrl} target="_blank" rel="noopener noreferrer">
                             <div className={styles.logo}>
                                 <img alt={x.name} src={x.logo.resize.src}></img>
                             </div> 

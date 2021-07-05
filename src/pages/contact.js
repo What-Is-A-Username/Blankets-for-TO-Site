@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
+import Fade from 'react-reveal/Fade'
 
 import emailImage from '../components/images/contact/emailTransparent.svg'
 import twitterImage from '../components/images/contact/twitterTransparent.svg'
@@ -30,7 +31,10 @@ class Contact extends React.Component {
 					description="Want to reach out to Blankets for T.O. to join, collaborate, or ask a question? Connect to us through any of contact details or social media links shown here."/>
 				<div className="white-background">
 						<div className="wrapper">
-							<h2>Contact Us</h2>
+							<Fade left duration={400}>
+								<h2>Contact Us</h2>
+							</Fade>
+							<Fade delay={400}>
 							<div className={styles.socialMedia}>
 								{
 									nameEntry.map((x, i) => {
@@ -47,6 +51,7 @@ class Contact extends React.Component {
 									)
 								}
 							</div>
+							
 							<div className={styles.contactDetails}>
 								{node.officeAddress != "null" ?
 									<div>
@@ -62,13 +67,14 @@ class Contact extends React.Component {
 									</div> : null
 								}
 							</div>
-
 							<div className={styles.contactDirectly}>
 								<h3>Send Us a Direct Message</h3>
-								<Link to='https://us7.list-manage.com/contact-form?u=c190e10f2b62c767274e1197b&form_id=ff96bfbc82a7a31d98bb442faba2bbca' className='links' target="_blank" rel="noopener noreferrer">
-									<button className='btn' type="submit">Fill out our contact form</button>
-								</Link>
+								
+									<Link to='https://us7.list-manage.com/contact-form?u=c190e10f2b62c767274e1197b&form_id=ff96bfbc82a7a31d98bb442faba2bbca' className='links' target="_blank" rel="noopener noreferrer">
+										<button className='btn' type="submit">Fill out our contact form</button>
+									</Link>
 							</div>
+							</Fade>
 						</div>
 				</div>
 			</Layout>

@@ -8,6 +8,8 @@ import facebookImage from './images/contact/facebookTransparent.svg'
 import instagramImage from './images/contact/instagramTransparent.svg'
 import tikTokImage from './images/contact/tiktokTransparent.svg'
 import pageData from '../pages/page-data.json'
+import FooterItem from './footer-item'
+import Fade from 'react-reveal/Fade'
 
 const stuff = (props) => {
 	var contactInfo = props.allContentfulOrganizationInformation.edges
@@ -20,6 +22,7 @@ const stuff = (props) => {
 	const icon = [emailImage, facebookImage, instagramImage, twitterImage, tikTokImage]
 
 	return (
+		<Fade>
 		<footer role="contentinfo" className={styles.footer}>
 			<h1 className={styles.footerTitle}>
 				Blankets For T.O.
@@ -37,31 +40,24 @@ const stuff = (props) => {
 								</a>
 							</div>
 						)
-					}
-					)
+					})
 				}
 			</div>
 			<p className={styles.footerInfo}>
 				An organization at the University of Toronto Scarborough.
       		</p>
 			<ul className={styles.navigation}>
-				{
-					pages.map((page) => {
-						return (
-							<li className={styles.navigationItem} key={page.desc}>
-								<Link to={page.to}>{page.desc}</Link>
-							</li>
-						)
-					})
-				}
+			{
+				pages.map((page) => { return (<FooterItem page={page}/>)})
+			}
 			</ul>
-
 			<div className={styles.credits}>
 				<Link to={'/credits'}>Media Credits and Attribution</Link>
 			</div>
 			<div>
 			</div>
 		</footer>
+		</Fade>
 	)
 }
 

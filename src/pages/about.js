@@ -6,8 +6,9 @@ import SEO from '../components/SEO'
 import Layout from '../components/layout'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../page-styles/about.module.css'
-
+import Container from '../components/container'
 import { BLOCKS } from '@contentful/rich-text-types';
+import Fade from 'react-reveal/Fade'
 
 class About extends React.Component {
 	render() {
@@ -19,7 +20,8 @@ class About extends React.Component {
 				[BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields } } }) =>
 					<img src={fields.file['en-US'].url}
 						style={{
-							width: fields.file['en-US'].details.image.width,
+							maxHeight: 300,
+							width: fields.file['en-US'].details.image.width * (300 / fields.file['en-US'].details.image.height),
 						}}
 						alt={fields.description}
 					/>,
@@ -32,13 +34,16 @@ class About extends React.Component {
 					description="Read more about Blankets for T.O., including its primary objective of helping and advocating for the homeless through charitable events, donations, and awareness initiatives."/>
 				<div className="white-background">
 					<div className="wrapper">
-						{/* Description, centered  */}
-						<h2>Our Organization</h2>
+						<Fade left duration={400}>
+							<h2>Our Organization</h2>
+						</Fade>
+						<Fade delay={500}>
 						<div className={"richText " + styles.description} >
 							{node.json !== undefined ? documentToReactComponents(node.json, options) : <p>Error: Articles not found.</p>}
 						</div>
+						</Fade>
 					</div>
-				</div>
+				</div> 
 			</Layout>
 		)
 	}

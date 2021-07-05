@@ -1,0 +1,22 @@
+{
+    "figures": [
+        {
+            "number": "500",
+            "title": "Masks",
+            "subtitle": "",
+            "prefix": "" 
+        },
+        {
+            "number": "80",
+            "title": "Blankets",
+            "subtitle": "", 
+            "prefix": ""
+        },
+        {
+            "number": "60",
+            "title": "Donuts",
+            "subtitle": "", 
+            "prefix": ""
+        }
+    ]
+}

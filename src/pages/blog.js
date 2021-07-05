@@ -7,11 +7,10 @@ import SEO from '../components/SEO'
 import QueryString from 'query-string'
 import { SearchTools } from '../components/blog_search/tag'
 import styles from '../page-styles/blog.module.css'
-import { search } from 'core-js/fn/symbol'
-import { addLocale } from 'core-js'
 import { clamp, filter, range } from 'lodash'
 import { ceil } from 'lodash'
 import PageControls from '../components/blog_search/page-controls'
+import Fade from 'react-reveal/Fade'
 
 
 class BlogIndex extends React.Component {
@@ -100,20 +99,26 @@ class BlogIndex extends React.Component {
 					description="Browse articles published by Blankets for T.O., including summaries of past initiatives, photos of past events, and everything else associated with us."/>
 				<div className="white-background">
 					<div className="wrapper">
-						<h2>All Updates and Articles</h2>
-						<SearchTools onDropdownChange={onSelect} dropdownPlaceholder={searchParams.sort} tags={uniqueTags} clickTagFunc={onClickTag} activeTags={searchParams.tags} />
+						<Fade left duration={400}>
+							<h2>Updates and Articles</h2>
+						</Fade>
+						<Fade delay={400}>		
+							<SearchTools onDropdownChange={onSelect} dropdownPlaceholder={searchParams.sort} tags={uniqueTags} clickTagFunc={onClickTag} activeTags={searchParams.tags} />
+						</Fade>
 						{numberOfPages == 0 && <div>No results match your filter query.</div>}
-						<PageControls numPages={numberOfPages} onPageClick={onPageClick} currentPage={searchParams.page}/>
-						<div className={styles.blog_list}>
-							{visiblePosts.map(({ node }) => {
-								return (
-									<div key={node.slug}>
-										<ArticleEntry article={node} />
-									</div>
-								)
-							})}
-						</div>
-						<PageControls numPages={numberOfPages} onPageClick={onPageClick} currentPage={searchParams.page}/>
+						<Fade delay={500}>
+							<PageControls numPages={numberOfPages} onPageClick={onPageClick} currentPage={searchParams.page}/>
+							<div className={styles.blog_list}>
+								{visiblePosts.map(({ node }) => {
+									return (
+										<div key={node.slug}>
+											<ArticleEntry article={node} />
+										</div>
+									)
+								})}
+							</div>
+							<PageControls numPages={numberOfPages} onPageClick={onPageClick} currentPage={searchParams.page}/>
+						</Fade>
 					</div>
 				</div>
 			</Layout>

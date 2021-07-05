@@ -16,7 +16,7 @@ class LinkSharing extends React.Component {
         copyText.select();
         copyText.setSelectionRange(0, 99999); /* For mobile devices */
         document.execCommand("copy");
-        setState({linkCopied: true}, 
+        this.setState({linkCopied: true}, 
             () => {
                 let timeout = setTimeout(() => {
                     this.setState({linkCopied: false, timer: timeout})}
@@ -43,7 +43,7 @@ class LinkSharing extends React.Component {
                 <div className={styles.link}>
                     <div className={styles.linkField}>
                         <input style={{width: this.props.location.length + 'ch'}} type="text" value={this.props.location} id="linkAddress" readOnly/>
-                        <button onClick={() => this.copyLink()}>{this.state.linkCopied ? "Copied!" : "Copy URL"}</button>
+                        <button className={this.state.linkCopied ? styles.linkFieldButtonClicked : styles.linkFieldButtonNormal} onClick={() => this.copyLink()}>{this.state.linkCopied ? "Copied!" : "Copy URL"}</button>
                     </div>
                 </div>
             </div>

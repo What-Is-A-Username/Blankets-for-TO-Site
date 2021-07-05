@@ -18,7 +18,6 @@
         display: flex;
         flex-direction: column;
         height: fit-content;
-        gap: 10px;
     }
     .logo {
         height: 80px;
@@ -29,20 +28,27 @@
     .logo img {
         width: auto;
     }
+    .alink {
+        padding: 5px;
+    }
 }
 
 @media (min-width: 760px)
 {
-    .logo{
+    .logo {
         height: 100%; 
     }
     .logoContainer {
         display: flex;
         flex-direction: row;
         height: 100px;
-        gap: 20px;
+    }
+    .alink {
+        padding: 10px;
     }
 }
+
+
 
 .logoContainer { 
     justify-content: center;

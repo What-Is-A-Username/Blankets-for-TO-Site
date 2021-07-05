@@ -21,7 +21,7 @@
     .backgroundImage {
         border-radius: 15px;
         margin-top: 30px;
-        max-width: 1300px;
+        max-width: 1200px;
     }
 }
 
@@ -52,7 +52,7 @@
 
 @media (min-width: 760px) { 
     .description { 
-        margin: 5vh 7vw 5vh 7vw;
+        margin: 5vh 7vw 0 7vw;
         padding: 50px 5% 50px 5%; 
         border-radius: 15px;
     }
@@ -83,20 +83,22 @@
     margin: 0px;
 }
 
-
 .instagram {
-    padding: 50px;
-    background-color: #f2f2f28c;
+    padding-bottom: 25px;
 }
 
-.instagram > h2 {
+.instagramPosts {
+    padding: 25px;
+}
+
+.instagramTitle {
     text-align: center;
     color: var(--primary);
     margin-top: 10px;
     margin-bottom: 10px; 
 }
 
-.instagram > div > div > div > div > div
+.instagramPosts > div > div > div > div > div
 {
     padding: 5px !important;
 }
@@ -105,8 +107,11 @@
     .btnRow {
         display: flex;
         flex-direction: row;
-        gap: 60px;
         justify-content: center;
+    }
+
+    .btnRow a {
+        padding: 25px;
     }
 }
 
@@ -114,7 +119,10 @@
     .btnRow {
         display: flex;
         flex-direction: column;
-        gap: 50px;
         justify-content: center;
+    }
+
+    .btnRow a {
+        padding: 10px;
     }
 }

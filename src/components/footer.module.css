@@ -1,96 +1,99 @@
 .footer {
-  background-color: black;
-  width: 100%;
-  height: auto;
-  padding-top: 10px;
-  padding-bottom: 20px;
-  margin: 0px;
+	background-color: black;
+	width: 100%;
+	height: auto;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	margin: 0px;
 }
 
 .footerTitle {
-  color: var(--primary);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 0px;
-  margin-bottom: 0px;
+	color: var(--primary);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 .footerInfo {
-  color: gray; 
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin-top: 5px;
-  margin-bottom: 5px;
+	color: gray; 
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .navigation {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  margin: 0;
-  height: auto;
-  font-size: 1.25em;
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 0px;
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	margin: 0;
+	height: auto;
+	font-size: 1.25em;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
 }
 
 .navigationItem {
-  display: inline-flex;
-  align-items: center;
-  margin: 0 1em;
-  color: white;
+	display: inline-flex;
+	align-items: center;
+	margin: 0 1em;
+	color: white;
 }
 
 .navigationItem a {
-  color: white;
-  text-decoration: none;
+	color: white;
+	text-decoration: none;
 }
 
 .navigationItem a:hover {
-  color:var(--primary);
+	color:var(--primary);
 }
-  
-@media(max-width: 760px) {
-  .navigation{
-      flex-direction: column;
-      
-  }
 
-  .navigationItem {
-      justify-content: center;
-  }
+@media(max-width: 760px) {
+	.navigation{
+		flex-direction: column;
+		
+	}
+	
+	.navigationItem {
+		justify-content: center;
+	}
 }  
 
 .credits {
-  margin-top: 10px;
-  text-align: center;
-  color: rgb(66, 66, 66);
-  text-decoration-color: rgb(66, 66, 66);
+	margin-top: 10px;
+	text-align: center;
+	color: rgb(66, 66, 66);
+	text-decoration-color: rgb(66, 66, 66);
 }
 
 .credits:hover {
-  color: var(--primary);
+	color: var(--primary);
 }
 
 .socialMedia {
-  display: flex;  
-  width: 100%;
-  gap: 10px;
-  justify-content: center;
-  flex-direction: row;
-  height: 40px;
-  align-items: center;
+	display: flex;  
+	width: 100%;
+	justify-content: center;
+	flex-direction: row;
+	height: 40px;
+	align-items: center;
+}
+
+.socialMediaEntry {
+	padding: 5px;
 }
 
 .socialMediaEntry img {
-  width: 40px;
-  opacity: 0.9;
+	width: 40px;
+	opacity: 0.9;
 }
 
 .socialMediaEntry img:hover {
-  width: 50px;
-  opacity: 1.0;
+	width: 50px;
+	opacity: 1.0;
 }

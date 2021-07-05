@@ -1,5 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export default ({ children }) => (
-  <div style={{ maxWidth: 1920, margin: '0 5vh 0 5vh' }}>{children}</div>
-)
+const Container = (props, {title}) => {
+	return(
+		<div className="white-background">
+			<div className="wrapper">
+				{/* Description, centered  */}
+				<h2>{props.title}</h2>
+				{props.children}
+			</div>
+		</div>
+	)
+}
+
+export default Container
+
+Container.propTypes = {
+	title: PropTypes.string.isRequired,
+}
