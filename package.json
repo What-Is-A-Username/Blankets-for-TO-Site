@@ -23,7 +23,6 @@
     "lodash": "^4.17.21",
     "query-string": "^5.1.1",
     "react": "^16.13.1",
-    "react-animate-on-scroll": "^2.1.5",
     "react-countup": "^4.4.0",
     "react-dom": "^16.13.1",
     "react-dropdown": "^1.9.2",
