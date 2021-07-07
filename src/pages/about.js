@@ -1,12 +1,10 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../page-styles/about.module.css'
-import Container from '../components/container'
 import { BLOCKS } from '@contentful/rich-text-types';
 import Fade from 'react-reveal/Fade'
 

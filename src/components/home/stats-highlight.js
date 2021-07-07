@@ -7,16 +7,16 @@ import stats from './stats-highlights-data.json'
 const StatsHighlight = () => {
 
     const [counter, startCounter] = React.useState(false); 
+    const statsToDisplay = stats.total;
+    const { title } = stats;
 
     return(
         <Fade onReveal={() => {if (!counter) startCounter(true)}}>
             <div className={styles.parentContainer}>
-                <h1 className={styles.parentTitle}>
-                    Our donations to the homeless community include 
-                </h1>
+                <h1 className={styles.parentTitle}>{title}</h1>
                 <div className={styles.items} >    
                 {
-                    stats.figures.map(item =>
+                    statsToDisplay.map(item =>
                         {
                             return(
                                 <Fade>

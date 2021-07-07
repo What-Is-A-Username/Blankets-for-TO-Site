@@ -108,15 +108,19 @@ class BlogIndex extends React.Component {
 						{numberOfPages == 0 && <div>No results match your filter query.</div>}
 						<Fade delay={500}>
 							<PageControls numPages={numberOfPages} onPageClick={onPageClick} currentPage={searchParams.page}/>
+						</Fade>	
 							<div className={styles.blog_list}>
-								{visiblePosts.map(({ node }) => {
+								{visiblePosts.map(({node}, i) => {
 									return (
-										<div key={node.slug}>
-											<ArticleEntry article={node} />
-										</div>
+										<Fade delay={i == 0 ? 500 : 200}>
+											<div key={node.slug}>
+												<ArticleEntry article={node} />
+											</div>
+										</Fade>
 									)
 								})}
 							</div>
+						<Fade delay={500}>
 							<PageControls numPages={numberOfPages} onPageClick={onPageClick} currentPage={searchParams.page}/>
 						</Fade>
 					</div>

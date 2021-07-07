@@ -1,20 +1,13 @@
 {
-  "name": "Contentful Gatsby Starter",
-  "description": "Gatsby starter for a Contentful project.",
+  "name": "Blankets for T.O. Site",
+  "description": "Site for the organization Blankets for T.O.",
   "keywords": [
     "contentful",
     "gatsby",
     "static",
-    "ssg"
+    "Blankets for T.O.",
+    "blanketsforto"
   ],
-  "repository": "https://github.com/contentful-userland/gatsby-contentful-starter",
-  "success_url": "/",
-  "buildpacks": [
-    {
-      "url": "heroku/nodejs"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-static"
-    }
-  ]
+  "repository": "https://github.com/What-Is-A-Username/website-gatsby-starter",
+  "success_url": "/"
 }

@@ -19,8 +19,7 @@ export default ({page, onChangeState}) => {
                         </div>
                     )
                 })
-            }
-            
+            } 
         </div>
     </div>
     )

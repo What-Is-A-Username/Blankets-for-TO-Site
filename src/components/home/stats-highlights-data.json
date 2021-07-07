@@ -1,4 +1,13 @@
 {
+    "title": "To date, we have donated to the homeless community:", 
+    "total": [
+        {
+            "number": "1763",
+            "title": "items",
+            "subtitle": "including blankets, masks, and food donations.",
+            "prefix": ""
+        }
+    ],
     "figures": [
         {
             "number": "500",

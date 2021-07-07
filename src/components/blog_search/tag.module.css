@@ -33,7 +33,7 @@
 /* Spacing between tag elements */
 .activeTagContainer > div, .blogTagContainer > div 
 {
-    margin: 5px;
+    margin: 2px;
 }
 
 .selectTagButton {

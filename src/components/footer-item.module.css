@@ -40,7 +40,7 @@
 
 @media(min-width: 760px) {
     .footerItem {
-        margin: 0 1em; 
+        margin: 0 15px; 
     }
 
     .parentItem a { 
