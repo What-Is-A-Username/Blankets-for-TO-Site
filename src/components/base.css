@@ -234,3 +234,9 @@ Rich Text Display
 {
 	color: #8924c4; 
 }
+
+.richText blockquote
+{
+	margin-left: 20%;
+	margin-right: 20%;
+}
