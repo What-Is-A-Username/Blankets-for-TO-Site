@@ -73,7 +73,7 @@ class RootIndex extends React.Component {
 							</div>
 						</div>
 					</Bounce>
-					<StatsHighlight/>
+					<StatsHighlight donationItemCount={organizationBlurb[0].node.donationItemCount}/>
 					{/* Slideshow */}
 					<Bounce left>
 						<Slideshow menuItems={slides}></Slideshow>
@@ -169,6 +169,8 @@ class RootIndex extends React.Component {
 					childContentfulOrganizationInformationOrganizationFrontBlurbTextNode {
 						organizationFrontBlurb
 					}
+
+					donationItemCount : donationItemCounter
 					
 					frontPageImage {
 						fluid(

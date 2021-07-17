@@ -3,8 +3,9 @@ import styles from './stats-highlight.module.css'
 import Countup from 'react-countup'
 import Fade from 'react-reveal/Fade'
 import stats from './stats-highlights-data.json'
+import PropTypes from 'prop-types'
 
-const StatsHighlight = () => {
+const StatsHighlight = ({donationItemCount}) => {
 
     const [counter, startCounter] = React.useState(false); 
     const statsToDisplay = stats.total;
@@ -21,7 +22,7 @@ const StatsHighlight = () => {
                             return(
                                 <Fade>
                                     <div className={styles.item}>
-                                        <Countup redraw className={styles.itemNumber} end={item.number} useEasing separator=" " duration={5} prefix={item.prefix ?? ''}></Countup>
+                                        <Countup redraw className={styles.itemNumber} end={donationItemCount} useEasing separator='' duration={5} prefix={item.prefix ?? ''}></Countup>
                                         {/* <h1 className={styles.itemNumber}>{item.number}</h1> */}
                                         <h2 className={styles.itemTitle}>{item.title ?? ''}</h2>
                                         <p className={styles.itemSubtitle}>{item.subtitle ?? ''}</p>
@@ -31,10 +32,14 @@ const StatsHighlight = () => {
                         }
                     )
                 }
+                </div>
             </div>
-        </div>
         </Fade>
     )
 } 
+
+StatsHighlight.propTypes = {
+    donationItemCount: PropTypes.number.isRequired,
+}
 
 export default StatsHighlight; 
