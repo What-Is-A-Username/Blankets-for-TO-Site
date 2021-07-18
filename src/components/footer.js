@@ -51,10 +51,13 @@ const stuff = (props) => {
 				pages.map((page) => { return (<FooterItem page={page}/>)})
 			}
 			</ul>
+			<p className={styles.siteAuthor +' ' + styles.credits}>
+				<a href={'https://github.com/What-Is-A-Username/website-gatsby-starter'}>
+					Site programmed and built by Cheng Liang Huang, 2021
+				</a>
+			</p>
 			<div className={styles.credits}>
-				<Link to={'/credits'}>Media Credits and Attribution</Link>
-			</div>
-			<div>
+				<Link to={'/credits'}> Media Credits and Attribution</Link>
 			</div>
 		</footer>
 		</Fade>

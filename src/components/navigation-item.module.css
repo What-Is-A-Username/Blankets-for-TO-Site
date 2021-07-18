@@ -1,7 +1,6 @@
 .navigationItem {
 	display: inline-block;
 	color: white;
-    padding: 0 15px;
 }
 
 .navigationItem a {
@@ -36,6 +35,7 @@
         position: relative;
         display: inline-block;
         margin: 0 1em; 
+		padding: 0 5px;
     }
 
     .parentItem a { 
@@ -68,6 +68,7 @@
 @media(max-width: 760px) { 
     .navigationItem {
 		font-size: 1.25em;
+		padding: 0 25px;
 	}
 
     .parentItem {
