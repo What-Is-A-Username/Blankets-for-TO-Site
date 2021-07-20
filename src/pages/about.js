@@ -7,6 +7,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../page-styles/about.module.css'
 import { BLOCKS } from '@contentful/rich-text-types';
 import Fade from 'react-reveal/Fade'
+import OrganizationMap from '../components/home/org-map'
 
 class About extends React.Component {
 	render() {
@@ -28,7 +29,7 @@ class About extends React.Component {
 
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="About"
+				<SEO title="About" useMaps
 					description="Read more about Blankets for T.O., including its primary objective of helping and advocating for the homeless through charitable events, donations, and awareness initiatives."/>
 				<div className="white-background">
 					<div className="wrapper">
@@ -40,6 +41,7 @@ class About extends React.Component {
 							{node.json !== undefined ? documentToReactComponents(node.json, options) : <p>Error: Articles not found.</p>}
 						</div>
 						</Fade>
+						<OrganizationMap></OrganizationMap>
 					</div>
 				</div> 
 			</Layout>

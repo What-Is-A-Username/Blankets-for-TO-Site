@@ -52,6 +52,11 @@ p {
 	padding-bottom: 25px;
 }
 
+.pigeon-tiles img {
+	width: auto;
+	display: block;
+}
+
 @media(min-width: 760px) {
 	.wrapper {
 		width: 80%;
