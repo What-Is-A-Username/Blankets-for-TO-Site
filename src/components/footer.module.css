@@ -64,14 +64,29 @@
 	}
 }  
 
-.credits {
-	margin-top: 10px;
-	text-align: center;
-	color: rgb(66, 66, 66);
-	text-decoration-color: rgb(66, 66, 66);
+.siteAuthor a
+{
+	color: rgb(122, 122, 122);
+	text-decoration: none;
 }
 
-.credits:hover {
+.credits 
+{
+	padding-left: 10px;
+	text-align: center;
+	text-decoration-color: rgb(66, 66, 66);
+	font-size: 0.9em;
+	margin: 0;
+	padding: 0;
+}
+
+.creditColor 
+{
+	color: rgb(66, 66, 66);
+}
+
+.credits:hover, .siteAuthor a:hover
+{
 	color: var(--primary);
 }
 
@@ -97,3 +112,4 @@
 	width: 50px;
 	opacity: 1.0;
 }
+

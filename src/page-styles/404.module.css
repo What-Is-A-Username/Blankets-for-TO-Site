@@ -1,9 +1,9 @@
-.title 
+.buttonSpacing 
 {
-    color: var(--primary)
+    height: 4vh;
 }
 
-.description
+.spacingBox 
 {
-    color:black; 
+    height: 40vh;
 }
