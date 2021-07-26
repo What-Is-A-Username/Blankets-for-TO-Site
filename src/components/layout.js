@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import base from './base.css'
-import Navigation from './navigation'
+import Navigation from './navigation/navigation'
 
 import styles from './layout.module.css'
 import Footer from './footer'

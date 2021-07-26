@@ -84,11 +84,11 @@
 	}
 	
 	.menuClosed {
-		background-image: url('./images/hamburger_icon.png');
+		background-image: url('./../images/hamburger_icon.png');
 	}
 	
 	.menuOpen {
-		background-image: url('./images/cross_icon.png');
+		background-image: url('./../images/cross_icon.png');
 	}
 	
 	.scrollDisable {

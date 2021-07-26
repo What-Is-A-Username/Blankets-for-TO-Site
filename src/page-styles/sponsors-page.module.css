@@ -1,0 +1,14 @@
+.sponsorsGrid 
+{
+    display: grid;
+    align-items: top;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-auto-columns: auto;
+    overflow: visible;
+    height: auto;
+}
+
+.titles 
+{
+    text-align: center;
+}

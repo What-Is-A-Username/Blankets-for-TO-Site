@@ -1,0 +1,72 @@
+.parentContainer
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.awardContainer 
+{
+    display: flex;
+    align-items: center;
+}
+
+.infoContainer h3, .infoContainer h5
+{
+    margin-top: 5px;
+}
+
+@media(min-width: 760px)
+{
+    .parentContainer
+    {
+        display: flex;
+        align-content: center;
+        width: 200px;
+    }
+
+    .awardContainer 
+    {
+        flex-direction: row;
+        justify-content: center;
+        
+    }
+    .image, .image img
+    {
+        min-width: 200px;
+        margin: 0px;
+    }
+}
+
+@media(max-width: 760px)
+{
+    .awardContainer 
+    {
+        flex-direction: column;
+    }
+    
+    .image, .image img
+    {
+        min-width: 125px;
+        max-width: 50vw;
+        margin: 0px;
+    }
+
+    .infoContainer
+    {
+        text-align: center;
+    }
+}
+
+
+
+.infoContainer
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.infoContainer h5
+{
+    color: rgb(105, 105, 105);
+}

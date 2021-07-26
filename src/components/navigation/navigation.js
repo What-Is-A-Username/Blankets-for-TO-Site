@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, navigate } from 'gatsby'
 import styles from './navigation.module.css'
-import pageData from '../pages/page-data.json'
+import pageData from '../../pages/page-data.json'
 import NavigationItem from './navigation-item'
 
 export default (props) => {

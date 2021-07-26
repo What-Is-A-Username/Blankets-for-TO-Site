@@ -8,7 +8,7 @@ import facebookImage from './images/contact/facebookTransparent.svg'
 import instagramImage from './images/contact/instagramTransparent.svg'
 import tikTokImage from './images/contact/tiktokTransparent.svg'
 import pageData from '../pages/page-data.json'
-import FooterItem from './footer-item'
+import FooterItem from './navigation/footer-item'
 import Fade from 'react-reveal/Fade'
 
 const stuff = (props) => {
