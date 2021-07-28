@@ -1,12 +1,27 @@
 .sponsorsGrid 
 {
-    display: grid;
+    display: flex;
     align-items: top;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    grid-auto-columns: auto;
     overflow: visible;
-    height: auto;
+    justify-content: center;
 }
+
+@media(max-width: 760px)
+{
+    .sponsorsGrid
+    {
+        flex-direction: row;
+    } 
+}
+
+@media(max-width: 760px)
+{
+    .sponsorsGrid
+    {
+        flex-direction: column;
+    } 
+}
+
 
 .titles 
 {

@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Img from 'gatsby-image'
 
 import { Link } from 'gatsby'
+import StyledButton from '../components/styled-button'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Layout from '../components/layout'
@@ -20,60 +21,39 @@ import { set } from 'lodash'
 
 class RootIndex extends React.Component {
 
-	// Previous functionality to play video on site
-	// componentDidMount() {
-	// 	$(function () {
-	// 		var mainVideo = document.getElementById("titleVideo");
-	// 		var source = document.createElement("source"); 
-	// 		if ($(window).width() < 760) 
-	// 			source.src = "BTO Timelapse Mobile Version 400x800.mp4"; 
-	// 		else 
-	// 			source.src = "BTO TIMELAPSE.mp4"; 
-	// 		mainVideo.append(source); 
-	// 	})
-	// }
-
 	render() {
 		const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-		const organizationBlurb = get(this, 'props.data.allContentfulOrganizationInformation.edges')
+		const allContentfulOrganizationInformation = get(this, 'props.data.allContentfulOrganizationInformation.nodes')
+		const organizationBlurb = allContentfulOrganizationInformation[0];
 		const slides = get(this, 'props.data.allContentfulHomeSlide.edges')
-		
-		const setVidSpeed = () => { 
-			var vid = document.getElementById("titleVideo");
-			vid.playbackRate = 1.0;
-		} 
 
 		const googleSearchConsoleID = [<meta name="google-site-verification" content="H85FiZN3YyU6tHavccegyjHzxSSC6kc_7d22i6IDx2Y" />] 
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="Home" useMailChimp={true} useCurator={true}/>
-
+				<SEO title='Home' description='Blankets for T.O. is a non-profit organization situated at the University of Toronto that strives to provide support and resources to those in need within the city of Toronto, as well as raise awareness on the ongoing stigma surrounding homelessness, with the ultimate goal of eradicating it.' useMailChimp={true} useCurator={true}/>
 				<div className="white-background">
 					{/* Background Image or Video */}
 					<Fade>
 						<div className={styles.title}>
-							<Img className={styles.backgroundImage} fluid={organizationBlurb[0].node.frontPageImage.fluid} alt='Background image behind Blankets for T.O. organization logo.'>			
-							</Img>
-							{/* <video onPlay={setVidSpeed} muted autoPlay className={styles.backgroundVideo} id='titleVideo'/> */}
+							<Img className={styles.backgroundImage} fluid={organizationBlurb.frontPageImage.fluid} alt='Homepage image for Blankets for T.O.'/>			
 						</div>
 					</Fade>
-					{/* Description */}
+					{/* About Us description */}
 					<Bounce left>
 						<div className={styles.description}>
 							<h2>Our Organization</h2>
-							<p>{organizationBlurb[0].node.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
+							<p>{organizationBlurb.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
 							<div className={styles.btnRow}>
-								<Link to="/about" className='links'>
-									<button className='whiteBtn' type="submit">Read more</button>
-								</Link>
-								<Link to="/team" className='links'>
-									<button className='whiteBtn' type="submit">Meet the team</button>
-								</Link>
+								<StyledButton link='/about' buttonText='Read more' isWhite/>
+								<StyledButton link='/team' buttonText='Meet the team' isWhite/>
 							</div>
 						</div>
 					</Bounce>
-					<StatsHighlight donationItemCount={organizationBlurb[0].node.donationItemCount}/>
+
+					{/* Donation counter */}
+					<StatsHighlight donationItemCount={organizationBlurb.donationItemCount}/>
+
 					{/* Slideshow */}
 					<Bounce left>
 						<Slideshow menuItems={slides}></Slideshow>
@@ -85,8 +65,7 @@ class RootIndex extends React.Component {
 						
 					{/* Join Us and Contact Us Box */}
 					<Bounce right>
-						<ContactBox left={organizationBlurb[0].node.leftBackgroundImage.fluid} right={organizationBlurb[0].node.leftBackgroundImage.fluid}></ContactBox>
-						{/* Sponsor and Partner Logos */}
+						<ContactBox left={organizationBlurb.leftBackgroundImage.fluid} right={organizationBlurb.leftBackgroundImage.fluid}></ContactBox>
 					</Bounce>
 
 					<Bounce left>
@@ -107,11 +86,12 @@ class RootIndex extends React.Component {
 							</div>
 						</div>
 						</Fade>
-						<Bounce left delay={300}>
-							<Link to="https://www.instagram.com/blanketsforto" className={'links' + ' ' + styles.instagramLink}>
-								<button className='btn' type="submit">Visit us on Instagram</button>
-							</Link>
-						</Bounce>
+						<Fade delay={300}>
+							<div className={styles.btnRow}>	
+								<StyledButton link={organizationBlurb.instagramLink} buttonText='Visit us on Instagram' openInNewTab/>
+								<StyledButton link={organizationBlurb.twitterLink} buttonText='Visit us on Twitter' openInNewTab/>
+							</div>
+						</Fade>
 					</div>
 				</div>
 			</Layout>
@@ -164,44 +144,36 @@ class RootIndex extends React.Component {
 			}
 		}
 		allContentfulOrganizationInformation {
-			edges {
-				node {
-					childContentfulOrganizationInformationOrganizationFrontBlurbTextNode {
-						organizationFrontBlurb
-					}
+			nodes {
+				childContentfulOrganizationInformationOrganizationFrontBlurbTextNode {
+					organizationFrontBlurb
+				}
 
-					donationItemCount : donationItemCounter
+				donationItemCount : donationItemCounter
+				instagramLink
+				twitterLink
+				
+				frontPageImage {
+					fluid(
+						maxHeight: 1920
+						resizingBehavior: PAD
+						background: "rgb:000000"
+						) {
+							...GatsbyContentfulFluid_tracedSVG
+						}
 					
-					frontPageImage {
-						fluid(
-							maxHeight: 1920
-							resizingBehavior: PAD
-							background: "rgb:000000"
-							) {
-								...GatsbyContentfulFluid_tracedSVG
-							}
-						
-					}
+				}
 
-					leftBackgroundImage {
-						fluid(
-							maxHeight: 1000
-							resizingBehavior: PAD
-							background: "rgb:000000"
-							) {
-								...GatsbyContentfulFluid_tracedSVG
-							}
-					}
+				leftBackgroundImage {
+					fluid(
+						maxHeight: 1000
+						resizingBehavior: PAD
+						background: "rgb:000000"
+						) {
+							...GatsbyContentfulFluid_tracedSVG
+						}
 				}
 			}
 		}
 	}
 `
-
-const unused = 
-`
-// homePageVideo {
-						// 	file {
-						// 		url
-						// 	}
-						// }`

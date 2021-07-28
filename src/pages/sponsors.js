@@ -62,7 +62,7 @@ query SponsorsPageQuery {
                 name
                 sponsorType
                 logo {
-                    fluid(maxHeight: 800, resizingBehavior: SCALE) {
+                    fluid(maxWidth: 800, resizingBehavior: SCALE) {
                         ...GatsbyContentfulFluid_tracedSVG
                     }
                 }

@@ -6,12 +6,14 @@ import Img from 'gatsby-image'
 import styles from './sponsor.module.css'
 
 const Sponsor = ({sponsorData}) => {
-    const { name, logo, sponsorType, linkUrl } = sponsorData;
+    const { name, logo, linkUrl } = sponsorData;
     return(
         <div className={styles.parentContainer}>
             <div className={styles.awardContainer}>
                 <div className={styles.image}>
-                    <Img  fluid={logo.fluid} alt={name}></Img>
+                    <a href={linkUrl} target='blank' rel='noopener noreferrer'>
+                        <Img fluid={logo.fluid} alt={name}></Img>
+                    </a>
                 </div>
             </div>
         </div>

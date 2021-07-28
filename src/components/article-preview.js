@@ -5,6 +5,7 @@ import { BlogTagBar } from './blog_search/tag'
 import PropTypes from 'prop-types'
 import Fade from 'react-reveal/Fade'
 import Bounce from 'react-reveal/Bounce'
+import StyledButton from './styled-button'
 
 const renderFunc = (articles, excludeSlug) => {
 	return (
@@ -46,9 +47,7 @@ const renderFunc = (articles, excludeSlug) => {
 			</div>
 			</Fade>
 			<Fade delay={500}>
-				<Link to="/blog" className='links'>
-					<button className='btn' type="submit">Browse all updates</button>
-				</Link>
+				<StyledButton buttonText='Browse all updates' link='/blog'/>
 			</Fade>
 		</div>)
 }

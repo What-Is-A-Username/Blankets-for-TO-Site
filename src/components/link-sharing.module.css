@@ -34,7 +34,7 @@
 }
 
 .linkFieldButtonClicked { 
-    background-color: green;
+    background-color: rgb(255, 0, 0);
     color: white;
 }
 

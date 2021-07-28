@@ -111,7 +111,8 @@
     }
 
     .btnRow a {
-        padding: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
     }
 }
 
@@ -122,7 +123,7 @@
         justify-content: center;
     }
 
-    .btnRow a {
-        padding: 10px;
+    .btnRow button {
+        margin: 10px;
     }
 }

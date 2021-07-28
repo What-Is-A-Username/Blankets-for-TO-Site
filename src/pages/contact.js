@@ -13,12 +13,13 @@ import instagramImage from '../components/images/contact/instagramTransparent.sv
 import tikTokImage from '../components/images/contact/tiktokTransparent.svg'
 
 import styles from '../page-styles/contact.module.css'
+import StyledButton from '../components/styled-button'
 
 class Contact extends React.Component {
 	render() {
-		const contactInfo = get(this, 'props.data.allContentfulOrganizationInformation.edges')
-		const node = contactInfo[0].node
-		const officeHours = get(this, 'props.data.allContentfulOrganizationInformationOfficeHoursTextNode.edges')
+		const contactInfo = get(this, 'props.data.allContentfulOrganizationInformation.nodes')
+		const node = contactInfo[0];
+		const officeHours = get(this, 'props.data.allContentfulOrganizationInformationOfficeHoursTextNode.nodes')
 
 		const platform = ["Email", "Facebook", "Instagram", "Twitter", "TikTok"]
 		const nameEntry = [node.emailAddress, node.facebook, node.instagram, node.twitter, node.tikTok]
@@ -60,7 +61,7 @@ class Contact extends React.Component {
 										<div className={styles.officeHours}>
 											<div
 												dangerouslySetInnerHTML={{
-													__html: officeHours[0].node.childMarkdownRemark.html,
+													__html: officeHours[0].childMarkdownRemark.html,
 												}}
 											/>
 										</div>
@@ -69,10 +70,7 @@ class Contact extends React.Component {
 							</div>
 							<div className={styles.contactDirectly}>
 								<h3>Send Us a Direct Message</h3>
-								
-									<Link to='https://us7.list-manage.com/contact-form?u=c190e10f2b62c767274e1197b&form_id=ff96bfbc82a7a31d98bb442faba2bbca' className='links' target="_blank" rel="noopener noreferrer">
-										<button className='btn' type="submit">Fill out our contact form</button>
-									</Link>
+								<StyledButton link='https://us7.list-manage.com/contact-form?u=c190e10f2b62c767274e1197b&form_id=ff96bfbc82a7a31d98bb442faba2bbca' buttonText='Fill out our contact form' openInNewTab/>
 							</div>
 							</Fade>
 						</div>
@@ -87,30 +85,26 @@ export default Contact
 export const ContactQuery = graphql`
 query ContactQuery {
     allContentfulOrganizationInformation {
-      edges {
-        node {
-          emailAddress
-          facebook
-          facebookLink
-          instagram
-          instagramLink
-          officeAddress
-          phoneNumber
-          tikTok
-          tiktokLink
-          twitter
-          twitterLink
-        }
-      }
+        nodes {
+			emailAddress
+			facebook
+			facebookLink
+			instagram
+			instagramLink
+			officeAddress
+			phoneNumber
+			tikTok
+			tiktokLink
+			twitter
+			twitterLink
+      	}
     }
     allContentfulOrganizationInformationOfficeHoursTextNode {
-        edges {
-          node {
-            childMarkdownRemark {
-              html
-            }
-          }
-        }
+		nodes {
+			childMarkdownRemark {
+				html
+			}
+		}
       }
   }
 `

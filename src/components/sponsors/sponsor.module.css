@@ -1,7 +1,6 @@
 .parentContainer
 {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 30px;
     justify-content: center;
 }
 
@@ -47,8 +46,7 @@
     
     .image, .image img
     {
-        min-width: 125px;
-        max-width: 50vw;
+        min-width: 200px;
         margin: 0px;
     }
 

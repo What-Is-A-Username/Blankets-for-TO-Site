@@ -35,7 +35,7 @@ const stuff = (props) => {
 							<div className={styles.socialMediaEntry} key={platform[i]}>
 								<a href={link[i] != "" ? link[i] : '/contact'}
 									target={link[i] != "" ? '_blank' : ''}
-									rel="noopener noreferrer">
+									rel='noopener noreferrer'>
 									<img src={icon[i]} alt={platform[i] + " Icon"} />
 								</a>
 							</div>

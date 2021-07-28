@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
+import StyledButton from '../styled-button'
 
 import styles from './contact-box.module.css'
 
@@ -25,7 +26,7 @@ export default (props) => {
     return(
         <div className={styles.slideshow}>
             <div className={styles.imageCover}>
-                <Img style={{position: 'absolute'}} fluid={props.left}/>
+                <Img style={{position: 'absolute'}} fluid={props.left} alt={'Blankets for T.O. meeting photo'}/>
                 <div className={styles.imageLayer}></div>
             </div>
             <div className={styles.contactBox}>
@@ -35,9 +36,7 @@ export default (props) => {
                             <div className={styles.contactBoxSideText}>
                                 <h2 className={styles.contactBoxTitle}>{x.title}</h2>
                                 <p  className={styles.contactBoxDescription}>{x.description}</p>
-                                <Link to={x.link} className='links'>
-                                    <button className='btn' type="submit">{x.buttonText}</button>
-                                </Link>
+                                <StyledButton link={x.link} buttonText={x.buttonText}/>
                             </div>
                         </div>
                     )

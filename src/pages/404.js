@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '../components/layout'
 import { Link } from 'gatsby'
 import SEO from '../components/SEO'
+import StyledButton from '../components/styled-button'
 
 import styles from '../page-styles/404.module.css'
 
@@ -28,9 +29,7 @@ class FourOFourPage extends React.Component {
 							</p>
 						</div>
 						<div className={styles.buttonSpacing}></div>
-						<Link to="/" className={'links'}>
-							<button className='btn' type="submit">{buttonText}</button>
-						</Link>
+						<StyledButton link='/' buttonText={buttonText}/>
 						<div className={styles.spacingBox}></div>
 					</div>
 				</div>
