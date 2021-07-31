@@ -15,9 +15,6 @@ import ContactBox from '../components/home/contact-box'
 import Sponsors from '../components/home/sponsors'
 import Fade from 'react-reveal/Fade'
 import Bounce from 'react-reveal/Bounce'
-import { set } from 'lodash'
-
-// import $ from "jquery"
 
 class RootIndex extends React.Component {
 
@@ -26,8 +23,6 @@ class RootIndex extends React.Component {
 		const allContentfulOrganizationInformation = get(this, 'props.data.allContentfulOrganizationInformation.nodes')
 		const organizationBlurb = allContentfulOrganizationInformation[0];
 		const slides = get(this, 'props.data.allContentfulHomeSlide.edges')
-
-		const googleSearchConsoleID = [<meta name="google-site-verification" content="H85FiZN3YyU6tHavccegyjHzxSSC6kc_7d22i6IDx2Y" />] 
 		
 		return (
 			<Layout location={this.props.location}>

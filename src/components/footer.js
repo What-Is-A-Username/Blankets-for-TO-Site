@@ -52,7 +52,7 @@ const stuff = (props) => {
 			}
 			</ul>
 			<p className={styles.siteAuthor +' ' + styles.credits}>
-				<a href={'https://github.com/What-Is-A-Username/website-gatsby-starter'}>
+				<a href={'https://github.com/What-Is-A-Username'}>
 					Site programmed and built by Cheng Liang Huang, 2021
 				</a>
 			</p>
