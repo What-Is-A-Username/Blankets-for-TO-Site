@@ -15,6 +15,7 @@ import ContactBox from '../components/home/contact-box'
 import Sponsors from '../components/home/sponsors'
 import Fade from 'react-reveal/Fade'
 import Bounce from 'react-reveal/Bounce'
+import ScreenContainer from '../components/screen-container'
 
 class RootIndex extends React.Component {
 
@@ -30,12 +31,15 @@ class RootIndex extends React.Component {
 				<div className="white-background">
 					{/* Background Image or Video */}
 					<Fade>
-						<div className={styles.title}>
-							<Img className={styles.backgroundImage} fluid={organizationBlurb.frontPageImage.fluid} alt='Homepage image for Blankets for T.O.'/>			
-						</div>
+						<ScreenContainer>
+							<div className={styles.title}>
+								<Img className={styles.backgroundImage} fluid={organizationBlurb.frontPageImage.fluid} alt='Homepage image for Blankets for T.O.'/>			
+							</div>
+						</ScreenContainer>
 					</Fade>
 					{/* About Us description */}
-					<Bounce left>
+					<ScreenContainer>
+						<Bounce left>
 						<div className={styles.description}>
 							<h2>Our Organization</h2>
 							<p>{organizationBlurb.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
@@ -44,24 +48,33 @@ class RootIndex extends React.Component {
 								<StyledButton link='/team' buttonText='Meet the team' isWhite/>
 							</div>
 						</div>
-					</Bounce>
+						</Bounce>
+					</ScreenContainer>
 
 					{/* Donation counter */}
-					<StatsHighlight donationItemCount={organizationBlurb.donationItemCount}/>
+					<ScreenContainer>
+						<StatsHighlight donationItemCount={organizationBlurb.donationItemCount}/>
+					</ScreenContainer>
 
 					{/* Slideshow */}
-					<Bounce left>
-						<Slideshow menuItems={slides}></Slideshow>
-					</Bounce>
+					{/* <ScreenContainer>
+						<Bounce left>
+							<Slideshow menuItems={slides}></Slideshow>
+						</Bounce>
+					</ScreenContainer> */}
 					{/* Updates */}
-					<Fade>
-						<ArticlePreview articles={posts}/>
-					</Fade>
+					<ScreenContainer>
+						<Fade>
+							<ArticlePreview articles={posts}/>
+						</Fade>
+					</ScreenContainer>
 						
 					{/* Join Us and Contact Us Box */}
-					<Bounce right>
-						<ContactBox left={organizationBlurb.leftBackgroundImage.fluid} right={organizationBlurb.leftBackgroundImage.fluid}></ContactBox>
-					</Bounce>
+					<ScreenContainer>
+						<Bounce right>
+							<ContactBox left={organizationBlurb.leftBackgroundImage.fluid} right={organizationBlurb.leftBackgroundImage.fluid}></ContactBox>
+						</Bounce>
+					</ScreenContainer>
 
 					<Bounce left>
 						<Sponsors/>
@@ -74,11 +87,11 @@ class RootIndex extends React.Component {
 						</Bounce>
 						<Fade delay={250}>
 						<div className={styles.instagramPosts}>
-							<div id="curator-feed-default-feed-layout">
+							{/* <div id="curator-feed-default-feed-layout">
 								<a href="https://curator.io" target="_blank" class="crt-logo crt-tag" className="crt-logo crt-tag">
 									Powered by Curator.io
 								</a>
-							</div>
+							</div> */}
 						</div>
 						</Fade>
 						<Fade delay={300}>

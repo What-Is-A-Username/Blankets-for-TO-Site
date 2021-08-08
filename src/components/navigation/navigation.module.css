@@ -136,7 +136,7 @@
 	
 	.closeItem {
 		position: absolute;
-		top: -100%;
+		visibility: hidden;
 	}
 	
 	.logo h1 {
@@ -148,7 +148,6 @@
 		visibility: hidden;
 		position: absolute;
 		width: 0;
-		top: -100%;
 	}
 	
 	.navigation {

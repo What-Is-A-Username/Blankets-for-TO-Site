@@ -80,7 +80,7 @@
     .itemNumber { font-size: 3.0em; }
     .itemTitle { font-size: 2.0em; }
     .itemSubtitle { font-size: 1.0em; }
-    .parentContainer { padding-top: 20vh; padding-bottom: 20vh;}
+    /* .parentContainer { padding-top: 20vh; padding-bottom: 20vh;} */
 } 
 @media(min-width: 500px) { 
     .itemNumber { font-size: 4.0em; }
@@ -91,14 +91,14 @@
     .itemNumber { font-size: 4.0em; }
     .itemTitle { font-size: 2.0em;  }
     .itemSubtitle { font-size: 1.5em;  }
-    .parentContainer { padding-top: 30vh; padding-bottom: 30vh;}
+    /* .parentContainer { padding-top: 30vh; padding-bottom: 30vh;} */
     .item { padding: 0 5vw 0 5vw }
 } 
 @media(min-width: 1000px) { 
     .itemNumber { font-size: 5em; }
     .itemTitle { font-size: 2.0em;  }
     .itemSubtitle { font-size: 1.5em;  }
-    .parentContainer { padding-top: 30vh; padding-bottom: 30vh;}
+    /* .parentContainer { padding-top: 30vh; padding-bottom: 30vh;} */
     .item { padding: 0 5vw 0 5vw }
 } 
 
