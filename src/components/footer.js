@@ -11,7 +11,7 @@ import pageData from '../pages/page-data.json'
 import FooterItem from './navigation/footer-item'
 import Fade from 'react-reveal/Fade'
 
-const stuff = (props) => {
+const Footer = (props) => {
 	var contactInfo = props.allContentfulOrganizationInformation.edges
 	const node = contactInfo[0].node
 	const pages = pageData.pages
@@ -88,7 +88,7 @@ export default () => {
 					}
 				}
 			`}
-			render={data => stuff(data)}
+			render={data => Footer(data)}
 		/>
 	)
 }

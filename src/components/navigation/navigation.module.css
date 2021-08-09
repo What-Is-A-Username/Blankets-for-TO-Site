@@ -1,30 +1,20 @@
-.logo {
-	height: 50px; 
-	padding: 10px 0px;
-	margin: 0px;
-	background-color: black;
-	width: 100%;
-	max-width: 100%;
-	z-index: 10;
+.header {
+	z-index: 300;
+	display: flex;
+	background-color: white;
 }
 
-.logo h1 {
-	width: 100%;
-	text-align: center;
-	padding: 0px;
-	margin: 0px;
-	height: 100%;
-	font-weight: 400;
+.navExpand {
+	width: auto;
+	float: right;
+	flex-grow: 1;
+	z-index: 300;
 }
 
 .navigation {
 	display: flex;
-	justify-content: center;
 	list-style: none;
-	margin: 0px;
-	height: 50px;
 	font-size: 1.25em;
-	z-index: 300;
 }
 
 .closeItem {
@@ -40,30 +30,52 @@
 .toggle {
 	display: inline-flex;
 	align-items: center;
-	margin: 0 1em;
+}
+
+.logo {
+	cursor: pointer;
 }
 
 @media(max-width: 760px) {
-	.logo {
-		position: fixed;
-		background-color: black;
-		width: 100vw;
+
+	.logo, .logo img, .logo div {
+		width: 200px;
+		height: 100%;
 	}
-	
-	.logo h1 {
-		color: var(--primary);
+
+	.images {
+		flex-direction: row;
+		display: inline-flex;
+		height: 70px;
+		padding: 0px 0px;
+	}
+
+	.logo {
+		flex-grow: 1;
+	}
+
+	.header {
+		flex-direction: column;
+		box-shadow: 0 5px 2px -2px rgb(161, 161, 161);
+	}
+
+	.navExpand {
+		padding: 0;
+		margin: 0;
+		height: 0;
 	}
 	
 	.toggle {
 		justify-content: center;
 		height: 70px;
-		background-color: var(--primary);
-		position: fixed;
-		top: 0px;
-		margin-left: 15px;
-		margin-right: 0px;
-		left: 0px;
-		background-color: transparent;
+		width: 70px;
+	}
+
+	.hamburger {
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		background-size: cover
 	}
 	
 	.navigation {
@@ -71,17 +83,12 @@
 		height: auto;
 		position: fixed;
 		width: 100vw;
-		background-color: black;
+		background-color: white;
 		padding: 0px 0px 10px 0px; 
+		margin: 0;
+		box-shadow: 0px 10px 5px -5px var(--navigation_fade);
+		top: 70px;
 	} 
-	
-	.hamburger {
-		color: transparent;
-		width: 30px;
-		height: 30px;
-		cursor: pointer;
-		background-size: cover
-	}
 	
 	.menuClosed {
 		background-image: url('./../images/hamburger_icon.png');
@@ -111,25 +118,37 @@
 	}
 	
 	.fadeIn { 
+		
 		animation: fadeIn ease 0.5s;
 		-webkit-animation: fadeIn ease 0.5s;
 		-moz-animation: fadeIn ease 0.5s;
 		-o-animation: fadeIn ease 0.5s;
 		-ms-animation: fadeIn ease 0.5s;
-		box-shadow: 0px 0px 70vh 0px rgba(0,0,0,1);
+		
 	}
-	
-	.moveDown {
-		animation: fadeIn ease 0.5s;
-		-webkit-animation: fadeIn ease 0.5s;
-		-moz-animation: fadeIn ease 0.5s;
-		-o-animation: fadeIn ease 0.5s;
-		-ms-animation: fadeIn ease 0.5s;
+
+	.fadeOut {
+		visibility: hidden;
 	}
 }
 
 @media(min-width: 760px) {
+
+	.logo, .logo img, .logo div {
+		width: 200px;
+		height: 100px;
+	}
+
+	.header {
+		height: 100px;
+		padding: 5vh 5vw 0 5vw;
+		align-items: center;
+		box-shadow: 0 4px 2px -2px rgb(161, 161, 161);
+		flex-direction: row;
+	}
+
 	.blocker {
+		visibility: hidden;
 		height: 0px;
 		width: 0px;
 	}
@@ -139,42 +158,39 @@
 		visibility: hidden;
 	}
 	
-	.logo h1 {
-		color: var(--primary);
-	}
-	
 	.toggle {
-		pointer-events: none;
 		visibility: hidden;
-		position: absolute;
-		width: 0;
 	}
 	
 	.navigation {
-		background-color: black;
-		max-height: 100px;
-		width: 100%;
+		background-color: white;
 		padding: 0px 0px 0px 0px; 
+		height: 50px;
+		float: right;
+	}
+
+	.navExpand {
+		height: 50px;
 	}
 }
 
 @keyframes fadeIn {
-	0% { opacity:0; top: -70px; pointer-events: none; } 100% { opacity:1; top: 70px } 
+	0% { opacity:0; top: -70px; pointer-events: none; } 50% {opacity: 0.2;} 100% { opacity:1; top: 70px } 
 }
 
 @-moz-keyframes fadeIn {
-	0% { opacity:0; top: -70px; pointer-events: none;  } 100% { opacity:1; top: 70px } 
+	0% { opacity:0; top: -70px; pointer-events: none;  } 50% {opacity: 0.2;} 100% { opacity:1; top: 70px } 
 }
 
 @-webkit-keyframes fadeIn {
-	0% { opacity:0; top: -70px; pointer-events: none;  } 100% { opacity:1; top: 70px } 
+	0% { opacity:0; top: -70px; pointer-events: none;  } 50% {opacity: 0.2;} 100% { opacity:1; top: 70px } 
 }
 
 @-o-keyframes fadeIn {
-	0% { opacity:0; top: -70px; pointer-events: none;  } 100% { opacity:1; top: 70px } 
+	0% { opacity:0; top: -70px; pointer-events: none;  } 50% {opacity: 0.2;} 100% { opacity:1; top: 70px } 
 }
 
 @-ms-keyframes fadeIn {
-	0% { opacity:0; top: -70px; pointer-events: none;  } 100% { opacity:1; top: 70px } 
+	0% { opacity:0; top: -70px; pointer-events: none;  } 50% {opacity: 0.2;} 100% { opacity:1; top: 70px } 
 }
 
