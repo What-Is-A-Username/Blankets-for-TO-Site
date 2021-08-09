@@ -1,9 +1,77 @@
 .mapContainer {
     width: auto; 
     height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .mapContainer > div 
 {
     border-radius: 20px;
+}
+
+.infoBox
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    border-radius: 15px;
+    padding: 20px;
+    flex-direction: row;
+}
+
+@media (min-width: 760px)
+{
+    .infoBox 
+    {
+        min-width: 400px;
+        width: 80%;
+        margin-top: 30px;
+    }
+    .textBox
+    {
+        min-width: 380px;
+        width: 80%;
+    }
+}
+
+@media (max-width: 760px)
+{
+    .infoBox 
+    {
+        max-width: 100vw;
+        min-width: 300px;
+        margin-top: 10px;
+    }
+    .textBox
+    {
+        min-width: 80vw;
+        width: 80%;
+    }
+}
+
+.infoBoxTitle 
+{
+    color: var(--primary);
+}
+
+.infoBoxAddress, .infoBoxTitle, .infoBoxDescription
+{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.infoBoxAddress
+{
+    color: darkgray;
+}
+
+.infoBoxDescription
+{
+    margin: 0;
+    padding: 20px;
 }
