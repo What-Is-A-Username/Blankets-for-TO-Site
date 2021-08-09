@@ -6,7 +6,7 @@ import turfBbox from '@turf/bbox'
 import { featureCollection as turfFeatureCollection, point as turfPoint } from '@turf/helpers'
 import geoViewport from '@mapbox/geo-viewport'
 import styles from '../home/org-map.module.css'
-import { StaticQuery } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import { ChevronRight, ChevronLeft } from 'react-feather';
 
 export default () => { 
