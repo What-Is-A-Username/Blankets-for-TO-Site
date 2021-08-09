@@ -41,6 +41,11 @@
 
 .socialMediaEntry a p {
     margin-left: 20px;
+    display: flex;
+}
+
+.socialMediaEntry svg {
+    margin-left: 5px;
 }
 
 .socialMediaEntry a:hover {

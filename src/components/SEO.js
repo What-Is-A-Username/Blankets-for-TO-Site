@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, useSharing, cannonical}) => {
+const SEO = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, useSharing, useMaps, cannonical}) => {
 	
 	const { pathname } = useLocation()
 	const { site } = useStaticQuery(query)
@@ -123,6 +123,12 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 
 		{/* MailChimp Mailing List */}
 		{useMailChimp && <script type="text/javascript" src="https://chimpstatic.com/mcjs-connected/js/users/c190e10f2b62c767274e1197b/52a4a6cc65ff988eefff98c51.js"></script>}
+		{useMaps && <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+			integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+			crossorigin=""/>}
+			{useMaps && <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+			integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+			crossorigin=""></script>}
 		{childElements}
 	</Helmet>
 	)
@@ -137,6 +143,7 @@ SEO.defaultProps = {
 	useMailChimp: false,
 	useCurator: false,
 	useSharing: false,
+	useMaps: false, 
 	cannonical: undefined, 
 }
 
@@ -154,6 +161,7 @@ SEO.propTypes = {
 	useMailChimp: PropTypes.bool,
 	useCurator: PropTypes.bool,
 	useSharing: PropTypes.bool,
+	useMaps: PropTypes.bool,
 	cannonical: PropTypes.string,
 }
 export default SEO

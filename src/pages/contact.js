@@ -15,6 +15,8 @@ import tikTokImage from '../components/images/contact/tiktokTransparent.svg'
 import styles from '../page-styles/contact.module.css'
 import StyledButton from '../components/styled-button'
 
+import { ExternalLink } from 'react-feather'
+
 class Contact extends React.Component {
 	render() {
 		const contactInfo = get(this, 'props.data.allContentfulOrganizationInformation.nodes')
@@ -44,7 +46,7 @@ class Contact extends React.Component {
 											<div className={styles.socialMediaEntry}>
 												<a href={link[i] != "" ? link[i] : null} target="_blank" rel="noopener noreferrer">
 													<img src={icon[i]} alt={platform[i] + ' Icon'} />
-													<p>{x + (link[i] != "" ? '  \u2197' : "")} </p>
+													<p className={styles.socialMediaLink}>{x} {link[i] != "" && <ExternalLink/>}</p>
 												</a>
 											</div>
 										)

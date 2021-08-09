@@ -8,6 +8,7 @@ import styles from '../page-styles/about.module.css'
 import { BLOCKS } from '@contentful/rich-text-types';
 import Fade from 'react-reveal/Fade'
 
+
 class About extends React.Component {
 	render() {
 		const aboutPage = get(this, 'props.data.allContentfulOrganizationInformationAboutPageRichTextNode.edges')
@@ -28,7 +29,7 @@ class About extends React.Component {
 
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="About"
+				<SEO title="About" useMaps
 					description="Read more about Blankets for T.O., including its primary objective of helping and advocating for the homeless through charitable events, donations, and awareness initiatives."/>
 				<div className="white-background">
 					<div className="wrapper">

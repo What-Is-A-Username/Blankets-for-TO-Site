@@ -90,14 +90,6 @@
 		top: 70px;
 	} 
 	
-	.menuClosed {
-		background-image: url('./../images/hamburger_icon.png');
-	}
-	
-	.menuOpen {
-		background-image: url('./../images/cross_icon.png');
-	}
-	
 	.scrollDisable {
 		height: 100vh;
 		overflow: hidden;

@@ -4,6 +4,7 @@ import Img from 'gatsby-image'
 import styles from './navigation.module.css'
 import pageData from '../../pages/page-data.json'
 import NavigationItem from './navigation-item'
+import { Menu, X} from 'react-feather'
 
 const Navigation = (props) => {
 	return (
@@ -57,8 +58,8 @@ const NavBar = (propData) => {
                         </div>
                         <div className={styles.toggle} onClick={changeState}>
                             {drawerActive ? 
-                            <div className={styles.hamburger + ' ' + styles.menuOpen}></div> :
-                            <div className={styles.hamburger + ' ' + styles.menuClosed}></div>}
+                            <X className={styles.hamburger} color='red'/> :
+                            <Menu className={styles.hamburger}/>}
                         </div>
                     </div>
                     

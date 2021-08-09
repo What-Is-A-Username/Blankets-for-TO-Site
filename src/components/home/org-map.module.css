@@ -1,0 +1,124 @@
+.mapContainer {
+    width: auto; 
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mapViewport {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mapViewport > div
+{
+    border-radius: 20px;
+    max-width: 1200px;
+    
+}
+
+.title 
+{
+    color: var(--primary);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.description 
+{
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+}
+
+.infoBox
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    flex-direction: row;
+    z-index: 5;
+}
+
+.infoBox svg 
+{
+    cursor: pointer;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+
+.infoBox svg:hover 
+{
+    color: var(--primary_darker);
+}
+
+@media (min-width: 760px)
+{
+    .infoBox 
+    {
+        width: 80%;
+        max-width: 600px;
+        margin-bottom: 5px;
+        padding: 20px;
+
+    }
+    .textBox
+    {
+        min-width: 380px;
+        width: 80%;
+    }
+}
+
+@media (max-width: 760px)
+{
+    .infoBox 
+    {
+        max-width: 90vw;
+        min-width: 250px;
+        margin-bottom: 5px;
+        height: 150px;
+        padding: 5px;
+
+    }
+    .textBox
+    {
+        min-width: 80vw;
+        width: 80%;
+    }
+    .mapContainer 
+    {
+        margin: 10px;
+    }
+}
+
+.infoBoxTitle 
+{
+    font-size: 1.4em;
+    color: var(--primary);
+}
+
+.infoBoxAddress, .infoBoxTitle, .infoBoxDescription
+{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.infoBoxAddress
+{
+    color: darkgray;
+}
+
+.infoBoxDescription
+{
+    margin: 0;
+    padding: 5px;
+}

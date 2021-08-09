@@ -9,13 +9,13 @@ import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 import StatsHighlight from '../components/home/stats-highlight'
 import styles from '../page-styles/index.module.css'
-import Slideshow from '../components/home/slideshow'
 import SEO from '../components/SEO'
 import ContactBox from '../components/home/contact-box'
 import Sponsors from '../components/home/sponsors'
 import Fade from 'react-reveal/Fade'
 import Bounce from 'react-reveal/Bounce'
 import ScreenContainer from '../components/screen-container'
+import OrganizationMap from '../components/home/org-map'
 
 class RootIndex extends React.Component {
 
@@ -27,7 +27,7 @@ class RootIndex extends React.Component {
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title='Home' description='Blankets for T.O. is a non-profit organization situated at the University of Toronto that strives to provide support and resources to those in need within the city of Toronto, as well as raise awareness on the ongoing stigma surrounding homelessness, with the ultimate goal of eradicating it.' useMailChimp={true} useCurator={true}/>
+				<SEO title='Home' description='Blankets for T.O. is a non-profit organization situated at the University of Toronto that strives to provide support and resources to those in need within the city of Toronto, as well as raise awareness on the ongoing stigma surrounding homelessness, with the ultimate goal of eradicating it.' useMailChimp useCurator/>
 				<div className="white-background">
 					{/* Background Image or Video */}
 					<Fade>
@@ -54,12 +54,7 @@ class RootIndex extends React.Component {
 						<StatsHighlight donationItemCount={organizationBlurb.donationItemCount}/>
 					</ScreenContainer>
 
-					{/* Slideshow */}
-					{/* <ScreenContainer>
-						<Bounce left>
-							<Slideshow menuItems={slides}></Slideshow>
-						</Bounce>
-					</ScreenContainer> */}
+					<OrganizationMap/> 
 					{/* Updates */}
 					<ScreenContainer>
 						<Fade>
@@ -85,11 +80,11 @@ class RootIndex extends React.Component {
 						</Bounce>
 						<Fade delay={250}>
 						<div className={styles.instagramPosts}>
-							{/* <div id="curator-feed-default-feed-layout">
+							<div id="curator-feed-default-feed-layout">
 								<a href="https://curator.io" target="_blank" class="crt-logo crt-tag" className="crt-logo crt-tag">
 									Powered by Curator.io
 								</a>
-							</div> */}
+							</div>
 						</div>
 						</Fade>
 						<Fade delay={300}>
