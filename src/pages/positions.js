@@ -6,6 +6,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import SEO from '../components/SEO'
 import styles from '../page-styles/positions.module.css'
 import Fade from 'react-reveal/Fade'
+import StyledButton from '../components/styled-button'
 
 class Positions extends React.Component {
 	render() {
@@ -30,9 +31,7 @@ class Positions extends React.Component {
 							</div>
 							</Fade>
 							<Fade top>
-								<Link to={formLink} className='links' target="_blank" rel="noopener noreferrer">
-									<button className='btn' type="submit">Sign Up Now</button>
-								</Link>
+								<StyledButton link={formLink} buttonText='Sign Up Now' openInNewTab/>
 							</Fade>
 						</div>
 					</div>

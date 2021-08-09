@@ -2,8 +2,6 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import styles from './sponsors.module.css'
 
-
-
 export default () => {
 
     const { allContentfulSponsor } = useStaticQuery(SponsorsQuery);

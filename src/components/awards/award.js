@@ -14,7 +14,7 @@ const Award = ({awardData}) => {
             <div className={styles.awardContainer}>
             {/* <Img fluid={image.fluid}></Img> */}
                 <div className={styles.image}>
-                    <Img fluid={image.fluid}></Img>
+                    <Img fluid={image.fluid} alt={awardName}></Img>
                 </div>
                 <div className={'richText ' + styles.infoContainer}>
                     <h3>{awardName}</h3>

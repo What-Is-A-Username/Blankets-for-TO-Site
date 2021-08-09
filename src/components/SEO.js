@@ -23,7 +23,6 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		title: title || defaultTitle,
 		description: description || defaultDescription,
 		url: `${siteUrl}${pathname}`,
-		
 		// Open Graph Meta Tags
 		metaImage: metaImage && metaImage.src ? `${siteUrl}${metaImage.src}` : `${siteUrl}${defaultImage}`,
 		metaType: metaType,
@@ -109,8 +108,20 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		}]
 	}
 	>
+		{/* JQuery */}
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+		{/* Global site tag (gtag.js) - Google Analytics */}
+		<script async src="https://www.googletagmanager.com/gtag/js?id=${G-E7KS17RLEB}"></script>
+       	<script>{"window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} 	gtag('js', new Date()); gtag('config', 'G-E7KS17RLEB');"}</script>
+		
+		{/* Search Console */}
+		<meta name="google-site-verification" content="H85FiZN3YyU6tHavccegyjHzxSSC6kc_7d22i6IDx2Y" />
+
+		{/* Curator Social Media Embedding */}
 		{useCurator && <script type="text/javascript" src="https://cdn.curator.io/published/18d8088e-b13e-4fbe-a348-e56d6fcbf0a6.js"></script>}
+
+		{/* MailChimp Mailing List */}
 		{useMailChimp && <script type="text/javascript" src="https://chimpstatic.com/mcjs-connected/js/users/c190e10f2b62c767274e1197b/52a4a6cc65ff988eefff98c51.js"></script>}
 		{useMaps && <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
 			integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="

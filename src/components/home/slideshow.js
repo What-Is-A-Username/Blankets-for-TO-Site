@@ -4,6 +4,7 @@ import Img from 'gatsby-image'
 import slideStyles from './slideshow-slide.module.css'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { timers } from 'jquery'
+import StyledButton from '../styled-button'
 
 export default class Slideshow extends React.Component {
     state = { slide: 0, cycle: true, starting: false, timers: [] }
@@ -60,7 +61,7 @@ export default class Slideshow extends React.Component {
         return (
             <div className={styles.slideshow}>
                 <div className={styles.imageCover + ' ' + (this.state.starting ? slideStyles.imageFadeOut : slideStyles.imageFadeIn)}>
-                    <Img style={{position: 'absolute'}} fluid={this.props.menuItems[this.state.slide].node.backgroundImage.fluid}/>
+                    <Img style={{position: 'absolute'}} fluid={this.props.menuItems[this.state.slide].node.backgroundImage.fluid} alt={'Image for ' + slideStyles.slideTitle}/>
                     <div className={styles.imageLayer}></div>
                 </div>
                 <div className={this.state.starting ? slideStyles.slideTextBoxFadeOut : slideStyles.slideTextBox}>
@@ -72,9 +73,7 @@ export default class Slideshow extends React.Component {
                 </div>
                 { !this.state.starting && this.props.menuItems[this.state.slide].node.buttonLink != null ? 
                     <div className={this.state.starting ? slideStyles.aButton : (slideStyles.aButton + " " + slideStyles.buttonFadeIn)}>
-                        <form action={this.props.menuItems[this.state.slide].node.buttonLink} target='_blank' rel='noopener noreferrer'>
-                            <button type='submit' className='btn'>{this.props.menuItems[this.state.slide].node.buttonText}</button> 
-                        </form>
+                        <StyledButton link={this.props.menuItems[this.state.slide].node.buttonLink} buttonText={this.props.menuItems[this.state.slide].node.buttonText} openInNewTab/>
                     </div>
                     : null }  
                 <div className={styles.dots}>

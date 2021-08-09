@@ -1,0 +1,29 @@
+.sponsorsGrid 
+{
+    display: flex;
+    align-items: top;
+    overflow: visible;
+    justify-content: center;
+}
+
+@media(max-width: 760px)
+{
+    .sponsorsGrid
+    {
+        flex-direction: row;
+    } 
+}
+
+@media(max-width: 760px)
+{
+    .sponsorsGrid
+    {
+        flex-direction: column;
+    } 
+}
+
+
+.titles 
+{
+    text-align: center;
+}

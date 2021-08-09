@@ -1,0 +1,41 @@
+.whiteButton, .primaryButton {
+    border-width: 0;
+	border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(84, 84, 84, 0.6);
+    display: block;
+    width: 290px;
+    max-width: 290px;
+    text-decoration: none;
+    margin: 5px auto 5px auto;
+    padding: 7px;
+    text-align: center;
+    font-size: 1.2em;
+	cursor: pointer;
+}
+
+.whiteButton {
+	background-color: white;
+	color: #2b2d30;
+	transition: background-color .2s;
+	transition: color .1s;
+}
+
+.whiteButton:hover, .whiteButton:focus {
+	background-color: #ffffff;
+	color: var(--primary);
+}
+
+.primaryButton {
+	background-color: var(--primary);
+	color: #ecf0f1;
+	transition: background-color .2s;
+}
+
+.primaryButton:hover, .primaryButton:focus {
+	background-color: var(--primary_darker);
+}
+
+.links
+{
+	text-decoration: none;
+}

@@ -20,7 +20,7 @@ class LinkSharing extends React.Component {
             () => {
                 let timeout = setTimeout(() => {
                     this.setState({linkCopied: false, timer: timeout})}
-                , 1000)
+                , 3000)
             }
         ) 
     }

@@ -7,7 +7,7 @@
 
 .filterTitle 
 {
-    margin: 0px;
+    margin: 15px 0 0 0;
     color: var(--primary);
     padding-bottom: 5px;
 }

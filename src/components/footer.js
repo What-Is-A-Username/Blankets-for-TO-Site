@@ -8,10 +8,10 @@ import facebookImage from './images/contact/facebookTransparent.svg'
 import instagramImage from './images/contact/instagramTransparent.svg'
 import tikTokImage from './images/contact/tiktokTransparent.svg'
 import pageData from '../pages/page-data.json'
-import FooterItem from './footer-item'
+import FooterItem from './navigation/footer-item'
 import Fade from 'react-reveal/Fade'
 
-const stuff = (props) => {
+const Footer = (props) => {
 	var contactInfo = props.allContentfulOrganizationInformation.edges
 	const node = contactInfo[0].node
 	const pages = pageData.pages
@@ -35,7 +35,7 @@ const stuff = (props) => {
 							<div className={styles.socialMediaEntry} key={platform[i]}>
 								<a href={link[i] != "" ? link[i] : '/contact'}
 									target={link[i] != "" ? '_blank' : ''}
-									rel="noopener noreferrer">
+									rel='noopener noreferrer'>
 									<img src={icon[i]} alt={platform[i] + " Icon"} />
 								</a>
 							</div>
@@ -52,7 +52,7 @@ const stuff = (props) => {
 			}
 			</ul>
 			<p className={styles.siteAuthor +' ' + styles.credits}>
-				<a href={'https://github.com/What-Is-A-Username/website-gatsby-starter'}>
+				<a href={'https://github.com/What-Is-A-Username'}>
 					Site programmed and built by Cheng Liang Huang, 2021
 				</a>
 			</p>
@@ -88,7 +88,7 @@ export default () => {
 					}
 				}
 			`}
-			render={data => stuff(data)}
+			render={data => Footer(data)}
 		/>
 	)
 }

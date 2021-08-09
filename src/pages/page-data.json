@@ -6,7 +6,22 @@
         },
         {
             "to": "/about",
-            "desc": "About"
+            "desc": "About",
+            "children":
+            [
+                {
+                    "to": "/about",
+                    "desc": "About Us"
+                },
+                {
+                    "to": "/team",
+                    "desc": "Team"
+                },
+                {
+                    "to": "/sponsors",
+                    "desc": "Sponsors"
+                }
+            ]
         },
         {
             "to": "/blog",
@@ -23,10 +38,7 @@
                 }
             ]
         },
-        {
-            "to": "/team",
-            "desc": "Team"
-        },
+        
         {
             "to": "/positions",
             "desc": "Join"
@@ -37,7 +49,7 @@
         },
         {
             "to": "/contact",
-            "desc": "Contact"
+            "desc": "Contact Us"
         }
         
     ]

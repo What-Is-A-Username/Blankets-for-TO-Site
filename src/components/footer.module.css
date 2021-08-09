@@ -1,10 +1,9 @@
 .footer {
-	background-color: black;
+	background-color: white;
 	width: 100%;
 	height: auto;
-	padding-top: 10px;
-	padding-bottom: 20px;
 	margin: 0px;
+	box-shadow: 0 0px 5px 2px var(--navigation_fade);
 }
 
 .footerTitle {
@@ -41,11 +40,11 @@
 	display: inline-flex;
 	align-items: center;
 	margin: 0 1em;
-	color: white;
+	color: var(--primary);
 }
 
 .navigationItem a {
-	color: white;
+	color: gray;
 	text-decoration: none;
 }
 
@@ -95,7 +94,7 @@
 	width: 100%;
 	justify-content: center;
 	flex-direction: row;
-	height: 40px;
+	height: 20px;
 	align-items: center;
 }
 
@@ -104,12 +103,12 @@
 }
 
 .socialMediaEntry img {
-	width: 40px;
+	width: 20px;
 	opacity: 0.9;
 }
 
 .socialMediaEntry img:hover {
-	width: 50px;
+	width: 25px;
 	opacity: 1.0;
 }
 
