@@ -1,16 +1,15 @@
 .title {
-    position: relative;
     display: flex;
     justify-content: center;
+    justify-items: center;
     width: 100%;
     height: 100%;
+    margin-top: 30px;
 }
 
 .backgroundVideo {
     width: 100%;
     height: 100%;
-    max-width: 1300px;
-    object-fit: cover;
 }
 
 @media (min-width: 760px) { 
@@ -19,20 +18,27 @@
         margin-top: 30px;
     }
 
-    .backgroundImage {
-        border-radius: 15px;
-        margin-top: 30px;
+    .backgroundImage, .backgroundImage img {
+        width: 100%;
+        height: 80vh;
         max-width: 1200px;
-        max-height: 100%;
+        border-radius: 15px;
     }
 }
 
-.backgroundImage {
+@media (max-width: 760px) {
+    .backgroundImage, .backgroundImage img {
+        width: 100vw;
+        min-width: 100vw;
+        max-width: 100vw;
+        height: 50vh;
+        min-height: 50vh;
+    }
+}
+
+.backgroundImage, .backgroundImage img {
     display: block;
-    object-fit: cover;
-    overflow: hidden;
-    max-height: 100%;
-    width: 100%;
+    
 }
 
 .logoImage {

@@ -11,32 +11,35 @@ export default (props) => {
     const pages = pageData.pages
 
     const changeState = () => {
+        console.log('Clicked')
         setDrawer(!drawerActive);
     }
 
     return (
         <div className={drawerActive ? styles.scrollDisable : ' '}>
+            {drawerActive && <div className={styles.blocker} onClick={changeState}></div>}
             <nav role="navigation">
-                <div className={styles.logo}>
-                    <h1>Blankets For T.O.</h1>
-                    <div className={styles.toggle} onClick={changeState}>
-                        {drawerActive ? 
-                        <div className={styles.hamburger + ' ' + styles.menuOpen}></div> :
-                        <div className={styles.hamburger + ' ' + styles.menuClosed}></div>}
+                <div style={{zIndex: '300'}}>
+                    <div className={styles.logo}>
+                        <h1>Blankets For T.O.</h1>
+                        <div className={styles.toggle} onClick={changeState}>
+                            {drawerActive ? 
+                            <div className={styles.hamburger + ' ' + styles.menuOpen}></div> :
+                            <div className={styles.hamburger + ' ' + styles.menuClosed}></div>}
+                        </div>
                     </div>
+                    <ul className={styles.navigation + ' ' + (drawerActive ? styles.fadeIn : styles.fadeOut)}
+                        style={drawerActive ? { top: "70px" } : { top: "-150%" }}>
+                        {
+                            pages.map((page) => {
+                                return (
+                                    <NavigationItem page={page} onChangeState={changeState}/>
+                                )
+                            })
+                        }
+                    </ul>
                 </div>
-                <ul className={styles.navigation + ' ' + (drawerActive ? styles.fadeIn : styles.fadeOut)}
-                    style={drawerActive ? { top: "70px" } : { top: "-150%" }}>
-                    {
-                        pages.map((page) => {
-                            return (
-                                <NavigationItem page={page} onChangeState={changeState}/>
-                            )
-                        })
-                    }
-                </ul>
             </nav>
-            {drawerActive && <div className={styles.blocker}></div>}
             {children}
         </div>
     )

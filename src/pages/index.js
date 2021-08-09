@@ -31,11 +31,9 @@ class RootIndex extends React.Component {
 				<div className="white-background">
 					{/* Background Image or Video */}
 					<Fade>
-						<ScreenContainer>
-							<div className={styles.title}>
-								<Img className={styles.backgroundImage} fluid={organizationBlurb.frontPageImage.fluid} alt='Homepage image for Blankets for T.O.'/>			
-							</div>
-						</ScreenContainer>
+						<div className={styles.title}>
+							<Img className={styles.backgroundImage} fluid={organizationBlurb.frontPageImage.fluid} alt='Homepage image for Blankets for T.O.'/>			
+						</div>
 					</Fade>
 					{/* About Us description */}
 					<ScreenContainer>
@@ -127,7 +125,7 @@ class RootIndex extends React.Component {
 					buttonLink
 					backgroundImage {
 						fluid(
-							maxWidth: 1000
+							maxWidth: 2000
 							resizingBehavior: FILL
 							background: "rgb:000000"
 							) {

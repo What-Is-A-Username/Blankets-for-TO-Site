@@ -5,7 +5,16 @@
     justify-content: center;
 }
 
-.enforceHeight 
-{
-    min-height: 100vh;
+@media (min-width: 760px) {
+    .enforceHeight 
+    {
+        padding: 10vh 0;
+    }
+}
+
+@media (max-width: 760px) {
+    .enforceHeight 
+    {
+        padding: 5vh 0;
+    }
 }
