@@ -7,7 +7,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../page-styles/about.module.css'
 import { BLOCKS } from '@contentful/rich-text-types';
 import Fade from 'react-reveal/Fade'
-import OrganizationMap from '../components/home/org-map'
+
 
 class About extends React.Component {
 	render() {
@@ -41,7 +41,6 @@ class About extends React.Component {
 							{node.json !== undefined ? documentToReactComponents(node.json, options) : <p>Error: Articles not found.</p>}
 						</div>
 						</Fade>
-						<OrganizationMap></OrganizationMap>
 					</div>
 				</div> 
 			</Layout>

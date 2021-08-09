@@ -116,7 +116,7 @@
 }
 
 .imageLayer {
-    background-color: rgba(24, 24, 24, 0.7);
+    background-color: rgba(70, 70, 70, 0.7);
     z-index: 0;
     position: absolute;
 }

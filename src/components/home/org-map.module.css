@@ -6,9 +6,33 @@
     flex-direction: column;
 }
 
-.mapContainer > div 
+.mapViewport {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mapViewport > div
 {
     border-radius: 20px;
+    max-width: 1200px;
+    
+}
+
+.title 
+{
+    color: var(--primary);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.description 
+{
+    text-align: center;
+    margin: 0;
+    padding: 5px;
 }
 
 .infoBox
@@ -17,19 +41,34 @@
     align-items: center;
     justify-content: center;
     
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    border-radius: 15px;
-    padding: 20px;
     flex-direction: row;
+    z-index: 5;
+}
+
+.infoBox svg 
+{
+    cursor: pointer;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+
+.infoBox svg:hover 
+{
+    color: var(--primary_darker);
 }
 
 @media (min-width: 760px)
 {
     .infoBox 
     {
-        min-width: 400px;
         width: 80%;
-        margin-top: 30px;
+        max-width: 600px;
+        margin-bottom: 5px;
+        padding: 20px;
+
     }
     .textBox
     {
@@ -42,19 +81,27 @@
 {
     .infoBox 
     {
-        max-width: 100vw;
-        min-width: 300px;
-        margin-top: 10px;
+        max-width: 90vw;
+        min-width: 250px;
+        margin-bottom: 5px;
+        height: 150px;
+        padding: 5px;
+
     }
     .textBox
     {
         min-width: 80vw;
         width: 80%;
     }
+    .mapContainer 
+    {
+        margin: 10px;
+    }
 }
 
 .infoBoxTitle 
 {
+    font-size: 1.4em;
     color: var(--primary);
 }
 
@@ -73,5 +120,5 @@
 .infoBoxDescription
 {
     margin: 0;
-    padding: 20px;
+    padding: 5px;
 }
