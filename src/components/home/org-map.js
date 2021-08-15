@@ -89,8 +89,8 @@ export default () => {
 						provider={osm}
 						defaultCenter={zoomSettings.center}
 						center={mapCenter === -1 ? mapCenter : locations[mapCenter]}
-						zoom={zoomSettings.zoom*1.3}
-						touchEvents={false}
+						zoom={Math.floor(zoomSettings.zoom*1.3)}
+						touchEvents={false}					
 					>
 					{
 						mapLocations.map((info, index) => 
