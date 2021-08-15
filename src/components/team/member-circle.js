@@ -20,9 +20,6 @@ export default class MemberCircle extends React.Component {
     }
 
     render() {
-
-        // console.log("state : ", this.state.showDescription);
-
         const { data } = this.props;
 
         const contact = [

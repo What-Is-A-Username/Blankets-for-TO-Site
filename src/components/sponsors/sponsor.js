@@ -12,7 +12,7 @@ const Sponsor = ({sponsorData}) => {
             <div className={styles.awardContainer}>
                 <div className={styles.image}>
                     <a href={linkUrl} target='blank' rel='noopener noreferrer'>
-                        <Img fluid={logo.fluid} alt={name}></Img>
+                        <Img fluid={logo.fluid} alt={name} imgStyle={{ objectFit: "contain" }} ></Img>
                     </a>
                 </div>
             </div>

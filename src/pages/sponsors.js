@@ -7,21 +7,29 @@ import Fade from 'react-reveal/Fade'
 import SponsorIcon from '../components/sponsors/sponsor'
 
 import styles from '../page-styles/sponsors-page.module.css'
+import { navigate } from 'gatsby'
 
 // The /sponsors page on the site.
 export default class Sponsors extends React.Component {
+
     render() {
         const sponsorData = get(this, 'props.data.allContentfulSponsor.nodes');
         const preferredSponsors = sponsorData.filter(x => x.sponsorType === "Preferred"); 
         const defaultSponsors = sponsorData.filter(x => x.sponsorType !== "Preferred"); 
+        const message = 'Blankets for T.O. is proud to work with the following sponsors to fund donations and work with local community.'
+        const pitch = 'Interested in sponsoring Blankets for T.O. or supporting our initiatives? '
         return(
         <Layout location={this.props.location}>
             <SEO title="Sponsors"
-                description="Blankets for T.O. is proud to work with the following sponsors for donations and outreach"/>
+                description={message}/>
             <div className="white-background">
                 <div className="wrapper">
                     <Fade left duration={400}>
                         <h2>Sponsors</h2>
+                        <div className='richText'>
+                            <p>{message}
+                            </p>
+                        </div>
                     </Fade>
                     <Fade delay={500}>
                         <div className={'richText'}>
@@ -46,6 +54,11 @@ export default class Sponsors extends React.Component {
                             }
                             </div>
                         </div>
+                        <div className='richText'>
+                            <p className={styles.pitch}>{pitch}
+                                <a href='/contact'>Contact us to discuss options.</a>
+                            </p>
+                        </div>
                     </Fade>
                 </div>
             </div> 
@@ -56,13 +69,13 @@ export default class Sponsors extends React.Component {
 
 export const SponsorsQuery = graphql`
 query SponsorsPageQuery {
-        allContentfulSponsor {
+        allContentfulSponsor(sort: {fields: name}) {
             nodes {
                 linkUrl
                 name
                 sponsorType
                 logo {
-                    fluid(maxWidth: 800, resizingBehavior: SCALE) {
+                    fluid(maxHeight: 200, resizingBehavior: SCALE) {
                         ...GatsbyContentfulFluid_tracedSVG
                     }
                 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import styles from './sponsors.module.css'
+import Img from 'gatsby-image'
 
 export default () => {
 
@@ -16,7 +17,7 @@ export default () => {
                     return(
                         <a className={styles.alink} href={x.linkUrl} target="_blank" rel="noopener noreferrer">
                             <div className={styles.logo}>
-                                <img alt={x.name} src={x.logo.resize.src}></img>
+                                <Img durationFadeIn={0} imgStyle={{ objectFit: "contain" }} alt={x.name} fluid={x.logo.fluid}/>
                             </div> 
                         </a>
                     )
@@ -46,17 +47,17 @@ export default () => {
 
 const SponsorsQuery = graphql`
     query SponsorsQuery {
-        allContentfulSponsor {
+        allContentfulSponsor(sort: {fields: name}) {
             edges {
                 node {
                     name 
                     logo {
-                        resize(
-                            height: 80
-                            resizingBehavior: FILL
+                        fluid(
+                            maxHeight: 100
+                            resizingBehavior: SCALE
                             background: "rgb:000000")
                         {
-                            src
+                            ...GatsbyContentfulFluid_tracedSVG
                         }
                     }
                     sponsorType

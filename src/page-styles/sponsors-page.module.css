@@ -1,6 +1,8 @@
 .sponsorsGrid 
 {
     display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
     align-items: top;
     overflow: visible;
     justify-content: center;
@@ -22,8 +24,12 @@
     } 
 }
 
-
 .titles 
 {
     text-align: center;
+}
+
+.pitch 
+{
+    font-weight: bold;
 }
