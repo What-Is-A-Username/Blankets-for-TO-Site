@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import styles from './sponsors.module.css'
 import Img from 'gatsby-image'
+import StyledButton from '../styled-button'
 
 export default () => {
 
@@ -15,7 +16,7 @@ export default () => {
             <div className={styles.logoContainer}>
                 {sponsorList.map(x => {
                     return(
-                        <a className={styles.alink} href={x.linkUrl} target="_blank" rel="noopener noreferrer">
+                        <a className={styles.alink} target="_blank" rel="noopener noreferrer">
                             <div className={styles.logo}>
                                 <Img durationFadeIn={0} imgStyle={{ objectFit: "contain" }} alt={x.name} fluid={x.logo.fluid}/>
                             </div> 
@@ -41,6 +42,8 @@ export default () => {
                 </h2>
             }
             {defaultSponsors.length > 0 && constructSponsorRow(defaultSponsors)}
+            <StyledButton buttonText='Browse sponsors' link='/sponsors'/>
+            <div style={{height: '100px'}}></div>
         </div>
     )
 }
@@ -61,7 +64,17 @@ const SponsorsQuery = graphql`
                         }
                     }
                     sponsorType
-                    linkUrl
+                    description {
+                        childMarkdownRemark {
+                            html
+                        }
+                    }
+                    mainLink
+                    links {
+                        childMarkdownRemark {
+                            html
+                        }
+                    }
                 }
             }
         }

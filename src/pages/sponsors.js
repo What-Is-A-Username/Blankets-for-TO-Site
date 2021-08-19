@@ -1,7 +1,6 @@
 import React from 'react' 
 import get from 'lodash/get'
 import Layout from '../components/layout'
-import SponsorsBar from '../components/home/sponsors'
 import SEO from '../components/SEO'
 import Fade from 'react-reveal/Fade'
 import SponsorIcon from '../components/sponsors/sponsor'
@@ -27,8 +26,13 @@ export default class Sponsors extends React.Component {
                     <Fade left duration={400}>
                         <h2>Sponsors</h2>
                         <div className='richText'>
-                            <p>{message}
+                            <p>{message}</p>
+                            <p className={styles.pitch}>{pitch}
+                                <a href='/contact'>Contact us to discuss options.</a>
                             </p>
+                        </div>
+                        <div className='richText'>
+                            
                         </div>
                     </Fade>
                     <Fade delay={500}>
@@ -54,11 +58,7 @@ export default class Sponsors extends React.Component {
                             }
                             </div>
                         </div>
-                        <div className='richText'>
-                            <p className={styles.pitch}>{pitch}
-                                <a href='/contact'>Contact us to discuss options.</a>
-                            </p>
-                        </div>
+                        
                     </Fade>
                 </div>
             </div> 
@@ -71,12 +71,22 @@ export const SponsorsQuery = graphql`
 query SponsorsPageQuery {
         allContentfulSponsor(sort: {fields: name}) {
             nodes {
-                linkUrl
                 name
                 sponsorType
                 logo {
                     fluid(maxHeight: 200, resizingBehavior: SCALE) {
                         ...GatsbyContentfulFluid_tracedSVG
+                    }
+                }
+                description {
+                    childMarkdownRemark {
+                        html
+                    }
+                }
+                mainLink
+                links {
+                    childMarkdownRemark {
+                        html
                     }
                 }
             }   

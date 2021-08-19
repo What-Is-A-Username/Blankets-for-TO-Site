@@ -1,19 +1,20 @@
-.parentContainer
-{
-    display: grid;
-    margin: 30px;
-    justify-content: center;
-}
-
-.awardContainer 
+.sponsorContainer 
 {
     display: flex;
     align-items: center;
+    
 }
 
 .infoContainer h3, .infoContainer h5
 {
     margin-top: 5px;
+}
+
+.imageSpacing
+{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media(min-width: 760px)
@@ -25,12 +26,12 @@
         width: 250px;
     }
 
-    .awardContainer 
+    .sponsorContainer 
     {
-        flex-direction: row;
-        justify-content: center;
-        margin: 0px 20px;
+        flex-direction: column;
+        margin: 20px;
     }
+
     .image, .image img
     {
         min-width: 250px;
@@ -38,13 +39,25 @@
         max-height: 150px;
         margin: 0px;;
     }
+
+    .imageSpacing 
+    {
+        height: 150px;
+        width: 300px;
+    }
+
+    .description
+    {
+        max-width: 450px;
+    }
 }
 
 @media(max-width: 760px)
 {
-    .awardContainer 
+    .sponsorContainer 
     {
         flex-direction: column;
+        margin: 40px 10px;
     }
     
     .image, .image img
@@ -55,19 +68,33 @@
         margin: 0px;
     }
 
-    .infoContainer
+    .imageSpacing 
     {
-        text-align: center;
+        height: 100px;
+        width: 250px;
     }
 }
 
-.infoContainer
+.description
 {
-    display: flex;
-    flex-direction: column;
+    text-align: center;
+    color: rgb(78, 78, 78);
 }
 
-.infoContainer h5
+.mainLink svg {
+    height: 1.1em;
+}
+
+.mainLink {
+    align-content: center;
+}
+
+.links, .mainLink
 {
-    color: rgb(105, 105, 105);
+    text-align: center;
+}
+.links > p
+{
+    display: inline-flex;
+    flex-direction: column;
 }

@@ -26,13 +26,7 @@ const renderFunc = (articles, excludeSlug) => {
 				</div>
 				<div className={styles.previewText}>
 					<h3 className={styles.previewTitle}>{article.node.title}</h3>
-					{/* <BlogTagBar tags={article.node.tags} clickable={false}/> */}
 					<small className={styles.previewPublishDate}>{article.node.publishDate}</small>
-					{/* <div className={styles.previewDescription}
-						dangerouslySetInnerHTML={{
-							__html: article.node.description.childMarkdownRemark.html,
-						}}
-					/> */}
 				</div>
 			</div>
 		</a>); 
