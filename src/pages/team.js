@@ -25,9 +25,9 @@ class Team extends React.Component {
 						<Fade left duration={400}>
 							<h2>Executive Team</h2>
 						</Fade>
-						<Fade delay={500} onReveal={() => this.setState({reveal: true})}>
+						{/* <Fade delay={500} onReveal={() => this.setState({reveal: true})}>
 							<p>Due to current COVID-19 restrictions, we are unable at this time to organize photos for all of our members. However, we expect that you will be able to meet our team in the near future. Thank you for your patience.</p>
-						</Fade>
+						</Fade> */}
 						<div className={styles.executiveList}>
 							{members.map(({ node }) => {
 								return (node.name !== "John Doe" ? 
@@ -68,6 +68,13 @@ export const teamPositionQuery = graphql`
 					twitterLink
 					linkedIn
 					linkedInLink
+					photo
+					{
+						fluid(resizingBehavior: SCALE)
+						{
+							...GatsbyContentfulFluid_tracedSVG
+						}
+					}
 				}
 			}
 		}

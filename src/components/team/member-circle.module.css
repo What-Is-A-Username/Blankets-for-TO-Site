@@ -33,18 +33,18 @@
 
 .memberContactEntry {
     display: flex;
+    margin: 5px;
 }
 
 .memberContactIcon { 
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     align-self: center;
 }
 
 .memberContactIcon:hover {
-    box-shadow: 10px 10px 5px var(black);
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
 }
 
 .memberContact p {
