@@ -6,7 +6,7 @@ import Fade from 'react-reveal/Fade'
 import SponsorIcon from '../components/sponsors/sponsor'
 
 import styles from '../page-styles/sponsors-page.module.css'
-import { navigate } from 'gatsby'
+import { graphql } from 'gatsby'
 
 // The /sponsors page on the site.
 export default class Sponsors extends React.Component {
@@ -49,7 +49,7 @@ export default class Sponsors extends React.Component {
                         </div>
                         <h3 className={styles.titles}>Sponsors</h3>
                         <div className={styles.sponsorsGrid}>
-                        {
+                            {
                             defaultSponsors.map(x => {
                                 return(
                                     <SponsorIcon sponsorData={x}/>

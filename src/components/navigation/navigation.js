@@ -1,10 +1,10 @@
 import React from 'react'
-import { StaticQuery, navigate } from 'gatsby'
+import { StaticQuery, navigate, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import styles from './navigation.module.css'
 import pageData from '../../pages/page-data.json'
 import NavigationItem from './navigation-item'
-import { Menu, X} from 'react-feather'
+import { Menu, X } from 'react-feather'
 
 const Navigation = (props) => {
 	return (

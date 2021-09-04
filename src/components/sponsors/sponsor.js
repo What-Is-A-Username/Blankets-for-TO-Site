@@ -8,6 +8,8 @@ import styles from './sponsor.module.css'
 
 const Sponsor = ({sponsorData}) => {
     const { name, logo, links, description, mainLink } = sponsorData;
+    const hoverLinkPromppt = 'Visit'; 
+    const linkPrompt = 'Visit'; 
 
     return(
         <div className={styles.sponsorContainer}>
@@ -27,7 +29,7 @@ const Sponsor = ({sponsorData}) => {
                         />
                     }
                     <div className={styles.links}>
-                        <a className={styles.mainLink} href={mainLink} title={`Visit ${name}`}>Learn more<ExternalLink/></a>
+                        <a className={styles.mainLink} href={mainLink} title={`${hoverLinkPromppt} ${name}`}>{linkPrompt}<ExternalLink/></a>
                         {
                             links && 
                             <div className={styles.links}

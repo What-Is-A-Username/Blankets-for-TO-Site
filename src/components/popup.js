@@ -16,17 +16,6 @@ export default class Popup extends React.Component {
         }, 1900);
     }
 
-    componentDidMount() {
-        // var visitedBefore = localStorage.getItem('firstentry') 
-        // if (!visitedBefore)
-        //     localStorage.setItem('firstentry', 'true')
-        // else if (visitedBefore !== 'true')
-        //     localStorage.setItem('firstentry', 'true')
-        // else 
-        //     this.setState({open: false, visible: false})
-        // console.log('Not new visitor to site? ' + visitedBefore + '. Welcome.');
-      }
-
     render() {
         return (
             <div className={styles.popupBlocker + ' ' + (this.state.open ? styles.open : styles.closed) + ' ' + (this.state.visible ? '' : styles.invisible)}>

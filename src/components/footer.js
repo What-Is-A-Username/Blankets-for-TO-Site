@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql, Link } from 'gatsby'
-import get from 'lodash/get'
+import Img from 'gatsby-image'
 import styles from './footer.module.css'
 import emailImage from './images/contact/emailTransparent.svg'
 import twitterImage from './images/contact/twitterTransparent.svg'
@@ -20,13 +20,21 @@ const Footer = (props) => {
 	const nameEntry = [node.emailAddress, node.facebook, node.instagram, node.twitter, node.tikTok]
 	const link = ['mailto:' + node.emailAddress, node.facebookLink, node.instagramLink, node.twitterLink, node.tiktokLink]
 	const icon = [emailImage, facebookImage, instagramImage, twitterImage, tikTokImage]
+	const logo = props.allContentfulOrganizationInformation.nodes[0]
+
+	const onClickLogo = () => {
+        navigate('/')
+    }
 
 	return (
 		<Fade>
 		<footer role="contentinfo" className={styles.footer}>
+			{/* <div className={styles.logo} onClick={onClickLogo} >
+                <Img fluid={logo.fluid}/>
+            </div> */}
 			<h1 className={styles.footerTitle}>
-				Blankets For T.O.
-      		</h1>
+				Blankets for T.O.
+			</h1>
 			<div className={styles.socialMedia}>
 				{
 					nameEntry.map((x, i) => {
@@ -82,7 +90,20 @@ export default () => {
 							}
 						}
 					}
-				}
+                    allContentfulOrganizationInformation 
+                    {
+                        nodes 
+                        {
+                            organizationLogo 
+                            {
+                                fluid(maxHeight: 400, resizingBehavior: SCALE, background: "rgb:FFFFFF")
+                                {
+                                    ...GatsbyContentfulFluid_tracedSVG
+                                }
+                            }
+                        }
+					}
+                }
 			`}
 			render={data => Footer(data)}
 		/>
