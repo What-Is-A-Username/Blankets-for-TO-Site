@@ -1,18 +1,18 @@
 .footer {
 	background-color: white;
+	margin: 0;
+	box-shadow: 0 -2px 1px 0px var(--navigation_fade);
 	width: 100%;
-	height: auto;
-	margin: 0px;
-	box-shadow: 0 0px 5px 2px var(--navigation_fade);
 }
 
-.footerTitle {
-	color: var(--primary);
+.footerTop
+{
+	box-sizing: border-box;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	margin-top: 0px;
-	margin-bottom: 0px;
+}
+
+.logo {
+	cursor: pointer;
 }
 
 .footerInfo {
@@ -26,14 +26,10 @@
 
 .navigation {
 	display: flex;
-	justify-content: center;
-	list-style: none;
-	margin: 0;
-	height: auto;
+	justify-content: right;
+	margin: 20px 0 0 0;
 	font-size: 1.25em;
-	padding-left: 0px;
-	padding-right: 0px;
-	padding-top: 0px;
+	padding: 0;
 }
 
 .navigationItem {
@@ -52,16 +48,72 @@
 	color:var(--primary);
 }
 
+/* Logo size  */
+@media (min-width: 1200px) {
+	.logo, .logo img, .logo div {
+		width: 300px;
+		height: 150px;
+	}
+} 
+
+@media (min-width: 760px) and (max-width: 1200px)
+{
+	.logo, .logo img, .logo div {
+		width: 200px;
+		height: 100px;
+	}
+}
+
+@media (max-width: 760px)
+{
+	.logo, .logo img, .logo div {
+		width: 200px;
+		height: 100px;
+		align-self: center;
+	}
+}
+
 @media(max-width: 760px) {
+	.footer
+	{
+		flex-direction: column;
+	}
+
+	.left
+	{
+		display: flex;
+		flex-direction: column;
+	}
+
 	.navigation{
 		flex-direction: column;
-		
 	}
 	
 	.navigationItem {
 		justify-content: center;
 	}
 }  
+
+@media(min-width: 760px) {
+	
+	.right
+	{
+		flex-grow: 1;
+		float: right;
+	}
+
+	.footerTop
+	{
+		padding: 2vh 5vw 1vh 5vw;
+		flex-direction: row;
+		display: inline-flex;
+	}
+
+	.logo {
+		flex-grow: 1;
+	}
+
+} 
 
 .siteAuthor a
 {
@@ -72,11 +124,16 @@
 .credits 
 {
 	padding-left: 10px;
-	text-align: center;
+	text-align: right;
 	text-decoration-color: rgb(66, 66, 66);
 	font-size: 0.9em;
-	margin: 0 0 0 0;
-	padding: 0 0 10px 0;
+	margin: 0; 
+	padding: 0 5vw 10px 0;
+}
+
+.credits > a 
+{
+	text-decoration: none;
 }
 
 .creditColor 
@@ -103,12 +160,12 @@
 }
 
 .socialMediaEntry img {
-	width: 20px;
+	width: 30px;
 	opacity: 0.9;
 }
 
 .socialMediaEntry img:hover {
-	width: 25px;
+	width: 35px;
 	opacity: 1.0;
 }
 

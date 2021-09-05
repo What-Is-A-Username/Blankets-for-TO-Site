@@ -48,7 +48,7 @@ const NavBar = (propData) => {
     }
 
     return (
-        <div className={drawerActive ? styles.scrollDisable : ' '}>
+        <div className={drawerActive ? styles.scrollDisable : ''} style={{minHeight: '100vh'}}>
             {drawerActive && <div className={styles.blocker} onClick={changeState}></div>}
             <nav role="navigation">
                 <div className={styles.header}>

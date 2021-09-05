@@ -7,7 +7,6 @@
 	width: 100%;
 	color: black;
 	text-decoration: none;
-	
 }
 
 .navigationItem > a {
@@ -28,8 +27,6 @@
     .navigationItem {
         position: relative;
         display: inline-block;
-        margin: 0 0px; 
-		padding: 0 5px;
     }
 
 	.navigationItem a /* Allows chevrons to be centered */
@@ -76,17 +73,36 @@
 	}
 }
 
-@media(min-width: 900px) {
+@media (min-width: 1200px) {
 	.navigationItem {
         margin: 0 20px; 
-		padding: 0 5px;
+		padding: 0 20px;
     }
 } 
+
+@media (max-width: 1200px) and (min-width: 900px) {
+	.navigationItem {
+        margin: 0 10px; 
+		padding: 0 10px;
+    }
+} 
+
+@media (max-width: 900px) and (min-width: 760px) {
+	.navigationItem {
+		margin: 0 5px; 
+		padding: 0 5px;
+	}
+}
+@media (max-width: 760px) {
+	.navigationItem {
+		margin: 0 0px; 
+		padding: 0 20px;
+	}
+}
 
 @media(max-width: 760px) { 
     .navigationItem {
 		font-size: 1.25em;
-		padding: 0 25px;
 	}
 
 	.navigationItem svg {

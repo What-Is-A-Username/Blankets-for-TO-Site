@@ -25,13 +25,16 @@ class Positions extends React.Component {
 							<Fade left duration={400}>
 								<h2>Membership and Volunteering</h2>
 							</Fade>
+							<Fade top>
+								<StyledButton link={formLink} buttonText='Sign up for membership' openInNewTab/>
+							</Fade>
 							<Fade delay={500}>
 							<div className="richText">
 								{membershipInfo.json !== undefined ? documentToReactComponents(membershipInfo.json) : <p>Error: Articles not found.</p>}
 							</div>
 							</Fade>
 							<Fade top>
-								<StyledButton link={formLink} buttonText='Sign Up Now' openInNewTab/>
+								<StyledButton link={formLink} buttonText='Sign up for membership' openInNewTab/>
 							</Fade>
 						</div>
 					</div>
