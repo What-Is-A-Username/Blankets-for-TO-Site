@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import SEO from '../components/SEO'
 import get from 'lodash/get'
 import Layout from '../components/layout'
@@ -10,12 +10,10 @@ import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../templates/blog-post.module.css'
 
-import { BlogTagBar } from '../components/blog_search/tag'
-
-class BlogPostTemplate extends React.Component {
+class PageTemplate extends React.Component {
 
 	render() {
-		const post = get(this.props, 'data.contentfulBlogPost')
+		const post = get(this.props, 'data.contentfulPage')
 		const posts = get(this, 'props.data.allContentfulBlogPost.edges')
 
 		const options = {
@@ -27,12 +25,6 @@ class BlogPostTemplate extends React.Component {
 						}}
 						alt={fields.description}
 					/>,
-				// [BLOCKS.HEADING_3]: (node, children) => 
-				// 	<h3 id={children[0].toUpperCase().replace(/ /g, '_')}>{children}</h3>,
-				// [BLOCKS.HEADING_2]: (node, children) => 
-				// 	<h2 id={children[0].toUpperCase().replace(/ /g, '_')}>{children}</h2>,
-				// [BLOCKS.HEADING_4]: (node, children) => 
-				// 	<h4 id={children[0].toUpperCase().replace(/ /g, '_')}>{children}</h4>,
 			},
 		};
 
@@ -46,14 +38,11 @@ class BlogPostTemplate extends React.Component {
 			<Layout location={this.props.location}>
 				<div className="white-background">
 					<SEO title={post.title} metaType={`article`}
-						description={`${post.publishDate} - ${post.description.childMarkdownRemark.rawMarkdownBody}`}
+						description={post.description.childMarkdownRemark.rawMarkdownBody}
 						childElements={requiredHead}
 					/>
 					<div className="wrapper">
 						<h1 className={styles.title}>{post.title}</h1>
-						<BlogTagBar tags={post.tags} clickable={true}></BlogTagBar>
-						<p className={styles.publishDate}>by {post.authorName}, {post.publishDate}</p>
-						<p className={styles.publishDate}></p>
 						<div className="richText">
 							{post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
 						</div>
@@ -64,29 +53,25 @@ class BlogPostTemplate extends React.Component {
 					</div>
 				</div>
 			</Layout>
-			
 		)
 	}
 }
 
-export default BlogPostTemplate
+export default PageTemplate
 
-export const pageQuery = graphql`
-	query BlogPostBySlug($slug: String!) {
+export const DynamicPageQuery = graphql`
+	query PageBySlug($slug: String!) {
 		site {
 			siteMetadata {
 				title
 			}
 		}
-		contentfulBlogPost(slug: { eq: $slug }) {
+		contentfulPage(slug: { eq: $slug }) {
 				title
-				authorName
-				tags
 				slug
 				richTextBody {
-						json
+					json
 				}
-				publishDate(formatString: "MMMM Do, YYYY")      
 				description {
 					childMarkdownRemark {
 						html

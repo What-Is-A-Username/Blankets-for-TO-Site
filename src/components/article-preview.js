@@ -7,29 +7,15 @@ import PropTypes from 'prop-types'
 import Fade from 'react-reveal/Fade'
 import Bounce from 'react-reveal/Bounce'
 import StyledButton from './styled-button'
+import ArticleCard from './article-card' 
 
 const renderFunc = (articles, excludeSlug) => {
 
 	let rendered = 0; 
-	const increment = (article) =>
+	const increment = (articleNode) =>
 	{
 		rendered++; 
-		return (
-			<a onClick={() => navigate(`/blog/${article.node.slug}`)} className={styles.alink} key={article.node.title}>
-			<div className={styles.preview} >
-				<div className={styles.previewImage}>
-					{article.node.imagePreview != null ?
-						<Img fluid={article.node.imagePreview.fluid} alt={article.node.imagePreview.description} />
-						:
-						null
-					}
-				</div>
-				<div className={styles.previewText}>
-					<h3 className={styles.previewTitle}>{article.node.title}</h3>
-					<small className={styles.previewPublishDate}>{article.node.publishDate}</small>
-				</div>
-			</div>
-		</a>); 
+		return <ArticleCard article={articleNode.node}/>
 	}
 
 	return (
@@ -43,9 +29,8 @@ const renderFunc = (articles, excludeSlug) => {
 					return (
 						article.node.slug === excludeSlug || rendered >= 3 ?
 						null :  
-						<Fade>
-						{increment(article)}
-						</Fade>
+						increment(article)
+
 					)
 				})}
 			</div>
@@ -100,3 +85,5 @@ ArticlePreview.defaultProps = {
 }
 
 export default ArticlePreview
+
+
