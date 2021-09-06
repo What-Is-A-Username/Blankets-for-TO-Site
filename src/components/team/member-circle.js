@@ -33,9 +33,9 @@ export default class MemberCircle extends React.Component {
         return(
             <div className={styles.memberCard}>
                 {data.photo === null ? 
-                    <img className={styles.memberPortrait} src={placeholderPortrait} alt="Placeholder portrait."></img>
+                    <img className={styles.memberPortrait} src={placeholderPortrait} alt={`Placeholder portrait of ${data.title}`}></img>
                     :  
-                    <Img className={styles.memberPortrait} fluid={data.photo.fluid} alt={`Portrait of ${data.name} (${data.title})`}/>
+                    <Img className={styles.memberPortrait} fluid={data.photo.fluid} alt={`Portrait of ${data.title}`}/>
                 }
                 <div className={styles.memberInformation}>
                     <h3 className={styles.name}>{data.name}</h3>
