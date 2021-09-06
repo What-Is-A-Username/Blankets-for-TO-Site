@@ -60,7 +60,7 @@ p {
 
 @media(min-width: 760px) {
 	.wrapper {
-		width: 80%;
+		width: 70%;
 	}
 	.wrapper h2{
 		text-align: left;
@@ -199,4 +199,15 @@ Rich Text Display
 {
 	margin-left: 20%;
 	margin-right: 20%;
+}
+
+.termly-cookie-preference-button {
+	background: white; 
+	box-sizing: border-box; 
+	cursor: pointer; 
+	padding: 0; 
+	outline: none;
+	border-width: 0;
+	font-size: 12.8px;
+	color: rgb(66, 66, 66);
 }

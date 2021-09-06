@@ -36,7 +36,7 @@
 @media(min-width: 760px) {
     .footerItem {
         margin: 0 0px; 
-		padding: 0 2vw;
+		padding: 0 1vw;
     }
 
     .parentItem a { 
@@ -44,7 +44,7 @@
 	}    
 }
 
-@media(max-width: 760px) { 
+@media(max-width: 900px) { 
     .footerItem {
 		justify-content: center;
 		font-size: 1.25em;

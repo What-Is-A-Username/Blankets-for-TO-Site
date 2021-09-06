@@ -33,7 +33,7 @@
                     "desc": "Posts" 
                 }, 
                 {
-                    "to": "/blog/podcasts", 
+                    "to": "/pages/podcasts", 
                     "desc": "Podcasts" 
                 }
             ]
@@ -52,5 +52,23 @@
             "desc": "Contact"
         }
         
+    ],
+
+    "footer": [
+        {
+            "to": "/pages/privacy-policy",
+            "desc": "Policies",
+            "children": 
+            [
+                {
+                    "to": "/pages/privacy-policy", 
+                    "desc": "Privacy"
+                },
+                {
+                    "to": "/pages/cookie-policy",
+                    "desc": "Cookies" 
+                }
+            ]
+        }
     ]
 }

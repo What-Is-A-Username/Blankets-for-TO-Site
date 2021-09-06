@@ -56,7 +56,7 @@
 	}
 } 
 
-@media (min-width: 760px) and (max-width: 1200px)
+@media (min-width: 900px) and (max-width: 1200px)
 {
 	.logo, .logo img, .logo div {
 		width: 200px;
@@ -64,7 +64,7 @@
 	}
 }
 
-@media (max-width: 760px)
+@media (max-width: 900px)
 {
 	.logo, .logo img, .logo div {
 		width: 200px;
@@ -73,7 +73,7 @@
 	}
 }
 
-@media(max-width: 760px) {
+@media(max-width: 900px) {
 	.footer
 	{
 		flex-direction: column;
@@ -92,9 +92,17 @@
 	.navigationItem {
 		justify-content: center;
 	}
+
+	.credits
+	{
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 20px;
+	}
 }  
 
-@media(min-width: 760px) {
+@media(min-width: 900px) {
 	
 	.right
 	{
@@ -113,6 +121,14 @@
 		flex-grow: 1;
 	}
 
+	.credits {
+		text-align: right;
+		padding: 0 5vw 10px 0;
+	}
+	.credits > a {
+		margin-right: 20px;
+	}
+
 } 
 
 .siteAuthor a
@@ -124,11 +140,9 @@
 .credits 
 {
 	padding-left: 10px;
-	text-align: right;
 	text-decoration-color: rgb(66, 66, 66);
-	font-size: 0.9em;
+	font-size: 0.8em;
 	margin: 0; 
-	padding: 0 5vw 10px 0;
 }
 
 .credits > a 
@@ -141,7 +155,7 @@
 	color: rgb(66, 66, 66);
 }
 
-.credits:hover, .siteAuthor a:hover
+.credits > a:hover, .credits > button:hover, .siteAuthor a:hover
 {
 	color: var(--primary);
 }
@@ -168,4 +182,6 @@
 	width: 35px;
 	opacity: 1.0;
 }
+
+
 

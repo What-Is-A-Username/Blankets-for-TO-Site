@@ -13,7 +13,7 @@ import FooterItem from './navigation/footer-item'
 const Footer = (props) => {
 	var contactInfo = props.allContentfulOrganizationInformation.edges
 	const node = contactInfo[0].node
-	const pages = pageData.pages
+	const pages = pageData.pages.concat(pageData.footer)
 
 	const platform = ["Email", "Facebook", "Instagram", "Twitter", "TikTok"]
 	const nameEntry = [node.emailAddress, node.facebook, node.instagram, node.twitter, node.tikTok]
@@ -24,6 +24,15 @@ const Footer = (props) => {
 	const onClickLogo = () => {
         navigate('/')
     }
+
+	const clickManager = () => {
+		try {
+			displayPreferenceModal()
+		}
+		catch {
+			console.log("Unable to display the cookie preference widget. Please try again later.")
+		}
+	}
 
 	return (
 		<footer role="contentinfo" className={styles.footer}>
@@ -58,8 +67,19 @@ const Footer = (props) => {
 				</div>
 			</div>
 			<div className={styles.credits}>
-				<Link to={'/credits'}> Media Credits and Attribution</Link>
-			</div>
+				<a href='/credits'>Media Credits and Attribution</a>
+				<a href="https://app.termly.io/notify/2f159730-6b96-4595-81a4-860a387d21ae">
+  					DSAR, Do not sell my info
+				</a>
+				<button
+					class="termly-cookie-preference-button"
+					type="button"
+					onClick={clickManager}
+				>
+					Manage Cookie Preferences
+				</button>
+  
+			</div>  
 		</footer>
 	)
 }
