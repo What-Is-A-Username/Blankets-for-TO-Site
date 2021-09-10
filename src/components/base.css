@@ -170,9 +170,20 @@ Rich Text Display
 	margin-bottom: 0px;
 }
 
-.richText p
+@media(max-width: 760px)
 {
-	font-size: 16px;
+	.richText p
+	{
+		font-size: 16px;
+	}
+}
+
+@media(min-width: 760px)
+{
+	.richText p 
+	{
+		font-size: 18px;
+	}
 }
 
 .richText a
@@ -211,3 +222,21 @@ Rich Text Display
 	font-size: 12.8px;
 	color: rgb(66, 66, 66);
 }
+
+
+.fb-share-button, .twitter-share-button {
+	/* background-color: var(--primary); */
+	color: var(--primary);
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+}
+
+.fb-share-button > a, .twitter-share-button {
+	text-decoration: none;
+}
+
+/* .fb-share-button:hover, .twitter-share-button:hover {
+	background-color: var(--primary_darker);
+	color: white;
+} */

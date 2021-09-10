@@ -14,6 +14,7 @@ const ArticleCard = ({article}) => {
 						null}
 				</div>
 				<div className={styles.previewText}>
+					<small className={styles.previewArticleType}>{article.articleType}</small>
 					<h3 className={styles.previewTitle}>{article.title}</h3>
 					<small className={styles.previewPublishDate}>{article.publishDate}</small>
 				</div>

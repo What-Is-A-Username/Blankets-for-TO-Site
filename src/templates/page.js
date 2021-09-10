@@ -14,7 +14,6 @@ class PageTemplate extends React.Component {
 
 	render() {
 		const post = get(this.props, 'data.contentfulPage')
-		const posts = get(this, 'props.data.allContentfulBlogPost.edges')
 
 		const options = {
 			renderNode: {
@@ -37,18 +36,21 @@ class PageTemplate extends React.Component {
 		return (
 			<Layout location={this.props.location}>
 				<div className="white-background">
-					<SEO title={post.title} metaType={`article`}
+					<SEO 
+						title={post.title} 
+						metaType='article'
 						description={post.description.childMarkdownRemark.rawMarkdownBody}
 						childElements={requiredHead}
+						doNotCrawl={!post.enableSearchCrawling}
+						metaImage={post.imagePreview.fluid.src}
 					/>
-					<div className="wrapper">
+					<div className="wrapper" >
 						<h1 className={styles.title}>{post.title}</h1>
-						<div className="richText">
+						<div className="richText" styles={{maxWidth: '800px'}}>
 							{post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
 						</div>
 						<LinkSharing location={'https://blanketsforto.ca/blog/' + post.slug} />
 						<hr className={styles.horizontalLine}></hr>
-						{/* Updates */}
 						<ArticlePreview excludeSlug={post.slug}></ArticlePreview>
 					</div>
 				</div>
@@ -67,31 +69,23 @@ export const DynamicPageQuery = graphql`
 			}
 		}
 		contentfulPage(slug: { eq: $slug }) {
-				title
-				slug
-				richTextBody {
-					json
-				}
-				description {
-					childMarkdownRemark {
-						html
-						rawMarkdownBody
-					}
-				}
-		}
-		allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 3, filter: {articleType: {ne: "Page"}}) {
-				edges {
-					node {
-						title
-						slug
-						publishDate(formatString: "MMMM Do, YYYY")
-						description {
-							childMarkdownRemark {
-								html
-							}
-						}
-					}
+			title
+			slug
+			richTextBody {
+				json
+			}
+			description {
+				childMarkdownRemark {
+					html
+					rawMarkdownBody
 				}
 			}
+			enableSearchCrawling
+			imagePreview {
+				fluid(maxWidth: 1200, maxHeight: 600, resizingBehavior: PAD, background: "rgb:ffffff") {
+					src
+				}
+			}
+		}
 	}
 `

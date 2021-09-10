@@ -30,7 +30,7 @@ const Footer = (props) => {
 			displayPreferenceModal()
 		}
 		catch {
-			console.log("Unable to display the cookie preference widget. Please try again later.")
+			console.log("Unable to display the cookie preference widget. Please try again later. Report to blanketsforto.site@gmail.com if issue persists.")
 		}
 	}
 

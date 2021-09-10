@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, useSharing, cannonical}) => {
+const SEO = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, useSharing, cannonical, doNotCrawl}) => {
 	
 	const { pathname } = useLocation()
 	const { site } = useStaticQuery(query)
@@ -23,91 +23,46 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		title: title || defaultTitle,
 		description: description || defaultDescription,
 		url: `${siteUrl}${pathname}`,
+		keywords: keywords,
 		// Open Graph Meta Tags
-		metaImage: metaImage && metaImage.src ? `${siteUrl}${metaImage.src}` : `${siteUrl}${defaultImage}`,
+		metaImage: metaImage ? metaImage : `${siteUrl}${defaultImage}`,
 		metaType: metaType,
+		twitterUsername: twitterUsername,
 	}
 	
 	return (
 		<Helmet
-		htmlAttributes={{
-			lang: defaultLang,
-		}}
-		title={title}
-		titleTemplate={titleTemplate}
-		key="seo"
-		meta={[
-			{
-				name: `description`,
-				content: seo.description,
-			},
-			{
-				name: "keywords",
-				content: keywords.join(","),
-			},
-			{
-				property: `og:title`,
-				content: title,
-			},
-			{
-				property: `og:description`,
-				content: seo.description,
-			},
-			{
-				property: `og:type`,
-				content: seo.metaType,
-			},
-			{
-				name: `twitter:creator`,
-				content: twitterUsername,
-			},
-			{
-				name: `twitter:title`,
-				content: title,
-			},
-			{
-				name: `twitter:description`,
-				content: seo.description,
-			},
-		].concat(
-			metaImage
-			? [
-				{
-					property: "og:image",
-					content: seo.metaImage.src,
-				},
-				{
-					property: "og:image:width",
-					content: metaImage.width,
-				},
-				{
-					property: "og:image:height",
-					content: metaImage.height,
-				},
-				{
-					name: "twitter:card",
-					content: "summary_large_image",
-				},
-			]
-			: [
-				{
-					name: "twitter:card",
-					content: "summary",
-				},
-			]
-			).concat(meta)
-		}
-				
-		link={[{
-			rel: 'icon',
-			href: '/favicon.ico',
-		},
-		{
-			rel: 'canonical',
-			href: cannonical ?? seo.url, 
-		}]
-	}
-	>
+			htmlAttributes={{
+				lang: defaultLang,
+			}}
+			title={title}
+			titleTemplate={titleTemplate}
+			key={`${title} SEO`}>
+		<meta name='description' content={seo.description}/>
+		<meta name='keywords' content={seo.keywords.join(",")}/>
+
+		{/* <!-- Facebook Meta Tags --> */}
+		<meta property="og:url" content={seo.url}/>
+		<meta property="og:type" content={seo.metaType}/>
+		<meta property="og:title" content={seo.title}/>
+		<meta property="og:description" content={seo.description}/>
+		<meta property="og:image" content={seo.metaImage}/>
+
+		{/* <!-- Twitter Meta Tags --> */}
+		<meta name="twitter:card" content="summary"/>
+		<meta property="twitter:url" content={seo.url}/>
+		<meta name="twitter:title" content={seo.title}/>
+		<meta name="twitter:description" content={seo.description}/>
+		<meta name="twitter:image" content={seo.metaImage}/>
+		<meta name="twitter:site" content={seo.twitterUsername}/>
+		<meta name="twitter:creator" content={seo.twitterUsername}/>
+
+		<link rel='icon' href='/favicon.ico'/>
+		<link rel='canonical' href={cannonical ?? seo.url}/>
+
+		{doNotCrawl && <meta name="robots" content="noindex"/>}
+		{doNotCrawl && <meta name="googlebot" content="noindex"/>}
+
 		<script
 			type="text/javascript"
 			src="https://app.termly.io/embed.min.js"
@@ -131,7 +86,7 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		{/* MailChimp Mailing List */}
 		{useMailChimp && <script type="text/javascript" src="https://chimpstatic.com/mcjs-connected/js/users/c190e10f2b62c767274e1197b/52a4a6cc65ff988eefff98c51.js"></script>}
 		{childElements}
-	</Helmet>
+		</Helmet>
 	)
 }
 
@@ -145,6 +100,7 @@ SEO.defaultProps = {
 	useCurator: false,
 	useSharing: false,
 	cannonical: undefined, 
+	doNotCrawl: false, 
 }
 
 SEO.propTypes = {
@@ -162,6 +118,7 @@ SEO.propTypes = {
 	useCurator: PropTypes.bool,
 	useSharing: PropTypes.bool,
 	cannonical: PropTypes.string,
+	doNotCrawl: PropTypes.bool, 
 }
 export default SEO
 

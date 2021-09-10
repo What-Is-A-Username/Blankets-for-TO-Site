@@ -29,8 +29,8 @@ class About extends React.Component {
 
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="About" useMaps
-					description="Read more about Blankets for T.O., including its primary objective of helping and advocating for the homeless through charitable events, donations, and awareness initiatives."/>
+				<SEO title='About' useMaps
+					description='Read more about Blankets for T.O. like its goals in helping and advocating for the homeless through events, donations, and awareness initiatives.'/>
 				<div className="white-background">
 					<div className="wrapper">
 						<Fade left duration={400}>

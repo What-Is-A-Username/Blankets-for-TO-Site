@@ -32,7 +32,7 @@ class LinkSharing extends React.Component {
                 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-size="large" data-related="blanketsforto" data-show-count="false">
                     Tweet
                 </a>
-                <div id="fb-root"></div>,
+                <div id="fb-root"></div>
 			    <script async defer crossOrigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" nonce="9bOR49xF"></script>
                 <div className="fb-like" data-href={this.props.location} data-width="" data-layout="button" data-action="like" data-size="large" data-share="false">
                 </div>

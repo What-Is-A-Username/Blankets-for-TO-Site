@@ -107,6 +107,11 @@
 	color: gray;
 }
 
+.previewArticleType {
+	font-size: 0.9em;
+	color: rgb(59, 59, 59);
+}
+
 .alink {
 	text-decoration: none;
 	cursor: pointer;

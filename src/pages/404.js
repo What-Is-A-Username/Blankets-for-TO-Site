@@ -18,7 +18,8 @@ class FourOFourPage extends React.Component {
 			<Layout location={this.props.location}>
 				<SEO title="Error 404"
 					description="Sorry, the page you are looking for cannot be found at Blankets for T.O. Visit the home page at https://blanketsforto.ca"
-					cannonical={"https://blanketsforto.ca"}/>
+					cannonical={"https://blanketsforto.ca"}
+					doNotCrawl/>
 				<div className="white-background">
 					<div className={'wrapper'}>
 						<div className='richText'>

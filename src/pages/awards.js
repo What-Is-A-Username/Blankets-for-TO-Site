@@ -17,8 +17,8 @@ export default class Awards extends React.Component {
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="Awards"
-				    description="The collection of awards and letters of appreciation that we have received for our donations, events, community outreach and involvement."/>
+				<SEO title='Awards'
+				    description='Browse the collection of awards and letters of appreciation that Blankets for T.O. has for our involvement in the community.'/>
 				<div className="white-background">
 					<div className="wrapper">
 						<div className={styles.membershipInfo}>
@@ -54,7 +54,7 @@ query AwardQuery {
             description
         } 
         image {
-            fluid(maxHeight: 800, resizingBehavior: SCALE) {
+            fluid(maxWidth: 500, resizingBehavior: SCALE) {
                 ...GatsbyContentfulFluid_tracedSVG
             }
         }

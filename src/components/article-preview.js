@@ -21,7 +21,7 @@ const renderFunc = (articles, excludeSlug) => {
 	return (
 		<div className={styles.updates}>
 			<Bounce left>
-				<h2>Keep updated with our latest events</h2>
+				<h2>Keep updated with our latest articles</h2>
 			</Bounce>
 			<Fade>
 			<div className={styles.previewParent}>
@@ -30,7 +30,6 @@ const renderFunc = (articles, excludeSlug) => {
 						article.node.slug === excludeSlug || rendered >= 3 ?
 						null :  
 						increment(article)
-
 					)
 				})}
 			</div>
@@ -47,7 +46,7 @@ export const ArticlePreview = ({excludeSlug}) => {
 			query={
 				graphql`
 					query ArticlePreviewQuery {
-						allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 4, filter: {articleType: {ne: "Page"}}) {
+						allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 4, filter: {previewOnly: {ne: true}}) {
 							edges {
 								node {
 									title
@@ -58,9 +57,10 @@ export const ArticlePreview = ({excludeSlug}) => {
 											html
 										}
 									}
+									articleType
 									tags
 									imagePreview {
-										fluid(maxHeight: 800, resizingBehavior: THUMB) {
+										fluid(maxHeight: 500, resizingBehavior: THUMB) {
 											...GatsbyContentfulFluid_tracedSVG
 										}
 										description

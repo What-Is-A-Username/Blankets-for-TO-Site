@@ -17,8 +17,8 @@ class Team extends React.Component {
 
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="Team"
-					description="Meet the talented and motivated members of the team at Blankets for T.O. that makes all of our events possible." />
+				<SEO title='Executive Team'
+					description='Meet the talented and motivated members of the team at Blankets for T.O. that makes all of our events possible.'/>
 				<div className="sidebarabove"></div>
 				<div className="white-background">
 					<div className="wrapper">
