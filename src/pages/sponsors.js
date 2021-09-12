@@ -15,7 +15,7 @@ export default class Sponsors extends React.Component {
         const sponsorData = get(this, 'props.data.allContentfulSponsor.nodes');
         const preferredSponsors = sponsorData.filter(x => x.sponsorType === "Preferred"); 
         const defaultSponsors = sponsorData.filter(x => x.sponsorType !== "Preferred"); 
-        const message = 'Blankets for T.O. is proud to work with the following sponsors to fund donations and work with local community.'
+        const message = 'Blankets for T.O. is proud to work with the following sponsors to fund donations and work with the local community.'
         const pitch = 'Interested in sponsoring Blankets for T.O. or supporting our initiatives? '
         return(
         <Layout location={this.props.location}>

@@ -48,7 +48,7 @@ class BlogPostTemplate extends React.Component {
 						metaType='article'
 						description={`${post.publishDate} - ${post.description.childMarkdownRemark.rawMarkdownBody}`}
 						childElements={requiredHead}
-						metaImage={post.imagePreview.file.url}
+						metaImage={post.socialMediaLinkPreview.file.url}
 						doNotCrawl={Boolean(post.previewOnly)}
 					/>
 					<div className="wrapper">
@@ -98,7 +98,7 @@ export const pageQuery = graphql`
 					rawMarkdownBody
 				}
 			}
-			imagePreview {
+			socialMediaLinkPreview {
 				file {
 					url
 				}

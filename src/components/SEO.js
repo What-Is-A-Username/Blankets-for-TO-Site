@@ -5,7 +5,7 @@ import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 
 const SEO = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, useSharing, cannonical, doNotCrawl}) => {
-	const facebookImageDimensions = {width: 1200, height: 628}
+	const facebookImageDimensions = {width: 1200, height: 630}
 	const twitterImageDimensions = {width: 800, height: 418}
 
 	const { pathname } = useLocation()
