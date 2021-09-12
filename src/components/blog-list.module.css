@@ -6,8 +6,8 @@
 }
 
 .previewPublishDate {
-    font-size: 1.0em;
     padding: auto auto 5px auto;
+    color: gray;
 }
 
 .previewDescription {
@@ -50,8 +50,6 @@
     padding: 20px;
 }
 
-
-
 @media(min-width: 760px) {
     .preview {
         flex-direction: row;
@@ -64,6 +62,9 @@
         align-self: center;
         padding-right: 20px;
     }
+    .previewPublishDate {
+        font-size: 1.0em;
+    }
 }
 
 @media(max-width: 760px) {
@@ -71,13 +72,15 @@
         flex-direction: column;
     }
     
-    .previewImage {
-        width: 70vw;
-        height: 70vw;
-        max-width: 300px !important;
-        max-height: 300px !important;
+    .previewImage, .previewImage > div, .previewImage img {
+        max-width: 150px;
+		max-height: 150px;
+		width: 30vh;
+		height: 30vh;
         align-self: center;
-        
+    }
+    .previewPublishDate {
+        font-size: 0.8em;
     }
 }
 

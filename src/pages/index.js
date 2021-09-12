@@ -20,14 +20,12 @@ import OrganizationMap from '../components/home/org-map'
 class RootIndex extends React.Component {
 
 	render() {
-		const posts = get(this, 'props.data.allContentfulBlogPost.edges')
 		const allContentfulOrganizationInformation = get(this, 'props.data.allContentfulOrganizationInformation.nodes')
 		const organizationBlurb = allContentfulOrganizationInformation[0];
-		const slides = get(this, 'props.data.allContentfulHomeSlide.edges')
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title='Home' description='Blankets for T.O. is a non-profit organization situated at the University of Toronto that strives to provide support and resources to those in need within the city of Toronto, as well as raise awareness on the ongoing stigma surrounding homelessness, with the ultimate goal of eradicating it.' useMailChimp useCurator/>
+				<SEO title='Home' description='Blankets for T.O. is a non-profit organization at the University of Toronto providing support to those in need and combatting stigma surrounding homelessness.' useMailChimp useCurator/>
 				<div className="white-background">
 					{/* Background Image or Video */}
 					<Fade>
@@ -58,7 +56,7 @@ class RootIndex extends React.Component {
 					{/* Updates */}
 					<ScreenContainer>
 						<Fade>
-							<ArticlePreview articles={posts}/>
+							<ArticlePreview/>
 						</Fade>
 					</ScreenContainer>
 						
@@ -126,20 +124,6 @@ class RootIndex extends React.Component {
 							) {
 								...GatsbyContentfulFluid_tracedSVG
 							}
-					}
-				}
-			}
-		}
-		allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 3, filter: {articleType: {ne: "Page"}}) {
-			edges {
-				node {
-					title
-					slug
-					publishDate(formatString: "MMMM Do, YYYY")
-					description {
-						childMarkdownRemark {
-							html
-						}
 					}
 				}
 			}

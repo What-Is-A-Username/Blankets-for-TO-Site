@@ -1,5 +1,8 @@
 .sponsorBox {
     padding: 50px 25px 50px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .preferredSponsorsTitle {
@@ -15,15 +18,8 @@
 @media (max-width: 760px)
 {
     .logoContainer {
-        display: flex;
-        flex-direction: column;
         height: fit-content;
-    }
-    .logo {
-        height: 80px;
-        max-height: 80px;
-        display: flex;
-        justify-content: center;
+        max-width: 90%;
     }
     .logo img {
         width: auto;
@@ -31,26 +27,43 @@
     .alink {
         padding: 5px;
     }
+    .logo {
+        width: 250px;
+        height: 80x;
+    }
+    
+    .logo img, .logo div, .logo img {
+        width: 250px;
+        height: 80px;
+    }
 }
 
 @media (min-width: 760px)
 {
-    .logo {
-        height: 100%; 
-    }
     .logoContainer {
-        display: flex;
         flex-direction: row;
-        height: 100px;
+        max-width: 80%;
     }
     .alink {
-        padding: 10px;
+        padding: 10px; 
+    }
+    .logo {
+        width: 300px;
+        height: 100px;
+    }
+    
+    .logo img, .logo div, .logo img {
+        width: 300px;
+        height: 100px;
     }
 }
 
 
 
 .logoContainer { 
+    display: flex;
+    flex-wrap: wrap;
+    grid-auto-flow: row;
     justify-content: center;
     width: 100%;
 }
@@ -61,3 +74,4 @@
     text-align: center;
     color: var(--primary)
 }
+

@@ -17,21 +17,18 @@ class Team extends React.Component {
 
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="Team"
-					description="Meet the talented and motivated members of the team at Blankets for T.O. that makes all of our events possible." />
+				<SEO title='Executive Team'
+					description='Meet the talented and motivated members of the team at Blankets for T.O. that makes all of our events possible.'/>
 				<div className="sidebarabove"></div>
 				<div className="white-background">
 					<div className="wrapper">
 						<Fade left duration={400}>
 							<h2>Executive Team</h2>
 						</Fade>
-						<Fade delay={500} onReveal={() => this.setState({reveal: true})}>
-							<p>Due to current COVID-19 restrictions, we are unable at this time to organize photos for all of our members. However, we expect that you will be able to meet our team in the near future. Thank you for your patience.</p>
-						</Fade>
 						<div className={styles.executiveList}>
 							{members.map(({ node }) => {
 								return (node.name !== "John Doe" ? 
-								<Fade left delay={this.state.reveal ? 200 : 700} duration={400}>
+								<Fade left delay={this.state.reveal ? 100 : 700} duration={350}>
 									<Member key={node.name} data={node} /> 
 								</Fade>
 								: null)
@@ -68,6 +65,13 @@ export const teamPositionQuery = graphql`
 					twitterLink
 					linkedIn
 					linkedInLink
+					photo
+					{
+						fluid(maxWidth: 300, maxHeight: 300, resizingBehavior: SCALE)
+						{
+							...GatsbyContentfulFluid_tracedSVG
+						}
+					}
 				}
 			}
 		}

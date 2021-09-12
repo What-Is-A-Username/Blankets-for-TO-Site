@@ -4,16 +4,17 @@ import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, useSharing, useMaps, cannonical}) => {
-	
+const SEO = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, useSharing, cannonical, doNotCrawl}) => {
+	const facebookImageDimensions = {width: 1200, height: 630}
+	const twitterImageDimensions = {width: 800, height: 418}
+
 	const { pathname } = useLocation()
-	const { site } = useStaticQuery(query)
+	const { site, contentfulOrganizationInformation } = useStaticQuery(query)
 	const {
 		defaultTitle,
 		titleTemplate,
 		defaultDescription,
 		siteUrl,
-		defaultImage,
 		defaultLang,
 		keywords,
 		twitterUsername,
@@ -23,100 +24,63 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		title: title || defaultTitle,
 		description: description || defaultDescription,
 		url: `${siteUrl}${pathname}`,
+		keywords: keywords,
 		// Open Graph Meta Tags
-		metaImage: metaImage && metaImage.src ? `${siteUrl}${metaImage.src}` : `${siteUrl}${defaultImage}`,
+		metaImage: metaImage ? `https:${metaImage}` : `${contentfulOrganizationInformation.defaultPreviewImage.file.url}`,
 		metaType: metaType,
+		twitterUsername: twitterUsername,
 	}
 	
 	return (
 		<Helmet
-		htmlAttributes={{
-			lang: defaultLang,
-		}}
-		title={title}
-		titleTemplate={titleTemplate}
-		key="seo"
-		meta={[
-			{
-				name: `description`,
-				content: seo.description,
-			},
-			{
-				name: "keywords",
-				content: keywords.join(","),
-			},
-			{
-				property: `og:title`,
-				content: title,
-			},
-			{
-				property: `og:description`,
-				content: seo.description,
-			},
-			{
-				property: `og:type`,
-				content: seo.metaType,
-			},
-			{
-				name: `twitter:creator`,
-				content: twitterUsername,
-			},
-			{
-				name: `twitter:title`,
-				content: title,
-			},
-			{
-				name: `twitter:description`,
-				content: seo.description,
-			},
-		].concat(
-			metaImage
-			? [
-				{
-					property: "og:image",
-					content: seo.metaImage.src,
-				},
-				{
-					property: "og:image:width",
-					content: metaImage.width,
-				},
-				{
-					property: "og:image:height",
-					content: metaImage.height,
-				},
-				{
-					name: "twitter:card",
-					content: "summary_large_image",
-				},
-			]
-			: [
-				{
-					name: "twitter:card",
-					content: "summary",
-				},
-			]
-			).concat(meta)
-		}
-				
-		link={[{
-			rel: 'icon',
-			href: '/favicon.ico',
-		},
-		{
-			rel: 'canonical',
-			href: cannonical ?? seo.url, 
-		}]
-	}
-	>
+			htmlAttributes={{
+				lang: defaultLang,
+			}}
+			title={title}
+			titleTemplate={titleTemplate}
+			key={title}>
+
+		<meta name='description' content={seo.description}/>
+		<meta name='keywords' content={seo.keywords.join(",")}/>
+
+		{/* <!-- Facebook Meta Tags --> */}
+		<meta property="og:url" content={seo.url}/>
+		<meta property="og:type" content={seo.metaType}/>
+		<meta property="og:title" content={seo.title}/>
+		<meta property="og:description" content={seo.description}/>
+		<meta property="og:image" content={`${seo.metaImage}?w=${facebookImageDimensions.width}&h=${facebookImageDimensions.height}&bg=rgb%3Affffff`}/>
+
+		{/* <!-- Twitter Meta Tags --> */}
+		<meta name="twitter:card" content='summary'/>
+		<meta property="twitter:url" content={seo.url}/>
+		<meta name="twitter:title" content={seo.title}/>
+		<meta name="twitter:description" content={seo.description}/>
+		<meta name="twitter:image" content={`${seo.metaImage}?w=${twitterImageDimensions.width}&h=${twitterImageDimensions.height}&bg=rgb%3Affffff`}/>
+		<meta name="twitter:site" content={seo.twitterUsername}/>
+		<meta name="twitter:creator" content={seo.twitterUsername}/>
+
+		<link rel='icon' href='/favicon.ico'/>
+		<link rel='canonical' href={cannonical ?? seo.url}/>
+
+		{doNotCrawl && <meta name="robots" content="noindex"/>}
+		{doNotCrawl && <meta name="googlebot" content="noindex"/>}
+
+		<script
+			type="text/javascript"
+			src="https://app.termly.io/embed.min.js"
+			data-auto-block="on"
+			data-website-uuid="01a08857-e482-4377-85cd-f142d9dba419"
+		></script>
+
 		{/* JQuery */}
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
 		{/* Global site tag (gtag.js) - Google Analytics */}
-		<script async src="https://www.googletagmanager.com/gtag/js?id=${G-E7KS17RLEB}"></script>
-       	<script>{"window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} 	gtag('js', new Date()); gtag('config', 'G-E7KS17RLEB');"}</script>
+		{/* <script async src="https://www.googletagmanager.com/gtag/js?id=${G-E7KS17RLEB}"></script>
+       	<script>{"window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} 	gtag('js', new Date()); gtag('config', 'G-E7KS17RLEB');"}</script> */}
 		
 		{/* Search Console */}
-		<meta name="google-site-verification" content="H85FiZN3YyU6tHavccegyjHzxSSC6kc_7d22i6IDx2Y" />
+		{/* <meta name="google-site-verification" content="H85FiZN3YyU6tHavccegyjHzxSSC6kc_7d22i6IDx2Y" /> */}
 
 		{/* Curator Social Media Embedding */}
 		{useCurator && <script type="text/javascript" src="https://cdn.curator.io/published/18d8088e-b13e-4fbe-a348-e56d6fcbf0a6.js"></script>}
@@ -130,7 +94,7 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 			integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 			crossorigin=""></script>}
 		{childElements}
-	</Helmet>
+		</Helmet>
 	)
 }
 
@@ -145,6 +109,7 @@ SEO.defaultProps = {
 	useSharing: false,
 	useMaps: false, 
 	cannonical: undefined, 
+	doNotCrawl: false, 
 }
 
 SEO.propTypes = {
@@ -163,6 +128,7 @@ SEO.propTypes = {
 	useSharing: PropTypes.bool,
 	useMaps: PropTypes.bool,
 	cannonical: PropTypes.string,
+	doNotCrawl: PropTypes.bool, 
 }
 export default SEO
 
@@ -175,10 +141,16 @@ query SEO {
 			titleTemplate
 			defaultDescription: description
 			siteUrl: url
-			defaultImage: image
 			defaultLang: lang
 			keywords
 			twitterUsername
+		}
+	}
+	contentfulOrganizationInformation {
+		defaultPreviewImage {
+			file {
+				url
+			}
 		}
 	}
 }

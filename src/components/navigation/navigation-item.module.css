@@ -28,8 +28,6 @@
     .navigationItem {
         position: relative;
         display: inline-block;
-        margin: 0 0px; 
-		padding: 0 5px;
     }
 
 	.navigationItem a /* Allows chevrons to be centered */
@@ -49,7 +47,8 @@
 	}
 
 	.navigationItem:hover .dropdownContainer {
-		visibility:visible; 
+		visibility: visible; 
+		animation: fadeIn 0.4s
 	}
 	
 	.dropdownContainer
@@ -59,6 +58,7 @@
 		left: 0px;
 		box-shadow: 0 0 5px 0 #949494;
 		border-radius: 5px;
+		
 	}
 
 	.childLink
@@ -74,17 +74,40 @@
 	}
 }
 
-@media(min-width: 900px) {
+@media (min-width: 1200px) {
 	.navigationItem {
         margin: 0 20px; 
-		padding: 0 5px;
+		padding: 0 20px;
     }
 } 
+
+@media (max-width: 1200px) and (min-width: 900px) {
+	.navigationItem {
+        margin: 0 10px; 
+		padding: 0 10px;
+    }
+} 
+
+@media (max-width: 900px) and (min-width: 760px) {
+	.navigationItem {
+		margin: 0 5px; 
+		padding: 0 5px;
+	}
+}
+@media (max-width: 760px) {
+	.navigationItem {
+		margin: 0 0px; 
+		padding: 0 20px;
+	}
+}
 
 @media(max-width: 760px) { 
     .navigationItem {
 		font-size: 1.25em;
-		padding: 0 25px;
+	}
+
+	.navigationItem svg {
+		visibility: hidden;
 	}
 
 	.navigationItem svg {
@@ -110,3 +133,24 @@
 		margin-left: 10vw;
 	}
 } 
+
+
+@keyframes fadeIn {
+    0% { opacity:0; } 100% { opacity:1; } 
+}
+
+@-moz-keyframes fadeIn {
+    0% { opacity:0; } 100% { opacity:1; } 
+}
+
+@-webkit-keyframes fadeIn {
+    0% { opacity:0; } 100% { opacity:1; } 
+}
+
+@-o-keyframes fadeIn {
+    0% { opacity:0; } 100% { opacity:1; } 
+}
+
+@-ms-keyframes fadeIn {
+    0% { opacity:0; } 100% { opacity:1; } 
+}

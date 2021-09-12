@@ -1,16 +1,15 @@
 .sponsorsGrid 
 {
-    display: flex;
-    align-items: top;
+    display: grid;
     overflow: visible;
-    justify-content: center;
+    
 }
 
-@media(max-width: 760px)
+@media(min-width: 760px)
 {
     .sponsorsGrid
     {
-        flex-direction: row;
+        grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
     } 
 }
 
@@ -18,12 +17,16 @@
 {
     .sponsorsGrid
     {
-        flex-direction: column;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     } 
 }
-
 
 .titles 
 {
     text-align: center;
+}
+
+.pitch 
+{
+    font-weight: bold;
 }

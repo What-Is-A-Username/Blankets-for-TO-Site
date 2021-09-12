@@ -10,20 +10,22 @@ import StyledButton from '../components/styled-button'
 
 class Positions extends React.Component {
 	render() {
-		const positions = get(this, 'props.data.allContentfulPosition.edges')
 		const membershipInfo = get(this, 'props.data.allContentfulOrganizationInformationMembershipInformationRichTextNode.edges')[0].node
 		
-		const formLink = "https://docs.google.com/forms/d/e/1FAIpQLSeHwKycp_JU4hGtpMlzKGP6idBUBnUVRUewN12Ak7zX6PwAEQ/viewform?usp=sf_link"
+		const formLink = 'https://forms.gle/xDNYp3KzU1M9K1o87'
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="Membership and Volunteering"
-					description="Support Blankets for T.O. by signing up to become a member today! Join the community to be eligible for exclusive offers and volunteering opportunities."/>
+				<SEO title='Membership and Volunteering'
+					description='Support Blankets for T.O. by becoming a member today! Read up how to become a member and what offers and opportunities are available to our community.'/>
 				<div className="white-background">
 					<div className="wrapper">
 						<div className={styles.membershipInfo}>
 							<Fade left duration={400}>
 								<h2>Membership and Volunteering</h2>
+							</Fade>
+							<Fade top>
+								<StyledButton link={formLink} buttonText='Sign up for membership' openInNewTab/>
 							</Fade>
 							<Fade delay={500}>
 							<div className="richText">
@@ -31,7 +33,7 @@ class Positions extends React.Component {
 							</div>
 							</Fade>
 							<Fade top>
-								<StyledButton link={formLink} buttonText='Sign Up Now' openInNewTab/>
+								<StyledButton link={formLink} buttonText='Sign up for membership' openInNewTab/>
 							</Fade>
 						</div>
 					</div>

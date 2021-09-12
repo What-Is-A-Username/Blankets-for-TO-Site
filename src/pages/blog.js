@@ -95,8 +95,8 @@ class BlogIndex extends React.Component {
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title="Updates"
-					description="Browse articles published by Blankets for T.O., including summaries of past initiatives, photos of past events, and everything else associated with us."/>
+				<SEO title='Updates'
+					description='Browse articles published by Blankets for T.O., including summaries of past events and informational articles about homelessness.'/>
 				<div className="white-background">
 					<div className="wrapper">
 						<Fade left duration={400}>
@@ -139,7 +139,7 @@ export const blogPageQuery = graphql`
 				title
 			}
 		}
-		allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 20, filter: {articleType: {ne: "Page"}}) {
+		allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 20, filter: {articleType: {ne: "Page"}, previewOnly: {ne: true}},) {
 			edges {
 				node {
 					title
@@ -154,11 +154,13 @@ export const blogPageQuery = graphql`
 							html
 						}
 					}
+					articleType
+					authorName
 					tags
 					imagePreview {
 						fixed(
-							width: 300
-							height: 300
+							width: 200
+							height: 200
 							quality: 0
 							resizingBehavior: FILL
 							background: "rgb:000000"

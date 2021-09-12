@@ -6,7 +6,7 @@ import turfBbox from '@turf/bbox'
 import { featureCollection as turfFeatureCollection, point as turfPoint } from '@turf/helpers'
 import geoViewport from '@mapbox/geo-viewport'
 import styles from '../home/org-map.module.css'
-import { StaticQuery } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import { ChevronRight, ChevronLeft } from 'react-feather';
 
 export default () => { 
@@ -89,8 +89,8 @@ export default () => {
 						provider={osm}
 						defaultCenter={zoomSettings.center}
 						center={mapCenter === -1 ? mapCenter : locations[mapCenter]}
-						zoom={zoomSettings.zoom*1.3}
-						touchEvents={false}
+						zoom={Math.floor(zoomSettings.zoom*1.3)}
+						touchEvents={false}					
 					>
 					{
 						mapLocations.map((info, index) => 

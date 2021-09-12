@@ -14,10 +14,10 @@
 
 .publishDate 
 {
-	font-style: italic;
 	display: block;
 	margin-top: 0px;
 	margin-bottom: 0px;
+	color: rgb(121, 121, 121);
 }
 
 .browseAllButton
@@ -28,5 +28,19 @@
 .links
 {
 	text-decoration: none;
+}
+
+.bodyParent
+{
+	display: flex;
+	justify-content: center;
+}
+
+.body
+{
+	display: flex;
+	justify-content: center;
+	max-width: 1000px;
+	flex-direction: column;
 }
 

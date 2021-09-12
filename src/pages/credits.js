@@ -11,8 +11,9 @@ class Credits extends React.Component {
 
         return(
         <Layout location={this.props.location}>
-            <SEO title="Media Credits"
-                description="Links and attributions to creators of images and other media used on this site."/>
+            <SEO title='Media Credits'
+                description='Access the links and attributions to creators of images and other media used on this site.'
+                doNotCrawl/>
             <div className="white-background">
                 <div className="wrapper richText">
                     <h2>Media Credits</h2>

@@ -23,6 +23,7 @@
     .image, .image img
     {
         min-width: 400px;
+        max-width: 400px;
         margin-right: 30px;
     }
 }
@@ -33,12 +34,13 @@
     {
         flex-direction: column;
         margin-top: 40px;
+        align-items: center;
     }
     
     .image, .image img
     {
-        min-width: 90vw;
-        max-width: 90vw;
+        width: 90vw;
+        max-width: 400px;
         margin: 0px;
     }
 

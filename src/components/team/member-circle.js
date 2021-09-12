@@ -20,9 +20,6 @@ export default class MemberCircle extends React.Component {
     }
 
     render() {
-
-        // console.log("state : ", this.state.showDescription);
-
         const { data } = this.props;
 
         const contact = [
@@ -35,9 +32,11 @@ export default class MemberCircle extends React.Component {
         
         return(
             <div className={styles.memberCard}>
-                {/* {data.photo === null ?  */}
-                <img className={styles.memberPortrait} src={placeholderPortrait} alt="Placeholder portrait."></img>  
-                {/*  <Img className={styles.memberPortrait} fluid={data.photo.fluid} alt={`Portrait of ${data.name} (${data.title})`}/> */}
+                {data.photo === null ? 
+                    <img className={styles.memberPortrait} src={placeholderPortrait} alt={`Placeholder portrait of ${data.title}`}></img>
+                    :  
+                    <Img className={styles.memberPortrait} fluid={data.photo.fluid} alt={`Portrait of ${data.title}`}/>
+                }
                 <div className={styles.memberInformation}>
                     <h3 className={styles.name}>{data.name}</h3>
                     <h4 className={styles.title}>{data.title}</h4>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import SEO from '../components/SEO'
 import get from 'lodash/get'
 import Layout from '../components/layout'
@@ -10,27 +10,20 @@ import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../templates/blog-post.module.css'
 
-import { BlogTagBar } from '../components/blog_search/tag'
-import $ from 'jquery'
-
-class BlogPostTemplate extends React.Component {
+class PageTemplate extends React.Component {
 
 	render() {
-		const post = get(this.props, 'data.contentfulBlogPost')
+		const post = get(this.props, 'data.contentfulPage')
 
 		const options = {
 			renderNode: {
 				[BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields } } }) =>
-				{
-					var deviceWidth = typeof window !== "undefined" ? $(window).width() : 760
-					var width = Math.min(deviceWidth, 760)
-					var imgUrl = 'https:' + fields.file['en-US'].url + '?w=' + String(width);
-					return(
-					<img src={imgUrl}
-						style={{width: width}}
+					<img src={fields.file['en-US'].url}
+						style={{
+							width: fields.file['en-US'].details.image.width,
+						}}
 						alt={fields.description}
-					/>)
-				}
+					/>,
 			},
 		};
 
@@ -46,64 +39,53 @@ class BlogPostTemplate extends React.Component {
 					<SEO 
 						title={post.title} 
 						metaType='article'
-						description={`${post.publishDate} - ${post.description.childMarkdownRemark.rawMarkdownBody}`}
+						description={post.description.childMarkdownRemark.rawMarkdownBody}
 						childElements={requiredHead}
-						metaImage={post.socialMediaLinkPreview.file.url}
-						doNotCrawl={Boolean(post.previewOnly)}
+						doNotCrawl={!post.enableSearchCrawling}
+						metaImage={post.imagePreview.fluid.src}
 					/>
-					<div className="wrapper">
+					<div className="wrapper" >
 						<h1 className={styles.title}>{post.title}</h1>
-						<BlogTagBar tags={post.tags} clickable={true}></BlogTagBar>
-						<p className={styles.publishDate}>by {post.authorName}</p>
-						<p className={styles.publishDate}>{post.publishDate}</p>
-						<div className={'richText ' + styles.bodyParent}>
-							<div className={styles.body}>
+						<div className="richText" styles={{maxWidth: '800px'}}>
 							{post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
-							</div>
 						</div>
 						<LinkSharing location={'https://blanketsforto.ca/blog/' + post.slug} />
 						<hr className={styles.horizontalLine}></hr>
-						{/* Updates */}
 						<ArticlePreview excludeSlug={post.slug}></ArticlePreview>
 					</div>
 				</div>
 			</Layout>
-			
 		)
 	}
 }
 
-export default BlogPostTemplate
+export default PageTemplate
 
-export const pageQuery = graphql`
-	query BlogPostBySlug($slug: String!) {
+export const DynamicPageQuery = graphql`
+	query PageBySlug($slug: String!) {
 		site {
 			siteMetadata {
 				title
 			}
 		}
-		contentfulBlogPost(slug: { eq: $slug }) {
+		contentfulPage(slug: { eq: $slug }) {
 			title
-			authorName
-			tags
 			slug
 			richTextBody {
 				json
 			}
-			articleType
-			publishDate(formatString: "MMMM Do, YYYY")      
 			description {
 				childMarkdownRemark {
 					html
 					rawMarkdownBody
 				}
 			}
-			socialMediaLinkPreview {
-				file {
-					url
+			enableSearchCrawling
+			imagePreview {
+				fluid(maxWidth: 1200, maxHeight: 600, resizingBehavior: PAD, background: "rgb:ffffff") {
+					src
 				}
 			}
-			previewOnly
 		}
 	}
 `
