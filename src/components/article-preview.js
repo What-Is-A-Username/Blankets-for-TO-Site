@@ -60,7 +60,7 @@ export const ArticlePreview = ({excludeSlug}) => {
 									articleType
 									tags
 									imagePreview {
-										fluid(maxHeight: 500, resizingBehavior: THUMB) {
+										fluid(maxHeight: 400, maxWidth: 400, resizingBehavior: PAD) {
 											...GatsbyContentfulFluid_tracedSVG
 										}
 										description

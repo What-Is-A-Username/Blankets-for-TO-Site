@@ -11,6 +11,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../templates/blog-post.module.css'
 
 import { BlogTagBar } from '../components/blog_search/tag'
+import $ from 'jquery'
 
 class BlogPostTemplate extends React.Component {
 
@@ -21,17 +22,12 @@ class BlogPostTemplate extends React.Component {
 			renderNode: {
 				[BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields } } }) =>
 				{
-					var originalImage = fields.file['en-US'].details.image
-					var width = Math.min(originalImage.width, 760)
+					var deviceWidth = typeof window !== "undefined" ? $(window).width() : 760
+					var width = Math.min(deviceWidth, 760)
 					var imgUrl = 'https:' + fields.file['en-US'].url + '?w=' + String(width);
-					var imgHeight = originalImage.height / (originalImage.width / width)
 					return(
 					<img src={imgUrl}
-						style={{
-							// width: fields.file['en-US'].details.image.width,
-							width: width,
-							height: imgHeight
-						}}
+						style={{width: width}}
 						alt={fields.description}
 					/>)
 				}
@@ -52,8 +48,7 @@ class BlogPostTemplate extends React.Component {
 						metaType='article'
 						description={`${post.publishDate} - ${post.description.childMarkdownRemark.rawMarkdownBody}`}
 						childElements={requiredHead}
-						metaImage={post.imagePreview.fluid.src}
-						// doNotCrawl={post.articleType === 'Article'}
+						metaImage={post.imagePreview.file.url}
 						doNotCrawl={Boolean(post.previewOnly)}
 					/>
 					<div className="wrapper">
@@ -104,8 +99,8 @@ export const pageQuery = graphql`
 				}
 			}
 			imagePreview {
-				fluid(maxWidth: 400, maxHeight: 400, resizingBehavior: PAD, background: "rgb:ffffff") {
-					src
+				file {
+					url
 				}
 			}
 			previewOnly

@@ -67,7 +67,7 @@ export const teamPositionQuery = graphql`
 					linkedInLink
 					photo
 					{
-						fluid(resizingBehavior: SCALE)
+						fluid(maxWidth: 300, maxHeight: 300, resizingBehavior: SCALE)
 						{
 							...GatsbyContentfulFluid_tracedSVG
 						}

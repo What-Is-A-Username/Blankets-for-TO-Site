@@ -159,8 +159,8 @@ export const blogPageQuery = graphql`
 					tags
 					imagePreview {
 						fixed(
-							width: 300
-							height: 300
+							width: 200
+							height: 200
 							quality: 0
 							resizingBehavior: FILL
 							background: "rgb:000000"

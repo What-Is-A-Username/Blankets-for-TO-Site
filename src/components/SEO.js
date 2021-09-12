@@ -5,15 +5,16 @@ import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 
 const SEO = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, useSharing, cannonical, doNotCrawl}) => {
-	
+	const facebookImageDimensions = {width: 1200, height: 628}
+	const twitterImageDimensions = {width: 800, height: 418}
+
 	const { pathname } = useLocation()
-	const { site } = useStaticQuery(query)
+	const { site, contentfulOrganizationInformation } = useStaticQuery(query)
 	const {
 		defaultTitle,
 		titleTemplate,
 		defaultDescription,
 		siteUrl,
-		defaultImage,
 		defaultLang,
 		keywords,
 		twitterUsername,
@@ -25,7 +26,7 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		url: `${siteUrl}${pathname}`,
 		keywords: keywords,
 		// Open Graph Meta Tags
-		metaImage: metaImage ? metaImage : `${siteUrl}${defaultImage}`,
+		metaImage: metaImage ? `https:${metaImage}` : `${contentfulOrganizationInformation.defaultPreviewImage.file.url}`,
 		metaType: metaType,
 		twitterUsername: twitterUsername,
 	}
@@ -37,7 +38,8 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 			}}
 			title={title}
 			titleTemplate={titleTemplate}
-			key={`${title} SEO`}>
+			key={title}>
+
 		<meta name='description' content={seo.description}/>
 		<meta name='keywords' content={seo.keywords.join(",")}/>
 
@@ -46,14 +48,14 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		<meta property="og:type" content={seo.metaType}/>
 		<meta property="og:title" content={seo.title}/>
 		<meta property="og:description" content={seo.description}/>
-		<meta property="og:image" content={seo.metaImage}/>
+		<meta property="og:image" content={`${seo.metaImage}?w=${facebookImageDimensions.width}&h=${facebookImageDimensions.height}&bg=rgb%3Affffff`}/>
 
 		{/* <!-- Twitter Meta Tags --> */}
-		<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content='summary'/>
 		<meta property="twitter:url" content={seo.url}/>
 		<meta name="twitter:title" content={seo.title}/>
 		<meta name="twitter:description" content={seo.description}/>
-		<meta name="twitter:image" content={seo.metaImage}/>
+		<meta name="twitter:image" content={`${seo.metaImage}?w=${twitterImageDimensions.width}&h=${twitterImageDimensions.height}&bg=rgb%3Affffff`}/>
 		<meta name="twitter:site" content={seo.twitterUsername}/>
 		<meta name="twitter:creator" content={seo.twitterUsername}/>
 
@@ -131,10 +133,16 @@ query SEO {
 			titleTemplate
 			defaultDescription: description
 			siteUrl: url
-			defaultImage: image
 			defaultLang: lang
 			keywords
 			twitterUsername
+		}
+	}
+	contentfulOrganizationInformation {
+		defaultPreviewImage {
+			file {
+				url
+			}
 		}
 	}
 }
