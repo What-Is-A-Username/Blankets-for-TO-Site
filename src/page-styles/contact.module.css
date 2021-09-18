@@ -17,6 +17,7 @@
     margin-top: -30px;
     margin-left: 50px;
     font-size: 1.2em;
+    
 }
 
 .socialMedia {
@@ -37,6 +38,7 @@
 .socialMediaEntry a {
     display: flex;
     align-items: center;
+    width: max-content;
 }
 
 .socialMediaEntry a p {
