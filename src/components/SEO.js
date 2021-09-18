@@ -59,8 +59,8 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		<meta name="twitter:site" content={seo.twitterUsername}/>
 		<meta name="twitter:creator" content={seo.twitterUsername}/>
 
-		<link rel='icon' href='/favicon.ico'/>
-		<link rel='canonical' href={cannonical ?? seo.url}/>
+		<link rel='icon' href='/favicon.ico' key='favicon'/>
+		<link rel='canonical' href={cannonical ?? seo.url} key='canonical'/>
 
 		{doNotCrawl && <meta name="robots" content="noindex"/>}
 		{doNotCrawl && <meta name="googlebot" content="noindex"/>}
@@ -87,12 +87,6 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 
 		{/* MailChimp Mailing List */}
 		{useMailChimp && <script type="text/javascript" src="https://chimpstatic.com/mcjs-connected/js/users/c190e10f2b62c767274e1197b/52a4a6cc65ff988eefff98c51.js"></script>}
-		{useMaps && <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-			integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-			crossorigin=""/>}
-			{useMaps && <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-			integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-			crossorigin=""></script>}
 		{childElements}
 		</Helmet>
 	)

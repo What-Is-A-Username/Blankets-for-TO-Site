@@ -22,10 +22,21 @@ class RootIndex extends React.Component {
 	render() {
 		const allContentfulOrganizationInformation = get(this, 'props.data.allContentfulOrganizationInformation.nodes')
 		const organizationBlurb = allContentfulOrganizationInformation[0];
+		const mapLocations = get(this, 'props.data.allContentfulDonationLocation.nodes')
+
+		const leaflet = [
+			<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+				integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+				crossorigin="" key='leafletcss'/>,
+	  		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+				integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+				crossorigin="" key='leaflet'></script>,
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-polylinedecorator/0.7.3/leaflet.polylineDecorator.js" key='polylineDecorator'></script>
+		] 
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title='Home' description='Blankets for T.O. is a non-profit organization at the University of Toronto providing support to those in need and combatting stigma surrounding homelessness.' useMailChimp useCurator/>
+				<SEO title='Home' description='Blankets for T.O. is a non-profit organization at the University of Toronto providing support to those in need and combatting stigma surrounding homelessness.' useMailChimp useCurator childElements={leaflet}/>
 				<div className="white-background">
 					{/* Background Image or Video */}
 					<Fade>
@@ -52,7 +63,7 @@ class RootIndex extends React.Component {
 						<StatsHighlight donationItemCount={organizationBlurb.donationItemCount}/>
 					</ScreenContainer>
 
-					<OrganizationMap/> 
+					<OrganizationMap mapLocations={mapLocations}/> 
 					{/* Updates */}
 					<ScreenContainer>
 						<Fade>
@@ -76,7 +87,7 @@ class RootIndex extends React.Component {
 						<Bounce top>
 							<h2 className={styles.instagramTitle}>Keep updated with our feed</h2>
 						</Bounce>
-						<Fade delay={250}>
+						{/* <Fade delay={250}>
 						<div className={styles.instagramPosts}>
 							<div id="curator-feed-default-feed-layout">
 								<a href="https://curator.io" target="_blank" class="crt-logo crt-tag" className="crt-logo crt-tag">
@@ -84,7 +95,7 @@ class RootIndex extends React.Component {
 								</a>
 							</div>
 						</div>
-						</Fade>
+						</Fade> */}
 						<Fade delay={300}>
 							<div className={styles.btnRow}>	
 								<StyledButton link={organizationBlurb.instagramLink} buttonText='Visit us on Instagram' openInNewTab/>
@@ -102,35 +113,35 @@ class RootIndex extends React.Component {
 	
 	export const pageQuery = graphql`
 	query HomeQuery {
-		site {
-			siteMetadata {
+		site 
+		{
+			siteMetadata 
+			{
 				title
 			}
 		}
-		allContentfulHomeSlide { 
-			edges {
-				node {
-					title
-					childContentfulHomeSlideDescriptionRichTextNode {
-						json
-					}
-					buttonText
-					buttonLink
-					backgroundImage {
-						fluid(
-							maxWidth: 2000
-							resizingBehavior: FILL
-							background: "rgb:000000"
-							) {
-								...GatsbyContentfulFluid_tracedSVG
-							}
-					}
+		allContentfulDonationLocation 
+		{
+			nodes 
+			{
+				city
+				coordinateLatitude
+				coordinateLongitude
+				name
+				provinceState
+				street
+				description 
+				{
+					description
 				}
 			}
 		}
-		allContentfulOrganizationInformation {
-			nodes {
-				childContentfulOrganizationInformationOrganizationFrontBlurbTextNode {
+		allContentfulOrganizationInformation 
+		{
+			nodes 
+			{
+				childContentfulOrganizationInformationOrganizationFrontBlurbTextNode 
+				{
 					organizationFrontBlurb
 				}
 
@@ -138,7 +149,8 @@ class RootIndex extends React.Component {
 				instagramLink
 				twitterLink
 				
-				frontPageImage {
+				frontPageImage 
+				{
 					fluid(
 						maxHeight: 1920
 						resizingBehavior: PAD
@@ -149,7 +161,8 @@ class RootIndex extends React.Component {
 					
 				}
 
-				leftBackgroundImage {
+				leftBackgroundImage 
+				{
 					fluid(
 						maxHeight: 1000
 						resizingBehavior: PAD

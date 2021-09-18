@@ -7,17 +7,11 @@
     padding: 10vh 0;
 }
 
+
 .mapViewport {
     width: 100%;
     display: flex;
     justify-content: center;
-}
-
-.mapViewport > div
-{
-    border-radius: 20px;
-    max-width: 1200px;
-    
 }
 
 .title 
@@ -76,6 +70,12 @@
         min-width: 380px;
         width: 80%;
     }
+    .leafletMap 
+    {
+        height: 500px;
+        width: 80%;
+        border-radius: 15px;
+    }
 }
 
 @media (max-width: 760px)
@@ -97,6 +97,12 @@
     .mapContainer 
     {
         margin: 10px;
+    }
+    .leafletMap 
+    {
+        height: 400px;
+        width: 90%;
+        border-radius: 10px;
     }
 }
 
