@@ -16,7 +16,7 @@ export default ({page, onChangeState}) => {
                 null : 
                 page.children.map((child) => {
                     return(
-                        <div className={styles.childLink}>
+                        <div className={styles.childLink} key={child.desc}>
                             <Link to={child.to}>{child.desc}</Link>
                         </div>
                     )
