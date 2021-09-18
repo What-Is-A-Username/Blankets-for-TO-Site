@@ -146,8 +146,6 @@ class RootIndex extends React.Component {
 				}
 
 				donationItemCount : donationItemCounter
-				instagramLink
-				twitterLink
 				
 				frontPageImage 
 				{
