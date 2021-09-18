@@ -1,0 +1,41 @@
+{
+    "contact": 
+    [
+        {
+            "platform": "Email",
+            "nameEntry": "blanketsforto@gmail.com",
+            "link": "mailto:blanketsforto@gmail.com", 
+            "icon": "/contact-icons/emailTransparent.svg"
+        },
+        {
+            "platform": "Facebook",
+            "nameEntry": "Blankets for T.O. - UTSC",
+            "link": "https://www.facebook.com/blanketsforto/", 
+            "icon": "/contact-icons/facebookTransparent.svg"
+        },
+        {
+            "platform": "Twitter",
+            "nameEntry": "@blanketsforto",
+            "link": "https://twitter.com/blanketsforto", 
+            "icon": "/contact-icons/twitterTransparent.svg"
+        },
+        {
+            "platform": "Instagram",
+            "nameEntry": "@blanketsforto",
+            "link": "https://www.instagram.com/blanketsforto/", 
+            "icon": "/contact-icons/instagramTransparent.svg"
+        },
+        {
+            "platform": "TikTok",
+            "nameEntry": "@blanketsforto_",
+            "link": "https://www.tiktok.com/@blanketsforto_", 
+            "icon": "/contact-icons/tiktokTransparent.svg"
+        },
+        {
+            "platform": "YouTube",
+            "nameEntry": "Blankets for T.O.",
+            "link": "https://www.youtube.com/channel/UCTIdvOG5V4cIWUY_j1hBrog", 
+            "icon": "/contact-icons/youtubeTransparent.svg"
+        }
+    ]
+}

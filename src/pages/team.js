@@ -28,8 +28,8 @@ class Team extends React.Component {
 						<div className={styles.executiveList}>
 							{members.map(({ node }) => {
 								return (node.name !== "John Doe" ? 
-								<Fade left delay={this.state.reveal ? 100 : 700} duration={350}>
-									<Member key={node.name} data={node} /> 
+								<Fade left delay={this.state.reveal ? 100 : 700} duration={350} key={node.name}>
+									<Member data={node} /> 
 								</Fade>
 								: null)
 							})}

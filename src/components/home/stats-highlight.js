@@ -20,7 +20,7 @@ const StatsHighlight = ({donationItemCount}) => {
                     statsToDisplay.map(item =>
                         {
                             return(
-                                <Fade>
+                                <Fade key={item.title}>
                                     <div className={styles.item}>
                                         <Countup redraw className={styles.itemNumber} end={donationItemCount} useEasing separator='' duration={5} prefix={item.prefix ?? ''}></Countup>
                                         {/* <h1 className={styles.itemNumber}>{item.number}</h1> */}

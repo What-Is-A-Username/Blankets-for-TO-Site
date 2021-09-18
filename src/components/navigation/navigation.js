@@ -69,7 +69,7 @@ const NavBar = (propData) => {
                             {
                                 pages.map((page) => {
                                     return (
-                                        <NavigationItem page={page} onChangeState={changeState}/>
+                                        <NavigationItem page={page} onChangeState={changeState} key={page.desc}/>
                                     )
                                 })
                             }

@@ -16,7 +16,7 @@ export default () => {
             <div className={styles.logoContainer}>
                 {sponsorList.map(x => {
                     return(
-                        <a className={styles.alink} target="_blank" rel="noopener noreferrer">
+                        <a className={styles.alink} target="_blank" rel="noopener noreferrer" key={x.name}>
                             <div className={styles.logo}>
                                 <Img durationFadeIn={0} imgStyle={{ objectFit: "contain" }} alt={x.name} fluid={x.logo.fluid}/>
                             </div> 

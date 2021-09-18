@@ -15,7 +15,7 @@ const renderFunc = (articles, excludeSlug) => {
 	const increment = (articleNode) =>
 	{
 		rendered++; 
-		return <ArticleCard article={articleNode.node}/>
+		return <ArticleCard article={articleNode.node} key={articleNode.node.title}/>
 	}
 
 	return (

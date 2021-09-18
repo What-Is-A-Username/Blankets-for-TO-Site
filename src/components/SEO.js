@@ -59,8 +59,8 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		<meta name="twitter:site" content={seo.twitterUsername}/>
 		<meta name="twitter:creator" content={seo.twitterUsername}/>
 
-		<link rel='icon' href='/favicon.ico'/>
-		<link rel='canonical' href={cannonical ?? seo.url}/>
+		<link rel='icon' href='/favicon.ico' key='favicon'/>
+		<link rel='canonical' href={cannonical ?? seo.url} key='canonical'/>
 
 		{doNotCrawl && <meta name="robots" content="noindex"/>}
 		{doNotCrawl && <meta name="googlebot" content="noindex"/>}
@@ -101,6 +101,7 @@ SEO.defaultProps = {
 	useMailChimp: false,
 	useCurator: false,
 	useSharing: false,
+	useMaps: false, 
 	cannonical: undefined, 
 	doNotCrawl: false, 
 }
@@ -119,6 +120,7 @@ SEO.propTypes = {
 	useMailChimp: PropTypes.bool,
 	useCurator: PropTypes.bool,
 	useSharing: PropTypes.bool,
+	useMaps: PropTypes.bool,
 	cannonical: PropTypes.string,
 	doNotCrawl: PropTypes.bool, 
 }
