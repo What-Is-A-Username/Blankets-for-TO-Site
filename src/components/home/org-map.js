@@ -1,20 +1,19 @@
 import React, { useState, setState } from 'react'
 import styles from '../home/org-map.module.css'
 import { ChevronRight, ChevronLeft } from 'react-feather';
-import 'leaflet'
+import L from 'leaflet'
 import 'leaflet-polylinedecorator'
 
 export default class OrgMap extends React.Component {
 
 	state = { selectedLocation: 0, mapCenter: -1 }
-
-	L = window['L']
 	utscCoords = { lon: -79.1874, lat: 43.7830 }
 	height = 400;
 	width = 400;
 	numLocations = 0;
 	mapLocations = []
 	map = undefined
+	featureGroup = undefined
 	markerUrl = 'https://img.icons8.com/color/96/000000/marker--v1.png'
 	arrowColor = 'rgb(0, 0, 0)'
 
@@ -35,14 +34,14 @@ export default class OrgMap extends React.Component {
 
 	componentDidUpdate() {
 		if (this.state.mapCenter === -1)
-			this.map = this.map.setView(this.utscCoords, 5);
+			return
 		else
 			this.map = this.map.setView({ lon: this.mapLocations[this.state.mapCenter].coordinateLongitude, lat: this.mapLocations[this.state.mapCenter].coordinateLatitude })
 	}
 
 	componentDidMount() {
-		this.map = L.map('mapid', { zoomControl: false, attributionControl: true, dragging: true }).setView(this.utscCoords, 5);
-		var greenIcon = L.icon({
+		this.map = L.map('mapid', { zoomControl: false, attributionControl: true, dragging: false, zoom: false, touchZoom: false, scrollWheelZoom: false})
+		var markerIcon = L.icon({
 			iconUrl: this.markerUrl,
 			iconSize: [40, 40],
 			iconAnchor: [20, 40],
@@ -56,9 +55,9 @@ export default class OrgMap extends React.Component {
 		var markers = []
 		for (let index = 0; index < this.mapLocations.length; index++) {
 			const coords = [this.mapLocations[index].coordinateLatitude, this.mapLocations[index].coordinateLongitude]
-			var marker = L.marker(coords, { icon: greenIcon }).addTo(this.map).on('click', () => this.onMarkerClick(index))
+			var marker = L.marker(coords, { icon: markerIcon }).addTo(this.map).on('click', () => this.onMarkerClick(index))
 			let polyline = L.polyline([[this.utscCoords.lat, this.utscCoords.lon], coords], {color: '#fc5c5c', fillColor: '#fc5c5c'})
-			var decorator = L.polylineDecorator(polyline, { // Add "direction arrows" to the line "polyline".
+			var decorator = L.polylineDecorator(polyline, { 
 				patterns: [
 					{
 						offset: '100%',
@@ -81,12 +80,17 @@ export default class OrgMap extends React.Component {
 			}).addTo(this.map);
 			markers.push(marker)
 		}
-		var featureGroup = L.featureGroup(markers).addTo(this.map);
-		this.map.fitBounds(featureGroup.getBounds());
+		this.featureGroup = L.featureGroup(markers).addTo(this.map);
+		this.map.fitBounds(this.featureGroup.getBounds());
+
+		this.map.on("load", 
+			() => { 
+				setTimeout(() => { self.map.invalidateSize(); }, 500);
+			}
+		);
 	}
 
 	render() {
-		{ console.log(L.GeometryUtil) }
 		this.mapLocations = this.props.mapLocations
 		this.numLocations = this.mapLocations.length;
 		const locationInfo = this.mapLocations[this.state.selectedLocation]

@@ -31,7 +31,7 @@ class Contact extends React.Component {
 								{
 									contactInfo.map((x, i) => {
 										return (
-											<div className={styles.socialMediaEntry}>
+											<div className={styles.socialMediaEntry} key={x.platform}>
 												<a href={x.link} target='_blank' rel='noopener noreferrer'>
 													<img src={x.icon} alt={x.platform + ' Icon'} />
 													<p className={styles.socialMediaLink}>{x.nameEntry}<ExternalLink/></p>

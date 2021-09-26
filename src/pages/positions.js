@@ -32,9 +32,6 @@ class Positions extends React.Component {
 								{membershipInfo.json !== undefined ? documentToReactComponents(membershipInfo.json) : <p>Error: Articles not found.</p>}
 							</div>
 							</Fade>
-							<Fade top>
-								<StyledButton link={formLink} buttonText='Sign up for membership' openInNewTab/>
-							</Fade>
 						</div>
 					</div>
 				</div>
