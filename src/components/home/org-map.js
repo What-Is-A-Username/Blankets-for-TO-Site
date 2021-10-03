@@ -107,7 +107,9 @@ export default class OrgMap extends React.Component {
 					</div>
 					<ChevronRight onClick={() => this.onNext()} width={30} height={30} />
 				</div>
-				<div id="mapid" className={styles.leafletMap} />
+				<div id="mapid" className={styles.leafletMap}>
+					<p className={styles.errorText}>Map not loading? Try enabling cookies and refreshing.</p>
+				</div>
 			</div>
 		)
 	}

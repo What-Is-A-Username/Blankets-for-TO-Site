@@ -40,25 +40,10 @@ export default class MemberCircle extends React.Component {
                 <div className={styles.memberInformation}>
                     <h3 className={styles.name}>{data.name}</h3>
                     <h4 className={styles.title}>{data.title}</h4>
-                    {/* <div className={this.state.showDescription ? styles.description : styles.descriptionFaded}
-                        dangerouslySetInnerHTML={{
-                        __html: data.shortBio.childMarkdownRemark.html,
-                        }}
-                    /> */}
-                    {/* {
-                        !this.state.showDescription ? 
-                        <a className={styles.descriptionButton} onClick={() => this.clickShowMore()}>
-                            Read more
-                        </a>
-                        :
-                        <a className={styles.descriptionButton} onClick={() => this.clickHide()}>
-                            Show less
-                        </a>
-                    } */}
                     <div className={styles.memberContact}>
                         {
                             contact.map(x => { return(
-                                x.platform && 
+                                x.link && 
                                 <div className={styles.memberContactEntry} key={data.name+" "+x.platform}>
                                     <a className={styles.memberContactLink} href={x.alt !== "Email" ? x.link : `mailto:${x.platform}`} target="_blank" rel="noopener noreferrer">
                                         <img className={styles.memberContactIcon} src={x.icon} alt={`${x.alt} Icon`}/>

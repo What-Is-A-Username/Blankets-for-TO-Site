@@ -68,7 +68,6 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 		<script
 			type="text/javascript"
 			src="https://app.termly.io/embed.min.js"
-			data-auto-block="on"
 			data-website-uuid="01a08857-e482-4377-85cd-f142d9dba419"
 		></script>
 

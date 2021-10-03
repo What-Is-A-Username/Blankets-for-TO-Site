@@ -27,6 +27,7 @@
 
 .preview:hover {
     background-color: #d8d8d8;
+    filter: brightness(90%);
 }
 
 .previewImage img {
