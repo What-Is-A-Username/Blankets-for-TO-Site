@@ -6,6 +6,8 @@ import twitterImage from '../images/twitter.svg'
 import facebookImage from '../images/facebook.svg'
 import instagramImage from '../images/instagram.svg'
 import linkedInImage from '../images/linkedin.svg'
+import githubImage from '../images/github.png'
+import websiteImage from '../images/link.png'
 import placeholderPortrait from '../images/placeholderperson.png';
 
 export default class MemberCircle extends React.Component { 
@@ -23,11 +25,13 @@ export default class MemberCircle extends React.Component {
         const { data } = this.props;
 
         const contact = [
-            { alt: "Email", platform: data.email, link: data.email, icon: emailImage },
-            { alt: "Facebook", platform: data.facebook, link: data.facebookLink, icon: facebookImage },
-            { alt: "Instagram", platform: data.insta, link: data.instagramLink, icon: instagramImage },
-            { alt: "Twitter", platform: data.twitter, link: data.twitterLink, icon: twitterImage },
-            { alt: "LinkedIn", platform: data.linkedIn, link: data.linkedInLink, icon: linkedInImage },
+            { alt: "Email", link: data.email, icon: emailImage },
+            { alt: "Facebook", link: data.facebookLink, icon: facebookImage },
+            { alt: "Instagram", link: data.instagramLink, icon: instagramImage },
+            { alt: "Twitter", link: data.twitterLink, icon: twitterImage },
+            { alt: "LinkedIn", link: data.linkedInLink, icon: linkedInImage },
+            { alt: "GitHub", link: data.githubLink, icon: githubImage },
+            { alt: "Website", link: data.websiteLink, icon: websiteImage }
         ]
         
         return(
@@ -44,8 +48,8 @@ export default class MemberCircle extends React.Component {
                         {
                             contact.map(x => { return(
                                 x.link && 
-                                <div className={styles.memberContactEntry} key={data.name+" "+x.platform}>
-                                    <a className={styles.memberContactLink} href={x.alt !== "Email" ? x.link : `mailto:${x.platform}`} target="_blank" rel="noopener noreferrer">
+                                <div className={styles.memberContactEntry} key={data.name+" "+x.alt}>
+                                    <a className={styles.memberContactLink} href={x.alt !== "Email" ? x.link : `mailto:${x.link}`} target="_blank" rel="noopener noreferrer">
                                         <img className={styles.memberContactIcon} src={x.icon} alt={`${x.alt} Icon`}/>
                                     </a>
                                 </div> 

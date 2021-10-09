@@ -1,0 +1,19 @@
+.iconAttribution > div
+{
+    padding-left: 20px;
+}
+
+.topPadding
+{
+    padding-top: 10px;
+}
+
+.bottomPadding
+{
+    padding-top: 50px;
+}
+
+.message
+{
+    font-weight: bold;
+}

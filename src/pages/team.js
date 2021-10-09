@@ -57,14 +57,12 @@ export const teamPositionQuery = graphql`
 					isFounder
 					title
 					email
-					facebook
 					facebookLink
-					insta
 					instagramLink
-					twitter
 					twitterLink
-					linkedIn
 					linkedInLink
+					websiteLink
+					githubLink
 					photo
 					{
 						fluid(maxWidth: 300, maxHeight: 300, resizingBehavior: SCALE)
