@@ -37,7 +37,7 @@ export default class Sponsors extends React.Component {
                     </Fade>
                     <Fade delay={500}>
                         <div className={'richText'}>
-                        <h3 className={styles.titles}>Preferred Sponsors</h3>
+                        <h3 className={styles.titles}>{"Preferred Sponsor" + (preferredSponsors.length > 1 ? "s" : "")}</h3>
                         <div className={styles.sponsorsGrid}>
                         {
                             preferredSponsors.map(x => {
@@ -58,7 +58,6 @@ export default class Sponsors extends React.Component {
                             }
                             </div>
                         </div>
-                        
                     </Fade>
                 </div>
             </div> 
