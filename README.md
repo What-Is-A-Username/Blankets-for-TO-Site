@@ -4,7 +4,7 @@ This [website](https://blanketsforto.ca) was built for Blankets for T.O., a non-
 
 ## Features
 - Browse updates and articles by filtering and sorting by date on our [blog page](https://blanketsforto.ca/blog)
-- View our donations on the [homepage's map](https://blanketsforto.ca/blog)
+- View our donations on the [homepage's map](https://blanketsforto.ca/)
 - View our Twitter and Instagram feeds on our [homepage](https://blanketsforto.ca/) (may require blockers to be turned off)
 - Meet our team on the [Team page](https://blanketsforto.ca/team)
 - Support for SEO and social media link previews on Facebook, Discord, and Twitter
