@@ -4,6 +4,7 @@ import styles from './tag.module.css'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { navigate } from 'gatsby-link';
+import { divIcon } from 'leaflet';
 
 const SearchTagItem = ({tagText, clickTagFunc, active}) => {
 
@@ -32,11 +33,22 @@ SearchTagItem.propTypes = {
 }
 
 const BlogTagItem = ({tagText, clickable}) => {
-    return(
-        <div className={clickable ? styles.clickableBlogTag : styles.blogTag} onClick={clickable ? () => navigate("/blog/?tags=" + tagText) : () => {}}>
-            <p>{tagText}</p>
-        </div>
-    )
+    if (clickable)
+    { 
+        return(
+            <a href={"/blog/?tags=" + tagText} className={styles.clickableBlogTag}>
+                <p>{tagText}</p>
+            </a>
+        )
+    }
+    else 
+    {
+        return(
+            <div className={styles.blogTag}>
+                    <p>{tagText}</p>
+            </div>
+        )
+    }
 }
 
 BlogTagItem.propTypes = {

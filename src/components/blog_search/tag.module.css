@@ -52,10 +52,12 @@
 
 .activeTag, .blogTag, .clickableBlogTag
 {
+    text-decoration: none;
     display: flex;
     border-radius: 20px;
     line-height: 1px;
     padding: 0px 15px 0px 15px;
+    margin-right: 10px;
 }
 
 /* Styling for tag items that are seen under each article title*/

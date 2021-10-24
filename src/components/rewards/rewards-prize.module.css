@@ -1,0 +1,61 @@
+.prize 
+{
+    --top: #faa94d;
+    --bottom: #ca883d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: top;
+    text-align: center;
+    margin: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;    
+    background-color: white;
+    border-radius: 15px;
+    background: -webkit-linear-gradient(var(--top), var(--bottom));
+    background:    -moz-linear-gradient(var(--top), var(--bottom));
+    background:         linear-gradient(var(--top), var(--bottom));
+}
+
+.text 
+{
+    padding: 10px;
+}
+
+@media(min-width: 760px)
+{
+    .prize 
+    {
+        padding: 15px 0;
+    }
+}
+
+@media(max-width: 760px)
+{
+    .prize 
+    {
+        padding: 5px 0;
+    }
+}
+
+.heading
+{
+    color: rgb(255, 255, 255);
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.description
+{
+    color: rgb(255, 255, 255);
+    margin: 0 auto;
+    width: 75%;
+}
+
+.points
+{
+    font-size: 1.5em;
+    font-weight: bold;
+    color:rgb(255, 255, 255);
+    margin: 0 0;
+    line-height: 1.5em;
+}

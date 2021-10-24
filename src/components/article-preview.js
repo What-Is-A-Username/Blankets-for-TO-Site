@@ -9,6 +9,7 @@ import Bounce from 'react-reveal/Bounce'
 import StyledButton from './styled-button'
 import ArticleCard from './article-card' 
 
+
 const renderFunc = (articles, excludeSlug) => {
 
 	let rendered = 0; 

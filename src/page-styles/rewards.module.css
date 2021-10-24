@@ -1,0 +1,140 @@
+@media(min-width: 1000px)
+{
+    .instructionsList
+    {
+        display: inline-flex;
+        justify-content: center;
+    }
+    .instructionPanel 
+    {
+        margin: 10px;
+        padding: 20px;
+        width: 20%;
+    }
+    .instructionNumber
+    {
+        font-size: 2.0em;
+        margin: 5px 0;
+    }
+}
+
+@media(max-width: 1000px)
+{
+    .instructionsList
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .instructionPanel 
+    {
+        margin: 10px;
+        padding: 20px;
+    }
+    .instructionNumber
+    {
+        font-size: 2.0em;
+        margin: 5px 0;
+    }
+    .instructionDescription
+    {
+        max-width: 400px;
+    }
+}
+
+.instructionNumber, .instructionDescription 
+{
+    color: white;
+}
+
+.instructionPanel > svg 
+{
+    color: white;
+}
+
+.instructionPanel 
+{
+    --top: #fc5c5c;
+    --bottom: rgb(197, 58, 58);
+    background: -webkit-linear-gradient(var(--top), var(--bottom));
+    background:    -moz-linear-gradient(var(--top), var(--bottom));
+    background:         linear-gradient(var(--top), var(--bottom));
+    
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -5px;       
+    background-color: white;
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media(min-width: 1000px)
+{
+    .taskList
+    {
+        display: grid;
+        grid-template-columns: repeat(3, 2fr);
+        row-gap: 15px;
+        column-gap: 15px;
+    }
+}
+
+@media(min-width: 500px) and (max-width: 1000px)
+{
+    .taskList
+    {
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+        row-gap: 15px;
+        column-gap: 15px;
+    }
+}
+
+@media(min-width: 500px)
+{
+    .prizeList
+    {
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+        row-gap: 15px;
+        column-gap: 15px;
+        padding-bottom: 30px;
+    }
+}
+
+@media(max-width: 500px)
+{
+    .taskList
+    {
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+        column-gap: 15px;
+    }
+}
+
+
+@media(max-width: 500px)
+{
+    .prizeList
+    {
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+        column-gap: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+.prizeTitle, .taskTitle
+{
+    color: var(--primary);
+    text-align: center;
+    font-weight: bolder;
+}
+
+.notes  
+{
+    color: rgb(95, 95, 95);
+}

@@ -54,7 +54,7 @@ query AwardQuery {
             description
         } 
         image {
-            fluid(maxWidth: 500, resizingBehavior: SCALE) {
+            fluid(maxWidth: 400, resizingBehavior: SCALE, quality: 100) {
                 ...GatsbyContentfulFluid_tracedSVG
             }
         }

@@ -7,6 +7,7 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     const blogPostTemplate = path.resolve('./src/templates/blog-post.js')
     const pageTemplate = path.resolve('./src/templates/page.js')
+    const storeItemTemplate = path.resolve('./src/templates/store-item.js')
     resolve(
       graphql(
         `
@@ -23,6 +24,14 @@ exports.createPages = ({ graphql, actions }) => {
               edges {
                 node {
                   title
+                  slug
+                }
+              }
+            }
+            allContentfulMerchItem {
+              edges {
+                node {
+                  itemName
                   slug
                 }
               }
@@ -53,6 +62,17 @@ exports.createPages = ({ graphql, actions }) => {
             component: pageTemplate,
             context: {
               slug: page.node.slug
+            },
+          })
+        })
+
+        const storeItems = result.data.allContentfulMerchItem.edges 
+        storeItems.forEach((item) => {
+          createPage({
+            path: `/store/${item.node.slug}/`,
+            component: storeItemTemplate,
+            context: {
+              slug: item.node.slug
             },
           })
         })

@@ -22,6 +22,11 @@
   background-color: var(--primary);
 }
 
+.pageNumberItem
+{
+  margin: 0 5px;
+}
+
 .pageNumberParent:hover {
   cursor: pointer;
 }
