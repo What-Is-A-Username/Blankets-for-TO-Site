@@ -1,0 +1,209 @@
+@media(min-width: 1000px)
+{
+    .layout
+    {
+        display: inline-flex;
+        width: 100%;
+    }
+    .preview, .information
+    {
+        width: 50%;
+    }
+    .name 
+    {
+        margin: 0 0;
+    }
+    .information
+    {
+        margin-left: 30px;
+    }
+}
+
+@media(max-width: 1000px)
+{
+    .layout
+    {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+    .preview, .information
+    {
+        width: 100%;
+    }
+    .name 
+    {
+        margin: 50px 0 0 0;
+    }
+}
+
+.preview 
+{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.carousel
+{
+    height: 70%;
+    max-height: 70%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leftArrow, .rightArrow
+{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+
+.leftArrow:hover, .rightArrow:hover
+{
+    color: var(--primary);
+}
+
+.leftArrow 
+{
+    margin: 0 10px 0 0;
+}
+.rightArrow 
+{
+    margin: 0 0 0 10px;
+}
+
+.image
+{
+    max-width: 400px;
+    max-height: 100%;
+    width: 80%;
+    height: 80%;
+}
+
+.image > div
+{
+    max-height: 100%;
+}
+
+.thumbnailRow
+{
+    height: 50px;
+    display: inline-flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.thumb, .selectedThumb
+{
+    cursor: pointer;
+    height: 100%;
+    width: 50px;
+    margin: 0 10px;
+    border-radius: 3px;
+}
+
+.thumb
+{
+    border: 2px solid rgb(97, 97, 97);
+}
+
+.selectedThumb
+{
+    border: 2px solid var(--primary)
+}
+
+.name 
+{
+    font-size: 3.0em;
+    font-weight: bold;
+}
+
+.price
+{
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.priceAmount, .priceCurrency
+{
+    margin: 10px 0px;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.priceAmount
+{
+    font-size: 2.5em;
+}
+
+.priceCurrency
+{
+    font-size: 1.0em;
+    margin-left: 5px;
+    
+}
+
+.description 
+{
+    line-height: 20px;
+}
+
+.description > h2 
+{
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black;
+}
+
+.description > p
+{
+    font-size: 16px;
+}
+
+.inventory, .browseOtherItems
+{
+    display: inline-flex;
+    align-items: center;
+}
+
+.inventory > p
+{
+    margin-left: 10px;
+}
+
+.browseOtherItems
+{
+    cursor: pointer;
+}
+
+.browseOtherItems > svg
+{
+    height: 50px;
+    width: 50px;
+}
+
+.browseOtherItems
+{
+    font-size: 18px;
+    text-decoration: none;
+    padding: 50px 0px 25px 0px;
+}
+
+.browseOtherItems:hover, .browseOtherItems:hover > svg
+{
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.icon_shoppingBag
+{
+    color: rgb(0, 136, 0);
+}
+
+.icon_redx
+{
+    color: rgb(233, 0, 0);
+}
