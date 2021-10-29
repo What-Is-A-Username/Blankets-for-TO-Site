@@ -132,6 +132,7 @@
     color: var(--primary);
     text-align: center;
     font-weight: bolder;
+    padding-top: 60px;
 }
 
 .notes  

@@ -9,6 +9,7 @@ import RewardsTask from '../components/rewards/rewards-task'
 import rewardsInfo from './rewards.json'
 import { Award, Edit2, Edit3, Video, Gift, MessageCircle, PenTool, Share, UserCheck, UserPlus, Users, Link, Package, CheckCircle, Send, BarChart } from 'react-feather'
 import RewardsPrize from '../components/rewards/rewards-prize'
+import StyledButton from '../components/styled-button'
 
 export default class Store extends React.Component {
 	render() {
@@ -49,6 +50,8 @@ export default class Store extends React.Component {
         const instructionIconSize = '80px'
         const instructionIconStrokeWidth = 1.5;
 
+        const taskVerificationLink = 'https://forms.gle/zLAq7ijrUsUtJ4hU6'
+
 		return (
 			<Layout location={this.props.location}>
 				<SEO 
@@ -66,12 +69,12 @@ export default class Store extends React.Component {
                             </p>
                         </div>
                         <div id='info'>
-                            <h3 className={styles.taskTitle}> How does it work?</h3>
+                            <h3 className={styles.taskTitle} style={{fontSize: '3.0em'}}> How does it work?</h3>
                         </div>
                         <div className={styles.instructionsList}>
                             <Fade delay={0} left>
                                 <div className={styles.instructionPanel}>
-                                    <p className={styles.instructionNumber}>1</p>
+                                    <p className={styles.instructionNumber}>Step 1</p>
                                     <CheckCircle size={instructionIconSize} strokeWidth={instructionIconStrokeWidth}/>
                                     <p className={styles.instructionDescription}> 
                                         Contribute to Blankets for T.O. by completing any of the designated tasks below.
@@ -80,25 +83,25 @@ export default class Store extends React.Component {
                             </Fade>
                             <Fade delay={300} left>
                                 <div className={styles.instructionPanel}> 
-                                    <p className={styles.instructionNumber}>2</p>
+                                    <p className={styles.instructionNumber}>Step 2</p>
                                     <Send size={instructionIconSize} strokeWidth={instructionIconStrokeWidth}/>
                                     <p className={styles.instructionDescription}>
-                                        Verify completed tasks by providing supporting proof like screenshots or files to our Executive Team so that they can record it.
+                                        Verify completed tasks by providing supporting proof like screenshots or files to our Executive Team so that we can record it.
                                     </p >
                                 </div>
                             </Fade>
                             <Fade delay={600} left>
                                 <div className={styles.instructionPanel}>
-                                    <p className={styles.instructionNumber}>3</p>
+                                    <p className={styles.instructionNumber}>Step 3</p>
                                     <BarChart size={instructionIconSize} strokeWidth={instructionIconStrokeWidth}/>
                                     <p className={styles.instructionDescription}>
-                                        Continue gathering points. Use our spreadsheet, updated by our Executive Team, to keep updated on your points total!
+                                        Continue completing tasks and gathering points. Use our spreadsheet, updated by our Executive Team, to keep updated on your points total!
                                     </p>
                                 </div>
                             </Fade>
                             <Fade delay={900} left>
                                 <div className={styles.instructionPanel}>
-                                    <p className={styles.instructionNumber}>4</p>
+                                    <p className={styles.instructionNumber}>Step 4</p>
                                     <Gift size={instructionIconSize} strokeWidth={instructionIconStrokeWidth}/>
                                     <p className={styles.instructionDescription}>
                                         Spend your rewards points to redeem for our prizes, which include drones, cameras, and speakers!
@@ -117,8 +120,15 @@ export default class Store extends React.Component {
                             }
                         </div>
                         <p className={styles.notes}>** This activity can only be done once by a member each month</p>
+                        <div id='submission' style={{textAlign:'center'}}>
+                            <h3 className={styles.taskTitle}>How do I get my tasks verified?</h3>
+                            <p style={{fontSize:'18px'}}>In order to be rewarded points for each task you complete, you must submit supporting proof of the task completion. This may include screenshots, digital media or written material.</p>
+                            <p style={{fontWeight: 'bold', fontSize:'18px'}}>To submit tasks for the months of October 2021 and November 2021, please follow the link below to fill out the Google Form:</p>
+                            <StyledButton buttonText='Submit task for verification' link={taskVerificationLink} openInNewTab/> 
+                            <a></a>
+                        </div>
                         <div id='prizes'>
-                            <h3 className={styles.prizeTitle}>What rewards can I win?</h3>
+                            <h3 className={styles.prizeTitle}>What rewards can I earn?</h3>
                         </div>
                         <div className={styles.prizeList} >
                             {rewardsPrizes.map(prize =>
@@ -127,10 +137,10 @@ export default class Store extends React.Component {
                                 }
                             )}
                         </div>
-                        <div className='richText' id='check'>
-                            <h4>How can I check my points?</h4>
-                            <p>
-                                View your points by opening our spreadsheet  document. This document is maintained by our Executive Team. Members in our Discord server can also use the bot to view their points total.
+                        <div id='check' style={{textAlign:'center'}}>
+                            <h3 className={styles.taskTitle}>How can I check my points?</h3>
+                            <p style={{fontSize:'18px'}}>
+                                View your points by opening our spreadsheet document, which is currently still under construction. This document will be maintained by our Executive Team. Additionally, we are currently working on allowing members of our Discord server to specialized bot commands to view their points total.
                             </p>
                         </div>
 					</div>
