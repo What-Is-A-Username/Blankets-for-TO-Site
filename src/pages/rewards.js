@@ -51,6 +51,7 @@ export default class Store extends React.Component {
         const instructionIconStrokeWidth = 1.5;
 
         const taskVerificationLink = 'https://forms.gle/zLAq7ijrUsUtJ4hU6'
+        const pointsSpreadsheetLink = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRp-FGO1X7gq_Z-VCPzaEb9Q3UBb5JdtEQN3vkiV5hg-zYmTaM1sG38QjO1bpVBup7b1ffW8Io9sNcJ/pubhtml'
 
 		return (
 			<Layout location={this.props.location}>
@@ -144,7 +145,7 @@ export default class Store extends React.Component {
                             <p className={styles.infoTextBold}>
                                 The master points tracker can be accessed via the button below:
                             </p>
-                            <StyledButton buttonText='View Rewards Points' link='https://docs.google.com/spreadsheets/d/14XNz6xy8jVBHcaRmDPyR_LqipE8e6zQyBN7gAugqALo' openInNewTab/>
+                            <StyledButton buttonText='View Rewards Points' link={pointsSpreadsheetLink} openInNewTab/>
                             <p className={styles.infoText}>Kindly allow our executive team enough time to update your points after you have sent a verification request. Verifications are normally processed at the end of each month.</p>
                             <p className={styles.infoTextBold}>
                                 Discord server members can also view their points through the our server's custom Discord bot:
@@ -152,9 +153,11 @@ export default class Store extends React.Component {
                             <p className={styles.infoText}>
                                 Simply send a message with "!help" in the #bot-commands channel or in a private message to view relevant commands. Ask our Bot Developer, William, if you have any questions or issues with the bot!
                             </p>
-                            <h3 className={styles.taskTitle}>Who can I ask for questions?</h3>
+                        </div>
+                        <div id='contact' className='richText'>
+                            <h3 className={styles.taskTitle}>Who do I contact for questions?</h3>
                             <p className={styles.infoText}>
-                                For any questions and concerns about the rewards system or your personal points tally specifically, contact us through email, social media or Discord. 
+                                For any questions and concerns about the rewards system or your personal points tally specifically, contact us through email, social media or Discord. Links can be found on our <a href='/contact'>Contact page.</a>
                             </p>
                         </div>
 					</div>
