@@ -1,4 +1,4 @@
-@media(min-width: 1000px)
+@media(min-width: 760px)
 {
     .instructionsList
     {
@@ -18,7 +18,7 @@
     }
 }
 
-@media(max-width: 1000px)
+@media(max-width: 760px)
 {
     .instructionsList
     {
@@ -69,7 +69,7 @@
     align-items: center;
 }
 
-@media(min-width: 1000px)
+@media(min-width: 760px)
 {
     .taskList
     {
@@ -80,7 +80,7 @@
     }
 }
 
-@media(min-width: 500px) and (max-width: 1000px)
+@media(min-width: 500px) and (max-width: 760px)
 {
     .taskList
     {
@@ -127,12 +127,33 @@
     }
 }
 
-.prizeTitle, .taskTitle
+.prizeTitle, .taskTitle, .mainTitle
 {
     color: var(--primary);
     text-align: center;
     font-weight: bolder;
-    padding-top: 60px;
+}
+
+.prizeTitle, .taskTitle 
+{
+    padding-top: 30px;
+}
+
+.mainTitle
+{
+    font-size: 2.5em;
+    margin-bottom: 0;
+}
+
+.infoText, .infoTextBold
+{
+    font-size: 18px;
+    text-align: center;
+}
+
+.infoTextBold 
+{
+    font-weight: bold;
 }
 
 .notes  

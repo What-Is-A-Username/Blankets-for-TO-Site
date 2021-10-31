@@ -53,6 +53,12 @@ p {
 	padding-bottom: 25px;
 }
 
+.wideWrapper {
+	margin: 20px auto;
+	padding-top: 2vmin;
+	padding-bottom: 25px;
+}
+
 .pigeon-tiles img {
 	width: auto;
 	display: block;
@@ -62,7 +68,10 @@ p {
 	.wrapper {
 		width: 70%;
 	}
-	.wrapper h2{
+	.wideWrapper {
+		width: 90%;
+	}
+	.wrapper h2, .wideWrapper h2 {
 		text-align: left;
 	} 
 }
@@ -71,7 +80,10 @@ p {
 	.wrapper {
 		width: 90%;
 	}
-	.wrapper h2{
+	.wideWrapper {
+		width: 95%;
+	}
+	.wrapper h2, .wideWrapper h2 {
 		text-align: center;
 	} 
 }
