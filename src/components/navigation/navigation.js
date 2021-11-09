@@ -12,16 +12,11 @@ const Navigation = (props) => {
 			query={graphql`
                 query NavLogoQuery 
                 {
-                    allContentfulOrganizationInformation 
-                    {
-                        nodes 
-                        {
-                            organizationLogo 
-                            {
-                                fluid(maxHeight: 400, resizingBehavior: SCALE, background: "rgb:FFFFFF")
-                                {
-                                    ...GatsbyContentfulFluid_tracedSVG
-                                }
+                    file(relativePath: { eq: "bto_new_logo_transparent.png" }) {
+                        childImageSharp {
+                            fluid(maxHeight: 100, quality: 100) {
+                                ...GatsbyImageSharpFluid
+                                ...GatsbyImageSharpFluidLimitPresentationSize
                             }
                         }
                     }
@@ -35,7 +30,7 @@ const Navigation = (props) => {
 export default Navigation
 
 const NavBar = (propData) => {
-    var logo = propData.data.allContentfulOrganizationInformation.nodes[0].organizationLogo; 
+    var logo = propData.data.file.childImageSharp
     const [drawerActive, setDrawer] = React.useState(false);
     const { children } = propData.props
     const pages = pageData.pages

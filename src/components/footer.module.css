@@ -11,8 +11,21 @@
 	width: 100%;
 }
 
-.logo {
+.logo, .logoPadding {
 	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+}
+
+
+
+.left {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-direction: column;
 }
 
 .footerInfo {
@@ -48,10 +61,11 @@
 	color:var(--primary);
 }
 
+
 /* Logo size  */
 @media (min-width: 1200px) {
 	.logo, .logo img, .logo div {
-		width: 300px;
+		width: 150px;
 		height: 150px;
 	}
 } 
@@ -59,17 +73,25 @@
 @media (min-width: 900px) and (max-width: 1200px)
 {
 	.logo, .logo img, .logo div {
-		width: 200px;
+		width: 100px;
 		height: 100px;
+	}
+	.logoPadding
+	{
+		padding: 15px 0;
 	}
 }
 
 @media (max-width: 900px)
 {
 	.logo, .logo img, .logo div {
-		width: 200px;
-		height: 100px;
+		width: 75px;
+		height: 75px;
 		align-self: center;
+	}
+	.logoPadding
+	{
+		padding: 15px 0;
 	}
 }
 

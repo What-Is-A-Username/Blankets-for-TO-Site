@@ -6,12 +6,11 @@ import pageData from '../pages/page-data.json'
 import FooterItem from './navigation/footer-item'
 import contactData from '../pages/contact-info.json'
 
-
 const Footer = (props) => {
 	const contactInfo = contactData.contact
 	const pages = pageData.pages.concat(pageData.footer)
 
-	const logo = props.allContentfulOrganizationInformation.nodes[0].organizationLogo
+	const logo = props.file.childImageSharp
 
 	const onClickLogo = () => {
         navigate('/')
@@ -30,9 +29,12 @@ const Footer = (props) => {
 		<footer role="contentinfo" className={styles.footer}>
 			<div className={styles.footerTop}>
 				<div className={styles.left}>
-					<div className={styles.logo} onClick={onClickLogo}>
-						<Img fluid={logo.fluid}/>
+					<div className={styles.logoPadding}>
+						<div className={styles.logo} onClick={onClickLogo}>
+							<Img fluid={logo.fluid}/>
+						</div>
 					</div>
+					
 					<div className={styles.socialMedia}>
 						{
 							contactInfo.map((x, i) => {
@@ -80,19 +82,14 @@ export default () => {
 		<StaticQuery
 			query={graphql`
 				query FooterQuery {
-                    allContentfulOrganizationInformation 
-                    {
-                        nodes 
-                        {
-                            organizationLogo 
-                            {
-                                fluid(maxHeight: 400, resizingBehavior: SCALE, background: "rgb:FFFFFF")
-                                {
-                                    ...GatsbyContentfulFluid_tracedSVG
-                                }
+					file(relativePath: { eq: "bto_new_logo_transparent.png" }) {
+                        childImageSharp {
+                            fluid(maxHeight: 100, quality: 100) {
+                                ...GatsbyImageSharpFluid
+                                ...GatsbyImageSharpFluidLimitPresentationSize
                             }
                         }
-					}
+                    }
                 }
 			`}
 			render={data => Footer(data)}
