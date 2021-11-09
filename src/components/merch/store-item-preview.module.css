@@ -16,9 +16,6 @@
 		min-height: 30vh;
 		align-self: center;
 	}
-	.previewImage img {
-		border-radius: 15px 15px 0 0;
-	}
 	.alink {
 		width: 100%;
 		margin: 0 10px;
@@ -39,9 +36,6 @@
 	}
 	.previewImage {
 		margin-right: 10px;
-	}
-	.previewImage img {
-		border-radius: 15px;
 	}
 	.alink, .preview {
 		width: 100%;
@@ -102,7 +96,6 @@
     margin: 0;
 	box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
 	transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-	border-radius: 15px;
 	border-color: #A0A0A0;
 	-moz-transition: all .2s ease-in;
 	-o-transition: all .2s ease-in;

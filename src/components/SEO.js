@@ -36,8 +36,8 @@ const SEO = ({childElements, title, description, metaImage, metaType, meta, useM
 			htmlAttributes={{
 				lang: defaultLang,
 			}}
-			title={title}
-			titleTemplate={titleTemplate}
+			title={title === 'Home' ? 'Blankets for T.O.' : title}
+			titleTemplate={title === 'Home' ? '%s' : titleTemplate}
 			key={title}>
 
 		<meta name='description' content={seo.description}/>

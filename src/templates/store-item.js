@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
 import Img from 'gatsby-image'
-import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer' 
 
 import styles from '../templates/store-item.module.css'
@@ -13,7 +12,7 @@ import { XCircle, ShoppingBag, ChevronLeft, ChevronRight } from 'react-feather';
 class StoreItemTemplate extends React.Component {
 
     item = get(this.props, 'data.contentfulMerchItem')
-    state = { currentImage: 0, numImages: this.item.images.length }
+    state = { currentImage: 0, numImages: this.item.images ? this.item.images.length : 0}
 
     onNext = () => {
         let nextItem = (this.state.currentImage + 1) % this.state.numImages
@@ -44,21 +43,32 @@ class StoreItemTemplate extends React.Component {
                         title={this.item.itemName}
                         description={`${this.item.itemName} (${this.item.itemPrice}) - SEO Description Here`}
                         cannonical='https://blanketsforto.ca/store'
-                        metaImage={this.item.largePreview.file.url}
+                        metaImage={this.item.largePreview ? this.item.largePreview.file.url : undefined}
                         doNotCrawl
                     />
                     <div className="wrapper">
                         <div className={styles.layout}>
                             <div className={styles.preview}>
                                 <div className={styles.carousel}>
-                                    <ChevronLeft className={styles.leftArrow} onClick={() => this.onPrev()}/>
-                                    <div className={styles.image}>
-                                        <Img fluid={this.item.images[this.state.currentImage].fluid}/>
-                                    </div>
-                                    <ChevronRight className={styles.rightArrow} onClick={() => this.onNext()}/>
+                                    {
+                                        this.state.numImages > 1 &&
+                                        <ChevronLeft className={styles.leftArrow} onClick={() => this.onPrev()}/>
+                                    }
+                                    {
+                                        this.state.numImages > 0 &&
+                                        <div className={styles.image}>
+                                            <Img fluid={this.item.images[this.state.currentImage].fluid}/>
+                                        </div>
+                                    }
+                                    
+                                    {
+                                        this.state.numImages > 1 &&
+                                        <ChevronRight className={styles.rightArrow} onClick={() => this.onNext()}/>
+                                    }
                                 </div>
                                 <div className={styles.thumbnailRow}>
                                     {
+                                        this.item.thumbs &&
                                         this.item.thumbs.map((thumb, index) => {
                                             return(
                                                 <div onClick={() => this.selectImage(index)} className={index == this.state.currentImage ? styles.selectedThumb : styles.thumb} key={index}>
