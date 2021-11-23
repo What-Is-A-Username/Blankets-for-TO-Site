@@ -122,7 +122,7 @@ export default class Store extends React.Component {
                                 })
                             }
                         </div>
-                        <p className={styles.notes}>** This activity can only be done once by a member each month</p>
+                        <p className={styles.notes}>** Select activities can only be done once by a member each month.</p>
                         <div id='submission'>
                             <h3 className={styles.taskTitle}>How do I get my tasks verified?</h3>
                             <p className={styles.infoText}>In order to be rewarded points for each task you complete, you must submit supporting proof of the task completion. This may include screenshots, digital media or written material.</p>
@@ -143,20 +143,20 @@ export default class Store extends React.Component {
                         <div id='check'>
                             <h3 className={styles.taskTitle}>How can I check my points?</h3>
                             <p className={styles.infoTextBold}>
-                                The master points tracker can be accessed via the button below:
+                                The master points tracker can be accessed via the link below:
                             </p>
                             <StyledButton buttonText='View Rewards Points' link={pointsSpreadsheetLink} openInNewTab/>
                             <p className={styles.infoText}>Kindly allow our executive team enough time to update your points after you have sent a verification request. Verifications are normally processed at the end of each month.</p>
                             <p className={styles.infoTextBold}>
-                                Discord server members can also view their points through the our server's custom Discord bot:
+                                Discord server members can also view their points through our server's custom Discord bot:
                             </p>
                             <p className={styles.infoText}>
-                                Simply send a message with "!help" in the #bot-commands channel or in a private message to view relevant commands. Ask our Bot Developer, William, if you have any questions or issues with the bot!
+                                Simply send a message with "!help" in the #bot-commands channel or in a private message to view relevant commands. Ask our Bot Developer, William, if you have any questions or issues with the bot.
                             </p>
                         </div>
-                        <div id='contact' className='richText'>
+                        <div id='contact'>
                             <h3 className={styles.taskTitle}>Who do I contact for questions?</h3>
-                            <p className={styles.infoText}>
+                            <p className={styles.infoText + ' ' + styles.link}>
                                 For any questions and concerns about the rewards system or your personal points tally specifically, contact us through email, social media or Discord. Links can be found on our <a href='/contact'>Contact page.</a>
                             </p>
                         </div>

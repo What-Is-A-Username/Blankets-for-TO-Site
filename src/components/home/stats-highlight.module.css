@@ -46,7 +46,7 @@
 .itemNumber
 {
     font-weight: bolder;
-    color: var(--primary);
+    color: var(--light_red);
 }
 
 .itemSubtitle

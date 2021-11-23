@@ -16,6 +16,7 @@ import Fade from 'react-reveal/Fade'
 import Bounce from 'react-reveal/Bounce'
 import ScreenContainer from '../components/screen-container'
 import OrganizationMap from '../components/home/org-map'
+import Actions from '../components/home/actions'
 
 class RootIndex extends React.Component {
 
@@ -25,43 +26,72 @@ class RootIndex extends React.Component {
 		const mapLocations = get(this, 'props.data.allContentfulDonationLocation.nodes')
 		const instagramLink = ContactInfo.contact.find(entry => entry.platform === 'Instagram').link
 		const twitterLink = ContactInfo.contact.find(entry => entry.platform === 'Twitter').link
-
+		const personImage = get(this, 'props.data.file')
 		const leaflet = [
-			<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-				integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-				crossorigin="" key='leafletcss'/>,
+			<link rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css'
+				integrity='sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=='
+				crossorigin='' key='leafletcss'/>,
 		] 
 		
 		return (
 			<Layout location={this.props.location}>
 				<SEO title='Home' description='Blankets for T.O. is a non-profit organization at the University of Toronto providing support to those in need and combatting stigma surrounding homelessness.' useMailChimp useCurator childElements={leaflet}/>
-				<div className="white-background">
-					{/* Background Image or Video */}
-					<Fade>
-						<div className={styles.title}>
-							<Img className={styles.backgroundImage} fluid={organizationBlurb.frontPageImage.fluid} alt='Homepage image for Blankets for T.O.'/>			
-						</div>
-					</Fade>
-					{/* About Us description */}
-					<ScreenContainer>
-						<Bounce left>
-						<div className={styles.description}>
-							<h2>Our Organization</h2>
-							<p>{organizationBlurb.childContentfulOrganizationInformationOrganizationFrontBlurbTextNode.organizationFrontBlurb}</p>
-							<div className={styles.btnRow}>
-								<StyledButton link='/about' buttonText='Read more' isWhite/>
-								<StyledButton link='/team' buttonText='Meet the team' isWhite/>
+				<div className='white-background'>
+					<div className={styles.title}>
+						<div className={styles.image}>
+							<div>
+								<Img className={styles.backgroundImage} fluid={organizationBlurb.frontPageImage.fluid} alt='Homepage image for Blankets for T.O.'/>			
 							</div>
 						</div>
-						</Bounce>
-					</ScreenContainer>
+						<div className={styles.infoBox}>
+							<Fade left>
+								<div className={styles.infoBoxText}>
+										<h2>
+											Eradicating homelessness through action
+										</h2>
+									<p>
+										Founded in 2019 at the University of Toronto Scarborough, we are a non-profit organization addressing homelessness through advocacy, engagement and action. 
+									</p>
+								</div>
+							</Fade>
+						</div>
+					</div>
+
+					<div className={styles.descriptionContainer}>
+						<svg width='100%' height='100%' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'>
+							<polygon points='0,5 100,0 100,95 0,100'/>
+							<defs>
+								<linearGradient id='red_gradient'>
+									<stop offset='0' stop-color='#bb4a3c'/>
+									<stop offset='1' stop-color='#cf6352'/>
+								</linearGradient>
+							</defs>
+						</svg>
+						<div style={{padding: '15vh 0', position: 'relative'}} className={styles.description}>
+							<h2>We address homelessness from multiple angles</h2>
+							<Actions/>
+						</div>
+					</div>
 
 					{/* Donation counter */}
 					<ScreenContainer>
 						<StatsHighlight donationItemCount={organizationBlurb.donationItemCount}/>
 					</ScreenContainer>
 
-					<OrganizationMap mapLocations={mapLocations}/> 
+					<div className={styles.mapContainer}>
+						<svg width='100%' height='100%' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'>
+							<polygon points='0,0 100,5 100,100 0,95'/>
+							<defs>
+								<linearGradient id='turq_gradient'>
+									<stop offset='0' stop-color='#3d7f7f'/>
+									<stop offset='1' stop-color='#80acaf'/>
+								</linearGradient>
+							</defs>
+						</svg>
+						<div style={{padding: '15vh 0', position: 'relative'}}>
+							<OrganizationMap mapLocations={mapLocations}/> 
+						</div>
+					</div>
 					{/* Updates */}
 					<ScreenContainer>
 						<Fade>
@@ -69,12 +99,21 @@ class RootIndex extends React.Component {
 						</Fade>
 					</ScreenContainer>
 						
-					{/* Join Us and Contact Us Box */}
-					<ScreenContainer>
-						<Bounce right>
-							<ContactBox left={organizationBlurb.leftBackgroundImage.fluid} right={organizationBlurb.leftBackgroundImage.fluid}></ContactBox>
-						</Bounce>
-					</ScreenContainer>
+					<div className={styles.descriptionContainer}>
+						<svg width='100%' height='100%' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'>
+							<polygon points='0,5 100,0 100,95 0,100'/>
+							<defs>
+								<linearGradient id='red_gradient'>
+									<stop offset='0' stop-color='#bb4a3c'/>
+									<stop offset='1' stop-color='#cf6352'/>
+								</linearGradient>
+							</defs>
+						</svg>
+						<div style={{padding: '15vh 0', position: 'relative'}} className={styles.description}>
+							<h2>Get involved with us today</h2>
+							<ContactBox/>
+						</div>
+					</div>
 
 					<Bounce left>
 						<Sponsors/>
@@ -87,8 +126,8 @@ class RootIndex extends React.Component {
 						</Bounce>
 						<Fade delay={250}>
 							<div className={styles.instagramPosts}>
-								<div id="curator-feed-default-feed-layout">
-									<a href="https://curator.io" target="_blank" className="crt-logo crt-tag">
+								<div id='curator-feed-default-feed-layout'>
+									<a href='https://curator.io' target='_blank' className='crt-logo crt-tag'>
 										Powered by Curator.io
 									</a>
 								</div>
@@ -116,6 +155,14 @@ class RootIndex extends React.Component {
 			siteMetadata 
 			{
 				title
+			}
+		}
+		file(relativePath: { eq: "people/Person hugging left-min.png" }) {
+			childImageSharp {
+				fluid(maxHeight: 500, quality: 100) {
+					...GatsbyImageSharpFluid
+					...GatsbyImageSharpFluidLimitPresentationSize
+				}
 			}
 		}
 		allContentfulDonationLocation 

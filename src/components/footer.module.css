@@ -49,7 +49,7 @@
 	display: inline-flex;
 	align-items: center;
 	margin: 0 1em;
-	color: var(--primary);
+	color: var(--light_red);
 }
 
 .navigationItem a {
@@ -58,7 +58,7 @@
 }
 
 .navigationItem a:hover {
-	color:var(--primary);
+	color:var(--light_red);
 }
 
 
@@ -179,7 +179,7 @@
 
 .credits > a:hover, .credits > button:hover, .siteAuthor a:hover
 {
-	color: var(--primary);
+	color: var(--light_red);
 }
 
 .socialMedia {

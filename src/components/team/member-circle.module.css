@@ -100,7 +100,7 @@
 .descriptionButton {
     pointer-events: all;
     cursor: pointer;
-    color: var(--primary);
+    color: var(--light_red);
     text-align: center;
     padding: 0px 0px 15px 0px;
 }

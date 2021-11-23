@@ -54,8 +54,8 @@
 
 .instructionPanel 
 {
-    --top: #fc5c5c;
-    --bottom: rgb(197, 58, 58);
+    --top: var(--light_red);
+    --bottom: var(--dark_red);
     background: -webkit-linear-gradient(var(--top), var(--bottom));
     background:    -moz-linear-gradient(var(--top), var(--bottom));
     background:         linear-gradient(var(--top), var(--bottom));
@@ -129,7 +129,7 @@
 
 .prizeTitle, .taskTitle, .mainTitle
 {
-    color: var(--primary);
+    color: var(--light_red);
     text-align: center;
     font-weight: bolder;
 }
@@ -159,4 +159,19 @@
 .notes  
 {
     color: rgb(95, 95, 95);
+}
+
+.infoText a:link
+{
+	color:#136bcf;
+}
+
+.infoText a:hover 
+{
+	text-decoration: underline;
+}
+
+.infoText a:visited
+{
+	color: #8924c4; 
 }

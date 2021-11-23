@@ -16,7 +16,7 @@
 }
 
 .footerItem a:hover{
-	color:var(--primary);
+	color:var(--light_red);
 }
 
 .dropdownContainer {

@@ -50,7 +50,7 @@
 .catalogueTitle
 {
     text-align: center;
-    color: var(--primary);
+    color: var(--light_red);
 }
 
 .headerImage img, .headerImage div
@@ -67,7 +67,7 @@
 
 .subtitle
 {
-    color: var(--primary);
+    color: var(--light_red);
 }
 
 @media(max-width: 760px)

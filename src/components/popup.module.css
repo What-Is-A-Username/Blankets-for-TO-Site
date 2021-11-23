@@ -36,7 +36,7 @@
 }
 
 .escapeButton {
-    color: var(--primary);
+    color: var(--light_red);
     top: 30px;
     right: 30px;
     display: flex;
@@ -88,7 +88,7 @@
 .button 
 {
     clear:both; 
-    background-color: var(--primary);
+    background-color: var(--light_red);
     border: 0 none;
     border-radius:4px;
     letter-spacing:.03em; 
@@ -114,7 +114,7 @@
 .popup h2 {
     margin-top: 0px; 
     margin-bottom: 10px; 
-    color: var(--primary); 
+    color: var(--light_red); 
     display:block; 
     font-size:1.0em;
     padding-bottom:10px; 

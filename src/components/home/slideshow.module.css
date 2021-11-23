@@ -102,7 +102,7 @@ background-color: rgba(0,0,0,0.8);
     width: 25px; 
     margin-top: -25px;
     padding: 16px;
-    color:var(--primary);
+    color:var(--light_red);
     background-color: white;
     font-weight: bold;
     font-size: 18px;

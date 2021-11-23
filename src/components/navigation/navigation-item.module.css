@@ -1,6 +1,6 @@
 .navigationItem {
 	display: inline-block;
-	color: var(--primary);
+	color: var(--light_red);
 }
 
 .navigationItem a {
@@ -15,7 +15,7 @@
 }
 
 .navigationItem a:hover{
-	color:var(--primary);
+	color:var(--light_red);
 }
 
 .dropdownContainer {

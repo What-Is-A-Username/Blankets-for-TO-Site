@@ -8,7 +8,7 @@
 .filterTitle 
 {
     margin: 15px 0 0 0;
-    color: var(--primary);
+    color: var(--light_red);
     padding-bottom: 5px;
 }
 
@@ -46,8 +46,8 @@
 .selectTagButton:hover {
     pointer-events: all;
     cursor: pointer;
-    text-shadow:0px 0px 5px var(--primary);
-    color: var(--primary_darker)
+    text-shadow:0px 0px 5px var(--light_red);
+    color: var(--dark_red)
 }
 
 .activeTag, .blogTag, .clickableBlogTag
@@ -68,18 +68,18 @@
 }
 
 .clickableBlogTag:hover {
-    background-color: var(--primary);
+    background-color: var(--light_red);
     color: white;
 }
 
 /* Styling when currently not selected for filtering */
 .unselectedTag {
     background-color: lightgray;
-    color: var(--primary);
+    color: var(--light_red);
 }
 
 /* Styling when currently selected for filtering */
 .selectedTag {
-    background-color: var(--primary);
+    background-color: var(--light_red);
     color: white; 
 }

@@ -1,0 +1,32 @@
+.infoText 
+{
+    text-align: center;
+    margin: 15px;
+}
+
+@media(max-width: 760px)
+{
+    .actionsGrid {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media(min-width: 760px)
+{
+    .actionsGrid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .infoText 
+    {
+        flex: 0 0 calc(16.66% - 15px);
+        padding: 5px;
+        margin: 30px;
+        box-sizing: border-box;
+        max-width: 40vw;
+    }
+}

@@ -3,8 +3,7 @@
     .innerContainer {
         width: auto;
         max-width: 1900;
-        /* display: inline-flex; */
-        margin: 0 5vh 0 5vh; 
+        /* margin: 0 5vh 0 5vh;  */
     }
 }
 
@@ -13,7 +12,6 @@
     .innerContainer {
         width: auto;
         max-width: 1920px;
-        /* display: inline-flex; */
         margin: 0 0; 
     }
 }

@@ -10,25 +10,21 @@ export default (props) => {
     // Text for the join us and contact us widgets
     const contactInfo = [
         {
-            title: "Join Us", 
+            title: "Join us", 
             description: 'Become part of the Blankets For T.O. community and be part of the change! Want to join as a member? Interested in volunteering at events?',
             link: '/positions',
             buttonText: 'Become a Volunteer or Member' 
         },
         {
-            title: 'Contact Us', 
+            title: 'Contact us', 
             description: 'Keep in touch and join the community to stay updated! Got an idea for an initiative? Want to collaborate with us? Send us a message via email or over social media!',
             link: '/contact',
-            buttonText: 'Contact Us',
+            buttonText: 'Contact',
         }
     ]
 
     return(
         <div className={styles.slideshow}>
-            <div className={styles.imageCover}>
-                <Img style={{position: 'absolute'}} fluid={props.left} alt={'Blankets for T.O. meeting photo'}/>
-                <div className={styles.imageLayer}></div>
-            </div>
             <div className={styles.contactBox}>
                 {contactInfo.map(x => {
                     return(
@@ -36,7 +32,9 @@ export default (props) => {
                             <div className={styles.contactBoxSideText}>
                                 <h2 className={styles.contactBoxTitle}>{x.title}</h2>
                                 <p  className={styles.contactBoxDescription}>{x.description}</p>
-                                <StyledButton link={x.link} buttonText={x.buttonText}/>
+                                <div className={styles.buttonRow}>
+                                <StyledButton  link={x.link} buttonText={x.buttonText} isWhite/>
+                                </div>
                             </div>
                         </div>
                     )

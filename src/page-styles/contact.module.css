@@ -2,7 +2,7 @@
     font-size: 1.25em;
     margin-top: 10px;
     margin-bottom: 5px;
-    color: var(--primary);
+    color: var(--light_red);
 }
 
 .contactDetails div p {
@@ -51,9 +51,8 @@
 }
 
 .socialMediaEntry a:hover {
-    color: var(--primary);
-    
-    text-decoration-color: var(--primary)
+    color: var(--light_red);
+    text-decoration-color: var(--light_red)
 }
 
 @media(min-width: 760px)

@@ -3,7 +3,6 @@
 
     .contactBox {
         display: flex;
-        height: 500px;
         flex-direction: row;
         justify-content: center;
     }
@@ -13,12 +12,7 @@
         max-width: 1300px;
     }
 
-    .imageCover {
-        height: 500px;
-    }
-
     .imageCover > div {
-        height: 500px; 
         width: 100%; 
     }
 
@@ -30,31 +24,23 @@
     .imageCover, .imageLayer, .imageCover > div {
         border-radius: 10px;
     }
+
+    .buttonRow 
+    {
+        position: absolute; 
+        bottom: 0;
+        width: 100%; 
+    }
     
 }
 
 @media(max-width: 760px) {
-
-    .slideshow {
-        height: 750px;
-    }
-
     .contactBox {
-        height: 700px;
         flex-direction: column;
     }
     
     .contactBoxSide {
         width: 100%;
-    }
-
-    .imageCover {
-        height: 750px;
-    }
-
-    .imageCover > div {
-        height: 750px; 
-        width: 100%; 
     }
 
     .contactBoxDescription {
@@ -63,6 +49,12 @@
 
     .imageCover, .imageLayer, .imageCover > div {
         border-radius: 0px;
+    }
+
+    .buttonRow 
+    {
+        position: relative; 
+        width: 100%; 
     }
 }
 
@@ -76,13 +68,13 @@
 .contactBoxSide {
     position: relative;
     top: 0px;
-    height: 100%;
+    height: 300px;
     background-size: cover;
     display: flex;
 }
 
 .contactBoxSideText {
-    align-self: center;
+    align-self: top;
     height: fit-content;
     z-index: 2;
 }
@@ -91,7 +83,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    color: var(--primary);
+    color: var(--light_red);
     margin-top: 0px;
     margin-bottom: 0px;
 }

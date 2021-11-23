@@ -19,7 +19,7 @@
 
 .selectedPageItem > a {
   color: white; 
-  background-color: var(--primary);
+  background-color: var(--light_red);
 }
 
 .pageNumberItem
@@ -33,12 +33,12 @@
 
 .pageNumberItem > a:active {
   background-color: lightgray;
-  color: var(--primary);
+  color: var(--light_red);
 }
 
 .pageNumberItem > a:hover:not(.active) {
   background-color: #ddd;
-  color: var(--primary);
+  color: var(--light_red);
 }
 
 .blog_list {

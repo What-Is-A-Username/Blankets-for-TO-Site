@@ -8,6 +8,14 @@
 	
 	--popupFadeInDuration: 1.0s;
 	--popupFadeOutDuration: 2.0s;
+
+	--dark_turq: #1c8c81;
+	--light_red: #d9564a;
+	--peach: #f2c0a2; 
+	--light_turq: #6da6a6; 
+	--dark_red: #bf3434;
+	--dark_gray: rgb(121, 121, 121); 
+	--light_gray: rgb(172, 172, 172);
 }
 
 @font-face {
@@ -144,7 +152,7 @@ Rich Text Display
 }
 .richText img 
 {
-	color: var(--primary);
+	color: var(--light_red);
 	margin-top: 5px;
 	margin-bottom: 5px;
 	align-self: center;
@@ -152,7 +160,7 @@ Rich Text Display
 
 .richText h2
 {
-	color: var(--primary);
+	color: var(--light_red);
 	font-size: 2.0em;
 	font-weight: bold;
 	margin-bottom: 0px;
@@ -160,7 +168,7 @@ Rich Text Display
 
 .richText h3 
 {
-	color: var(--primary);
+	color: var(--light_red);
 	font-size: 1.7em;
 	font-weight: bold;
 	margin-bottom: 0px;
@@ -237,8 +245,7 @@ Rich Text Display
 
 
 .fb-share-button, .twitter-share-button {
-	/* background-color: var(--primary); */
-	color: var(--primary);
+	color: var(--light_red);
 	border-radius: 5px;
 	display: flex;
 	align-items: center;

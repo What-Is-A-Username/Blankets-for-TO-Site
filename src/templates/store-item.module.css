@@ -62,7 +62,7 @@
 
 .leftArrow:hover, .rightArrow:hover
 {
-    color: var(--primary);
+    color: var(--light_red);
 }
 
 .leftArrow 
@@ -111,7 +111,7 @@
 
 .selectedThumb
 {
-    border: 2px solid var(--primary)
+    border: 2px solid var(--light_red)
 }
 
 .name 
@@ -129,7 +129,7 @@
 .priceAmount, .priceCurrency
 {
     margin: 10px 0px;
-    color: var(--primary);
+    color: var(--light_red);
     font-weight: bold;
 }
 
@@ -194,7 +194,7 @@
 
 .browseOtherItems:hover, .browseOtherItems:hover > svg
 {
-    color: var(--primary);
+    color: var(--light_red);
     font-weight: bold;
 }
 
