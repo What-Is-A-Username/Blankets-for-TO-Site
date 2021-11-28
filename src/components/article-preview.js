@@ -47,6 +47,7 @@ export const ArticlePreview = ({excludeSlug}) => {
 			query={
 				graphql`
 					query ArticlePreviewQuery {
+						
 						allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 4, filter: {previewOnly: {ne: true}}) {
 							edges {
 								node {

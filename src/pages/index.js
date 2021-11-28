@@ -157,14 +157,7 @@ class RootIndex extends React.Component {
 				title
 			}
 		}
-		file(relativePath: { eq: "people/Person hugging left-min.png" }) {
-			childImageSharp {
-				fluid(maxHeight: 500, quality: 100) {
-					...GatsbyImageSharpFluid
-					...GatsbyImageSharpFluidLimitPresentationSize
-				}
-			}
-		}
+		
 		allContentfulDonationLocation 
 		{
 			nodes 
