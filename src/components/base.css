@@ -55,6 +55,11 @@ p {
 	font-size: 16px;
 }
 
+input, textarea, label
+{
+	font-family: "Avenir", Tahoma, Arial, Helvetica, sans-serif;
+}
+
 .wrapper {
 	margin: 20px auto;
 	padding-top: 2vmin; 

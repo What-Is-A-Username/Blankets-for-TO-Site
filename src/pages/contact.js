@@ -44,7 +44,7 @@ class Contact extends React.Component {
 							</div>
 							<div className={styles.contactDirectly}>
 								<h3>Send Us a Direct Message</h3>
-								<StyledButton link='https://us7.list-manage.com/contact-form?u=c190e10f2b62c767274e1197b&form_id=ff96bfbc82a7a31d98bb442faba2bbca' buttonText='Fill out our contact form' openInNewTab/>
+								<StyledButton link='/#contact-form' buttonText='Fill out our contact form'/>
 							</div>
 							</Fade>
 						</div>

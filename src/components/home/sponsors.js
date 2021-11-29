@@ -29,7 +29,7 @@ export default () => {
 
     return(
         <div className={styles.sponsorBox}>
-            <h1>Thank you to our sponsors for their support!</h1>
+            <h1 className={styles.title}>Thank you to our sponsors for their support!</h1>
             {preferredSponsors.length > 0 && 
                 <h2 className={styles.preferredSponsorsTitle}>
                     {"Preferred Sponsor" + (preferredSponsors.length > 1 ? "s" : "")}

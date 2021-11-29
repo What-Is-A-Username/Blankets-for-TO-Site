@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import Img from 'gatsby-image'
 import ContactInfo from './contact-info.json'
-import { Link } from 'gatsby'
 import StyledButton from '../components/styled-button'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
@@ -17,6 +16,7 @@ import Bounce from 'react-reveal/Bounce'
 import ScreenContainer from '../components/screen-container'
 import OrganizationMap from '../components/home/org-map'
 import Actions from '../components/home/actions'
+import ContactForm from '../components/home/contact-form'
 
 class RootIndex extends React.Component {
 
@@ -44,11 +44,11 @@ class RootIndex extends React.Component {
 							</div>
 						</div>
 						<div className={styles.infoBox}>
-							<Fade left>
+							<Fade ssrFadeout left>
 								<div className={styles.infoBoxText}>
-										<h2>
-											Eradicating homelessness through action
-										</h2>
+									<h2>
+										Eradicating homelessness through action
+									</h2>
 									<p>
 										Founded in 2019 at the University of Toronto Scarborough, we are a non-profit organization addressing homelessness through advocacy, engagement and action. 
 									</p>
@@ -67,8 +67,8 @@ class RootIndex extends React.Component {
 								</linearGradient>
 							</defs>
 						</svg>
-						<div style={{padding: '15vh 0', position: 'relative'}} className={styles.description}>
-							<h2>We address homelessness from multiple angles</h2>
+						<div className={styles.description}>
+							<h2 className={styles.multipleMethodTitle}>We address homelessness from multiple angles</h2>
 							<Actions/>
 						</div>
 					</div>
@@ -139,6 +139,10 @@ class RootIndex extends React.Component {
 								<StyledButton link={twitterLink} buttonText='Visit us on Twitter' openInNewTab/>
 							</div>
 						</Fade>
+					</div>
+
+					<div>
+						<ContactForm/> 
 					</div>
 				</div>
 			</Layout>

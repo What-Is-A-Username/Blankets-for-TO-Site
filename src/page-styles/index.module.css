@@ -34,7 +34,12 @@
     font-size: 3.0em;
     font-weight: bold;
     color: var(--peach);
-    margin: 0;
+}
+
+.multipleMethodTitle 
+{
+    padding: 15vh 0 0 0;
+    position: relative;
 }
 
 @media(min-width: 760px)
@@ -54,7 +59,7 @@
 {
     .infoBoxText 
     {
-        padding: 10%
+        padding: 3%
     }
     .infoBoxText > h2 
     {
@@ -167,7 +172,7 @@
 }
 
 .instagram {
-    padding-bottom: 25px;
+    padding-bottom: 50px;
 }
 
 .instagramPosts {

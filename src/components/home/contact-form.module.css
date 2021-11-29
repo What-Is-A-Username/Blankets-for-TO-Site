@@ -1,0 +1,138 @@
+.formContainer
+{
+    padding: 40px;
+    display: flex;
+    height: fit-content;
+    background-color: var(--light_turq);
+}
+
+@media (min-width: 760px)
+{
+    .formContainer 
+    {
+        flex-direction: row;
+    }
+
+    .textBox
+    {
+        width: 30%;
+        margin: 5vw;
+    }
+
+    .formContainer > form 
+    {
+        width: 50%;
+    }
+}
+
+@media (max-width: 760px)
+{
+    .formContainer 
+    {
+        flex-direction: column;
+    }
+}
+
+.title
+{
+    font-weight: bold;
+}
+
+.description
+{
+    font-size: 18px;
+}
+
+.title, .description, .link
+{
+    text-align: center;
+    color: white;
+    
+}
+
+.link
+{
+    display: flex;
+    justify-content: center;
+}
+
+.link > a 
+{
+    width: fit-content;
+    text-decoration: none;
+    font-style: italic;
+}
+
+.link > a:hover 
+{
+    text-decoration: underline;
+}
+
+.form, fieldset
+{
+    border: 0;
+}
+
+.field
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+}
+
+.field > label 
+{
+    color: white;
+    
+}
+
+.field input:focus, .field textarea:focus
+{
+    border: 2px solid var(--dark_turq);
+    outline: none;
+}
+
+.field input, .field textarea
+{
+    width: calc(100% - 40px);
+    max-width: calc(100% - 40px);
+    border-radius: 0px;
+    padding: 12px 20px;
+    border: 2px solid transparent;
+    line-height: 1.3em;
+    font-size: 16px;
+}
+
+.field textarea 
+{
+    width: 100%;
+}
+
+.submitButton > input
+{
+    display: block;
+    border-width: 0;
+	border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(84, 84, 84, 0.6);
+    width: 290px;
+    max-width: 290px;
+    text-decoration: none;
+    margin: 5px auto 5px auto;
+    padding: 7px;
+    text-align: center;
+    font-size: 1.2em;
+	cursor: pointer;
+}
+
+.submitButton > input {
+	background-color: white;
+	color: #2b2d30;
+	transition: background-color .2s;
+	transition: color .1s;
+}
+
+.submitButton > input:hover, .submitButton > input:focus {
+	background-color: #ffffff;
+	color: var(--light_red);
+}

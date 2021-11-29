@@ -10,6 +10,7 @@
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^14.1.1",
     "@contentful/rich-text-react-renderer": "^14.1.1",
+    "@formspree/react": "^2.2.4",
     "@mapbox/geo-viewport": "^0.4.1",
     "@turf/bbox": "^6.5.0",
     "@turf/helpers": "^6.5.0",

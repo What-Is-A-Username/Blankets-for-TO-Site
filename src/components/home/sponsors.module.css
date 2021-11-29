@@ -76,3 +76,8 @@
     color: var(--light_red)
 }
 
+.title 
+{
+    text-align: center;
+}
+
