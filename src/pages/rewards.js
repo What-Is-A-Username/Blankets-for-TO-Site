@@ -50,7 +50,7 @@ export default class Store extends React.Component {
         const instructionIconSize = '80px'
         const instructionIconStrokeWidth = 1.5;
 
-        const taskVerificationLink = 'https://forms.gle/zLAq7ijrUsUtJ4hU6'
+        const taskVerificationLink = 'https://forms.gle/GiYMmusxb7bdcgW29'
         const pointsSpreadsheetLink = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRp-FGO1X7gq_Z-VCPzaEb9Q3UBb5JdtEQN3vkiV5hg-zYmTaM1sG38QjO1bpVBup7b1ffW8Io9sNcJ/pubhtml'
 
 		return (
@@ -126,7 +126,7 @@ export default class Store extends React.Component {
                         <div id='submission'>
                             <h3 className={styles.taskTitle}>How do I get my tasks verified?</h3>
                             <p className={styles.infoText}>In order to be rewarded points for each task you complete, you must submit supporting proof of the task completion. This may include screenshots, digital media or written material.</p>
-                            <p className={styles.infoTextBold}>To submit tasks for the months of October 2021 and November 2021, please follow the link below to fill out the Google Form:</p>
+                            <p className={styles.infoTextBold}>To submit tasks for the month of December 2021, please follow the link below to fill out the Google Form:</p>
                             <StyledButton buttonText='Submit task for verification' link={taskVerificationLink} openInNewTab/> 
                             <a></a>
                         </div>
