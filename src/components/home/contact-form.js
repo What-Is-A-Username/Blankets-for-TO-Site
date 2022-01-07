@@ -3,7 +3,7 @@ import Fade from 'react-reveal/Fade'
 import styles from './contact-form.module.css'
 
 export default () => {
-    const description = 'Have any questions or inquiries? Send us a direct email via this form. Successful submission will redirect you to Formspree.'
+    const description = 'Have any questions or inquiries? Send us a message by using this form.'
 
     return (
         <div id='contact-form' className={styles.formContainer}>
@@ -12,7 +12,7 @@ export default () => {
                     <h1 className={styles.title}>Send us a direct message</h1>
                     <p className={styles.description}>{description}</p>
                     <div className={styles.link}>
-                        <a href='/contact'>We're also reachable via social media!</a>
+                        <a href='/contact'>We're also reachable via social media and email!</a>
                     </div>
                 </div>
             </Fade>
