@@ -5,6 +5,7 @@ import styles from './navigation.module.css'
 import pageData from '../../pages/page-data.json'
 import NavigationItem from './navigation-item'
 import { Menu, X } from 'react-feather'
+import Cookies from 'universal-cookie'
 
 const Navigation = (props) => {
 	return (
@@ -41,6 +42,20 @@ const NavBar = (propData) => {
     const onClickLogo = () => {
         navigate('/')
     }
+
+    // set default cookies
+    var cart = []
+    var isServer = typeof window === undefined;
+    if (!isServer)
+    {
+        var cookies = new Cookies(); 
+        cart = cookies.get('cart-items')
+        if (cart === undefined)
+            cookies.set('cart-items', [], {path: '/'})
+        else
+            cookies.set('cart-items', cart.filter(x => x !== undefined && x.count > 0), {path: '/'})
+    }
+    
 
     return (
         <div className={drawerActive ? styles.scrollDisable : ''} style={{minHeight: '100vh'}}>

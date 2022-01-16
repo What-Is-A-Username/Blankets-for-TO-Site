@@ -26,7 +26,6 @@ class RootIndex extends React.Component {
 		const mapLocations = get(this, 'props.data.allContentfulDonationLocation.nodes')
 		const instagramLink = ContactInfo.contact.find(entry => entry.platform === 'Instagram').link
 		const twitterLink = ContactInfo.contact.find(entry => entry.platform === 'Twitter').link
-		const personImage = get(this, 'props.data.file')
 		const leaflet = [
 			<link rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css'
 				integrity='sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=='

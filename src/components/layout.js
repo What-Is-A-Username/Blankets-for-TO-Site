@@ -16,7 +16,6 @@ class Template extends React.Component {
 			rootPath = __PATH_PREFIX__ + `/`
 		}
 
-
 		return (
 			<div style={{ width: "100%"}}>
 				<Navigation>
@@ -25,9 +24,7 @@ class Template extends React.Component {
 					</div>
 					<Footer/>
 				</Navigation>
-				
 			</div>
-
 		)
 	}
 }

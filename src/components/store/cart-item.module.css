@@ -1,0 +1,76 @@
+.parentContainer
+{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(223, 223, 223);
+}
+
+.name, .price, .count > p, .total, .countIcons
+{
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.count
+{
+    align-items: center;
+    
+}
+
+.count > p
+{
+    justify-content: center;
+    text-align: center;
+}
+
+.count > p 
+{
+    width: 30px;
+}
+
+.name, .price, .total 
+{
+    text-align: left;
+}
+
+.countIcons 
+{
+    cursor: pointer;
+    color: var(--dark_gray);
+}
+
+.countIcons:hover 
+{
+    color: var(--light_red);
+}
+
+.name
+{
+    font-weight: bold;
+    width: 40%;
+}
+
+.name > a:hover
+{
+    color: var(--light_red);
+}
+
+.price
+{
+    width: 15%;
+}
+
+.count
+{
+    width: 30%;
+    display: flex;   
+    justify-content: center;
+}
+
+.total
+{
+    width: 10%;
+}
+

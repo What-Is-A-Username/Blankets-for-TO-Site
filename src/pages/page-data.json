@@ -59,10 +59,24 @@
             "desc": "Awards"
         },
         {
+            "to": "/store",
+            "desc": "Store",
+            "children":
+            [
+                {
+                    "to": "/store",
+                    "desc": "Store"
+                },
+                {
+                    "to": "/cart",
+                    "desc": "Cart"
+                }
+            ]
+        },
+        {
             "to": "/contact",
             "desc": "Contact"
         }
-        
     ],
 
     "footer": [

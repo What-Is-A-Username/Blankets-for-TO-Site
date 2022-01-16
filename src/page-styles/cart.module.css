@@ -1,0 +1,190 @@
+.header 
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.cartList
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.totalBar
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.totalTitle
+{
+    width: calc(85% - 15px);
+}
+
+.totalTitle > p
+{
+    font-size: 25px;
+    padding-right: 15px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.totalNumber
+{
+    font-size: 25px;
+    width: 10%;
+}
+
+.emptyCart 
+{
+    height: 60vh;
+}
+
+.browseOtherItems > svg
+{
+    height: 50px;
+    width: 50px;
+}
+
+.browseOtherItems
+{
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 25px 0px 25px 0px;
+    width: fit-content;
+}
+
+.browseOtherItems:hover, .browseOtherItems:hover > svg
+{
+    color: var(--light_red);
+    font-weight: bold;
+}
+
+.browseOtherItems > p
+{
+    font-size: 18px;
+}
+
+.memberDiscountInfo
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.memberDiscountInfo > p
+{
+    margin: 0px 10px;
+}
+
+.memberDiscountBox
+{
+    margin: 5px 40px 40px 40px;
+}
+
+.memberDiscountBox > input:checked ~ .checkmark
+{
+    background-color: var(--light_red);
+}
+
+.proceedToCheckout > p 
+{
+    text-align: center;
+}
+
+.header 
+{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(109, 109, 109);
+}
+
+.name, .price, .countHeader > p, .total
+{
+    font-size: 25px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+@media (min-width: 500px)
+{
+    .name, .price, .countHeader > p, .total
+    {
+        font-size: 25px;
+    }
+    .infoIcon
+    {
+        min-width: 32px;
+        min-height: 32px;
+    }
+}
+
+@media (max-width: 500px)
+{
+    .name, .price, .countHeader > p, .total
+    {
+        font-size: 18px;
+    }
+    .infoIcon
+    {
+        min-width: 32px;
+        min-height: 32px;
+    }
+}
+
+.name
+{
+    width: 40%;
+}
+
+.price
+{
+    width: 15%;
+}
+
+.countHeader
+{
+    width: 30%;
+    display: flex;   
+    justify-content: center;
+}
+
+.total
+{
+    width: 10%;
+}
+
+.buttonRow 
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@media (min-width: 500px)
+{
+    .checkoutStep
+    {
+        padding: 100px 50px;
+    }
+    .checkoutStep > div, .checkoutStep > div > div
+    {
+        padding: 0 5px;
+    }
+}
+
+@media (max-width: 500px)
+{
+    .checkoutStep
+    {
+        padding: 25px;
+    }
+    .checkoutStep > div, .checkoutStep > div > div
+    {
+        padding: 0 5px;
+    }
+}

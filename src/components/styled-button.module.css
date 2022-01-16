@@ -4,13 +4,31 @@
     box-shadow: 0 1px 4px rgba(84, 84, 84, 0.6);
     display: block;
     width: 290px;
-    max-width: 290px;
+    
     text-decoration: none;
     margin: 5px auto 5px auto;
     padding: 7px;
     text-align: center;
     font-size: 1.2em;
 	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@media (max-width: 500px)
+{
+	.whiteButton, .primaryButton
+	{
+		max-width: 70vw;
+	}
+}
+@media (min-width: 500px)
+{
+	.whiteButton, .primaryButton
+	{
+		max-width: 290px;
+	}
 }
 
 .whiteButton {

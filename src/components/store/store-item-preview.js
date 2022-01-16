@@ -1,5 +1,4 @@
 import React from 'react'
-import { navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import styles from './store-item-preview.module.css'
 
@@ -16,7 +15,7 @@ const StoreItemPreview = ({storeitem}) => {
 				<div className={styles.text}>
 					<h3 className={styles.name}>{storeitem.itemName}</h3>
 					<div className={styles.price}>
-						<p className={styles.priceAmount}>${storeitem.itemPrice}</p>
+						<p className={styles.priceAmount}>${storeitem.itemPrice.toFixed(2)}</p>
 						<p className={styles.priceCurrency}>CAD</p>
 					</div>
 				</div>
