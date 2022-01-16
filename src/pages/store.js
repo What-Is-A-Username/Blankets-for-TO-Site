@@ -91,12 +91,12 @@ export const StoreQuery = graphql`
             nodes {
                 slug
                 mainPreview {
-                    fluid(maxWidth: 400, maxHeight: 400, resizingBehavior: SCALE) {
+                    fluid(maxWidth: 1000, resizingBehavior: SCALE) {
                         ...GatsbyContentfulFluid_tracedSVG
                     }
                 }
                 largePreview {
-                    fluid(maxHeight: 1200, maxWidth: 630, resizingBehavior: SCALE) {
+                    fluid(maxWidth: 1500, resizingBehavior: SCALE) {
                         ...GatsbyContentfulFluid_tracedSVG
                     }
                 }

@@ -96,8 +96,8 @@ class StoreItemTemplate extends React.Component {
             <Layout location={this.props.location}>
 				<div className="white-background">
                     <SEO 
-                        title={this.item.itemName}
-                        description={`${this.item.itemName} (${this.item.itemPrice}) - SEO Description Here`}
+                        title={`Shop ${this.item.itemName}`}
+                        description={`${this.item.itemName} ($${this.item.itemPrice.toFixed(2)}) - ${this.item.shortDescription}`}
                         cannonical='https://blanketsforto.ca/store'
                         metaImage={this.item.largePreview ? this.item.largePreview.file.url : undefined}
                         doNotCrawl
@@ -198,7 +198,7 @@ export const StoreItemQuery = graphql`
         contentfulMerchItem(slug: {eq: $slug}) {
             slug
             images {
-                fluid(maxWidth: 500, maxHeight: 500, resizingBehavior: FILL) {
+                fluid(maxWidth: 400, maxHeight: 400, resizingBehavior: SCALE, quality: 100) {
                     ...GatsbyContentfulFluid_tracedSVG
                 }
             }
@@ -210,6 +210,7 @@ export const StoreItemQuery = graphql`
             itemName
             itemPrice
             memberItemPrice
+            shortDescription
             itemDescription {
                 json
             }

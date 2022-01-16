@@ -11,9 +11,6 @@
 		width: 100%;
 		min-width: 100%;
 		max-width: 100%;
-		height: 30vh;
-		max-height: 30vh;
-		min-height: 30vh;
 		align-self: center;
 	}
 	.alink {
@@ -21,41 +18,76 @@
 		margin: 0 10px;
 	}
 	.name {
-		font-size: 2.0em;
+		font-size: 1.5em;
+	}
+	.priceAmount
+	{
+		font-size: 1.2em;
+	}
+	.priceCurrency
+	{
+		font-size: 1.0em;
 	}
 }
 
-@media(max-width: 1000px) {
+
+@media(max-width: 1000px) and (min-width: 500px) {
 	.preview {
-		flex-direction: row;
-		padding: 10px;
+		flex-direction: column;
 	}
 	.previewImage, .previewImage > div, .previewImage img {
-		max-width: 100px;
-		max-height: 100px;
-		width: 30vh;
-		height: 30vh;
+		width: 100%;
 		align-self: center;
-	}
-	.previewImage {
-		margin-right: 10px;
 	}
 	.alink, .preview {
 		width: 100%;
 	}
-	.alink {
-		margin: 5px 0px;
-	}
-	.updates {
-		padding: 50px 10px 50px 10px;
+	.text
+	{
+		margin: 10px;
 	}
 	.name {
-		font-size: 1.5em;
+		font-size: 1.2em;
+	}
+	.priceAmount
+	{
+		font-size: 1.0em;
+	}
+	.priceCurrency
+	{
+		font-size: 0.8em;
+	}
+}
+
+@media(max-width: 500px) {
+	.preview {
+		flex-direction: column;
+	}
+	.previewImage, .previewImage > div, .previewImage img {
+		width: 100%;
+		align-self: center;
+	}
+	.alink, .preview {
+		width: 100%;
+	}
+	.text
+	{
+		margin: 10px;
+	}
+	.name {
+		font-size: 1.0em;
+	}
+	.priceAmount
+	{
+		font-size: 1.0em;
+	}
+	.priceCurrency
+	{
+		font-size: 0.8em;
 	}
 }
 
 .name {
-	
 	font-weight: bold;
 	color: var(--light_red);
 	margin: 0px 0; 
@@ -69,20 +101,20 @@
 
 .priceAmount, .priceCurrency
 {
-    margin: 0;
     color: rgb(66, 66, 66);
 }
 
 .priceAmount
 {
-    font-size: 1.5em;
+	margin: 0;
 }
 
 .priceCurrency
 {
-    font-size: 1.0em;
-	margin-left: 5px;
+	margin: 0 0 0 5px;
 }
+
+
 
 .alink {
 	text-decoration: none;

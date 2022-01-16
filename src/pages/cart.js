@@ -137,7 +137,6 @@ export default class Cart extends React.Component {
         const formLink = 'https://forms.gle/6pMnKaWJMQKRrwY77'
         const interacLink = 'https://www.interac.ca/en/consumers/products/interac-e-transfer/'
 
-        console.log(this.state.cartItems)
         var itemsInCart = this.state.cartItems.length > 0; 
         var newCartItems = this.state.cartItems.length > 0 ? this.state.cartItems.map(
             data =>
