@@ -73,11 +73,11 @@ class RootIndex extends React.Component {
 					</div>
 
 					{/* Donation counter */}
-					<ScreenContainer>
+					<ScreenContainer id='donation-counter'>
 						<StatsHighlight donationItemCount={organizationBlurb.donationItemCount}/>
 					</ScreenContainer>
 
-					<div className={styles.mapContainer}>
+					<div className={styles.mapContainer} id='donation-map'>
 						<svg width='100%' height='100%' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'>
 							<polygon points='0,0 100,5 100,100 0,95'/>
 							<defs>
@@ -92,13 +92,13 @@ class RootIndex extends React.Component {
 						</div>
 					</div>
 					{/* Updates */}
-					<ScreenContainer>
+					<ScreenContainer id='articles'>
 						<Fade>
 							<ArticlePreview/>
 						</Fade>
 					</ScreenContainer>
 						
-					<div className={styles.descriptionContainer}>
+					<div className={styles.descriptionContainer} id='join-contact'>
 						<svg width='100%' height='100%' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'>
 							<polygon points='0,5 100,0 100,95 0,100'/>
 							<defs>
@@ -119,7 +119,7 @@ class RootIndex extends React.Component {
 					</Bounce>
 
 					{/* Instagram Feed */}
-					<div className={styles.instagram}>
+					<div className={styles.instagram} id='social-feed'>
 						<Bounce top>
 							<h2 className={styles.instagramTitle}>Keep updated with our feed</h2>
 						</Bounce>
@@ -140,7 +140,7 @@ class RootIndex extends React.Component {
 						</Fade>
 					</div>
 
-					<div>
+					<div id='contact-form'>
 						<ContactForm/> 
 					</div>
 				</div>

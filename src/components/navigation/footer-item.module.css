@@ -25,13 +25,20 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .childLink {
     text-align: center;
     color: rgb(100, 99, 99);
-    font-size: 0.80em;
 }
+
+@media(max-width: 400px) { .footerItem { font-size: 0.9em; } .childLink { font-size: 0.9em;}}
+@media(min-width: 400px) and (max-width: 760px) { .footerItem { font-size: 0.9em; } .childLink { font-size: 0.8em;}}
+@media(min-width: 760px) and (max-width: 1400px) { .footerItem { font-size: 0.9em; } .childLink { font-size: 0.8em;}}
+@media(min-width: 1400px) { .footerItem { font-size: 0.9em; } .childLink { font-size: 0.9em;}}
+
+@media(min-width: 900px) { }
 
 @media(min-width: 760px) {
     .footerItem {
@@ -45,11 +52,6 @@
 }
 
 @media(max-width: 900px) { 
-    .footerItem {
-		justify-content: center;
-		font-size: 1.25em;
-	}
-
     .parentItem {
 		display: grid;
 		justify-content: center;

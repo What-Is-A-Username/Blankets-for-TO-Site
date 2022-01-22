@@ -26,7 +26,7 @@
 .activeTagContainer, .blogTagContainer
 {
     display: flex;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     flex-wrap: wrap;
 }
 
@@ -58,6 +58,7 @@
     line-height: 1px;
     padding: 0px 15px 0px 15px;
     margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 /* Styling for tag items that are seen under each article title*/

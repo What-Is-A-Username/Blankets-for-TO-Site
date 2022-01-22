@@ -68,7 +68,7 @@ const NavBar = (propData) => {
                         </div>
                         <div className={styles.toggle} onClick={changeState}>
                             {drawerActive ? 
-                            <X className={styles.hamburger} color='red'/> :
+                            null :
                             <Menu className={styles.hamburger}/>}
                         </div>
                     </div>
@@ -76,6 +76,19 @@ const NavBar = (propData) => {
                     <div className={styles.navExpand}>
                         <ul className={styles.navigation + ' ' + (drawerActive ? styles.fadeIn : styles.fadeOut)}
                             style={drawerActive ? { } : { }}>
+                            {
+                                drawerActive &&
+                                <div className={styles.images + ' ' + styles.dropdownTop} style={{backgroundColor: '#00000000'}}> 
+                                    <div className={styles.logo} onClick={onClickLogo} >
+                                        <Img fluid={logo.fluid}/>
+                                    </div>
+                                    <div className={styles.toggle} onClick={changeState}>
+                                        {drawerActive ? 
+                                        <X className={styles.hamburger} color='red'/> :
+                                        <Menu className={styles.hamburger}/>}
+                                    </div>
+                                </div>
+                            }
                             {
                                 pages.map((page) => {
                                     return (
