@@ -11,10 +11,15 @@ import { clamp, filter, range } from 'lodash'
 import { ceil } from 'lodash'
 import PageControls from '../components/blog_search/page-controls'
 import Fade from 'react-reveal/Fade'
-
+import HeaderImage from '../components/header-image'
 
 class BlogIndex extends React.Component {
 	render() {
+
+		const imgFluid = get(this, 'props.data.allContentfulAsset.edges[0].node.fluid')
+        const headerSubtitle = ''
+        const headerTitle = 'Updates and Articles'
+
 		const posts = get(this, 'props.data.allContentfulBlogPost.edges')
 		let filteredPosts = [] 
 		let visiblePosts = []
@@ -98,10 +103,8 @@ class BlogIndex extends React.Component {
 				<SEO title='Updates'
 					description='Browse articles published by Blankets for T.O., including summaries of past events and informational articles about homelessness.'/>
 				<div className="white-background">
+				<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
-						<Fade left duration={400}>
-							<h2>Updates and Articles</h2>
-						</Fade>
 						<Fade delay={400}>		
 							<SearchTools onDropdownChange={onSelect} dropdownPlaceholder={searchParams.sort} tags={uniqueTags} clickTagFunc={onClickTag} activeTags={searchParams.tags} />
 						</Fade>
@@ -137,6 +140,18 @@ export const blogPageQuery = graphql`
 		site {
 			siteMetadata {
 				title
+			}
+		}
+		allContentfulAsset(filter: {title: {eq: "Handdrawn background "}}, limit: 1) {
+			edges {
+				node {
+					fluid(
+						resizingBehavior: FILL
+						quality: 100
+					) {
+						...GatsbyContentfulFluid_tracedSVG
+					}
+				}
 			}
 		}
 		allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 20, filter: {articleType: {ne: "Page"}, previewOnly: {ne: true}},) {

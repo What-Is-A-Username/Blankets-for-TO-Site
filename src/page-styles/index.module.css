@@ -145,6 +145,20 @@
     fill: url(#turq_gradient)
 }
 
+.joinContactArea 
+{
+    padding: 15vh 0;
+    position: relative;
+    
+}
+
+.mapArea 
+{
+    padding: 15vh 0;
+    position: relative;
+    width: 100%;
+}
+
 @media (min-width: 760px) { 
     .description { 
         padding: 50px 5% 50px 5%; 

@@ -7,10 +7,15 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../page-styles/about.module.css'
 import { BLOCKS } from '@contentful/rich-text-types';
 import Fade from 'react-reveal/Fade'
+import HeaderImage from '../components/header-image'
 
 
 class About extends React.Component {
 	render() {
+		const imgFluid = get(this, 'props.data.allContentfulAsset.edges[0].node.fluid')
+		const headerTitle = 'About Us'
+		const headerSubtitle = ''
+		
 		const aboutPage = get(this, 'props.data.allContentfulOrganizationInformationAboutPageRichTextNode.edges')
 		const node = aboutPage[0].node;
 
@@ -32,10 +37,8 @@ class About extends React.Component {
 				<SEO title='About' useMaps
 					description='Read more about Blankets for T.O. like its goals in helping and advocating for the homeless through events, donations, and awareness initiatives.'/>
 				<div className="white-background">
+					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
-						<Fade left duration={400}>
-							<h2>Our Organization</h2>
-						</Fade>
 						<Fade delay={500}>
 						<div className={"richText " + styles.description} >
 							{node.json !== undefined ? documentToReactComponents(node.json, options) : <p>Error: Articles not found.</p>}
@@ -64,5 +67,17 @@ export const aboutPageQuery = graphql`
 					}
 				}
 			}
+		allContentfulAsset(filter: {title: {eq: "Handdrawn background "}}, limit: 1) {
+			edges {
+				node {
+					fluid(
+						resizingBehavior: FILL
+						quality: 100
+					) {
+						...GatsbyContentfulFluid_tracedSVG
+					}
+				}
+			}
+		}
 	}
 `

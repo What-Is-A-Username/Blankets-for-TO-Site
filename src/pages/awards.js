@@ -6,12 +6,17 @@ import SEO from '../components/SEO'
 import styles from '../page-styles/positions.module.css'
 import Fade from 'react-reveal/Fade'
 import Award from '../components/awards/award'
+import HeaderImage from '../components/header-image'
 
 export default class Awards extends React.Component {
 
     state = { reveal: false}
 
 	render() {
+        const imgFluid = get(this, 'props.data.allContentfulAsset.edges[0].node.fluid')
+        const headerSubtitle = ''
+        const headerTitle = 'Awards and Recognition'
+        
         const intro = 'As Blankets for T.O. extends its commitment to the community by supporting vulnerable groups, we are grateful to be honoured with awards, letters of recognition and tokens of appreciation from local groups and community leaders.'
 		const awardData = get(this, 'props.data.allContentfulAward.nodes')
 		
@@ -20,11 +25,9 @@ export default class Awards extends React.Component {
 				<SEO title='Awards'
 				    description='Browse the collection of awards and letters of appreciation that Blankets for T.O. has for our involvement in the community.'/>
 				<div className="white-background">
+                    <HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
 						<div className={styles.membershipInfo}>
-							<Fade left duration={400}>
-								<h2>Awards and Recognition</h2>
-							</Fade>
                             <Fade delay={500}>
 							    <p style={{paddingBottom: '30px'}}>{intro}</p>
 						    </Fade>
@@ -46,6 +49,18 @@ export default class Awards extends React.Component {
 		
 export const awardPageQuery = graphql`
 query AwardQuery {
+    allContentfulAsset(filter: {title: {eq: "January Blanket Drive poster, embedded image"}}, limit: 1) {
+        edges {
+            node {
+                fluid(
+                    resizingBehavior: FILL
+                    quality: 100
+                ) {
+                    ...GatsbyContentfulFluid_tracedSVG
+                }
+            }
+        }
+    }
     allContentfulAward(sort: {fields: date, order: DESC}) {
         nodes {
             awardName

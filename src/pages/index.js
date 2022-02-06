@@ -87,7 +87,7 @@ class RootIndex extends React.Component {
 								</linearGradient>
 							</defs>
 						</svg>
-						<div style={{padding: '15vh 0', position: 'relative'}}>
+						<div className={styles.mapArea}>
 							<OrganizationMap mapLocations={mapLocations}/> 
 						</div>
 					</div>
@@ -108,7 +108,7 @@ class RootIndex extends React.Component {
 								</linearGradient>
 							</defs>
 						</svg>
-						<div style={{padding: '15vh 0', position: 'relative'}} className={styles.description}>
+						<div className={styles.description + ' ' + styles.joinContactArea}>
 							<h2>Get involved with us today</h2>
 							<ContactBox/>
 						</div>

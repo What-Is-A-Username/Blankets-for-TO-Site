@@ -10,6 +10,7 @@ import rewardsInfo from './rewards.json'
 import { Award, Edit2, Edit3, Video, Gift, MessageCircle, PenTool, Share, UserCheck, UserPlus, Users, Link, Package, CheckCircle, Send, BarChart } from 'react-feather'
 import RewardsPrize from '../components/rewards/rewards-prize'
 import StyledButton from '../components/styled-button'
+import HeaderImage from '../components/header-image'
 
 export default class Store extends React.Component {
 	render() {
@@ -46,12 +47,20 @@ export default class Store extends React.Component {
             }
         }
 
+        const imgFluid = get(this, 'props.data.allContentfulAsset.edges[0].node.fluid')
+        const headerSubtitle = ''
+        const headerTitle = 'Member Rewards'
+
         const rewardsPrizes = get(this, 'props.data.allContentfulRewardsPrize.nodes')
         const instructionIconSize = '80px'
         const instructionIconStrokeWidth = 1.5;
 
-        const taskVerificationLink = 'https://forms.gle/GiYMmusxb7bdcgW29'
         const pointsSpreadsheetLink = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRp-FGO1X7gq_Z-VCPzaEb9Q3UBb5JdtEQN3vkiV5hg-zYmTaM1sG38QjO1bpVBup7b1ffW8Io9sNcJ/pubhtml'
+
+        const {
+            rewardsSubmissionLink,
+            rewardsSubmissionMonthName
+        } = get(this, 'props.data.allContentfulOrganizationInformation.nodes[0]')
 
 		return (
 			<Layout location={this.props.location}>
@@ -59,8 +68,8 @@ export default class Store extends React.Component {
                     title='Member Rewards'
                     description='The Member Rewards system recognizes members for their involvement in the community. View recognized tasks and reward prizes here.'/>
 				<div className='white-background'>
+                    <HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className='wrapper'>
-						<h2>Member Rewards</h2>
                         <div className='richText'>
                             <p>
                                 The Blankets for T.O. Member Rewards System aims to recognize members for all the hard work and commitment they have dedicated to our mission of eradicating homelessness.
@@ -126,9 +135,8 @@ export default class Store extends React.Component {
                         <div id='submission'>
                             <h3 className={styles.taskTitle}>How do I get my tasks verified?</h3>
                             <p className={styles.infoText}>In order to be rewarded points for each task you complete, you must submit supporting proof of the task completion. This may include screenshots, digital media or written material.</p>
-                            <p className={styles.infoTextBold}>To submit tasks for the month of December 2021, please follow the link below to fill out the Google Form:</p>
-                            <StyledButton buttonText='Submit task for verification' link={taskVerificationLink} openInNewTab/> 
-                            <a></a>
+                            <p className={styles.infoTextBold}>To submit tasks for {rewardsSubmissionMonthName}, please follow the link below to fill out the Google Form:</p>
+                            <StyledButton buttonText='Submit form for verification' link={rewardsSubmissionLink} openInNewTab/> 
                         </div>
                         <div id='prizes'>
                             <h3 className={styles.prizeTitle}>What rewards can I earn?</h3>
@@ -169,6 +177,18 @@ export default class Store extends React.Component {
 
 export const RewardsQuery = graphql`
     query RewardsQuery {
+        allContentfulAsset(filter: {title: {eq: "January Blanket Drive poster, embedded image"}}, limit: 1) {
+            edges {
+				node {
+					fluid(
+						resizingBehavior: FILL
+						quality: 100
+					) {
+						...GatsbyContentfulFluid_tracedSVG
+					}
+				}
+			}
+		}
         allContentfulRewardsPrize(sort: {fields: pointsRequired}) {
             nodes {
                 name
@@ -178,5 +198,13 @@ export const RewardsQuery = graphql`
                   }
             }
         }
+        allContentfulOrganizationInformation 
+		{
+			nodes 
+			{
+				rewardsSubmissionLink
+                rewardsSubmissionMonthName
+			}
+		}
     }
 `  

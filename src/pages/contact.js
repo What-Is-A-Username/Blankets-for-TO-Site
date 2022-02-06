@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
 import Fade from 'react-reveal/Fade'
+import HeaderImage from '../components/header-image'
 
 import contactData from '../pages/contact-info.json'
 
@@ -17,15 +17,17 @@ class Contact extends React.Component {
 	render() {
 		const contactInfo = contactData.contact
 
+		const imgFluid = get(this, 'props.data.allContentfulAsset.edges[0].node.fluid')
+        const headerSubtitle = ''
+        const headerTitle = 'Contact Us'
+
 		return (
 			<Layout location={this.props.location}>
 				<SEO title='Contact Us'
 					description='Want to reach out to Blankets for T.O. to join, collaborate, or ask a question? Connect to us through our contact details or social media links here.'/>
 				<div className="white-background">
+					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 						<div className="wrapper">
-							<Fade left duration={400}>
-								<h2>Contact Us</h2>
-							</Fade>
 							<Fade delay={400}>
 							<div className={styles.socialMedia}>
 								{
@@ -55,3 +57,21 @@ class Contact extends React.Component {
 }
 
 export default Contact
+
+export const contactQuery = graphql`
+	query ContactQuery {
+		allContentfulAsset(filter: {title: {eq: "January Blanket Drive poster, embedded image"}}, limit: 1) {
+            edges {
+				node {
+					fluid(
+						resizingBehavior: FILL
+						quality: 100
+					) {
+						...GatsbyContentfulFluid_tracedSVG
+					}
+				}
+			}
+		}
+	}
+`
+

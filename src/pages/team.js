@@ -7,6 +7,7 @@ import SEO from '../components/SEO'
 import styles from '../page-styles/team.module.css'
 import Fade from 'react-reveal/Fade'
 import 'animate.css';
+import HeaderImage from '../components/header-image'
 
 class Team extends React.Component {
 
@@ -15,16 +16,18 @@ class Team extends React.Component {
 	render() {
 		const members = get(this, 'props.data.allContentfulExecutive.edges')
 
+		const imgFluid = get(this, 'props.data.allContentfulAsset.edges[0].node.fluid')
+        const headerSubtitle = ''
+        const headerTitle = 'Team'
+
 		return (
 			<Layout location={this.props.location}>
 				<SEO title='Executive Team'
 					description='Meet the talented and motivated members of the team at Blankets for T.O. that makes all of our events possible.'/>
 				<div className="sidebarabove"></div>
 				<div className="white-background">
+					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
-						<Fade left duration={400}>
-							<h2>Executive Team</h2>
-						</Fade>
 						<div className={styles.executiveList}>
 							{members.map(({ node }) => {
 								return (node.name !== "John Doe" ? 
@@ -73,20 +76,17 @@ export const teamPositionQuery = graphql`
 				}
 			}
 		}
+		allContentfulAsset(filter: {title: {eq: "Handdrawn background "}}, limit: 1) {
+			edges {
+				node {
+					fluid(
+						resizingBehavior: FILL
+						quality: 100
+					) {
+						...GatsbyContentfulFluid_tracedSVG
+					}
+				}
+			}
+		}
   	}
 `
-// shortBio {
-// 	childMarkdownRemark {
-// 		html
-// 	}
-// }
-// photo {
-// 	fluid(
-// 		maxWidth: 540
-// 		maxHeight: 540
-// 		resizingBehavior: PAD
-// 		background: "rgb:000000"
-// 	) {
-// 		...GatsbyContentfulFluid_tracedSVG
-// 	}
-// }

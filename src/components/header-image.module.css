@@ -1,0 +1,43 @@
+.parent
+{
+    position: relative;
+    height: calc(50vh - 110px);
+    min-height: 200px;
+}
+
+.fluidImage
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.textBox
+{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(109, 109, 109, 0.514);
+}
+
+.stripe 
+{
+    background-color: black;
+}
+
+.title
+{
+    color: white;
+    font-size: 3.0em;
+}
+
+.subtitle
+{
+    color: white;
+}
