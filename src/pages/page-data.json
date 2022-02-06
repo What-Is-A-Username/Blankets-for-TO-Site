@@ -33,7 +33,7 @@
                     "desc": "Posts" 
                 }, 
                 {
-                    "to": "/pages/podcasts", 
+                    "to": "/podcasts", 
                     "desc": "Podcasts" 
                 }
             ]
