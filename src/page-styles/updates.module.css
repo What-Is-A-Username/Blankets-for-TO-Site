@@ -1,0 +1,99 @@
+.imageOverlay, .link
+{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.textBox
+{
+    background-color: rgba(0, 0, 0, 0.438);
+}
+
+.link
+{
+    cursor: pointer;
+}
+
+.gridContainer
+{
+    justify-items: center;
+}
+
+.tile 
+{
+    height: 300px;
+    width: 100%;
+    position: relative;
+    max-width: 100%;
+}
+
+.textBox 
+{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 1.0s 0s; 
+}
+
+.title
+{
+    color: white;
+    text-align: center;
+    transition: color 1.0s 0s;
+    font-weight: bold;
+}
+
+.description
+{
+    color: white;
+    transition: color 1.0s 0s;
+}
+
+.tile:hover .textBox
+{
+    background-color: rgba(224, 224, 224, 0.959);
+}
+
+.tile:hover .title, .tile:hover .description
+{
+   color: var(--light_red);
+}
+
+.tile:hover picture img 
+{
+    transform: scale(1.2) !important;
+}
+
+.tile picture img
+{
+    transition: transform 1.0s ease !important;
+}
+
+@media (min-width: 700px)
+{
+    .gridContainer
+    {
+        display: grid;
+        grid-template-columns: repeat(2, 2fr); 
+        column-gap: 20px;
+        row-gap: 20px;
+    }
+}
+
+@media (max-width: 700px)
+{
+    .gridContainer
+    {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+}

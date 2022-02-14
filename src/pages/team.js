@@ -16,7 +16,7 @@ class Team extends React.Component {
 	render() {
 		const members = get(this, 'props.data.allContentfulExecutive.edges')
 
-		const imgFluid = get(this, 'props.data.allContentfulAsset.edges[0].node.fluid')
+		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
         const headerSubtitle = ''
         const headerTitle = 'Team'
 
@@ -76,12 +76,13 @@ export const teamPositionQuery = graphql`
 				}
 			}
 		}
-		allContentfulAsset(filter: {title: {eq: "Handdrawn background "}}, limit: 1) {
-			edges {
-				node {
+		allContentfulHeaderImage(filter: {pageName: {eq: "Team"}}, limit: 1) {
+            nodes {
+				image {
 					fluid(
 						resizingBehavior: FILL
 						quality: 100
+                        maxWidth: 4000
 					) {
 						...GatsbyContentfulFluid_tracedSVG
 					}

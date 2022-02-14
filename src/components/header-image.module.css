@@ -1,8 +1,19 @@
 .parent
 {
     position: relative;
-    height: calc(50vh - 110px);
-    min-height: 200px;
+    height: calc(30vw);
+    min-height: 350px;
+    width: 100%;
+    object-fit: contain;
+    padding: 0;
+    margin: 0;
+}
+
+.fluidImage img 
+{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
 }
 
 .fluidImage
@@ -33,11 +44,16 @@
 
 .title
 {
+    margin: 2% 2%;
+    line-height: 100%;
     color: white;
     font-size: 3.0em;
+    text-align: center;
 }
 
 .subtitle
 {
+    margin: 2% 2%;
+    text-align: center;
     color: white;
 }

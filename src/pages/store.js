@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
-import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import styles from '../page-styles/store.module.css'
 import StoreItemPreview from '../components/store/store-item-preview'
@@ -10,6 +9,8 @@ import { ShoppingCart } from 'react-feather'
 import Cookies from 'universal-cookie'
 import StyledButton from '../components/styled-button'
 import { sum } from 'lodash'
+import HeaderImage from '../components/header-image'
+
 
 export default class Store extends React.Component {
 
@@ -23,6 +24,10 @@ export default class Store extends React.Component {
     }
 
 	render() {
+
+        const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
+        const headerSubtitle = 'Every mask or sticker purchased goes towards funding blankets and other necessities that will be donated to homeless individuals, as we work to alleviate homelessness in the GTA.'
+        const headerTitle = 'Merchandise Store'
         
 		const storeItems = get(this, 'props.data.allContentfulMerchItem.nodes')
         var itemsInCart = Array.isArray(this.state.cartItems) && this.state.cartItems.length > 0; 
@@ -35,22 +40,9 @@ export default class Store extends React.Component {
                     doNotCrawl
                 />
 				<div className="white-background">
-					<div className='wrapper'>
-                        <h2>Store</h2>
-                    </div>
                     {
                         (!itemsInCart) ? 
-                        <div className='wideWrapper'>
-                            <div className={styles.headerLayout}>
-                                <div className={styles.headerImage}>
-                                    <Img fluid={this.props.data.file.childImageSharp.fluid}/>
-                                </div>
-                                <div className={styles.headerText}>
-                                    <h3 className={styles.subtitle}>Every purchase helps alleviate homelessness</h3>
-                                    <p className={styles.description}>Every mask or sticker purchased goes towards funding blankets and other necessities that will be donated to homeless individuals, as we work to alleviate homelessness in the GTA.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
                         :
                         null
                     }
@@ -116,5 +108,17 @@ export const StoreQuery = graphql`
                 }
             }
         }
+        allContentfulHeaderImage(filter: {pageName: {eq: "Store"}}, limit: 1) {
+            nodes {
+				image {
+					fluid(
+						resizingBehavior: FILL
+						quality: 100
+					) {
+						...GatsbyContentfulFluid_tracedSVG
+					}
+				}
+			}
+		}
     }
 `  

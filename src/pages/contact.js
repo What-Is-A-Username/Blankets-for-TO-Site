@@ -17,7 +17,7 @@ class Contact extends React.Component {
 	render() {
 		const contactInfo = contactData.contact
 
-		const imgFluid = get(this, 'props.data.allContentfulAsset.edges[0].node.fluid')
+		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
         const headerSubtitle = ''
         const headerTitle = 'Contact Us'
 
@@ -27,29 +27,29 @@ class Contact extends React.Component {
 					description='Want to reach out to Blankets for T.O. to join, collaborate, or ask a question? Connect to us through our contact details or social media links here.'/>
 				<div className="white-background">
 					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
-						<div className="wrapper">
-							<Fade delay={400}>
-							<div className={styles.socialMedia}>
-								{
-									contactInfo.map((x, i) => {
-										return (
-											<div className={styles.socialMediaEntry} key={x.platform}>
-												<a href={x.link} target='_blank' rel='noopener noreferrer'>
-													<img src={x.icon} alt={x.platform + ' Icon'} />
-													<p className={styles.socialMediaLink}>{x.nameEntry}<ExternalLink/></p>
-												</a>
-											</div>
-										)
-									}
+					<div className="wrapper">
+						<Fade delay={400}>
+						<div className={styles.socialMedia}>
+							{
+								contactInfo.map((x, i) => {
+									return (
+										<div className={styles.socialMediaEntry} key={x.platform}>
+											<a href={x.link} target='_blank' rel='noopener noreferrer'>
+												<img src={x.icon} alt={x.platform + ' Icon'} />
+												<p className={styles.socialMediaLink}>{x.nameEntry}<ExternalLink/></p>
+											</a>
+										</div>
 									)
 								}
-							</div>
-							<div className={styles.contactDirectly}>
-								<h3>Send Us a Direct Message</h3>
-								<StyledButton link='/#contact-form' buttonText='Fill out our contact form'/>
-							</div>
-							</Fade>
+								)
+							}
 						</div>
+						<div className={styles.contactDirectly}>
+							<h3>Send Us a Direct Message</h3>
+							<StyledButton link='/#contact-form' buttonText='Fill out our contact form'/>
+						</div>
+						</Fade>
+					</div>
 				</div>
 			</Layout>
 		)
@@ -60,12 +60,13 @@ export default Contact
 
 export const contactQuery = graphql`
 	query ContactQuery {
-		allContentfulAsset(filter: {title: {eq: "January Blanket Drive poster, embedded image"}}, limit: 1) {
-            edges {
-				node {
+		allContentfulHeaderImage(filter: {pageName: {eq: "Contact"}}, limit: 1) {
+            nodes {
+				image {
 					fluid(
 						resizingBehavior: FILL
 						quality: 100
+                        maxWidth: 4000
 					) {
 						...GatsbyContentfulFluid_tracedSVG
 					}

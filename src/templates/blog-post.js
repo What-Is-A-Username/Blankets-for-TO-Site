@@ -20,17 +20,34 @@ class BlogPostTemplate extends React.Component {
 
 		const options = {
 			renderNode: {
-				[BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields } } }) =>
-				{
+				[BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields } } }) => {
 					var deviceWidth = typeof window !== "undefined" ? $(window).width() : 760
 					var width = Math.min(deviceWidth, 760)
 					var imgUrl = 'https:' + fields.file['en-US'].url + '?w=' + String(width);
-					return(
-					<img src={imgUrl}
-						style={{width: width}}
-						alt={fields.description}
-					/>)
-				}
+					return (
+						<img src={imgUrl}
+							style={{ width: width }}
+							alt={fields.description}
+						/>)
+				},
+				[BLOCKS.EMBEDDED_ENTRY]: (node) => {
+					if (node.data.target.sys.contentType.sys.id === "inlineSpotifyEmbed") {
+						var frameSrc = node.data.target.fields.link['en-US'].replace('episode', 'embed-podcast/episode').split('?')[0];
+						return (
+							<div className={styles.iframeParent}>
+								<iframe src={frameSrc} width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+							</div>
+						);
+					}
+					else if (node.data.target.sys.contentType.sys.id === "youtubeEmbed") {
+						var frameSrc = node.data.target.fields.watchKey['en-US']
+						return (
+							<div className={styles.iframeParent}>
+								<iframe src={`https://www.youtube.com/embed/${frameSrc}`} width="560" height="315" frameborder="0"></iframe>
+							</div>
+						);
+					}
+				},
 			},
 		};
 
@@ -43,8 +60,8 @@ class BlogPostTemplate extends React.Component {
 		return (
 			<Layout location={this.props.location}>
 				<div className="white-background">
-					<SEO 
-						title={post.title} 
+					<SEO
+						title={post.title}
 						metaType='article'
 						description={`${post.publishDate} - ${post.description.childMarkdownRemark.rawMarkdownBody}`}
 						childElements={requiredHead}
@@ -58,7 +75,7 @@ class BlogPostTemplate extends React.Component {
 						<p className={styles.publishDate}>{post.publishDate}</p>
 						<div className={'richText ' + styles.bodyParent}>
 							<div className={styles.body}>
-							{post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
+								{post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
 							</div>
 						</div>
 						<LinkSharing location={'https://blanketsforto.ca/blog/' + post.slug} />
@@ -68,7 +85,7 @@ class BlogPostTemplate extends React.Component {
 					</div>
 				</div>
 			</Layout>
-			
+
 		)
 	}
 }

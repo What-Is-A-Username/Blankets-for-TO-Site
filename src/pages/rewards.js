@@ -47,7 +47,7 @@ export default class Store extends React.Component {
             }
         }
 
-        const imgFluid = get(this, 'props.data.allContentfulAsset.edges[0].node.fluid')
+        const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
         const headerSubtitle = ''
         const headerTitle = 'Member Rewards'
 
@@ -177,12 +177,13 @@ export default class Store extends React.Component {
 
 export const RewardsQuery = graphql`
     query RewardsQuery {
-        allContentfulAsset(filter: {title: {eq: "January Blanket Drive poster, embedded image"}}, limit: 1) {
-            edges {
-				node {
+        allContentfulHeaderImage(filter: {pageName: {eq: "Rewards"}}, limit: 1) {
+            nodes {
+				image {
 					fluid(
 						resizingBehavior: FILL
 						quality: 100
+                        maxWidth: 4000
 					) {
 						...GatsbyContentfulFluid_tracedSVG
 					}

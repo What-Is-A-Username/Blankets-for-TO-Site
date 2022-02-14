@@ -129,7 +129,6 @@ SEO_Wrapper.defaultProps = {
 	metaType: `website`,
 	useMailChimp: false,
 	useCurator: false,
-	useMaps: false, 
 	cannonical: undefined, 
 	doNotCrawl: false, 
 }
@@ -143,7 +142,6 @@ SEO_Wrapper.propTypes = {
 	meta: PropTypes.arrayOf(PropTypes.object),
 	useMailChimp: PropTypes.bool,
 	useCurator: PropTypes.bool,
-	useMaps: PropTypes.bool,
 	cannonical: PropTypes.string,
 	doNotCrawl: PropTypes.bool, 
 }

@@ -7,11 +7,10 @@ const HeaderImage = ({imgFluid, headerTitle, headerSubtitle}) => {
 	return (
 		<div className={styles.parent}>
             <Img fluid={imgFluid} className={styles.fluidImage}/>
-
             <div className={styles.textBox}>
                 <Fade>
                     <h1 className={styles.title}>{headerTitle}</h1>
-                    <p className={styles.subtitle}>{headerSubtitle}</p>
+                    {(headerSubtitle === undefined || headerSubtitle !== "") ? <p className={styles.subtitle}>{headerSubtitle}</p> : <p/>}
                 </Fade>
             </div>
         </div>

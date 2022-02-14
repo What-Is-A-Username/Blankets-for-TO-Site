@@ -16,7 +16,7 @@ import HeaderImage from '../components/header-image'
 class BlogIndex extends React.Component {
 	render() {
 
-		const imgFluid = get(this, 'props.data.allContentfulAsset.edges[0].node.fluid')
+		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
         const headerSubtitle = ''
         const headerTitle = 'Updates and Articles'
 
@@ -103,7 +103,7 @@ class BlogIndex extends React.Component {
 				<SEO title='Updates'
 					description='Browse articles published by Blankets for T.O., including summaries of past events and informational articles about homelessness.'/>
 				<div className="white-background">
-				<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
+					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
 						<Fade delay={400}>		
 							<SearchTools onDropdownChange={onSelect} dropdownPlaceholder={searchParams.sort} tags={uniqueTags} clickTagFunc={onClickTag} activeTags={searchParams.tags} />
@@ -142,12 +142,13 @@ export const blogPageQuery = graphql`
 				title
 			}
 		}
-		allContentfulAsset(filter: {title: {eq: "Handdrawn background "}}, limit: 1) {
-			edges {
-				node {
+		allContentfulHeaderImage(filter: {pageName: {eq: "Blog"}}, limit: 1) {
+            nodes {
+				image {
 					fluid(
 						resizingBehavior: FILL
 						quality: 100
+                        maxWidth: 4000
 					) {
 						...GatsbyContentfulFluid_tracedSVG
 					}

@@ -6,3 +6,18 @@
     height: fit-content;
     align-items: center;
 }
+
+.podcastTitle 
+{
+    color: var(--light_red);
+    font-weight: bold;
+}
+
+@media (max-width: 500px)
+{
+    .iframeParent iframe 
+    {
+        width: 100%;
+        max-width: 100%;
+    }
+}

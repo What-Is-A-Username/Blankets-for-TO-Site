@@ -10,12 +10,9 @@ import { graphql } from 'gatsby'
 
 // The /sponsors page on the site.
 export default class Sponsors extends React.Component {
-
-    
-
     render() {
         const sponsorData = get(this, 'props.data.allContentfulSponsor.nodes');
-        const imgFluid = get(this, 'props.data.allContentfulAsset.edges[0].node.fluid')
+        const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
         const preferredSponsors = sponsorData.filter(x => x.sponsorType === "Preferred"); 
         const defaultSponsors = sponsorData.filter(x => x.sponsorType !== "Preferred"); 
         const message = 'Blankets for T.O. is proud to work with the following sponsors to fund donations and work with the local community.'
@@ -25,7 +22,7 @@ export default class Sponsors extends React.Component {
             <SEO title="Sponsors"
                 description={message}/>
             <div className="white-background">
-                <HeaderImage imgFluid={imgFluid} headerTitle='Sponsors'/>
+                <HeaderImage imgFluid={imgFluid} headerTitle='Sponsors' headerSubtitle=''/>
                 <div className="wrapper">
                     <Fade left duration={400}>
                         <div className='richText'>
@@ -71,18 +68,19 @@ export default class Sponsors extends React.Component {
 
 export const SponsorsQuery = graphql`
 query SponsorsPageQuery {
-    allContentfulAsset(filter: {title: {eq: "Handdrawn background "}}, limit: 1) {
-        edges {
-          node {
-            fluid(
-                resizingBehavior: FILL
-                quality: 100
-            ) {
-                ...GatsbyContentfulFluid_tracedSVG
+    allContentfulHeaderImage(filter: {pageName: {eq: "Sponsors"}}, limit: 1) {
+        nodes {
+            image {
+                fluid(
+                    resizingBehavior: FILL
+                    quality: 100
+                    maxWidth: 4000
+                ) {
+                    ...GatsbyContentfulFluid_tracedSVG
+                }
             }
-          }
         }
-      }
+    }
     allContentfulSponsor(sort: {fields: name}) {
         nodes {
             name

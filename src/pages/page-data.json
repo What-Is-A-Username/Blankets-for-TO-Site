@@ -24,7 +24,7 @@
             ]
         },
         {
-            "to": "/blog",
+            "to": "/updates",
             "desc": "Updates",
             "children": 
             [

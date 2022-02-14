@@ -11,7 +11,7 @@ import HeaderImage from '../components/header-image'
 class Podcasts extends React.Component {
 	render() {
 
-		const imgFluid = get(this, 'props.data.allContentfulAsset.edges[0].node.fluid')
+		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
         const headerSubtitle = 'Learn more about the vision of Blankets for T.O. and the stories of its members through video and podcasts.'
         const headerTitle = 'Podcasts'
 
@@ -53,15 +53,14 @@ class Podcasts extends React.Component {
 				<SEO title='Browse podcasts and video' useMaps
 					description='Browse podcasts and video covering homelessness and Blankets for T.O.'/>
 				<div className="white-background">
-                <HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
-                {console.log(podcasts)}
+                    <HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
                         {
                             podcasts.map( x => 
                                 {
                                     return(
                                         <React.Fragment>
-                                            <h1>{x.episodeName}</h1>
+                                            <h1 className={styles.podcastTitle}>{x.episodeName}</h1>
                                             <div className='richText'>
                                                 {x.richDescription.json !== undefined ? documentToReactComponents(x.richDescription.json, options) : <p>Error: Articles not found.</p>}
                                             </div>
@@ -81,9 +80,9 @@ export default Podcasts
 
 export const podcastQuery = graphql`
 	query PodcastQuery {
-		allContentfulAsset(filter: {title: {eq: "January Blanket Drive poster, embedded image"}}, limit: 1) {
-            edges {
-				node {
+		allContentfulHeaderImage(filter: {pageName: {eq: "Podcasts"}}, limit: 1) {
+            nodes {
+				image {
 					fluid(
 						resizingBehavior: FILL
 						quality: 100

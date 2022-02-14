@@ -13,10 +13,10 @@ import ArticleCard from './article-card'
 const renderFunc = (articles, excludeSlug) => {
 
 	let rendered = 0; 
-	const increment = (articleNode) =>
+	const increment = (articleNode, index) =>
 	{
 		rendered++; 
-		return <ArticleCard article={articleNode.node} key={articleNode.node.title}/>
+		return <ArticleCard article={articleNode.node} key={articleNode.node.title} index={index}/>
 	}
 
 	return (
@@ -30,7 +30,7 @@ const renderFunc = (articles, excludeSlug) => {
 					return (
 						article.node.slug === excludeSlug || rendered >= 3 ?
 						null :  
-						increment(article)
+						increment(article, index)
 					)
 				})}
 			</div>
