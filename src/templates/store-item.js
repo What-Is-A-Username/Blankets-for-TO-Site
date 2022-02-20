@@ -9,6 +9,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import styles from '../templates/store-item.module.css'
 import { XCircle, ShoppingBag, ChevronLeft, ChevronRight, ShoppingCart, PlusSquare, MinusSquare, Info } from 'react-feather';
 import Cookies from 'universal-cookie'
+import BackArrow from '../components/back-arrow'
 
 class StoreItemTemplate extends React.Component {
 
@@ -180,10 +181,7 @@ class StoreItemTemplate extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <a href='/store' className={styles.browseOtherItems}>
-                            <ChevronLeft/>
-                            Browse other items
-                        </a>
+                        <BackArrow text='Browse other items' link='/store'/>
                     </div>  
                 </div>
             </Layout>

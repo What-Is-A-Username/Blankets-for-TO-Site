@@ -1,0 +1,23 @@
+.arrowStyles > svg
+{
+    height: 50px;
+    width: 50px;
+}
+
+.arrowStyles
+{
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 50px 0px 25px 0px;
+    align-content: center;
+    width: fit-content;
+}
+
+.arrowStyles:hover, .arrowStyles:hover > svg
+{
+    color: var(--light_red);
+    font-weight: bold;
+}

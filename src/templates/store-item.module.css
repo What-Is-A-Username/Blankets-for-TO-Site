@@ -184,7 +184,7 @@
     font-size: 16px;
 }
 
-.inventory, .browseOtherItems, .addToCart
+.inventory, .addToCart
 {
     display: inline-flex;
     align-items: center;
@@ -194,28 +194,6 @@
 {
     margin-left: 10px;
     margin-right: 10px;
-}
-
-.browseOtherItems > svg
-{
-    height: 50px;
-    width: 50px;
-}
-
-.browseOtherItems
-{
-    cursor: pointer;
-    font-size: 18px;
-    text-decoration: none;
-    padding: 50px 0px 25px 0px;
-    align-content: center;
-    width: fit-content;
-}
-
-.browseOtherItems:hover, .browseOtherItems:hover > svg
-{
-    color: var(--light_red);
-    font-weight: bold;
 }
 
 .icon_shoppingBag

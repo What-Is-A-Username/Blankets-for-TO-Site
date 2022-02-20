@@ -9,6 +9,7 @@ import CartItem from '../components/store/cart-item'
 import buttonStyles from '../components/styled-button.module.css'
 import { ArrowLeft, ArrowRight, ChevronLeft, Copy, DollarSign, Info } from 'react-feather'
 import Fade from 'react-reveal/Fade'
+import BackArrow from '../components/back-arrow'
 
 export default class Cart extends React.Component {
 
@@ -165,11 +166,9 @@ export default class Cart extends React.Component {
 				<div className="white-background">
 					<div className="wrapper">
 						<h2>Your Shopping Cart</h2>
+                            
                             <div style={{visibility: itemsInCart ? 'visible' : 'hidden', height: itemsInCart ? 'auto' : 0}}>
-                                <a href='/store' className={styles.browseOtherItems}>
-                                    <ChevronLeft/>
-                                    Continue shopping
-                                </a>
+                                <BackArrow text='Continue shopping' link='/store'/>
                                 <div className={styles.header}>
                                     <p className={styles.name}>Item</p>
                                     <p className={styles.price}>Price</p>
@@ -281,10 +280,7 @@ export default class Cart extends React.Component {
                             </div>
                             <div className={styles.emptyCart} style={{visibility: itemsInCart ? 'hidden' : 'visible'}}>
                                 <p>There are no items in your shopping cart.</p>
-                                <a href='/store' className={styles.browseOtherItems}>
-                                    <ChevronLeft/>
-                                    Go back to the store page
-                                </a>
+                                <BackArrow text='Go back to the store page' link='/store'/>
                             </div>
 					</div>
 				</div>    
