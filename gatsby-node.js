@@ -8,6 +8,8 @@ exports.createPages = ({ graphql, actions }) => {
     const blogPostTemplate = path.resolve('./src/templates/blog-post.js')
     const pageTemplate = path.resolve('./src/templates/page.js')
     const storeItemTemplate = path.resolve('./src/templates/store-item.js')
+    const chapterTemplate = path.resolve('./src/templates/chapter.js')
+
     resolve(
       graphql(
         `
@@ -15,7 +17,6 @@ exports.createPages = ({ graphql, actions }) => {
             allContentfulBlogPost {
               edges {
                 node {
-                  title
                   slug
                 }
               }
@@ -23,7 +24,6 @@ exports.createPages = ({ graphql, actions }) => {
             allContentfulPage {
               edges {
                 node {
-                  title
                   slug
                 }
               }
@@ -31,7 +31,13 @@ exports.createPages = ({ graphql, actions }) => {
             allContentfulMerchItem {
               edges {
                 node {
-                  itemName
+                  slug
+                }
+              }
+            }
+            allContentfulBtoChapter {
+              edges {
+                node {
                   slug
                 }
               }
@@ -76,6 +82,18 @@ exports.createPages = ({ graphql, actions }) => {
             },
           })
         })
+
+        const chapters = result.data.allContentfulBtoChapter.edges 
+        chapters.forEach((chapter) => {
+          createPage({
+            path: `/chapter/${chapter.node.slug}/`,
+            component: chapterTemplate,
+            context: {
+              slug: chapter.node.slug
+            },
+          })
+        })
+
       })
     )
   })

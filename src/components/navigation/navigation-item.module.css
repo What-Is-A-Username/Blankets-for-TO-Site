@@ -72,8 +72,8 @@
 	{
 		color: black;
 		display: inline-block;
-		width: 175px;
-		white-space: normal;
+		min-width: 175px;
+		white-space: nowrap;
 	}
 }
 

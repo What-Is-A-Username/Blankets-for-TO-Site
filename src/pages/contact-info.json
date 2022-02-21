@@ -37,5 +37,39 @@
             "link": "https://www.youtube.com/channel/UCTIdvOG5V4cIWUY_j1hBrog", 
             "icon": "/contact-icons/youtubeTransparent.svg"
         }
+    ],
+    "contactTemplates" :
+    [
+        {
+            "platform": "Email",
+            "linkRoot": "mailto:", 
+            "icon": "/contact-icons/emailTransparent.svg"
+        },
+        {
+            "platform": "Facebook",
+            "linkRoot": "https://www.facebook.com/", 
+            "icon": "/contact-icons/facebookTransparent.svg"
+        },
+        {
+            "platform": "Twitter",
+            "linkRoot": "https://twitter.com/", 
+            "icon": "/contact-icons/twitterTransparent.svg"
+        },
+        {
+            "platform": "Instagram",
+            "linkRoot": "https://www.instagram.com/", 
+            "icon": "/contact-icons/instagramTransparent.svg"
+        },
+        {
+            "platform": "TikTok",
+            "linkRoot": "https://www.tiktok.com/@", 
+            "icon": "/contact-icons/tiktokTransparent.svg"
+        },
+        {
+            "platform": "YouTube",
+            "linkRoot": "https://www.youtube.com/channel/", 
+            "icon": "/contact-icons/youtubeTransparent.svg"
+        }
     ]
+
 }

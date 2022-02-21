@@ -16,6 +16,7 @@
 	--dark_red: #bf3434;
 	--dark_gray: rgb(121, 121, 121); 
 	--light_gray: rgb(172, 172, 172);
+	--link_color: #136bcf;
 }
 
 @font-face {
@@ -218,7 +219,7 @@ Rich Text Display
 
 .richText a:link
 {
-	color:#136bcf;
+	color:var(--link_color)
 }
 
 .richText a:hover 

@@ -99,6 +99,9 @@ SearchTools.propTypes = {
 
 
 const BlogTagBar = ({tags, clickable}) => {
+
+    tags = tags.sort()
+
     return(
         <div className={styles.blogTagContainer}>
             {

@@ -8,7 +8,6 @@ import styles from '../page-styles/about.module.css'
 import { BLOCKS } from '@contentful/rich-text-types';
 import Fade from 'react-reveal/Fade'
 import HeaderImage from '../components/header-image'
-import { data } from 'jquery'
 
 class About extends React.Component {
 

@@ -18,7 +18,7 @@ class BlogIndex extends React.Component {
 
 		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
         const headerSubtitle = ''
-        const headerTitle = 'Updates and Articles'
+        const headerTitle = 'Blankets for T.O. Blog'
 
 		const posts = get(this, 'props.data.allContentfulBlogPost.edges')
 		let filteredPosts = [] 
@@ -100,11 +100,16 @@ class BlogIndex extends React.Component {
 		
 		return (
 			<Layout location={this.props.location}>
-				<SEO title='Updates'
+				<SEO title='Updates and Blog'
 					description='Browse articles published by Blankets for T.O., including summaries of past events and informational articles about homelessness.'/>
 				<div className="white-background">
 					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
+						<div className='richText'>
+							<p>
+								Welcome to the Blankets for T.O blog, where we post updates on our recent and upcoming events as well as original articles educating the public about homelessness.
+							</p>
+						</div>
 						<Fade delay={400}>		
 							<SearchTools onDropdownChange={onSelect} dropdownPlaceholder={searchParams.sort} tags={uniqueTags} clickTagFunc={onClickTag} activeTags={searchParams.tags} />
 						</Fade>

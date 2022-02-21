@@ -49,7 +49,7 @@ class RootIndex extends React.Component {
 										Eradicating homelessness through action
 									</h2>
 									<p>
-										Founded in 2019 at the University of Toronto Scarborough, we are a non-profit organization addressing homelessness through advocacy, engagement and action. 
+										Founded in 2019 at the University of Toronto Scarborough, we are a non-profit organization addressing homelessness through advocacy, engagement and action across Ontario. 
 									</p>
 								</div>
 							</Fade>

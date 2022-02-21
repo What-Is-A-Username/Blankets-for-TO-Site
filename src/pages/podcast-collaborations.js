@@ -7,25 +7,16 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../page-styles/podcasts.module.css'
 import { BLOCKS } from '@contentful/rich-text-types';
 import HeaderImage from '../components/header-image'
-import SquareGrid from '../components/layouts/square-grid'
+import BackArrow from '../components/back-arrow'
 
-class Podcasts extends React.Component {
+class PodcastCollaborations extends React.Component {
 	render() {
 
 		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
-        const headerSubtitle = 'Listen to the Beyond the Blankets podcast, the official podcast from Blankets for T.O.'
-        const headerTitle = 'Beyond the Blankets'
+        const headerSubtitle = 'View podcasts featuring guest appearances of some of our members.'
+        const headerTitle = 'Podcast Collaborations'
 
         const podcasts = get(this, 'props.data.allContentfulPodcast.nodes')
-
-        const collaborationContent = [
-            {
-                title: "Browse podcast collaborations",
-                link: "/podcast-collaborations",
-                description: "View podcasts featuring guest appearances of some of our members.",
-                fluid: imgFluid
-            },
-        ]
         
 		const options = {
 			renderNode: {
@@ -60,14 +51,13 @@ class Podcasts extends React.Component {
 
 		return (
 			<Layout location={this.props.location}>
-				<SEO title='Listen to the Beyond the Blankets podcast'
-					description='Browse and listen to episodes of Beyond the Blankets, the official Blankets for T.O. podcast.'/>
+				<SEO title='Browse podcasts collaborations with us'
+					description='View podcasts featuring guest appearances of some of our Blankets for T.O. members.'
+                    doNotCrawl/>
 				<div className="white-background">
                     <HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
-                        <h1 className={styles.title}>Beyond the Blankets will be published soon.</h1>
-                        <p>Sorry, the first episode of Beyond the Blankets has not been published yet. Please check back later. Follow our social media feeds to get notified of when episodes are published. Thank you for your patience.</p>
-                        {/* {
+                        {
                             podcasts.map( x => 
                                 {
                                     return(
@@ -80,9 +70,8 @@ class Podcasts extends React.Component {
                                     )
                                 }
                             )
-                        } */}
-                        <h1 className={styles.title}>Other Podcasts</h1>
-                        <SquareGrid content={collaborationContent}/>
+                        }
+                        <BackArrow text='Browse all podcasts' link='/podcasts'/>
 					</div>
 				</div> 
 			</Layout>
@@ -90,10 +79,10 @@ class Podcasts extends React.Component {
 	}
 }
 
-export default Podcasts
+export default PodcastCollaborations
 
-export const podcastQuery = graphql`
-	query PodcastQuery {
+export const podcastCollaborationsQuery = graphql`
+	query PodcastCollaborationsQuery {
 		allContentfulHeaderImage(filter: {pageName: {eq: "Podcasts"}}, limit: 1) {
             nodes {
 				image {
@@ -106,7 +95,7 @@ export const podcastQuery = graphql`
 				}
 			}
 		}
-        allContentfulPodcast(filter: {podcastSeries: {eq: "Beyond the Blankets"}}) {
+        allContentfulPodcast(filter: {podcastSeries: {ne: "Beyond the Blankets"}}) {
             nodes {
                 episodeName
                 richDescription {
