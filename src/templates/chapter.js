@@ -33,14 +33,15 @@ class ChapterTemplate extends React.Component {
 				platform: 'Email',
 				linkSuffix: emailAddress,
 				displayText: emailAddress,
+				entry: emailAddress,
 			},
 			{
 				platform: 'Instagram',
 				linkSuffix: instagramUsername,
 				displayText: '@' + instagramUsername,
+				entry: instagramUsername,
 			},
-			
-		]
+		].filter(method => method.entry != null)
 
 		const options = {
 			renderNode: {
