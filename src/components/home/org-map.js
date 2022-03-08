@@ -14,8 +14,9 @@ export default class OrgMap extends React.Component {
 	mapLocations = []
 	map = undefined
 	featureGroup = undefined
-	markerUrl = 'https://img.icons8.com/color/96/000000/marker--v1.png'
+	markerUrl = '/map-pin.svg'
 	arrowColor = 'rgb(0, 0, 0)'
+	lineColor = '#6da6a6'
 
 	onMarkerClick = (locationIndex) => {
 		this.setState({ mapCenter: locationIndex, selectedLocation: locationIndex })
@@ -43,8 +44,8 @@ export default class OrgMap extends React.Component {
 		this.map = L.map('mapid', { zoomControl: false, attributionControl: true, dragging: false, zoom: false, touchZoom: false, scrollWheelZoom: false})
 		var markerIcon = L.icon({
 			iconUrl: this.markerUrl,
-			iconSize: [40, 40],
-			iconAnchor: [20, 40],
+			iconSize: [32, 32],
+			iconAnchor: [16, 32],
 		});
 		// add the OpenStreetMap tiles
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -56,7 +57,7 @@ export default class OrgMap extends React.Component {
 		for (let index = 0; index < this.mapLocations.length; index++) {
 			const coords = [this.mapLocations[index].coordinateLatitude, this.mapLocations[index].coordinateLongitude]
 			var marker = L.marker(coords, { icon: markerIcon }).addTo(this.map).on('click', () => this.onMarkerClick(index))
-			let polyline = L.polyline([[this.utscCoords.lat, this.utscCoords.lon], coords], {color: '#fc5c5c', fillColor: '#fc5c5c'})
+			let polyline = L.polyline([[this.utscCoords.lat, this.utscCoords.lon], coords], {color: this.lineColor, fillColor: this.lineColor})
 			var decorator = L.polylineDecorator(polyline, { 
 				patterns: [
 					{
@@ -65,7 +66,7 @@ export default class OrgMap extends React.Component {
 						symbol: L.Symbol.arrowHead({
 							pixelSize: 15, 
 							polygon: true, 
-							pathOptions: { stroke: true, fill: true, color: '#fc5c5c', fillColor: '#fc5c5c', fillOpacity: 1 } 
+							pathOptions: { stroke: true, fill: true, color: this.lineColor, fillColor: this.lineColor, fillOpacity: 1 } 
 						})
 					},
 					{ 
@@ -73,7 +74,7 @@ export default class OrgMap extends React.Component {
 						repeat: 20, 
 						symbol: L.Symbol.dash({
 							pixelSize: 15, 
-							pathOptions: {color: '#fc5c5c', weight: 4}
+							pathOptions: {color: this.lineColor, weight: 4}
 						})
 					},
 				]

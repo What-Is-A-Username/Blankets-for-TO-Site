@@ -11,7 +11,7 @@ import HeaderImage from '../components/header-image'
 
 class About extends React.Component {
 
-	state = { showRecentAnnualReport: true }
+	state = { showRecentAnnualReport: false }
 
 	render() {
 		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
@@ -34,7 +34,7 @@ class About extends React.Component {
 					{
 						return(
 							<div className={styles.pdfFrame}>
-								<a onClick={onToggle}>{(this.state.showRecentAnnualReport ? "Hide" : "Show") + ` ${fields.title['en-US']}`}</a>
+								<a onClick={onToggle}>{"Click here to " + (this.state.showRecentAnnualReport ? "hide" : "show") + ` the ${fields.title['en-US']}`}</a>
 								{this.state.showRecentAnnualReport && <iframe src={fields.file['en-US'].url}></iframe>}
 							</div>
 						)
