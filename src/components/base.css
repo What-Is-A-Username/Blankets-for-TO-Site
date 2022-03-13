@@ -159,8 +159,6 @@ Rich Text Display
 .richText img 
 {
 	color: var(--light_red);
-	margin-top: 5px;
-	margin-bottom: 5px;
 	align-self: center;
 }
 
@@ -222,7 +220,7 @@ Rich Text Display
 	color:var(--link_color)
 }
 
-.richText a:hover 
+.richText a:hover
 {
 	text-decoration: underline;
 }
@@ -259,6 +257,12 @@ Rich Text Display
 
 .fb-share-button > a, .twitter-share-button {
 	text-decoration: none;
+}
+
+.leaflet-marker-pane img:hover
+{
+	width: 40px;
+	height: 50px;
 }
 
 /* .fb-share-button:hover, .twitter-share-button:hover {

@@ -1,0 +1,16 @@
+.imgFigure > figcaption 
+{
+    width: 100%; 
+    background: rgb(36, 36, 36);
+    color: rgb(180, 180, 180);
+    padding: 2px 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.imgFigure > img 
+{
+    max-width: 760px;
+    max-height: 500px;
+    width: 100%;
+}

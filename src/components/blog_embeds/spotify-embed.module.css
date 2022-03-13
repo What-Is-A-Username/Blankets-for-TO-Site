@@ -1,0 +1,17 @@
+.parent 
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+}
+
+@media (max-width: 500px)
+{
+    .iframeParent iframe 
+    {
+        width: 100%;
+        max-width: 100%;
+    }
+}

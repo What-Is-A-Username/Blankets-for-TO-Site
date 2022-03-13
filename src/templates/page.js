@@ -9,6 +9,7 @@ import LinkSharing from '../components/link-sharing'
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../templates/blog-post.module.css'
+import CaptionedFigure from '../components/blog_embeds/captioned-figure'
 
 class PageTemplate extends React.Component {
 
@@ -17,13 +18,10 @@ class PageTemplate extends React.Component {
 
 		const options = {
 			renderNode: {
-				[BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields } } }) =>
-					<img src={fields.file['en-US'].url}
-						style={{
-							width: fields.file['en-US'].details.image.width,
-						}}
-						alt={fields.description}
-					/>,
+				[BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields } } }) => {
+					if (fields.file['en-US'].contentType.startsWith('image/'))	
+						<CaptionedFigure fields={fields} hideCaption/>
+				},
 			},
 		};
 

@@ -6,26 +6,8 @@
     color: var(--light_red);
 }
 
-.iframeParent 
-{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: fit-content;
-    align-items: center;
-}
-
 .podcastTitle 
 {
     color: var(--light_red);
     font-weight: bold;
-}
-
-@media (max-width: 500px)
-{
-    .iframeParent iframe 
-    {
-        width: 100%;
-        max-width: 100%;
-    }
 }

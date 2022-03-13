@@ -8,6 +8,8 @@ import styles from '../page-styles/podcasts.module.css'
 import { BLOCKS } from '@contentful/rich-text-types';
 import HeaderImage from '../components/header-image'
 import SquareGrid from '../components/layouts/square-grid'
+import SpotifyEmbed from '../components/blog_embeds/spotify-embed'
+import YoutubeEmbed from '../components/blog_embeds/youtube-embed'
 
 class Podcasts extends React.Component {
 	render() {
@@ -38,22 +40,10 @@ class Podcasts extends React.Component {
 						alt={fields.description}
 					/>,
                 [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-                    if (node.data.target.sys.contentType.sys.id === "inlineSpotifyEmbed") {
-                        var frameSrc = node.data.target.fields.link['en-US'].replace('episode', 'embed-podcast/episode').split('?')[0]; 
-                        return (
-                            <div className={styles.iframeParent}>
-                                <iframe src={frameSrc} width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                            </div>
-                        );
-                    }
-                    else if (node.data.target.sys.contentType.sys.id === "youtubeEmbed") {
-                        var frameSrc = node.data.target.fields.watchKey['en-US'] 
-                        return (
-                            <div className={styles.iframeParent}>
-                                <iframe src={`https://www.youtube.com/embed/${frameSrc}`} width="560" height="315" frameborder="0"></iframe>
-                            </div>
-                        );
-                    }
+                    if (node.data.target.sys.contentType.sys.id === "inlineSpotifyEmbed")
+                        return <SpotifyEmbed node={node}/>
+                    else if (node.data.target.sys.contentType.sys.id === "youtubeEmbed")
+                        return <YoutubeEmbed node={node}/>
                 }, 
 			},
 		};

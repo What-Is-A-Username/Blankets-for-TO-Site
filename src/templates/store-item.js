@@ -88,11 +88,6 @@ class StoreItemTemplate extends React.Component {
     }
 
 	render() {
-        const options = {
-			renderNode: {
-				
-			},
-		};
         return(
             <Layout location={this.props.location}>
 				<div className="white-background">
@@ -147,7 +142,7 @@ class StoreItemTemplate extends React.Component {
                                     <p>Members get a discounted price of ${this.item.memberItemPrice.toFixed(2)}</p>
                                 </div>
                                 <div className={styles.description}>
-                                    {this.item.itemDescription != null ? documentToReactComponents(this.item.itemDescription.json, options) : null}
+                                    {this.item.itemDescription != null ? documentToReactComponents(this.item.itemDescription.json, {renderNode:{}}) : null}
                                 </div>
                                 {
                                     this.item.isInStock ?

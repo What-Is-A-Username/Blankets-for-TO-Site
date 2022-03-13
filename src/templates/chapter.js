@@ -10,6 +10,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../templates/chapter.module.css'
 import BackArrow from '../components/back-arrow'
 import masterContactTemplate from '../pages/contact-info.json'
+import CaptionedFigure from '../components/blog_embeds/captioned-figure'
 
 class ChapterTemplate extends React.Component {
 
@@ -46,14 +47,8 @@ class ChapterTemplate extends React.Component {
 		const options = {
 			renderNode: {
 				[BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields } } }) => {
-					var deviceWidth = typeof window !== "undefined" ? $(window).width() : 760
-					var width = Math.min(deviceWidth, 760)
-					var imgUrl = 'https:' + fields.file['en-US'].url + '?w=' + String(width);
-					return (
-						<img src={imgUrl}
-							style={{ width: width }}
-							alt={fields.description}
-						/>)
+					if (fields.file['en-US'].contentType.startsWith('image/'))
+						return <CaptionedFigure fields={fields}/>
 				},
 			},
 		};

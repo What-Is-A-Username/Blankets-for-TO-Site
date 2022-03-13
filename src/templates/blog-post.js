@@ -11,7 +11,10 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from '../templates/blog-post.module.css'
 
 import { BlogTagBar } from '../components/blog_search/tag'
-import $ from 'jquery'
+
+import CaptionedFigure from '../components/blog_embeds/captioned-figure'
+import SpotifyEmbed from '../components/blog_embeds/spotify-embed'
+import YoutubeEmbed from '../components/blog_embeds/youtube-embed'
 
 class BlogPostTemplate extends React.Component {
 
@@ -21,40 +24,22 @@ class BlogPostTemplate extends React.Component {
 		const options = {
 			renderNode: {
 				[BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields } } }) => {
-					var deviceWidth = typeof window !== "undefined" ? $(window).width() : 760
-					var width = Math.min(deviceWidth, 760)
-					var imgUrl = 'https:' + fields.file['en-US'].url + '?w=' + String(width);
-					return (
-						<img src={imgUrl}
-							style={{ width: width }}
-							alt={fields.description}
-						/>)
+					if (fields.file['en-US'].contentType.startsWith('image/'))
+						return <CaptionedFigure fields={fields}/>
 				},
 				[BLOCKS.EMBEDDED_ENTRY]: (node) => {
-					if (node.data.target.sys.contentType.sys.id === "inlineSpotifyEmbed") {
-						var frameSrc = node.data.target.fields.link['en-US'].replace('episode', 'embed-podcast/episode').split('?')[0];
-						return (
-							<div className={styles.iframeParent}>
-								<iframe src={frameSrc} width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-							</div>
-						);
-					}
-					else if (node.data.target.sys.contentType.sys.id === "youtubeEmbed") {
-						var frameSrc = node.data.target.fields.watchKey['en-US']
-						return (
-							<div className={styles.iframeParent}>
-								<iframe src={`https://www.youtube.com/embed/${frameSrc}`} width="560" height="315" frameborder="0"></iframe>
-							</div>
-						);
-					}
+					if (node.data.target.sys.contentType.sys.id === "inlineSpotifyEmbed")
+						<SpotifyEmbed node={node}/>
+					else if (node.data.target.sys.contentType.sys.id === "youtubeEmbed")
+						<YoutubeEmbed node={node}/>
 				},
 			},
 		};
 
 		const requiredHead = [
-			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>,
-			<div id="fb-root"></div>,
-			<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" nonce="9bOR49xF"></script>,
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8" key="twitter-widget"></script>,
+			<div id="fb-root" key="fb-root"></div>,
+			<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" nonce="9bOR49xF" key="facebook-widget"></script>,
 		]
 
 		return (
