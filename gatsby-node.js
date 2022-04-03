@@ -9,7 +9,8 @@ exports.createPages = ({ graphql, actions }) => {
     const pageTemplate = path.resolve('./src/templates/page.js')
     const storeItemTemplate = path.resolve('./src/templates/store-item.js')
     const chapterTemplate = path.resolve('./src/templates/chapter.js')
-
+    const episodeTemplate = path.resolve('./src/templates/episode.js')
+      
     resolve(
       graphql(
         `
@@ -36,6 +37,13 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
             allContentfulBtoChapter {
+              edges {
+                node {
+                  slug
+                }
+              }
+            }
+            allContentfulPodcast(filter: {podcastSeries: {eq: "Beyond the Blankets"}}) {
               edges {
                 node {
                   slug
@@ -90,6 +98,17 @@ exports.createPages = ({ graphql, actions }) => {
             component: chapterTemplate,
             context: {
               slug: chapter.node.slug
+            },
+          })
+        })
+
+        const episodes = result.data.allContentfulPodcast.edges 
+        episodes.forEach((episode) => {
+          createPage({
+            path: `/podcasts/beyond-the-blankets/${episode.node.slug}/`,
+            component: episodeTemplate,
+            context: {
+              slug: episode.node.slug
             },
           })
         })

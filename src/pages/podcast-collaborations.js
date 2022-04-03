@@ -18,7 +18,7 @@ class PodcastCollaborations extends React.Component {
         const headerSubtitle = 'View podcasts featuring guest appearances of some of our members.'
         const headerTitle = 'Podcast Collaborations'
 
-        const podcasts = get(this, 'props.data.allContentfulPodcast.nodes')
+        const podcasts = get(this, 'props.data.allContentfulPodcastCollaboration.nodes')
         
 		const options = {
 			renderNode: {
@@ -79,7 +79,7 @@ export const podcastCollaborationsQuery = graphql`
 				}
 			}
 		}
-        allContentfulPodcast(filter: {podcastSeries: {ne: "Beyond the Blankets"}}) {
+        allContentfulPodcastCollaboration {
             nodes {
                 episodeName
                 richDescription {

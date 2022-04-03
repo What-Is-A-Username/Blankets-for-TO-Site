@@ -10,6 +10,8 @@ import HeaderImage from '../components/header-image'
 import SquareGrid from '../components/layouts/square-grid'
 import SpotifyEmbed from '../components/blog_embeds/spotify-embed'
 import YoutubeEmbed from '../components/blog_embeds/youtube-embed'
+import StyledButton from '../components/styled-button'
+import PodcastCard from '../components/podcasts/podcast-card'
 
 class Podcasts extends React.Component {
 	render() {
@@ -39,12 +41,6 @@ class Podcasts extends React.Component {
 						}}
 						alt={fields.description}
 					/>,
-                [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-                    if (node.data.target.sys.contentType.sys.id === "inlineSpotifyEmbed")
-                        return <SpotifyEmbed node={node}/>
-                    else if (node.data.target.sys.contentType.sys.id === "youtubeEmbed")
-                        return <YoutubeEmbed node={node}/>
-                }, 
 			},
 		};
 
@@ -55,22 +51,8 @@ class Podcasts extends React.Component {
 				<div className="white-background">
                     <HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
-                        <h1 className={styles.title}>Beyond the Blankets will be published soon.</h1>
-                        <p>Sorry, the first episode of Beyond the Blankets has not been published yet. Please check back later. Follow our social media feeds to get notified of when episodes are published. Thank you for your patience.</p>
-                        {/* {
-                            podcasts.map( x => 
-                                {
-                                    return(
-                                        <React.Fragment>
-                                            <h1 className={styles.podcastTitle}>{x.episodeName}</h1>
-                                            <div className='richText'>
-                                                {x.richDescription.json !== undefined ? documentToReactComponents(x.richDescription.json, options) : <p>Error: Articles not found.</p>}
-                                            </div>
-                                        </React.Fragment>
-                                    )
-                                }
-                            )
-                        } */}
+						<h1 className={styles.title}>Beyond the Blankets: The Official Podcast by Blankets for T.O.</h1>
+                        {podcasts.map( x => <PodcastCard podcast={x}/>)}
                         <h1 className={styles.title}>Other Podcasts</h1>
                         <SquareGrid content={collaborationContent}/>
 					</div>
@@ -96,13 +78,18 @@ export const podcastQuery = graphql`
 				}
 			}
 		}
-        allContentfulPodcast(filter: {podcastSeries: {eq: "Beyond the Blankets"}}) {
+        allContentfulPodcast(sort: {order: ASC, fields: episodeNumber}, filter: {podcastSeries: {eq: "Beyond the Blankets"}}) {
             nodes {
+                slug
                 episodeName
+				episodeNumber
                 richDescription {
                     json
                 }
                 publishDate
+                spotifyEpisode {
+                    link
+                }
             }
         }
 	}

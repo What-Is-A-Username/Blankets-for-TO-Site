@@ -89,17 +89,28 @@
     margin: 0 5px;
 }
 
-.linkCopyButton, .facebookShareButton, .twitterShareButton 
+.linkIcon, .linkCopyButton, .facebookShareButton, .twitterShareButton 
 {
     text-decoration: none;
     display: flex;
     align-content: center;
+    align-items: center;
 }
 
-.linkCopyButton
+.linkCopyButton, .linkIcon
 {
     margin: 0 5px; 
     align-items: center;
+}
+
+.linkCopyButton:hover svg
+{
+    transform: scale(1.2) !important;
+}
+
+.linkField
+{
+    cursor: pointer;
 }
 
 .facebookShareButton > svg, .twitterShareButton > svg
