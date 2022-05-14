@@ -3,3 +3,39 @@
     color: var(--light_red);
     margin-bottom: 0px;
 }
+
+.transcriptInvisible 
+{
+    height: 200px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0), rgb(0, 0, 0));
+  color: transparent;
+  overflow: hidden;
+  background-clip: text;
+}
+
+.expandTranscriptParent 
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.expandTranscript
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.expandTranscript:hover 
+{
+    color: var(--dark_red);
+}
+
+.expandTranscript p 
+{
+    font-size: 18px;
+}
+

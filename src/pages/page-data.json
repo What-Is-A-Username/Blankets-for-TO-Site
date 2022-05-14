@@ -45,18 +45,7 @@
         
         {
             "to": "/positions",
-            "desc": "Join", 
-            "children": 
-            [
-                { 
-                    "to": "/positions", 
-                    "desc": "Membership" 
-                }, 
-                {
-                    "to": "/rewards", 
-                    "desc": "Member Rewards" 
-                }
-            ]
+            "desc": "Join"
         },
         {
             "to": "/awards",

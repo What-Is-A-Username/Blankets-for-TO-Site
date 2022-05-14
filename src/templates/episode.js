@@ -13,13 +13,23 @@ import SpotifyEmbed from '../components/blog_embeds/spotify-embed'
 import blogStyles from './blog-post.module.css'
 import styles from './episode.module.css'
 import BackArrow from '../components/back-arrow'
+import { ChevronDown, ChevronUp } from 'react-feather'
 
 class EpisodeTemplate extends React.Component {
 
 	state = { transcriptVisible: false }
 
+	toggleTranscript = () => {
+		this.setState({transcriptVisible: !this.state.transcriptVisible})
+	}
+
 	render() {
 
+		const requiredHead = [
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8" key="twitter-widget"></script>,
+			<div id="fb-root" key="fb-root"></div>,
+			<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" nonce="9bOR49xF" key="facebook-widget"></script>,
+		]
 		const episode = get(this.props, 'data.contentfulPodcast')
 
 		return (
@@ -28,10 +38,12 @@ class EpisodeTemplate extends React.Component {
 					<SEO
 						title={episode.episodeName}
 						metaType='article'
+						childElements={requiredHead}
 						description={episode.shortDescription.shortDescription}
 						doNotCrawl
 					/>
 					<div className="wrapper">
+						<BackArrow text='Browse all episodes' link='/podcasts'/>
 						<h1 className={blogStyles.title}>{`Episode ${episode.episodeNumber}: ${episode.episodeName}`}</h1>
 						<p className={blogStyles.publishDate}>{episode.publishDate}</p>
 						<div className={'richText ' + blogStyles.bodyParent}>
@@ -47,12 +59,35 @@ class EpisodeTemplate extends React.Component {
 								{episode.richTextResources != null ? documentToReactComponents(episode.richTextResources.json) : <p>Error: Episode description not found.</p>}
 							</div>
 						</div>
-						<h3 className={styles.subtitle}>Transcript</h3>
-						<div className={'richText'}>
-							<div className={blogStyles.body}>
-								{episode.richTextTranscript != null ? documentToReactComponents(episode.richTextTranscript.json) : <p>Error: Episode description not found.</p>}
-							</div>
-						</div>
+						<LinkSharing location={`https://blanketsforto.ca/podcasts/beyond-the-blankets/${episode.slug}`}/>
+						{
+							episode.showTranscript ?
+							<React.Fragment>
+								<h3 className={styles.subtitle}>Transcript</h3>
+								{
+									this.state.transcriptVisible && 
+									<div className={styles.expandTranscriptParent}>
+										<div className={styles.expandTranscript} onClick={() => this.toggleTranscript()}>
+											<p>Hide transcript</p>
+											<ChevronUp/>
+										</div>
+									</div>
+								}
+								<div className={'richText' + ' ' + (this.state.transcriptVisible ? styles.transcriptVisible : styles.transcriptInvisible)} >
+									<div className={blogStyles.body}>
+										{episode.richTextTranscript != null ? documentToReactComponents(episode.richTextTranscript.json) : <p>Error: Episode description not found.</p>}
+									</div>
+								</div>
+								<div className={styles.expandTranscriptParent}>
+									<div className={styles.expandTranscript} onClick={() => this.toggleTranscript()}>
+										<p>{this.state.transcriptVisible ? "Hide transcript" : "Read more"}</p>
+										{this.state.transcriptVisible ? <ChevronUp/> : <ChevronDown/>}
+									</div>
+								</div>
+							</React.Fragment>
+							:
+							null
+						}
 						<BackArrow text='Browse all episodes' link='/podcasts'/>
 					</div>
 				</div>
