@@ -15,11 +15,14 @@ import { BlogTagBar } from '../components/blog_search/tag'
 import CaptionedFigure from '../components/blog_embeds/captioned-figure'
 import SpotifyEmbed from '../components/blog_embeds/spotify-embed'
 import YoutubeEmbed from '../components/blog_embeds/youtube-embed'
+import QuestionEmbed from '../components/blog_embeds/question'
+import GalleryEmbed from '../components/blog_embeds/gallery'
 
 class BlogPostTemplate extends React.Component {
 
 	render() {
 		const post = get(this.props, 'data.contentfulBlogPost')
+		const imageGalleries = get(this.props, 'data.allContentfulGalleryEmbed.nodes')
 
 		const options = {
 			renderNode: {
@@ -32,6 +35,16 @@ class BlogPostTemplate extends React.Component {
 						<SpotifyEmbed node={node}/>
 					else if (node.data.target.sys.contentType.sys.id === "youtubeEmbed")
 						<YoutubeEmbed node={node}/>
+					else if (node.data.target.sys.contentType.sys.id === "embeddedQuestion")
+						return(<QuestionEmbed node={node}/>)
+					else if (node.data.target.sys.contentType.sys.id === "gallery")
+					{
+						var title = node.data.target.fields.galleryTitle['en-US']
+						if (imageGalleries.length === 0)
+							return(null)
+						else 
+							return(<GalleryEmbed node={imageGalleries.find(x => x.galleryTitle === title)}/>)
+					}
 				},
 			},
 		};
@@ -106,6 +119,25 @@ export const pageQuery = graphql`
 				}
 			}
 			previewOnly
+		}
+		allContentfulGalleryEmbed(filter: {blogPage: {elemMatch: {slug: {eq: $slug}}}}) {
+			nodes {
+			  	galleryTitle
+			  	thumbs : images {
+					fluid(maxWidth: 200, maxHeight: 200, resizingBehavior: PAD, quality: 100) {
+						...GatsbyContentfulFluid_tracedSVG
+					}
+				}
+			  	images {
+					fluid(maxWidth: 1000, quality: 50) {
+					...GatsbyContentfulFluid_tracedSVG
+					}
+			  	}
+				displayTitle
+				displayDescription {
+					displayDescription
+				}
+			}
 		}
 	}
 `

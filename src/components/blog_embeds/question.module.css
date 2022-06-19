@@ -1,0 +1,88 @@
+.container 
+{
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    padding: 5px 30px;
+}
+
+.title 
+{
+    margin: 5px 0; 
+    font-size: 1.0em;
+    color: var(--dark_turq)
+}
+
+.question
+{
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+
+
+.option > p
+{
+    margin: 0 10px;
+}
+
+.checkContainer 
+{
+    display: flex;
+}
+
+@media (min-width: 500px)
+{
+    .checkContainer
+    {
+        justify-content: right;
+    }
+}
+
+@media (max-width: 500px)
+{
+    .checkContainer
+    {
+        justify-content: center;
+    }
+}
+
+.checkSelected 
+{
+    cursor: pointer;
+}
+
+.checkUnselected, .checkSelected 
+{
+    background-color: var(--dark_turq);
+	border: none;
+	color: white;
+	border-radius: 5px;
+	font-size: 16px;
+    padding: 5px 20px;
+}
+
+.correctOption 
+{
+    color: green
+}
+
+.incorrectOption 
+{
+    color: red;
+}
+
+.correctMessage, .incorrectMessage
+{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.correctMessage > p, .correctMessage svg
+{
+    color: green;
+}
+
+.incorrectMessage > p, .incorrectMessage svg
+{
+    color: red;
+}

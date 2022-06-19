@@ -1,0 +1,129 @@
+.galleryContainer
+{
+    padding: 30px 10px;
+}
+
+.title
+{
+    margin: 0;
+}
+
+.description 
+{
+    margin: 5px 0;
+}
+
+.thumbs 
+{
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 100%;
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+.thumb 
+{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.thumb:hover picture img 
+{
+    transform: scale(1.2) !important;
+}
+
+.thumb picture img
+{
+    transition: transform 0.3s ease !important;
+}
+
+.popup 
+{
+    background-color: rgba(47, 47, 47, 0.349);
+    position: fixed;
+    max-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popupBackground 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.popupContent 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.leftArrow, .rightArrow
+{
+    cursor: pointer;
+    position: absolute;
+}
+
+.leftArrow:hover, .rightArrow:hover, .popupExit:hover
+{
+    color: var(--dark_red);
+    cursor: pointer;
+}
+
+.leftArrow 
+{ 
+    --size: 50px; 
+    --offset: 10px; 
+    width: var(--size); 
+    height: var(--size); 
+    top: calc(50% - 0.5 * var(--size)); 
+    left: var(--offset); 
+}
+
+.rightArrow 
+{ 
+    --size: 50px; --offset: 10px; 
+    width: var(--size); 
+    height: var(--size);
+    top: calc(50% - 0.5 * var(--size)); 
+    left: calc(100% - var(--size) - var(--offset));
+}
+
+.popupExit 
+{
+    --size: 50px;
+    width: var(--size);
+    height: var(--size);
+    color: var(--light_red);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.popupimage 
+{
+    width: 760px;
+}
+
+.popupimage, .popupimage div, .popupimage img
+{
+    position: relative;
+    max-width: 100vw;
+    
+    max-height: 100vh;
+}

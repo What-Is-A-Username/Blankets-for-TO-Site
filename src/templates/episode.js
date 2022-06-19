@@ -1,11 +1,9 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import SEO from '../components/SEO'
 import get from 'lodash/get'
 import Layout from '../components/layout'
 import LinkSharing from '../components/link-sharing'
-
-import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import SpotifyEmbed from '../components/blog_embeds/spotify-embed'
@@ -92,7 +90,6 @@ class EpisodeTemplate extends React.Component {
 					</div>
 				</div>
 			</Layout>
-
 		)
 	}
 }

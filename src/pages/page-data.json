@@ -42,7 +42,6 @@
                 }
             ]
         },
-        
         {
             "to": "/positions",
             "desc": "Join"

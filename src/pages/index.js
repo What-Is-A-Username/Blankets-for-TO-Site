@@ -49,7 +49,7 @@ class RootIndex extends React.Component {
 										Eradicating homelessness through action
 									</h2>
 									<p>
-										Founded in 2019 at the University of Toronto Scarborough, we are a non-profit organization addressing homelessness through advocacy, engagement and action across Ontario. 
+										Founded in 2019 at the University of Toronto Scarborough, we are an organization addressing homelessness through advocacy, engagement and action across Ontario. 
 									</p>
 								</div>
 							</Fade>
@@ -74,7 +74,12 @@ class RootIndex extends React.Component {
 
 					{/* Donation counter */}
 					<ScreenContainer id='donation-counter'>
-						<StatsHighlight donationItemCount={organizationBlurb.donationItemCount}/>
+						<div className={styles.donationColumn} >
+							<StatsHighlight donationItemCount={organizationBlurb.donationItemCount}/>
+							<div className={styles.btnRow}>	
+								<StyledButton link='/donate' buttonText='Make a donation today'/>
+							</div>
+						</div>
 					</ScreenContainer>
 
 					<div className={styles.mapContainer} id='donation-map'>
@@ -91,6 +96,7 @@ class RootIndex extends React.Component {
 							<OrganizationMap mapLocations={mapLocations}/> 
 						</div>
 					</div>
+					
 					{/* Updates */}
 					<ScreenContainer id='articles'>
 						<Fade>

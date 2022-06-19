@@ -241,3 +241,14 @@
         margin: 10px;
     }
 }
+
+.donationColumn 
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.donationColumn > div 
+{
+    padding: 15px;
+}
