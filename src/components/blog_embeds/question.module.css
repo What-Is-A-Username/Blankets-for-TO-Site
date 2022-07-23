@@ -50,6 +50,11 @@
     cursor: pointer;
 }
 
+.checkUnselected 
+{
+    opacity: 0;
+}
+
 .checkUnselected, .checkSelected 
 {
     background-color: var(--dark_turq);

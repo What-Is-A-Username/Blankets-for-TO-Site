@@ -1,6 +1,6 @@
 import React from 'react'
-import Img from 'gatsby-image'
-import styles from './member.module.css'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import * as styles from './member.module.css'
 import emailImage from '../images/email.svg'
 import twitterImage from '../images/twitter.svg'
 import facebookImage from '../images/facebook.svg'
@@ -23,7 +23,7 @@ export default ({ data }) => {
         <div style={{height:"100%"}}>
         {data.photo === null ? 
         <img className={styles.memberPortrait} src={placeholderPortrait} alt="Placeholder portrait."></img> : 
-        <Img className={styles.memberPortrait} fluid={data.photo.fluid} alt={`Portrait of ${data.name} (${data.title})`}/> }
+        <GatsbyImage className={styles.memberPortrait} image={data.photo.gatsbyImageData} alt={`Portrait of ${data.name} (${data.title})`}/> }
         </div>
         
         <div className={styles.memberInformation}>

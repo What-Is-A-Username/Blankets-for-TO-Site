@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './popup.module.css'
+import * as styles from './popup.module.css'
 
 export default class Popup extends React.Component {
 

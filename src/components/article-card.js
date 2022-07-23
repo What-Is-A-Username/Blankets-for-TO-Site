@@ -1,17 +1,16 @@
 import React from 'react'
-import { navigate } from 'gatsby'
-import Img from 'gatsby-image'
-import styles from './article-preview.module.css'
-import Fade from 'react-reveal/Fade'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import Animation from '../components/animate/animation';
+import * as styles from './article-preview.module.css'
 
 const ArticleCard = ({article, index}) => {
 	return (
-		<Fade delay={500*index} >
-			<a onClick={() => navigate(`/blog/${article.slug}`)} className={styles.alink} key={article.title}>
+		<a href={`/blog/${article.slug}`} className={styles.alink} key={article.title}>
+				<Animation fade animationDelay={700 * index} style={{maxWidth: '300px'}} className={styles.alink}>
 				<div className={styles.preview}>
 					<div className={styles.previewImage}>
 						{article.imagePreview != null ?
-							<Img fluid={article.imagePreview.fluid} alt={article.imagePreview.description} />
+							<GatsbyImage image={article.imagePreview.gatsbyImageData} alt={article.imagePreview.description} />
 							:
 							null}
 					</div>
@@ -21,8 +20,8 @@ const ArticleCard = ({article, index}) => {
 						<small className={styles.previewPublishDate}>{article.publishDate}</small>
 					</div>
 				</div>
+		</Animation>
 			</a>
-		</Fade>
     )
 }
 

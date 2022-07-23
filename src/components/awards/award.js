@@ -1,9 +1,7 @@
 import React from 'react' 
-import PropTypes from 'prop-types'
-import Fade from 'react-reveal/Fade'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
-import styles from '../awards/award.module.css'
+import * as styles from '../awards/award.module.css'
 
 const Award = ({awardData}) => {
     const { awardName, image, date } = awardData;
@@ -12,9 +10,8 @@ const Award = ({awardData}) => {
     return(
         <div className={styles.parentContainer}>
             <div className={styles.awardContainer}>
-            {/* <Img fluid={image.fluid}></Img> */}
                 <div className={styles.image}>
-                    <Img fluid={image.fluid} alt={awardName}></Img>
+                    <GatsbyImage image={image.gatsbyImageData} alt={awardName}/>
                 </div>
                 <div className={'richText ' + styles.infoContainer}>
                     <h3>{awardName}</h3>
@@ -24,10 +21,6 @@ const Award = ({awardData}) => {
             </div>
         </div>
     )
-}
-
-Award.propTypes = {
-    
 }
 
 export default Award;

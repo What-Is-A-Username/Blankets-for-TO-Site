@@ -1,7 +1,7 @@
 import React, { setState } from 'react'
 import PropTypes from "prop-types" 
 
-import styles from './link-sharing.module.css'
+import * as styles from './link-sharing.module.css'
 import { Check, Copy, Facebook, Link, Twitter } from 'react-feather'
 
 class LinkSharing extends React.Component {

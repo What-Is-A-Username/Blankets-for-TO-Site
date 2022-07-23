@@ -1,6 +1,6 @@
 import React from 'react'
-import Img from 'gatsby-image'
-import styles from './store-item-preview.module.css'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import * as styles from './store-item-preview.module.css'
 
 const StoreItemPreview = ({storeitem}) => {
 	return (
@@ -8,7 +8,7 @@ const StoreItemPreview = ({storeitem}) => {
 			<div className={styles.preview}>
 				<div className={styles.previewImage}>
 					{storeitem.mainPreview != null ?
-						<Img fluid={storeitem.mainPreview.fluid} alt={storeitem.mainPreview.description} />
+						<GatsbyImage image={storeitem.mainPreview.gatsbyImageData} alt={storeitem.mainPreview.description} />
 						:
 						null}
 				</div>

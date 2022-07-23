@@ -1,17 +1,17 @@
 import React from 'react'
-import Img from 'gatsby-image'
-import styles from './square-grid.module.css'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import * as styles from './square-grid.module.css'
 import { ChevronRight } from 'react-feather'
 import PropTypes from 'prop-types'
 
 const SquareGridItem = ({itemData}) => 
 {
-    const { title, description, link, fluid } = itemData 
+    const { title, description, link, gatsbyImageData } = itemData 
 
     return(
         <div className={styles.tile} key={title}>
             <div className={styles.imageOverlay}>
-                <Img fluid={fluid} style={{width: "100%", height: "100%"}}/>
+                <GatsbyImage image={gatsbyImageData} style={{width: "100%", height: "100%"}} alt={`Image preview of ${title}`}/>
             </div>
             <div className={styles.textBox}>
                 <h1 className={styles.title}>{title}<ChevronRight/></h1>
@@ -23,14 +23,12 @@ const SquareGridItem = ({itemData}) =>
 }
 
 SquareGridItem.propTypes = {
-    itemData: PropTypes.arrayOf(
-        PropTypes.shape({
+    itemData: PropTypes.shape({
                 title: PropTypes.string.isRequired,
                 description: PropTypes.string,
                 link: PropTypes.string.isRequired,
-                fluid: PropTypes.any,
-        })
-    ).isRequired
+                gatsbyImageData: PropTypes.any,
+        }).isRequired
 }
 
 export default SquareGridItem

@@ -1,14 +1,10 @@
 import React from 'react'
-import { Link, StaticQuery, graphql, navigate } from 'gatsby'
-import Img from 'gatsby-image'
-import styles from './article-preview.module.css'
-import { BlogTagBar } from './blog_search/tag'
+import { StaticQuery, graphql } from 'gatsby'
+import * as styles from './article-preview.module.css'
 import PropTypes from 'prop-types'
-import Fade from 'react-reveal/Fade'
-import Bounce from 'react-reveal/Bounce'
 import StyledButton from './styled-button'
 import ArticleCard from './article-card' 
-
+import Animation from '../components/animate/animation'
 
 const renderFunc = (articles, excludeSlug) => {
 
@@ -21,10 +17,9 @@ const renderFunc = (articles, excludeSlug) => {
 
 	return (
 		<div className={styles.updates}>
-			<Bounce left>
-				<h2>Keep updated with our latest articles</h2>
-			</Bounce>
-			<Fade>
+			<Animation bounce left>
+				<h2 className={styles.title}>Keep updated with our latest articles</h2>
+			</Animation>
 			<div className={styles.previewParent}>
 				{articles.map((article, index) => {
 					return (
@@ -34,10 +29,9 @@ const renderFunc = (articles, excludeSlug) => {
 					)
 				})}
 			</div>
-			</Fade>
-			<Fade delay={500}>
+			<Animation fade animationDelay={500}>
 				<StyledButton buttonText='Browse all updates' link='/blog'/>
-			</Fade>
+			</Animation>
 		</div>)
 }
 
@@ -62,9 +56,10 @@ export const ArticlePreview = ({excludeSlug}) => {
 									articleType
 									tags
 									imagePreview {
-										fluid(maxHeight: 400, maxWidth: 400, resizingBehavior: PAD) {
-											...GatsbyContentfulFluid_tracedSVG
-										}
+										gatsbyImageData(
+											layout: FULL_WIDTH
+											placeholder: BLURRED
+										)
 										description
 									}
 								}

@@ -3,17 +3,15 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Layout from '../components/layout'
 import SEO from '../components/SEO'
-import styles from '../page-styles/positions.module.css'
-import Fade from 'react-reveal/Fade'
+import * as styles from '../page-styles/positions.module.css'
 import Award from '../components/awards/award'
 import HeaderImage from '../components/header-image'
+import Animation from '../components/animate/animation'
 
 export default class Awards extends React.Component {
 
-    state = { reveal: false}
-
 	render() {
-        const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
+        const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
         const headerSubtitle = ''
         const headerTitle = 'Awards and Recognition'
         
@@ -28,15 +26,18 @@ export default class Awards extends React.Component {
                     <HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
 						<div className={styles.membershipInfo}>
-                            <Fade delay={500}>
-							    <p style={{paddingBottom: '30px'}}>{intro}</p>
-						    </Fade>
+                            <Animation fade animationDelay={500}>
+							    <div className='richText'>
+                                    <p style={{paddingBottom: '30px'}}>{intro}</p>
+                                </div>
+                            </Animation>
 							{
                                 awardData.map((award) => {
                                     return(
-                                    <Fade delay={this.state.reveal ? 200 : 500} duration={300}>
-                                       <Award awardData={award}></Award>
-                                    </Fade>)
+                                       <Animation fade animationDelay={300}>
+                                           <Award awardData={award}/>
+                                       </Animation>
+                                       )
                                 })
                             }
 						</div>
@@ -52,13 +53,10 @@ query AwardQuery {
     allContentfulHeaderImage(filter: {pageName: {eq: "Awards"}}, limit: 1) {
         nodes {
             image {
-                fluid(
-                    resizingBehavior: FILL
-                    quality: 100
-                    maxWidth: 4000
-                ) {
-                    ...GatsbyContentfulFluid_tracedSVG
-                }
+                gatsbyImageData(
+                    layout: FULL_WIDTH
+                    placeholder: BLURRED
+                )
             }
         }
     }
@@ -70,9 +68,10 @@ query AwardQuery {
             description
         } 
         image {
-            fluid(maxWidth: 400, resizingBehavior: SCALE, quality: 100) {
-                ...GatsbyContentfulFluid_tracedSVG
-            }
+            gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+            )
         }
       }
     }

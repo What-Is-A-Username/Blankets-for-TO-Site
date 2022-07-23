@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import StyledButton from '../styled-button'
 
-import styles from './contact-box.module.css'
+import * as styles from './contact-box.module.css'
 
 export default (props) => {
 

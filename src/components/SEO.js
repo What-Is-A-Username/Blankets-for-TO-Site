@@ -93,11 +93,11 @@ class SEO extends React.Component {
 			{doNotCrawl && <meta name="robots" content="noindex"/>}
 			{doNotCrawl && <meta name="googlebot" content="noindex"/>}
 
-			<script
+			{/* <script
 				type="text/javascript"
 				src="https://app.termly.io/embed.min.js"
 				data-website-uuid="01a08857-e482-4377-85cd-f142d9dba419"
-			></script>
+			></script> */}
 
 			{/* JQuery */}
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>

@@ -6,101 +6,133 @@ import ArticleEntry from '../components/blog-list'
 import SEO from '../components/SEO'
 import QueryString from 'query-string'
 import { SearchTools } from '../components/blog_search/tag'
-import styles from '../page-styles/blog.module.css'
-import { clamp, filter, range } from 'lodash'
-import { ceil } from 'lodash'
+import * as styles from '../page-styles/blog.module.css'
+import _, { clamp, ceil } from 'lodash'
 import PageControls from '../components/blog_search/page-controls'
-import Fade from 'react-reveal/Fade'
 import HeaderImage from '../components/header-image'
 
 class BlogIndex extends React.Component {
-	render() {
 
-		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
+	constructor(props) {
+		super(props)
+		
+		this.sortSettings = ['recent', 'oldest', 'titleaz', 'titleza']
+
+		var searchParams = QueryString.parse(get(this, 'props.location.search'));
+		
+		// validate all tags
+		this.posts = get(this, 'props.data.allContentfulBlogPost.edges')
+		// get a list of unique tags
+		this.uniqueTags = this.posts.map(post => post.node.tags === null ? [] : post.node.tags).flat().filter((t, i, s) => s.indexOf(t) === i);
+
+		if (_.has(searchParams, 'tags') && _.isArray(searchParams.tags)) {
+			searchParams.tags = searchParams.tags.filter(tag => this.uniqueTags.includes(tag))
+		} else {
+			searchParams.tags = []
+		}
+		if (!_.has(searchParams, 'sort') || !_.isString(searchParams.sort) || !(searchParams.sort in this.sortSettings)) {
+			searchParams.sort = this.sortSettings[0]
+		}
+		if (_.has(searchParams, 'page') && _.isInteger(searchParams.page)) {
+			searchParams.page = _.parseInt(searchParams.page, 10)
+		} else {
+			searchParams.page = 1
+		}
+
+		// bind event handlers
+		this.meetsFilter = this.meetsFilter.bind(this)
+		this.comparePosts = this.comparePosts.bind(this)
+		this.onClickTag = this.onClickTag.bind(this)
+		this.onSelect = this.onSelect.bind(this)
+		
+		// set ref to scroll to
+		this.scrollRef = React.createRef()
+
+		this.state = searchParams
+
+		// update the page url if anything was invalid
+		let new_query = `/blog/?${QueryString.stringify({ tags: this.state.tags, sort: this.state.sort, page: this.state.page }, { arrayFormat: 'comma' })}`;
+		if (typeof window !== 'undefined')
+			window.history.replaceState({}, '', new_query);
+
+	}
+
+	componentDidUpdate() {
+		let new_query = `/blog/?${QueryString.stringify({ tags: this.state.tags, sort: this.state.sort, page: this.state.page }, { arrayFormat: 'comma' })}`;
+		if (typeof window !== 'undefined') {
+			window.history.replaceState({}, '', new_query);
+			this.scrollRef.current.scrollIntoView()
+		}
+	}
+
+	// determine whether the post meets the tag filter
+	meetsFilter(post) {
+		if (this.state.tags.length === 0) return true;
+		if (post.tags === null) return false;
+		for (var i = 0; i < this.state.tags.length; i++)
+			if (!post.tags.includes(this.state.tags[i])) return false;
+		return true;
+	}
+		
+	// sort the posts by their title name or date depending on current settings
+	comparePosts(a, b) {
+		a = a.node; b = b.node;
+		if (this.state.sort === 'recent')
+			return b.publishDateValue.localeCompare(a.publishDateValue);
+		else if (this.state.sort === 'oldest')
+			return a.publishDateValue.localeCompare(b.publishDateValue);
+		if (this.state.sort === 'titleaz')
+			return a.title.localeCompare(b.title);
+		else if (this.state.sort === 'titleza')
+			return b.title.localeCompare(a.title);
+		else
+			return 0;
+	}
+
+	// on post tag click
+	onClickTag(clicked) {
+		if (this.state.tags.includes(clicked)) {
+			this.setState({tags: this.state.tags.filter(old_tag => old_tag !== clicked)})
+		} else {
+			this.setState({tags: [...this.state.tags, clicked]})
+		}
+	}
+
+	// change sorting method
+	onSelect(event) {
+		this.setState({sort: event.target.value, page: 1})
+	}
+
+	// update the url with the current state parameters, without reloading the page
+	updateQuery() {
+		let new_query = `/blog/?${QueryString.stringify({ tags: this.state.tags, sort: this.state.sort, page: this.current_page }, { arrayFormat: 'comma' })}`;
+		if (typeof window !== 'undefined')
+			window.history.replaceState({}, '', new_query); 
+	}
+
+	onPageClick = (newPage) => {
+		this.setState({page: newPage})
+	}
+
+	render() {
+		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
         const headerSubtitle = ''
         const headerTitle = 'Blankets for T.O. Blog'
-
-		const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-		let filteredPosts = [] 
-		let visiblePosts = []
-		const searchQuery = get(this, 'props.location.search');
-		const searchParams = QueryString.parse(searchQuery);
-		const postsPerPage = 10;
-		let numberOfPages = 1;
-
-		var allTags = []
-		posts.forEach(post => allTags = allTags.concat(post.node.tags));
-		const uniqueTags = allTags.filter((t, i, s) => s.indexOf(t) === i);
-
-		if (searchParams['tags'] === undefined) searchParams['tags'] = [];
-		else if (typeof (searchParams['tags']) === 'string') searchParams['tags'] = [searchParams['tags']]
-		if (searchParams['sort'] === undefined || typeof (searchParams['sort']) !== 'string') searchParams['sort'] = 'recent';
-		searchParams.tags = searchParams.tags.filter(tag => uniqueTags.includes(tag));
-		if (searchParams['page'] === undefined || typeof (searchParams['page']) !== 'string') searchParams['page'] = "1"; 
-		searchParams.page = parseInt(searchParams.page); 
-
-		const meetsFilter = (post) => {
-			if (searchParams.tags.length == 0) return true;
-			for (var i = 0; i < searchParams.tags.length; i++)
-				if (!post.tags.includes(searchParams.tags[i])) return false;
-			return true;
-		}
-
-		const comparePosts = (a, b) => {
-			a = a.node; b = b.node;
-			if (searchParams.sort === 'recent')
-				return b.publishDateValue.localeCompare(a.publishDateValue);
-			else if (searchParams.sort === 'oldest')
-				return a.publishDateValue.localeCompare(b.publishDateValue);
-			if (searchParams.sort === 'titleaz')
-				return a.title.localeCompare(b.title);
-			else if (searchParams.sort === 'titleza')
-				return b.title.localeCompare(a.title);
-			else
-				return 0;
-		}
-
-		const filterPages = (filteredAndSortedPosts) => {
-			return filteredAndSortedPosts.filter((node, index) => node !== undefined && (searchParams.page-1) * postsPerPage <= index && index < (searchParams.page) * postsPerPage)
-		}
-
-		const filterAndSort = (allPosts) => {
-			return allPosts.filter(({ node }) => meetsFilter(node)).sort(comparePosts);
-		}
-
-		const navigateToQuery = () => {
-			let new_query = `/blog/` + "?" + QueryString.stringify({ tags: searchParams.tags, sort: searchParams.sort, page: searchParams.page }, { arrayFormat: 'comma' });
-			navigate(new_query);
-		}
-
-		// on change sorting method
-		const onSelect = (data) => {
-			searchParams.sort = data.value;
-			navigateToQuery(); 
-		}
-
-		// on post tag click
-		const onClickTag = (clicked) => {
-			if (searchParams.tags.includes(clicked)) // if unselecting 
-				searchParams.tags = searchParams.tags.filter(tag => (tag != clicked));
-			else
-				searchParams.tags.push(clicked);
-			navigateToQuery(); 
-		}
-
-		const onPageClick = (newPage) => {
-			searchParams.page = newPage;
-			navigateToQuery(); 
-		}
-
-		filteredPosts = filterAndSort(posts);
-		numberOfPages = ceil((filteredPosts.length)/postsPerPage);
-		searchParams.page = clamp(searchParams.page, 1, numberOfPages); 		
-		visiblePosts = filterPages(filteredPosts); 
 		
-		return (
+		// sort and filter posts
+		var visiblePosts = this.posts;
+		visiblePosts = this.posts.filter(({ node }) => this.meetsFilter(node))
+		visiblePosts = visiblePosts.sort(this.comparePosts)
+		
+		// calculate the pages to display
+		const postsPerPage = 10
+		const numberOfPages = ceil((visiblePosts.length / postsPerPage))
+		var current_page = clamp(this.state.page, 1, numberOfPages)
+		var pagePosts = visiblePosts.filter((n, index) => index >= (current_page - 1) * postsPerPage && index < current_page * postsPerPage)
+		
+		return(
 			<Layout location={this.props.location}>
-				<SEO title='Updates and Blog'
+	 			<SEO title='Updates and Blog'
 					description='Browse articles published by Blankets for T.O., including summaries of past events and informational articles about homelessness.'/>
 				<div className="white-background">
 					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
@@ -110,27 +142,21 @@ class BlogIndex extends React.Component {
 								Welcome to the Blankets for T.O blog, where we post updates on our recent and upcoming events as well as original articles educating the public about homelessness.
 							</p>
 						</div>
-						<Fade delay={400}>		
-							<SearchTools onDropdownChange={onSelect} dropdownPlaceholder={searchParams.sort} tags={uniqueTags} clickTagFunc={onClickTag} activeTags={searchParams.tags} />
-						</Fade>
-						{numberOfPages == 0 && <div>No results match your filter query.</div>}
-						<Fade delay={500}>
-							<PageControls numPages={numberOfPages} onPageClick={onPageClick} currentPage={searchParams.page}/>
-						</Fade>	
+						<div ref={this.scrollRef}>
+							<SearchTools onDropdownChange={this.onSelect} dropdownPlaceholder={this.state.sort} tags={this.uniqueTags} clickTagFunc={this.onClickTag} activeTags={this.state.tags} />
+							{numberOfPages === 0 && <div>No results match your filter query.</div>}
+							<PageControls numPages={numberOfPages} onPageClick={this.onPageClick} currentPage={current_page}/>
 							<div className={styles.blog_list}>
-								{visiblePosts.map(({node}, i) => {
+								{pagePosts.map(({node}, i) => {
 									return (
-										<Fade delay={i == 0 ? 500 : 200}>
-											<div key={node.slug}>
-												<ArticleEntry article={node} />
-											</div>
-										</Fade>
+										<div key={node.slug}>
+											<ArticleEntry article={node} />
+										</div>
 									)
 								})}
 							</div>
-						<Fade delay={500}>
-							<PageControls numPages={numberOfPages} onPageClick={onPageClick} currentPage={searchParams.page}/>
-						</Fade>
+							<PageControls numPages={numberOfPages} onPageClick={this.onPageClick} currentPage={current_page}/>
+						</div>
 					</div>
 				</div>
 			</Layout>
@@ -150,23 +176,20 @@ export const blogPageQuery = graphql`
 		allContentfulHeaderImage(filter: {pageName: {eq: "Blog"}}, limit: 1) {
             nodes {
 				image {
-					fluid(
-						resizingBehavior: FILL
-						quality: 100
-                        maxWidth: 4000
-					) {
-						...GatsbyContentfulFluid_tracedSVG
-					}
+					gatsbyImageData(
+						layout: FULL_WIDTH
+						placeholder: BLURRED
+					)
 				}
 			}
 		}
-		allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, limit: 20, filter: {articleType: {ne: "Page"}, previewOnly: {ne: true}},) {
+		allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, filter: {articleType: {ne: "Page"}, previewOnly: {ne: true}},) {
 			edges {
 				node {
 					title
 					slug
 					richTextBody {
-						json
+						raw
 					}
 					publishDateValue : publishDate
 					publishDate(formatString: "MMMM Do, YYYY")      
@@ -179,19 +202,15 @@ export const blogPageQuery = graphql`
 					authorName
 					tags
 					imagePreview {
-						fixed(
-							width: 200
-							height: 200
-							quality: 0
-							resizingBehavior: FILL
-							background: "rgb:000000"
-							) {
-								src
-							}
-							description
-						}
+						gatsbyImageData(
+							width: 400,
+							height: 400,
+							layout: CONSTRAINED	
+							placeholder: BLURRED				
+						)
 					}
 				}
 			}
 		}
+	}
 `

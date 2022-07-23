@@ -1,9 +1,8 @@
 import React from 'react'
-import Img from 'gatsby-image'
-import { Link, StaticQuery, graphql } from 'gatsby'
-import StyledButton from '../styled-button'
-import Fade from 'react-reveal/Fade'
-import styles from './actions.module.css'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import { StaticQuery, graphql } from 'gatsby'
+import Animation from '../animate/animation'
+import * as styles from './actions.module.css'
 
 const actionsRender = (props) => {
 
@@ -35,57 +34,61 @@ const actionsRender = (props) => {
         },
     ]
 
-    const photos = props.allFile.edges.map(edge => edge.node.childImageSharp);
+    const photos = props.allFile.edges.map(edge => edge.node);
 
     return(
         <div className={styles.parentContainer}>
             {
                 actionInfo.map((action, idx) =>
                     {
-                        var sketchFluid = photos.find(photo => photo.fluid.originalName === action.sketch)
-                        var photoFluid = photos.find(photo => photo.fluid.originalName === action.photo)
+                        var sketchNode = photos.find(photo => `${photo.name}.${photo.extension}` === action.sketch)
+                        var photoNode = photos.find(photo => `${photo.name}.${photo.extension}` === action.photo)
 
                         return(
                             idx % 2 === 1 ? 
                             // 1st and 3rd = picture right of text
                             <div className={styles.actionContainer}>
-                                <Fade left>
-                                    <div className={styles.infoTextRight}>
-                                        <div className={styles.sketch}>
-                                            <Img fluid={sketchFluid.fluid}
-                                                style={{maxWidth: "100%", maxHeight: "100%"}}
-                                                imgStyle={{ objectFit: "contain"}}/>
+                                        <div className={styles.infoTextRight}>
+                                    <Animation fade left>
+                                            <div className={styles.sketch}>
+                                                <GatsbyImage image={sketchNode.childImageSharp.gatsbyImageData}
+                                                    style={{maxWidth: "100%", maxHeight: "100%"}}
+                                                    imgStyle={{ objectFit: "contain"}}
+                                                    alt={`Homepage sketch `}/>
+                                            </div>
+                                            <h1>{action.title}</h1>
+                                            <p>{action.description}</p>
+                                    </Animation>
                                         </div>
-                                        <h1>{action.title}</h1>
-                                        <p>{action.description}</p>
-                                    </div> 
-                                </Fade>
-                                <Fade right>
-                                    <div className={styles.photo}>
-                                        <Img fluid={photoFluid.fluid}
-                                        imgStyle={{ objectFit: "contain", borderRadius: "15px"}}/>
-                                    </div> 
-                                </Fade>
+                                        <div className={styles.photo}>
+                                    <Animation fade right>
+                                            <GatsbyImage image={photoNode.childImageSharp.gatsbyImageData}
+                                            imgStyle={{ objectFit: "contain", borderRadius: "15px"}}
+                                            alt={`Homepage photo `}/>
+                                    </Animation>
+                                        </div>
                             </div> 
                             : 
                             <div className={styles.actionContainer}>
-                                <Fade left>
-                                    <div className={styles.photo}>
-                                        <Img fluid={photoFluid.fluid}
-                                        imgStyle={{ objectFit: "contain", borderRadius: "15px"}}/>
-                                    </div> 
-                                </Fade>
-                                <Fade right>
-                                    <div className={styles.infoTextLeft}>
-                                        <div className={styles.sketch}>
-                                            <Img fluid={sketchFluid.fluid}
-                                                style={{maxWidth: "100%", maxHeight: "100%"}}
-                                                imgStyle={{objectFit: "contain" }}/>
+                                        <div className={styles.photo}>
+                                    <Animation fade left>
+                                            <GatsbyImage image={photoNode.childImageSharp.gatsbyImageData}
+                                            imgStyle={{ objectFit: "contain", borderRadius: "15px"}}
+                                            alt={`Homepage photo `}/>
+                                    </Animation>
                                         </div>
-                                        <h1>{action.title}</h1>
-                                        <p>{action.description}</p>
-                                    </div> 
-                                </Fade>
+                                        <div className={styles.infoTextLeft}>
+                                    <Animation fade right>
+                                            <div className={styles.sketch}>
+                                                <GatsbyImage image={sketchNode.childImageSharp.gatsbyImageData}
+                                                    style={{maxWidth: "100%", maxHeight: "100%"}}
+                                                    imgStyle={{objectFit: "contain" }}
+                                                    alt={`Homepage sketch `}/>
+                                            </div>
+                                            <h1>{action.title}</h1>
+                                            <p>{action.description}</p>
+                                    </Animation>
+                                        </div>
                             </div>                               
                         )
                     })
@@ -100,18 +103,18 @@ export const Actions = () => {
 			query={
 				graphql`
 					query ActionsQuery {
-                        allFile(filter: {relativePath: {regex: "/people/"}, childImageSharp: {fluid: {}}}) {
+                        allFile(filter: {relativePath: {regex: "/people/"}}) {
                             edges {
                               node {
                                 id
-                                
                                 childImageSharp {
-                                  fluid(quality: 100) {
-                                    originalName
-                                    ...GatsbyImageSharpFluid
-                                    ...GatsbyImageSharpFluidLimitPresentationSize
-                                  }
+                                    gatsbyImageData(
+                                        layout: CONSTRAINED
+                                        placeholder: BLURRED
+                                    )
                                 }
+                                name
+                                extension
                               }
                             }
                           

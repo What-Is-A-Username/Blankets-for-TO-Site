@@ -3,19 +3,19 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer' 
 
-import styles from '../templates/store-item.module.css'
+import * as styles from '../templates/store-item.module.css'
 import { XCircle, ShoppingBag, ChevronLeft, ChevronRight, ShoppingCart, PlusSquare, MinusSquare, Info } from 'react-feather';
-import Cookies from 'universal-cookie'
+import Cookies from 'js-cookie'
 import BackArrow from '../components/back-arrow'
 
 class StoreItemTemplate extends React.Component {
 
     item = get(this.props, 'data.contentfulMerchItem')
     state = { cartItems: [], currentImage: 0, numImages: this.item.images ? this.item.images.length : 0, 
-        cartCount: 0, cookies: undefined }
+        cartCount: 0}
 
     getCurrentItems = () => {
         var currentItem = this.state.cartItems.find(x => x.slug === this.item.slug) 
@@ -44,13 +44,13 @@ class StoreItemTemplate extends React.Component {
         if (existing === undefined)
         {
             existingItems.push({slug: this.item.slug, count: 1})
-            this.state.cookies.set('cart-items', existingItems, {path: '/'})
+            Cookies.set('cart-items', JSON.stringify(existingItems), {path: '/'})
             this.setState({cartCount: 1, cartItems: existingItems})
         }
         else 
         {
             existing.count += 1
-            this.state.cookies.set('cart-items', existingItems, {path: '/'})
+            Cookies.set('cart-items', JSON.stringify(existingItems), {path: '/'})
             this.setState({cartCount: existing.count, cartItems: existingItems})
         }
     }
@@ -62,7 +62,7 @@ class StoreItemTemplate extends React.Component {
         if (existing !== undefined)
         {
             existing.count += 1
-            this.state.cookies.set('cart-items', existingItems, {path: '/'})
+            Cookies.set('cart-items', JSON.stringify(existingItems), {path: '/'})
             this.setState({cartCount: existing.count, cartItems: existingItems})
         }
     }
@@ -74,20 +74,22 @@ class StoreItemTemplate extends React.Component {
         if (existing !== undefined)
         {
             existing.count -= 1
-            this.state.cookies.set('cart-items', existingItems, {path: '/'})
+            Cookies.set('cart-items', JSON.stringify(existingItems), {path: '/'})
             this.setState({cartCount: existing.count, cartItems: existingItems})
         }
     }
 
     componentDidMount() {
-        var isServer = typeof window === undefined;
-        var cookies = isServer ? new Cookies(req.headers.cookie) : new Cookies()
-        var existingItems = cookies.get('cart-items')
+        // var isServer = typeof window === undefined;
+        // var cookies = isServer ? new Cookies(req.headers.cookie) : new Cookies()
+        var existingItems = JSON.parse(Cookies.get('cart-items'))
         var entry = existingItems.find(x => x.slug === this.item.slug)
-        this.setState({cookies: cookies, cartItems: existingItems, cartCount: entry === undefined ? 0 : entry.count})
+        this.setState({cartItems: existingItems, cartCount: entry === undefined ? 0 : entry.count})
     }
 
 	render() {
+        
+
         return(
             <Layout location={this.props.location}>
 				<div className="white-background">
@@ -109,7 +111,7 @@ class StoreItemTemplate extends React.Component {
                                     {
                                         this.state.numImages > 0 &&
                                         <div className={styles.image}>
-                                            <Img fluid={this.item.images[this.state.currentImage].fluid}/>
+                                            <GatsbyImage image={this.item.images[this.state.currentImage].gatsbyImageData}/>
                                         </div>
                                     }
                                     
@@ -123,8 +125,8 @@ class StoreItemTemplate extends React.Component {
                                         this.item.thumbs &&
                                         this.item.thumbs.map((thumb, index) => {
                                             return(
-                                                <div onClick={() => this.selectImage(index)} className={index == this.state.currentImage ? styles.selectedThumb : styles.thumb} key={index}>
-                                                    <Img fluid={thumb.fluid}/>
+                                                <div onClick={() => this.selectImage(index)} className={index === this.state.currentImage ? styles.selectedThumb : styles.thumb} key={index}>
+                                                    <GatsbyImage image={thumb.gatsbyImageData}/>
                                                 </div>
                                             )
                                         })
@@ -137,12 +139,15 @@ class StoreItemTemplate extends React.Component {
                                     <p className={styles.priceAmount}>${this.item.itemPrice.toFixed(2)}</p>
                                     <p className={styles.priceCurrency}>CAD</p>
                                 </div>
-                                <div className={styles.memberPrice}>
-                                    <Info/>
-                                    <p>Members get a discounted price of ${this.item.memberItemPrice.toFixed(2)}</p>
-                                </div>
+                                {
+                                    this.item.memberItemPrice < this.item.itemPrice &&
+                                    <div className={styles.memberPrice}>
+                                        <Info/>
+                                        <p>Members get a discounted price of ${this.item.memberItemPrice.toFixed(2)}</p>
+                                    </div>
+                                }
                                 <div className={styles.description}>
-                                    {this.item.itemDescription != null ? documentToReactComponents(this.item.itemDescription.json, {renderNode:{}}) : null}
+                                    {this.item.itemDescription != null ? documentToReactComponents(JSON.parse(this.item.itemDescription.raw), {renderNode:{}}) : null}
                                 </div>
                                 {
                                     this.item.isInStock ?
@@ -165,7 +170,7 @@ class StoreItemTemplate extends React.Component {
                                             </div> :
                                             <div className={styles.changeCart}>
                                                 <ShoppingCart className={styles.icon_shoppingCart}/>
-                                                <p>This item is in your cart.</p>
+                                                <p className={styles.changeCartText}>This item is in your cart.</p>
                                                 <MinusSquare className={styles.icon_minus} onClick={this.minusCart}/>
                                                 <p>{this.state.cartCount}</p>
                                                 <PlusSquare className={styles.icon_plus} onClick={this.plusCart}/>
@@ -182,6 +187,8 @@ class StoreItemTemplate extends React.Component {
             </Layout>
         )
     }
+
+
 }
 
 export default StoreItemTemplate
@@ -191,21 +198,23 @@ export const StoreItemQuery = graphql`
         contentfulMerchItem(slug: {eq: $slug}) {
             slug
             images {
-                fluid(maxWidth: 400, maxHeight: 400, resizingBehavior: SCALE, quality: 100) {
-                    ...GatsbyContentfulFluid_tracedSVG
-                }
+                gatsbyImageData(
+                    layout: FULL_WIDTH
+                    placeholder: BLURRED
+                )
             }
             thumbs : images {
-                fluid(maxWidth: 100, maxHeight: 100, resizingBehavior: THUMB) {
-                    ...GatsbyContentfulFluid_tracedSVG
-                }
+                gatsbyImageData(
+                    layout: FULL_WIDTH
+                    placeholder: BLURRED
+                )
             }
             itemName
             itemPrice
             memberItemPrice
             shortDescription
             itemDescription {
-                json
+                raw
             }
             isInStock
             largePreview {

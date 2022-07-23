@@ -1,7 +1,7 @@
 import React from 'react'
-import { StaticQuery, graphql, Link, navigate } from 'gatsby'
-import Img from 'gatsby-image'
-import styles from './footer.module.css'
+import { StaticQuery, graphql, navigate } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import * as styles from './footer.module.css'
 import pageData from '../pages/page-data.json'
 import FooterItem from './navigation/footer-item'
 import contactData from '../pages/contact-info.json'
@@ -18,7 +18,7 @@ const Footer = (props) => {
 
 	const clickManager = () => {
 		try {
-			displayPreferenceModal()
+			//displayPreferenceModal()
 		}
 		catch {
 			console.log("Unable to display the cookie preference widget. Please try again later. Report to blanketsforto.site@gmail.com if issue persists.")
@@ -31,7 +31,7 @@ const Footer = (props) => {
 				<div className={styles.left}>
 					<div className={styles.logoPadding}>
 						<div className={styles.logo} onClick={onClickLogo}>
-							<Img fluid={logo.fluid}/>
+							<GatsbyImage image={logo.gatsbyImageData} alt='Logo for Blankets for T.O.'/>
 						</div>
 					</div>
 					
@@ -83,12 +83,13 @@ export default () => {
 			query={graphql`
 				query FooterQuery {
 					file(relativePath: { eq: "bto_new_logo_transparent.png" }) {
-                        childImageSharp {
-                            fluid(maxHeight: 100, quality: 100) {
-                                ...GatsbyImageSharpFluid
-                                ...GatsbyImageSharpFluidLimitPresentationSize
-                            }
-                        }
+						childImageSharp {
+							gatsbyImageData(
+								layout: FULL_WIDTH
+								placeholder: BLURRED
+								height: 100
+							)
+						}
                     }
                 }
 			`}

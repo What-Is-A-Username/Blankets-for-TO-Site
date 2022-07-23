@@ -4,19 +4,16 @@ import get from 'lodash/get'
 import Layout from '../components/layout'
 import Member from '../components/team/member-circle'
 import SEO from '../components/SEO'
-import styles from '../page-styles/team.module.css'
-import Fade from 'react-reveal/Fade'
-import 'animate.css';
+import * as styles from '../page-styles/team.module.css'
 import HeaderImage from '../components/header-image'
+import Animation from '../components/animate/animation'
 
 class Team extends React.Component {
-
-	state = {reveal: false}
-
+	
 	render() {
 		const members = get(this, 'props.data.allContentfulExecutive.edges')
 
-		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
+		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
         const headerSubtitle = ''
         const headerTitle = 'Team'
 
@@ -31,9 +28,9 @@ class Team extends React.Component {
 						<div className={styles.executiveList}>
 							{members.map(({ node }) => {
 								return (node.name !== "John Doe" ? 
-								<Fade left delay={this.state.reveal ? 100 : 700} duration={350} key={node.name}>
-									<Member data={node} /> 
-								</Fade>
+									<Animation fade left animationDelay={200} animationDuration={350} key={node.name}>
+										<Member data={node}/> 
+									</Animation>
 								: null)
 							})}
 						</div>
@@ -68,10 +65,10 @@ export const teamPositionQuery = graphql`
 					githubLink
 					photo
 					{
-						fluid(maxWidth: 300, maxHeight: 300, resizingBehavior: SCALE)
-						{
-							...GatsbyContentfulFluid_tracedSVG
-						}
+						gatsbyImageData(
+							layout: FULL_WIDTH
+							placeholder: BLURRED
+						)
 					}
 				}
 			}
@@ -79,13 +76,10 @@ export const teamPositionQuery = graphql`
 		allContentfulHeaderImage(filter: {pageName: {eq: "Team"}}, limit: 1) {
             nodes {
 				image {
-					fluid(
-						resizingBehavior: FILL
-						quality: 100
-                        maxWidth: 4000
-					) {
-						...GatsbyContentfulFluid_tracedSVG
-					}
+					gatsbyImageData(
+						layout: FULL_WIDTH
+						placeholder: BLURRED
+					)
 				}
 			}
 		}

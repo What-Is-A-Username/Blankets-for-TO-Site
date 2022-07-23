@@ -1,14 +1,14 @@
 import React from 'react'
-import { Link, navigate } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { BlogTagBar } from './blog_search/tag'
 
-import styles from './blog-list.module.css'
+import * as styles from './blog-list.module.css'
 
 export default ({ article }) => (
-    <a onClick={() => navigate(`/blog/${article.slug}`)} className={styles.alink} key={article.title}>
+    <a href={`/blog/${article.slug}`} className={styles.alink} key={article.title}>
         <div className={styles.preview}>
             <div className={styles.previewImage}>
-                <img src={article.imagePreview.fixed.src} alt={article.imagePreview.description}/>
+                <GatsbyImage image={article.imagePreview.gatsbyImageData} alt={article.imagePreview.description}/>
             </div>
             <div>
                 <h3 className={styles.previewTitle}>{article.title}</h3>

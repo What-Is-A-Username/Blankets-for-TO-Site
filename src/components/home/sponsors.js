@@ -1,8 +1,9 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import styles from './sponsors.module.css'
-import Img from 'gatsby-image'
+import * as styles from './sponsors.module.css'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import StyledButton from '../styled-button'
+import Animation from '../animate/animation'
 
 export default () => {
 
@@ -14,12 +15,14 @@ export default () => {
     const constructSponsorRow = (sponsorList) => {
         return(
             <div className={styles.logoContainer}>
-                {sponsorList.map(x => {
+                {sponsorList.map((x, i) => {
                     return(
                         <a className={styles.alink} target="_blank" rel="noopener noreferrer" key={x.name}>
-                            <div className={styles.logo}>
-                                <Img durationFadeIn={0} imgStyle={{ objectFit: "contain" }} alt={x.name} fluid={x.logo.fluid}/>
-                            </div> 
+                            <Animation fade delay={150}>
+                                <div className={styles.logo}>
+                                    <GatsbyImage imgStyle={{ objectFit: "contain" }} alt={x.name} image={x.logo.gatsbyImageData}/>
+                                </div> 
+                            </Animation>
                         </a>
                     )
                 })} 
@@ -29,6 +32,7 @@ export default () => {
 
     return(
         <div className={styles.sponsorBox}>
+            <Animation fade>
             <h1 className={styles.title}>Thank you to our sponsors for their support!</h1>
             {preferredSponsors.length > 0 && 
                 <h2 className={styles.preferredSponsorsTitle}>
@@ -45,6 +49,7 @@ export default () => {
             {defaultSponsors.length > 0 && constructSponsorRow(defaultSponsors)}
             <StyledButton buttonText='Browse sponsors' link='/sponsors'/>
             <div style={{height: '100px'}}></div>
+            </Animation>
         </div>
     )
 }
@@ -56,13 +61,11 @@ const SponsorsQuery = graphql`
                 node {
                     name 
                     logo {
-                        fluid(
-                            maxHeight: 100
-                            resizingBehavior: SCALE
-                            background: "rgb:000000")
-                        {
-                            ...GatsbyContentfulFluid_tracedSVG
-                        }
+                        gatsbyImageData(
+                            layout: FULL_WIDTH
+                            placeholder: BLURRED
+                            height: 100
+                        )
                     }
                     sponsorType
                     description {

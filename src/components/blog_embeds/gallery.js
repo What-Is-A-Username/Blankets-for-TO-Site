@@ -1,11 +1,11 @@
 import React from 'react' 
-import Img from 'gatsby-image'
-import styles from './gallery.module.css'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import * as styles from './gallery.module.css'
 import { ChevronLeft, ChevronRight, X } from 'react-feather'
 
 class Gallery extends React.Component {
 
-    state = { popup: false, selected: 0, length: this.props.node.thumbs.length }
+    state = { popup: false, selected: 0, length: this.props.data.images.length }
 
     onSelectThumb = (index) => {
         this.setState({selected: index, popup: true})
@@ -25,11 +25,8 @@ class Gallery extends React.Component {
     }
 
     render() {
-        const data = this.props.node
-        const displayTitle = data.displayTitle
-        const displayDescription = data.displayDescription.displayDescription
-        const thumbs = data.thumbs
-        const images = data.images
+        const { displayTitle, images } = this.props.data
+        const displayDescription = this.props.data.displayDescription.displayDescription
 
         return(
             <div className={styles.galleryContainer}>
@@ -43,10 +40,10 @@ class Gallery extends React.Component {
                 }
                 <div className={styles.thumbs}>
                     {
-                        thumbs.map((x, index) => {
+                        images.map((x, index) => {
                             return(
                                 <div className={styles.thumb} onClick={() => this.onSelectThumb(index)}>
-                                    <Img fluid={x.fluid}/>
+                                    <GatsbyImage image={x.gatsbyImageData}/>
                                 </div>
                             )
                         })
@@ -60,7 +57,7 @@ class Gallery extends React.Component {
                         <X className={styles.popupExit} onClick={() => this.onClosePopup()}/>
                         <div className={styles.popupContent}>
                             <div className={styles.popupimage}>
-                                <Img fluid={images[this.state.selected].fluid}/>
+                                <GatsbyImage image={images[this.state.selected].gatsbyImageData}/>
                             </div> 
                             {
                                 (this.state.selected > 0) &&

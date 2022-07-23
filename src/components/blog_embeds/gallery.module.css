@@ -28,6 +28,9 @@
     width: 200px;
     height: 200px;
     cursor: pointer;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .thumb:hover picture img 
@@ -117,13 +120,15 @@
 
 .popupimage 
 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 760px;
 }
 
-.popupimage, .popupimage div, .popupimage img
+.popupimage 
 {
     position: relative;
     max-width: 100vw;
-    
     max-height: 100vh;
 }

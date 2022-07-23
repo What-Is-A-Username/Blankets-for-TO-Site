@@ -3,12 +3,12 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
-import Fade from 'react-reveal/Fade'
 import HeaderImage from '../components/header-image'
+import ContactForm from '../components/home/contact-form'
 
 import contactData from '../pages/contact-info.json'
 
-import styles from '../page-styles/contact.module.css'
+import * as styles from '../page-styles/contact.module.css'
 import StyledButton from '../components/styled-button'
 
 import { ExternalLink } from 'react-feather'
@@ -17,7 +17,7 @@ class Contact extends React.Component {
 	render() {
 		const contactInfo = contactData.contact
 
-		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
+		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
         const headerSubtitle = ''
         const headerTitle = 'Contact Us'
 
@@ -28,7 +28,6 @@ class Contact extends React.Component {
 				<div className="white-background">
 					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
-						<Fade delay={400}>
 						<div className={styles.socialMedia}>
 							{
 								contactInfo.map((x, i) => {
@@ -44,12 +43,8 @@ class Contact extends React.Component {
 								)
 							}
 						</div>
-						<div className={styles.contactDirectly}>
-							<h3>Send Us a Direct Message</h3>
-							<StyledButton link='/#contact-form' buttonText='Fill out our contact form'/>
-						</div>
-						</Fade>
 					</div>
+					<ContactForm shortenInfo/>
 				</div>
 			</Layout>
 		)
@@ -63,13 +58,10 @@ export const contactQuery = graphql`
 		allContentfulHeaderImage(filter: {pageName: {eq: "Contact"}}, limit: 1) {
             nodes {
 				image {
-					fluid(
-						resizingBehavior: FILL
-						quality: 100
-                        maxWidth: 4000
-					) {
-						...GatsbyContentfulFluid_tracedSVG
-					}
+					gatsbyImageData(
+						layout: FULL_WIDTH
+						placeholder: BLURRED
+					)
 				}
 			}
 		}

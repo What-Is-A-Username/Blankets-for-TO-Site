@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import Img from 'gatsby-image'
+import React from 'react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import ContactInfo from './contact-info.json'
 import StyledButton from '../components/styled-button'
 import { graphql } from 'gatsby'
@@ -7,16 +7,15 @@ import get from 'lodash/get'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 import StatsHighlight from '../components/home/stats-highlight'
-import styles from '../page-styles/index.module.css'
+import * as styles from '../page-styles/index.module.css'
 import SEO from '../components/SEO'
 import ContactBox from '../components/home/contact-box'
 import Sponsors from '../components/home/sponsors'
-import Fade from 'react-reveal/Fade'
-import Bounce from 'react-reveal/Bounce'
 import ScreenContainer from '../components/screen-container'
 import OrganizationMap from '../components/home/org-map'
 import Actions from '../components/home/actions'
 import ContactForm from '../components/home/contact-form'
+import Animation from '../components/animate/animation'
 
 class RootIndex extends React.Component {
 
@@ -32,27 +31,21 @@ class RootIndex extends React.Component {
 				crossorigin='' key='leafletcss'/>,
 		] 
 		
-		return (
+		return(
 			<Layout location={this.props.location}>
 				<SEO title='Home' description='Blankets for T.O. is a non-profit organization at the University of Toronto providing support to those in need and combatting stigma surrounding homelessness.' useMailChimp useCurator childElements={leaflet}/>
 				<div className='white-background'>
 					<div className={styles.title}>
 						<div className={styles.image}>
-							<div>
-								<Img className={styles.backgroundImage} fluid={organizationBlurb.frontPageImage.fluid} alt='Homepage image for Blankets for T.O.'/>			
-							</div>
+							<GatsbyImage className={styles.backgroundImage} image={organizationBlurb.frontPageImage.gatsbyImageData} alt='Homepage image for Blankets for T.O.'/>			
 						</div>
 						<div className={styles.infoBox}>
-							<Fade ssrFadeout left>
+							<Animation fade left>
 								<div className={styles.infoBoxText}>
-									<h2>
-										Eradicating homelessness through action
-									</h2>
-									<p>
-										Founded in 2019 at the University of Toronto Scarborough, we are an organization addressing homelessness through advocacy, engagement and action across Ontario. 
-									</p>
+									<h2>Eradicating homelessness through action</h2>
+									<p>Founded in 2019 at the University of Toronto Scarborough, we are an organization addressing homelessness through advocacy, engagement and action across Ontario. </p>
 								</div>
-							</Fade>
+							</Animation>
 						</div>
 					</div>
 
@@ -61,8 +54,8 @@ class RootIndex extends React.Component {
 							<polygon points='0,5 100,0 100,95 0,100'/>
 							<defs>
 								<linearGradient id='red_gradient'>
-									<stop offset='0' stop-color='#bb4a3c'/>
-									<stop offset='1' stop-color='#cf6352'/>
+									<stop offset='0' stopColor='#bb4a3c'/>
+									<stop offset='1' stopColor='#cf6352'/>
 								</linearGradient>
 							</defs>
 						</svg>
@@ -72,7 +65,6 @@ class RootIndex extends React.Component {
 						</div>
 					</div>
 
-					{/* Donation counter */}
 					<ScreenContainer id='donation-counter'>
 						<div className={styles.donationColumn} >
 							<StatsHighlight donationItemCount={organizationBlurb.donationItemCount}/>
@@ -96,12 +88,10 @@ class RootIndex extends React.Component {
 							<OrganizationMap mapLocations={mapLocations}/> 
 						</div>
 					</div>
-					
+
 					{/* Updates */}
 					<ScreenContainer id='articles'>
-						<Fade>
-							<ArticlePreview/>
-						</Fade>
+						<ArticlePreview/>
 					</ScreenContainer>
 						
 					<div className={styles.descriptionContainer} id='join-contact'>
@@ -109,8 +99,8 @@ class RootIndex extends React.Component {
 							<polygon points='0,5 100,0 100,95 0,100'/>
 							<defs>
 								<linearGradient id='red_gradient'>
-									<stop offset='0' stop-color='#bb4a3c'/>
-									<stop offset='1' stop-color='#cf6352'/>
+									<stop offset='0' stopColor='#bb4a3c'/>
+									<stop offset='1' stopColor='#cf6352'/>
 								</linearGradient>
 							</defs>
 						</svg>
@@ -120,16 +110,12 @@ class RootIndex extends React.Component {
 						</div>
 					</div>
 
-					<Bounce left>
-						<Sponsors/>
-					</Bounce>
+					<Sponsors/>
 
 					{/* Instagram Feed */}
 					<div className={styles.instagram} id='social-feed'>
-						<Bounce top>
+						<Animation bounce top>
 							<h2 className={styles.instagramTitle}>Keep updated with our feed</h2>
-						</Bounce>
-						<Fade delay={250}>
 							<div className={styles.instagramPosts}>
 								<div id='curator-feed-default-feed-layout'>
 									<a href='https://curator.io' target='_blank' className='crt-logo crt-tag'>
@@ -137,13 +123,11 @@ class RootIndex extends React.Component {
 									</a>
 								</div>
 							</div>
-						</Fade>
-						<Fade delay={300}>
-							<div className={styles.btnRow}>	
+							<div className={styles.btnRow}>
 								<StyledButton link={instagramLink} buttonText='Visit us on Instagram' openInNewTab/>
 								<StyledButton link={twitterLink} buttonText='Visit us on Twitter' openInNewTab/>
 							</div>
-						</Fade>
+						</Animation>
 					</div>
 
 					<div id='contact-form'>
@@ -151,7 +135,9 @@ class RootIndex extends React.Component {
 					</div>
 				</div>
 			</Layout>
-			)
+		)
+
+
 		}
 	}
 	
@@ -196,25 +182,18 @@ class RootIndex extends React.Component {
 				
 				frontPageImage 
 				{
-					fluid(
-						maxHeight: 1920
-						resizingBehavior: PAD
-						background: "rgb:000000"
-						) {
-							...GatsbyContentfulFluid_tracedSVG
-						}
-					
+					gatsbyImageData(
+						layout: FULL_WIDTH
+						placeholder: BLURRED
+					)			
 				}
 
 				leftBackgroundImage 
 				{
-					fluid(
-						maxHeight: 1000
-						resizingBehavior: PAD
-						background: "rgb:000000"
-						) {
-							...GatsbyContentfulFluid_tracedSVG
-						}
+					gatsbyImageData(
+						layout: FULL_WIDTH
+						placeholder: BLURRED
+					)
 				}
 			}
 		}

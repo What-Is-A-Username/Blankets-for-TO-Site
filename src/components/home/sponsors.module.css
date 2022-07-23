@@ -43,7 +43,6 @@
 {
     .logoContainer {
         flex-direction: row;
-        max-width: 80%;
     }
     .alink {
         padding: 10px; 

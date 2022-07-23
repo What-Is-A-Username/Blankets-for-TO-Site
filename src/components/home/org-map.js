@@ -1,5 +1,5 @@
-import React, { useState, setState } from 'react'
-import styles from '../home/org-map.module.css'
+import React from 'react'
+import * as styles from '../home/org-map.module.css'
 import { ChevronRight, ChevronLeft } from 'react-feather';
 import L from 'leaflet'
 import 'leaflet-polylinedecorator'
@@ -86,7 +86,11 @@ export default class OrgMap extends React.Component {
 
 		this.map.on("load", 
 			() => { 
-				setTimeout(() => { self.map.invalidateSize(); }, 500);
+				setTimeout(() => { 
+                    if (typeof window !== "undefined") {
+                        window.self.map.invalidateSize(); 
+                    }
+                }, 500);
 			}
 		);
 	}
@@ -109,7 +113,8 @@ export default class OrgMap extends React.Component {
 					<ChevronRight onClick={() => this.onNext()} width={30} height={30} />
 				</div>
 				<div id="mapid" className={styles.leafletMap}>
-					<p className={styles.errorText}>Map not loading? Try enabling cookies and refreshing.</p>
+					{/* Show a message behind the map that would be visible if the map tiles did not load properly. */}
+					<p className={styles.errorText}>Map not loading? Try refreshing, enabling cookies, or disabling browser extensions.</p>
 				</div>
 			</div>
 		)

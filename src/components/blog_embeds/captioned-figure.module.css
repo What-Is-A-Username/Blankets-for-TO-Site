@@ -1,15 +1,17 @@
 .imgFigure > figcaption 
 {
-    max-width: 100vw; 
+    max-width: 100%; 
     background: rgb(36, 36, 36);
     color: rgb(180, 180, 180);
     padding: 2px 5px;
     box-sizing: border-box;
     font-size: 14px;
+    margin-top: -2px;
 }
 
 .imgFigure
 {
+    width: 760px;
     max-width: 100%;
     margin: 0;
 }

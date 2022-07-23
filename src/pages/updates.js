@@ -8,7 +8,7 @@ import SquareGrid from '../components/layouts/square-grid'
 
 class Updates extends React.Component {
 	render() {
-		const imgFluid = get(this, 'props.data.updateHeader.nodes[0].image.fluid')
+		const imgFluid = get(this, 'props.data.updateHeader.nodes[0].image.gatsbyImageData')
 		const headerTitle = 'Updates'
 		const headerSubtitle = ''
 		
@@ -17,19 +17,19 @@ class Updates extends React.Component {
                 title: "Read our blog",
                 link: "/blog",
                 description: "Read about past initiatives, current news and educational content from Blankets for T.O.",
-                fluid: get(this, 'props.data.blogHeader.nodes[0].image.fluid'),
+                gatsbyImageData: get(this, 'props.data.blogHeader.nodes[0].image.gatsbyImageData'),
             },
             {
                 title: "Listen to our official podcast",
                 link: "/podcasts",
                 description: "Learn about homelessness in Toronto and how Blankets for T.O. was founded.",
-                fluid: get(this, 'props.data.podcastsHeader.nodes[0].image.fluid'),
+                gatsbyImageData: get(this, 'props.data.podcastsHeader.nodes[0].image.gatsbyImageData'),
             },
             {
                 title: "Follow on social media",
                 link: "/contact",
                 description: "Follow us on social media for the quickest way to access announcements and news.",
-                fluid: get(this, 'props.data.contactHeader.nodes[0].image.fluid'),
+                gatsbyImageData: get(this, 'props.data.contactHeader.nodes[0].image.gatsbyImageData'),
             }
         ]
 
@@ -66,52 +66,40 @@ export const updateQuery = graphql`
 		updateHeader : allContentfulHeaderImage(filter: {pageName: {eq: "About"}}, limit: 1) {
 			nodes {
 				image {
-					fluid(
-						resizingBehavior: FILL,
-						quality: 100,
-						maxWidth: 4000
-					) {
-						...GatsbyContentfulFluid_tracedSVG
-					}
+					gatsbyImageData(
+						layout: FULL_WIDTH
+						placeholder: BLURRED
+					)
 				}
 			}
 		}
         podcastsHeader : allContentfulHeaderImage(filter: {pageName: {eq: "Podcasts"}}, limit: 1) {
 			nodes {
 				image {
-					fluid(
-						resizingBehavior: FILL,
-						quality: 100,
-						maxWidth: 4000
-					) {
-						...GatsbyContentfulFluid_tracedSVG
-					}
+					gatsbyImageData(
+						layout: FULL_WIDTH
+						placeholder: BLURRED
+					)
 				}
 			}
 		}
         blogHeader : allContentfulHeaderImage(filter: {pageName: {eq: "Team"}}, limit: 1) {
 			nodes {
 				image {
-					fluid(
-						resizingBehavior: FILL,
-						quality: 100,
-						maxWidth: 4000
-					) {
-						...GatsbyContentfulFluid_tracedSVG
-					}
+					gatsbyImageData(
+						layout: FULL_WIDTH
+						placeholder: BLURRED
+					)
 				}
 			}
 		}
         contactHeader : allContentfulHeaderImage(filter: {pageName: {eq: "Positions"}}, limit: 1) {
 			nodes {
 				image {
-					fluid(
-						resizingBehavior: FILL,
-						quality: 100,
-						maxWidth: 4000
-					) {
-						...GatsbyContentfulFluid_tracedSVG
-					}
+					gatsbyImageData(
+						layout: FULL_WIDTH
+						placeholder: BLURRED
+					)
 				}
 			}
 		}

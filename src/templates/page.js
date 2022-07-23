@@ -8,7 +8,7 @@ import LinkSharing from '../components/link-sharing'
 
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import styles from '../templates/blog-post.module.css'
+import * as styles from '../templates/blog-post.module.css'
 import CaptionedFigure from '../components/blog_embeds/captioned-figure'
 
 class PageTemplate extends React.Component {
@@ -40,12 +40,12 @@ class PageTemplate extends React.Component {
 						description={post.description.childMarkdownRemark.rawMarkdownBody}
 						childElements={requiredHead}
 						doNotCrawl={!post.enableSearchCrawling}
-						metaImage={post.imagePreview.fluid.src}
+						metaImage={post.imagePreview.file.url}
 					/>
 					<div className="wrapper" >
 						<h1 className={styles.title}>{post.title}</h1>
 						<div className="richText" styles={{maxWidth: '800px'}}>
-							{post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
+							{post.richTextBody != null ? documentToReactComponents(post.richTextBody.raw, options) : <p>Error: Article not found.</p>}
 						</div>
 						<LinkSharing location={'https://blanketsforto.ca/blog/' + post.slug} />
 						<hr className={styles.horizontalLine}></hr>
@@ -70,7 +70,7 @@ export const DynamicPageQuery = graphql`
 			title
 			slug
 			richTextBody {
-				json
+				raw
 			}
 			description {
 				childMarkdownRemark {
@@ -80,8 +80,8 @@ export const DynamicPageQuery = graphql`
 			}
 			enableSearchCrawling
 			imagePreview {
-				fluid(maxWidth: 1200, maxHeight: 600, resizingBehavior: PAD, background: "rgb:ffffff") {
-					src
+				file {
+					url
 				}
 			}
 		}

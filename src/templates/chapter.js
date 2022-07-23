@@ -1,13 +1,13 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../components/SEO'
 import get from 'lodash/get'
 import Layout from '../components/layout'
 import LinkSharing from '../components/link-sharing'
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import styles from '../templates/chapter.module.css'
+import * as styles from '../templates/chapter.module.css'
 import BackArrow from '../components/back-arrow'
 import masterContactTemplate from '../pages/contact-info.json'
 import CaptionedFigure from '../components/blog_embeds/captioned-figure'
@@ -20,7 +20,7 @@ class ChapterTemplate extends React.Component {
 			slug,
             chapterName,
             location,
-            childContentfulBtoChapterDescriptionRichTextNode : description,
+            description,
             instagramUsername,
 			emailAddress,
             membershipFormLink,
@@ -74,7 +74,7 @@ class ChapterTemplate extends React.Component {
 						<h1 className={styles.title}>{chapterName}</h1>
 						<div className={styles.horizontal}>
 							<div className={styles.logo}>
-								<Img fluid={chapterLogoFluid.fluid}/> 
+								<GatsbyImage image={chapterLogoFluid.gatsbyImageData}/> 
 							</div>
 							
 							<div className={styles.info}>
@@ -106,7 +106,7 @@ class ChapterTemplate extends React.Component {
 						</div>
 						{/* <h3 className={styles.descriptionHeader}>Description</h3> */}
 						<div className={'richText'}>
-							{description != null ? documentToReactComponents(description.json, options) : <p>Error: Description not found.</p>}
+							{description != null ? documentToReactComponents(JSON.parse(description.raw), options) : <p>Error: Description not found.</p>}
 						</div>
 						<BackArrow text='View other chapters' link='/chapters'/> 
 						<LinkSharing location={'https://blanketsforto.ca/chapter/' + slug}/>
@@ -131,8 +131,8 @@ export const chapterQuery = graphql`
 			slug
 			chapterName
             location
-            childContentfulBtoChapterDescriptionRichTextNode {
-                json
+            description {
+                raw
             }
 			chapterLogo {
 				file {
@@ -140,13 +140,12 @@ export const chapterQuery = graphql`
 				}
 			}
 			chapterLogoFluid : chapterLogo {
-				fluid(
-					resizingBehavior: FILL,
-					quality: 100,
-					maxWidth: 500
-				) {
-					...GatsbyContentfulFluid_tracedSVG
-				}
+				gatsbyImageData(
+					width: 600,
+					height: 600,
+					layout: CONSTRAINED
+					placeholder: BLURRED
+				)
 			}
             instagramUsername
 			emailAddress

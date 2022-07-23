@@ -1,10 +1,6 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import styles from './tag.module.css'
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
-import { navigate } from 'gatsby-link';
-import { divIcon } from 'leaflet';
+import * as styles from './tag.module.css'
 
 const SearchTagItem = ({tagText, clickTagFunc, active}) => {
 
@@ -69,14 +65,19 @@ const SearchTools = ({tags, clickTagFunc, activeTags, onDropdownChange, dropdown
         {value: 'titleaz', label: 'Title (A-Z)'},
         {value: 'titleza', label: 'Title (Z-A)'},
     ]
-    // find placeholder option
-    var defaultIndex = options.findIndex(option => option.value === dropdownPlaceholder);
-    const defaultOption = defaultIndex >= 0 ? options[defaultIndex] : options[0]; 
 
     return(
         <div className={styles.filterContainer}>
-            <p className={styles.filterTitle}>Sort by</p>
-            <Dropdown onChange={onDropdownChange} className={styles.dropdownRoot} arrowClassName={styles.dropdownArrow} options={options} value={defaultOption} placeholder="Select an option" />
+            <div className={styles.dropdown}>
+                <label className={styles.filterTitle}>
+                    Sort by<br/>
+                <select onChange={onDropdownChange} value={dropdownPlaceholder}>
+                    {options.map(x => {
+                        return(<option value={x.value} key={x.label}>{x.label}</option>)
+                    })}
+                </select>
+                </label>
+            </div>
             <p className={styles.filterTitle}>Filter by</p>
             <div className={styles.activeTagContainer}>
             {
@@ -100,7 +101,7 @@ SearchTools.propTypes = {
 
 const BlogTagBar = ({tags, clickable}) => {
 
-    tags = tags.sort()
+    tags = tags === null ? [] : tags.sort()
 
     return(
         <div className={styles.blogTagContainer}>

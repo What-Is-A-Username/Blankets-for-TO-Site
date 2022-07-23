@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import styles from './navigation-item.module.css'
+import * as styles from './navigation-item.module.css'
 import { ChevronDown } from 'react-feather'
-import Cookies from 'universal-cookie'
 import { sum } from 'lodash'
 
 export default ({page, onChangeState}) => {

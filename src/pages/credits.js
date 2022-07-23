@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/SEO'
-import styles from '../page-styles/credits.module.css'
+import * as styles from '../page-styles/credits.module.css'
 
 class Credits extends React.Component {
 

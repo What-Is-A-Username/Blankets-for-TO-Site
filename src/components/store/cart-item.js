@@ -1,7 +1,7 @@
 import { toNumber } from 'lodash'
 import React from 'react'
 import { MinusSquare, PlusSquare } from 'react-feather'
-import styles from './cart-item.module.css'
+import * as styles from './cart-item.module.css'
 
 class CartItem extends React.Component 
 {

@@ -1,17 +1,17 @@
 import React from 'react'
-import Img from 'gatsby-image'
-import styles from './header-image.module.css'
-import Fade from 'react-reveal/Fade'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import Animation from '../components/animate/animation'
+import * as styles from './header-image.module.css'
 
 const HeaderImage = ({imgFluid, headerTitle, headerSubtitle}) => {
 	return (
 		<div className={styles.parent}>
-            <Img fluid={imgFluid} className={styles.fluidImage}/>
+            <GatsbyImage image={imgFluid} className={styles.fluidImage} alt={`Header image for ${headerTitle}`}/>
             <div className={styles.textBox}>
-                <Fade>
+                <Animation fade>
                     <h1 className={styles.title}>{headerTitle}</h1>
                     {(headerSubtitle === undefined || headerSubtitle !== "") ? <p className={styles.subtitle}>{headerSubtitle}</p> : <p/>}
-                </Fade>
+                </Animation>
             </div>
         </div>
     )

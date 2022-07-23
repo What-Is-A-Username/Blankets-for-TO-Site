@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import styles from '../components/screen-container.module.css'
+import * as styles from '../components/screen-container.module.css'
 
 const ScreenContainer = (props, {normalHeight}) => {
 	return(

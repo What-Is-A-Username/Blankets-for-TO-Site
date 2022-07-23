@@ -62,28 +62,4 @@
     }
 }
 
-.contactDirectly h3
-{
-    font-size: 1.5em;
-}
-
-
-@media (min-width: 760px)
-{
-    .contactDirectly {
-        display: block ruby;
-    }
-
-    .contactDirectly h3 {
-        margin-right: 50px;
-        text-align: center;
-    }
-}
-
-@media (max-width: 760px)
-{
-    .contactDirectly h3 {
-        text-align: center;
-    }
-}
 

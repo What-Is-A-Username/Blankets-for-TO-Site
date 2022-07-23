@@ -1,6 +1,6 @@
 import React from 'react'
 import SquareGridItem from "./square-grid-item"
-import styles from './square-grid.module.css'
+import * as styles from './square-grid.module.css'
 import PropTypes from 'prop-types'
 
 const SquareGrid = ({content}) => 
@@ -8,9 +8,9 @@ const SquareGrid = ({content}) =>
     return(
         <div className={styles.gridContainer}>
             {
-                content.map(x => {
+                content.map((x, index) => {
                     return(
-                        <SquareGridItem itemData={x}/>
+                        <SquareGridItem key={index} itemData={x}/>
                     )
                 })
             }
@@ -24,7 +24,7 @@ SquareGrid.propTypes = {
             title: PropTypes.string.isRequired,
             description: PropTypes.string,
             link: PropTypes.string.isRequired,
-            fluid: PropTypes.any,
+            gatsbyImageData: PropTypes.any,
         })
     ).isRequired
 }

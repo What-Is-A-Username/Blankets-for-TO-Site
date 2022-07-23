@@ -4,22 +4,22 @@ import get from 'lodash/get'
 import Layout from '../components/layout'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import SEO from '../components/SEO'
-import styles from '../page-styles/positions.module.css'
-import Fade from 'react-reveal/Fade'
+import * as styles from '../page-styles/positions.module.css'
 import StyledButton from '../components/styled-button'
 import HeaderImage from '../components/header-image'
+import Animation from '../components/animate/animation'
 
 class Positions extends React.Component {
 	render() {
 
-		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
+		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
         const headerSubtitle = ''
         const headerTitle = 'Blankets for T.O. Membership'
 
-		const membershipInfo = get(this, 'props.data.allContentfulOrganizationInformationMembershipInformationRichTextNode.edges')[0].node
-		
+		const membershipInfo = get(this, 'props.data.allContentfulOrganizationInformation.nodes[0].membershipInformation')
+
 		const formLink = 'https://forms.gle/xDNYp3KzU1M9K1o87'
-		
+
 		return (
 			<Layout location={this.props.location}>
 				<SEO title='Membership and Volunteering'
@@ -28,14 +28,14 @@ class Positions extends React.Component {
 					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
 						<div className={styles.membershipInfo}>
-							<Fade top>
+							<Animation fade top>
 								<StyledButton link={formLink} buttonText='Sign up for membership' openInNewTab/>
-							</Fade>
-							<Fade delay={500}>
-							<div className="richText">
-								{membershipInfo.json !== undefined ? documentToReactComponents(membershipInfo.json) : <p>Error: Articles not found.</p>}
-							</div>
-							</Fade>
+							</Animation>
+							<Animation fade animationDelay={500}>
+								<div className="richText">
+									{membershipInfo !== undefined ? documentToReactComponents(JSON.parse(membershipInfo.raw)) : <p>Error: Articles not found.</p>}
+								</div>
+							</Animation>
 						</div>
 					</div>
 				</div>
@@ -43,7 +43,7 @@ class Positions extends React.Component {
 		)
 	}
 }
-		
+
 export default Positions
 
 export const positionPageQuery = graphql`
@@ -51,20 +51,17 @@ query PositionQuery {
 	allContentfulHeaderImage(filter: {pageName: {eq: "Positions"}}, limit: 1) {
 		nodes {
 			image {
-				fluid(
-					resizingBehavior: FILL
-					quality: 100
-					maxWidth: 4000
-				) {
-					...GatsbyContentfulFluid_tracedSVG
-				}
+				gatsbyImageData(
+					layout: FULL_WIDTH
+					placeholder: BLURRED
+				)
 			}
 		}
 	}
-	allContentfulOrganizationInformationMembershipInformationRichTextNode {
-		edges {
-			node {
-				json
+	allContentfulOrganizationInformation(limit: 1) {
+		nodes {
+		  	membershipInformation {
+				raw
 			}
 		}
 	}

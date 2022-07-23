@@ -1,6 +1,6 @@
 import React from 'react'
 import { Check, X } from 'react-feather';
-import styles from './question.module.css'
+import * as styles from './question.module.css'
 
 class QuestionEmbed extends React.Component 
 {
@@ -13,15 +13,13 @@ class QuestionEmbed extends React.Component
     }
 
     onSubmit = () => {
+        if (this.state.selection !== undefined) 
         this.setState({submitted: true})
     }
 
     render()
     {
-        const data = this.props.node.data.target.fields
-        const question = data.question['en-US']
-        const answer = data.answer['en-US']
-        const options = data.options['en-US']
+        const { question, answer, options } = this.props.data
 
         const colorOptionLabel = (index) => {
             if (!this.state.submitted || typeof this.state.selection === 'undefined') return('')
@@ -50,7 +48,7 @@ class QuestionEmbed extends React.Component
                                         </React.Fragment> 
                                         :
                                         <React.Fragment>
-                                            <input key={x} className={styles.option} type="radio" id={`${question}_${x}`} name={question} value={x} onChange={() => this.onSelect(index + 1)} checked={index + 1 == this.state.selection ? "checked" : ""}/>
+                                            <input key={x} className={styles.option} type="radio" id={`${question}_${x}`} name={question} value={x} onChange={() => this.onSelect(index + 1)} checked={index + 1 === this.state.selection ? "checked" : ""}/>
                                             <label for={`${question}_${x}`}>{`${String.fromCharCode(65 + index)}. ${x}`}</label>
                                             <br/>   
                                         </React.Fragment>
@@ -67,13 +65,13 @@ class QuestionEmbed extends React.Component
                     {this.state.submitted && this.state.selection !== answer &&
                     <div className={styles.incorrectMessage}>
                         <X/>
-                        <p>{`The correct answer is ${String.fromCharCode(64 + answer)}`}</p>
+                        <p>{`Nice try! The answer was ${String.fromCharCode(64 + answer)}.`}</p>
                     </div>
                     }
                     {this.state.submitted && this.state.selection === answer &&
                     <div className={styles.correctMessage}>
                         <Check/>
-                        <p>{`Correct!`}</p>
+                        <p>{`Yes, the answer was ${String.fromCharCode(64 + answer)}. Great job!`}</p>
                     </div>
                     }
                 </div>

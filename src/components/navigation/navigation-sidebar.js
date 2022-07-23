@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from './navigation-sidebar.module.css' 
+import * as styles from './navigation-sidebar.module.css' 
 
 export default ({ width, height, children }) => {
 	const [xPosition, setX] = React.useState(-width);

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './position.module.css'
+import * as styles from './position.module.css'
 
 export default ({ data }) => (
 	<div className={styles.positionCard} key={data.title}>

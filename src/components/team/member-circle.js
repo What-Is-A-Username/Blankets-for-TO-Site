@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import Img from 'gatsby-image'
-import styles from './member-circle.module.css'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import * as styles from './member-circle.module.css'
 import emailImage from '../images/email.svg'
 import twitterImage from '../images/twitter.svg'
 import facebookImage from '../images/facebook.svg'
@@ -39,7 +39,7 @@ export default class MemberCircle extends React.Component {
                 {data.photo === null ? 
                     <img className={styles.memberPortrait} src={placeholderPortrait} alt={`Placeholder portrait of ${data.title}`}></img>
                     :  
-                    <Img className={styles.memberPortrait} fluid={data.photo.fluid} alt={`Portrait of ${data.title}`}/>
+                    <GatsbyImage className={styles.memberPortrait} image={data.photo.gatsbyImageData} alt={`Portrait of ${data.title}`}/>
                 }
                 <div className={styles.memberInformation}>
                     <h3 className={styles.name}>{data.name}</h3>

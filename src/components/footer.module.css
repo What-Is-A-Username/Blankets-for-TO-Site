@@ -63,7 +63,7 @@
 
 /* Logo size  */
 @media (min-width: 1200px) {
-	.logo, .logo img, .logo div {
+	.logo {
 		width: 150px;
 		height: 150px;
 	}
@@ -71,7 +71,7 @@
 
 @media (min-width: 900px) and (max-width: 1200px)
 {
-	.logo, .logo img, .logo div {
+	.logo {
 		width: 100px;
 		height: 100px;
 		align-self: center;
@@ -89,7 +89,7 @@
 
 @media (max-width: 900px)
 {
-	.logo, .logo img, .logo div {
+	.logo {
 		width: 75px;
 		height: 75px;
 		align-self: center;
@@ -186,7 +186,8 @@
 	width: 100%;
 	justify-content: center;
 	flex-direction: row;
-	height: 20px;
+	margin-top: 5px;
+	height: 30px;
 	align-items: center;
 }
 

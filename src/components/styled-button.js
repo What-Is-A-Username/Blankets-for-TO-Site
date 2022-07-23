@@ -1,7 +1,6 @@
 import React from "react"
-import { Link, navigate } from 'gatsby'
 import PropTypes from 'prop-types'
-import styles from './styled-button.module.css'
+import * as styles from './styled-button.module.css'
 
 const StyledButton = ({buttonText, link, isWhite, openInNewTab}) => {
     return(

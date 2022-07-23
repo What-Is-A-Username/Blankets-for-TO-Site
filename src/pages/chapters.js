@@ -11,7 +11,7 @@ class About extends React.Component {
 	state = { showRecentAnnualReport: true }
 
 	render() {
-		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
+		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
 		const headerTitle = 'Chapters'
 		const headerSubtitle = ''
 		
@@ -20,7 +20,7 @@ class About extends React.Component {
             return(
                 {
                     title: chapter.chapterName,
-                    fluid: chapter.chapterLogo.fluid,
+                    gatsbyImageData: chapter.chapterLogo.gatsbyImageData,
                     description: chapter.location,
                     link: "/chapter/" + chapter.slug,
                 }
@@ -75,22 +75,20 @@ export const chaptersQuery = graphql`
                 chapterName
                 location
                 chapterLogo {
-                    fluid {
-                        ...GatsbyContentfulFluid_tracedSVG
-                    }
+					gatsbyImageData(
+						layout: FULL_WIDTH
+						placeholder: BLURRED
+					)
                 }
             }
         }
         allContentfulHeaderImage(filter: {pageName: {eq: "About"}}, limit: 1) {
 			nodes {
 				image {
-					fluid(
-						resizingBehavior: FILL,
-						quality: 100,
-						maxWidth: 4000
-					) {
-						...GatsbyContentfulFluid_tracedSVG
-					}
+					gatsbyImageData(
+						layout: FULL_WIDTH
+						placeholder: BLURRED
+					)
 				}
 			}
 		}

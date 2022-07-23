@@ -24,9 +24,15 @@
   width: 100%;
 }
 
-.pdfFrame a
+.pdfFrame > p
 {
-  color: var(--light_red)
+  color: var(--light_red);
+  text-decoration: none;
+}
+
+.pdfFrame > p:hover 
+{
+  text-decoration: underline;
 }
 
 .pdfFrame iframe 

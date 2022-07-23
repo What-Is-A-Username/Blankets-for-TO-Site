@@ -236,6 +236,12 @@ Rich Text Display
 	margin-right: 20%;
 }
 
+.richText hr 
+{
+	border: 1px solid var(--dark_gray);
+	width: 100%;
+}
+
 .termly-cookie-preference-button {
 	background: white; 
 	box-sizing: border-box; 

@@ -3,10 +3,10 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
-import styles from '../page-styles/store.module.css'
+import * as styles from '../page-styles/store.module.css'
 import StoreItemPreview from '../components/store/store-item-preview'
 import { ShoppingCart } from 'react-feather'
-import Cookies from 'universal-cookie'
+import Cookies from 'js-cookie'
 import StyledButton from '../components/styled-button'
 import { sum } from 'lodash'
 import HeaderImage from '../components/header-image'
@@ -18,14 +18,16 @@ export default class Store extends React.Component {
 
     componentDidMount()
     {
-        var isServer = typeof window === undefined;
-        var cookies = isServer ? new Cookies(req.headers.cookie) : new Cookies(); 
-        this.setState({cartItems: cookies.get('cart-items')});
+        // var isServer = typeof window === undefined;
+        // var cookies = isServer ? new Cookies(req.headers.cookie) : new Cookies(); 
+        // this.setState({cartItems: cookies.get('cart-items')});
+        
+        this.setState({cartItems: JSON.parse(Cookies.get('cart-items'))});
     }
 
 	render() {
 
-        const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.fluid')
+        const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
         const headerSubtitle = 'Every mask or sticker purchased goes towards funding blankets and other necessities that will be donated to homeless individuals, as we work to alleviate homelessness in the GTA.'
         const headerTitle = 'Merchandise Store'
         
@@ -83,40 +85,40 @@ export const StoreQuery = graphql`
             nodes {
                 slug
                 mainPreview {
-                    fluid(maxWidth: 1000, resizingBehavior: SCALE) {
-                        ...GatsbyContentfulFluid_tracedSVG
-                    }
+                    gatsbyImageData(
+                        layout: FULL_WIDTH
+                        placeholder: BLURRED
+                    )
                 }
                 largePreview {
-                    fluid(maxWidth: 1500, resizingBehavior: SCALE) {
-                        ...GatsbyContentfulFluid_tracedSVG
-                    }
+                    gatsbyImageData(
+                        layout: FULL_WIDTH
+                        placeholder: BLURRED
+                    )
                 }
                 itemName
                 itemPrice
                 itemDescription 
                 {
-                    json
+                    raw
                 }
             }
         }
         file(relativePath: { eq: "shopping-bag.jpg" }) {
             childImageSharp {
-                fluid(maxHeight: 500, quality: 100) {
-                    ...GatsbyImageSharpFluid
-                    ...GatsbyImageSharpFluidLimitPresentationSize
-                }
+                gatsbyImageData(
+                    layout: FULL_WIDTH
+                    placeholder: BLURRED
+                )
             }
         }
         allContentfulHeaderImage(filter: {pageName: {eq: "Store"}}, limit: 1) {
             nodes {
 				image {
-					fluid(
-						resizingBehavior: FILL
-						quality: 100
-					) {
-						...GatsbyContentfulFluid_tracedSVG
-					}
+					gatsbyImageData(
+                        layout: FULL_WIDTH
+                        placeholder: BLURRED
+                    )
 				}
 			}
 		}

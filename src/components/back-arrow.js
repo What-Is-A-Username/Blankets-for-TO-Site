@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './back-arrow.module.css'
+import * as styles from './back-arrow.module.css'
 import { ChevronLeft } from 'react-feather';
 
 const BackArrow = ({text, link}) => 

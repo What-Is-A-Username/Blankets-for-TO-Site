@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import SEO from '../components/SEO'
 import get from 'lodash/get'
 import Layout from '../components/layout'
@@ -8,44 +8,53 @@ import LinkSharing from '../components/link-sharing'
 
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import styles from '../templates/blog-post.module.css'
+import * as styles from '../templates/blog-post.module.css'
 
 import { BlogTagBar } from '../components/blog_search/tag'
 
 import CaptionedFigure from '../components/blog_embeds/captioned-figure'
-import SpotifyEmbed from '../components/blog_embeds/spotify-embed'
-import YoutubeEmbed from '../components/blog_embeds/youtube-embed'
+import readingTime from 'reading-time'
 import QuestionEmbed from '../components/blog_embeds/question'
 import GalleryEmbed from '../components/blog_embeds/gallery'
 
 class BlogPostTemplate extends React.Component {
 
+	concatenateText = (jsonText) => {
+		var paragraphs = jsonText.content.filter(x => x.nodeType === 'paragraph').map(x => x.content).flat(1)
+		var getRawText = (obj) => {
+			if (obj.nodeType === 'text') return(obj.value)
+			else if (obj.nodeType === 'hyperlink') {
+				var linkText = obj.content.filter(x => x.nodeType === 'text')[0].value
+				return(linkText)
+			}
+		}
+		var textList = paragraphs.map(x => getRawText(x))
+		var concatStr = textList.join(' ')
+		return(concatStr)
+	}
+
 	render() {
 		const post = get(this.props, 'data.contentfulBlogPost')
-		const imageGalleries = get(this.props, 'data.allContentfulGalleryEmbed.nodes')
+		const richTextBodyJSON = JSON.parse(post.richTextBody.raw)
+		const timeToRead = readingTime(this.concatenateText(richTextBodyJSON)).minutes
 
+		const assets = new Map(post.richTextBody.references.map(ref => [ref.contentful_id,ref]))
 		const options = {
 			renderNode: {
-				[BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields } } }) => {
-					if (fields.file['en-US'].contentType.startsWith('image/'))
-						return <CaptionedFigure fields={fields}/>
-				},
-				[BLOCKS.EMBEDDED_ENTRY]: (node) => {
-					if (node.data.target.sys.contentType.sys.id === "inlineSpotifyEmbed")
-						<SpotifyEmbed node={node}/>
-					else if (node.data.target.sys.contentType.sys.id === "youtubeEmbed")
-						<YoutubeEmbed node={node}/>
-					else if (node.data.target.sys.contentType.sys.id === "embeddedQuestion")
-						return(<QuestionEmbed node={node}/>)
-					else if (node.data.target.sys.contentType.sys.id === "gallery")
-					{
-						var title = node.data.target.fields.galleryTitle['en-US']
-						if (imageGalleries.length === 0)
-							return(null)
-						else 
-							return(<GalleryEmbed node={imageGalleries.find(x => x.galleryTitle === title)}/>)
+				[BLOCKS.EMBEDDED_ASSET]: node => {
+					const data = assets.get(node.data.target.sys.id)
+					if (data.file.contentType.startsWith('image/')) {
+						return(<CaptionedFigure gatsbyImageData={data.gatsbyImageData} title={data.title} description={data.description}/>)
 					}
 				},
+				[BLOCKS.EMBEDDED_ENTRY]: node => {
+					const data = assets.get(node.data.target.sys.id)
+					if (data.internal.type === 'ContentfulEmbeddedQuestion') {
+						return(<QuestionEmbed data={data}/>)
+					} else if (data.internal.type === 'ContentfulGalleryEmbed') {
+						return(<GalleryEmbed data={data}/>)
+					}
+				}
 			},
 		};
 
@@ -69,11 +78,11 @@ class BlogPostTemplate extends React.Component {
 					<div className="wrapper">
 						<h1 className={styles.title}>{post.title}</h1>
 						<BlogTagBar tags={post.tags} clickable={true}></BlogTagBar>
-						<p className={styles.publishDate}>by {post.authorName}</p>
-						<p className={styles.publishDate}>{post.publishDate}</p>
+						<p className={styles.publishDate}>{`by ${post.authorName} on ${post.publishDate}`}</p>
+						<p className={styles.publishDate}>{`Estimated reading time: ${timeToRead} minute` + (timeToRead !== 1 ? 's' : '')}</p>
 						<div className={'richText ' + styles.bodyParent}>
 							<div className={styles.body}>
-								{post.richTextBody != null ? documentToReactComponents(post.richTextBody.json, options) : <p>Error: Article not found.</p>}
+								{post.richTextBody != null ? documentToReactComponents(richTextBodyJSON, options) : <p>Error: Article not found.</p>}
 							</div>
 						</div>
 						<LinkSharing location={'https://blanketsforto.ca/blog/' + post.slug} />
@@ -103,7 +112,45 @@ export const pageQuery = graphql`
 			tags
 			slug
 			richTextBody {
-				json
+				raw
+				references {
+					... on ContentfulAsset {
+						description
+						title
+						file {
+							contentType
+						}
+						gatsbyImageData(
+							layout: CONSTRAINED
+							width: 760
+						)
+						contentful_id
+					}
+					... on ContentfulEmbeddedQuestion {
+						contentful_id 
+						id
+						answer
+						options
+						question
+						internal {
+							type
+						}
+					}
+					... on ContentfulGalleryEmbed {
+						contentful_id
+						id
+						displayTitle
+						displayDescription {
+						  displayDescription
+						}
+						images {
+						  gatsbyImageData(layout: CONSTRAINED)
+						}
+						internal {
+							type
+						}
+					}
+				}
 			}
 			articleType
 			publishDate(formatString: "MMMM Do, YYYY")      
@@ -119,25 +166,6 @@ export const pageQuery = graphql`
 				}
 			}
 			previewOnly
-		}
-		allContentfulGalleryEmbed(filter: {blogPage: {elemMatch: {slug: {eq: $slug}}}}) {
-			nodes {
-			  	galleryTitle
-			  	thumbs : images {
-					fluid(maxWidth: 200, maxHeight: 200, resizingBehavior: PAD, quality: 100) {
-						...GatsbyContentfulFluid_tracedSVG
-					}
-				}
-			  	images {
-					fluid(maxWidth: 1000, quality: 50) {
-					...GatsbyContentfulFluid_tracedSVG
-					}
-			  	}
-				displayTitle
-				displayDescription {
-					displayDescription
-				}
-			}
 		}
 	}
 `

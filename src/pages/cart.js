@@ -3,18 +3,18 @@ import get from 'lodash/get'
 import { graphql } from 'gatsby'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
-import styles from '../page-styles/cart.module.css'
-import Cookies from 'universal-cookie';
+import * as styles from '../page-styles/cart.module.css'
+import Cookies from 'js-cookie';
 import CartItem from '../components/store/cart-item'
-import buttonStyles from '../components/styled-button.module.css'
-import { ArrowLeft, ArrowRight, ChevronLeft, Copy, DollarSign, Info } from 'react-feather'
-import Fade from 'react-reveal/Fade'
+import * as buttonStyles from '../components/styled-button.module.css'
+import { ArrowLeft, ArrowRight, Copy, DollarSign, Info } from 'react-feather'
 import BackArrow from '../components/back-arrow'
+import Animation from '../components/animate/animation'
 
 export default class Cart extends React.Component {
 
     allItems = get(this.props, 'data.allContentfulMerchItem.nodes')
-    state = { cookies: undefined, step: 0, refresh: false, isMember: false, copied: false, cartItems: [] }
+    state = { step: 0, refresh: false, isMember: false, copied: false, cartItems: [] }
 
     changeMembershipStatus = () => 
     {
@@ -46,7 +46,8 @@ export default class Cart extends React.Component {
 
     updateCookies = (newCartItems) => 
     {
-        this.state.cookies.set('cart-items', newCartItems.map(item => {return({slug: item.slug, count: item.count})}), {path: '/'})
+        var newCart = newCartItems.map(item => {return({slug: item.slug, count: item.count})})
+        Cookies.set('cart-items', JSON.stringify(newCart), {path: '/'})
     }
 
     next = () => {
@@ -62,15 +63,15 @@ export default class Cart extends React.Component {
             <div className={styles.checkoutStep}>
                 {
                     this.state.step === step ? 
-                    <Fade>
-                        <h1>Step {step}</h1>
-                        {children}
-                    </Fade>
+                        <Animation fade>
+                            <h1>Step {step}</h1>
+                            {children}
+                        </Animation>
                     :
-                    <React.Fragment>
-                        <h1>Step {step}</h1>
-                        {children}
-                    </React.Fragment>
+                        <React.Fragment>
+                            <h1>Step {step}</h1>
+                            {children}
+                        </React.Fragment>
                 }
                 
             </div>
@@ -115,7 +116,7 @@ export default class Cart extends React.Component {
                 return document.execCommand("copy");  // Security exception may be thrown by some browsers.
             }
             catch (ex) {
-                return prompt("Copy to clipboard: Ctrl+C, Enter", text);
+                return prompt("Copy to clipboard: Ctrl+C, Enter");
             }
             finally {
                 document.body.removeChild(textarea);
@@ -127,11 +128,11 @@ export default class Cart extends React.Component {
 
     componentDidMount()
     {
-        var isServer = typeof window === undefined;
-        var cookies = isServer ? new Cookies(req.headers.cookie) : new Cookies();
-        var cartData = cookies.get('cart-items')
-        
-        this.setState({cookies: cookies, cartItems: cartData})
+        // var isServer = typeof window === undefined;
+        // var cookies = isServer ? new Cookies(req.headers.cookie) : new Cookies();
+        // var cartData = cookies.get('cart-items')
+        var cartData = JSON.parse(Cookies.get('cart-items'))
+        this.setState({cartItems: cartData})
     }
 
     render() {

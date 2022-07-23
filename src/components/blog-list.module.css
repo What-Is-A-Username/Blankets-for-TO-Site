@@ -56,9 +56,9 @@
         flex-direction: row;
     }
     .previewImage {
-        min-width: 175px;
+        width: 175px;
         max-width: 175px;
-        min-height: 150px;
+        /* height: 150px; */
         max-height: 100%;
         align-self: center;
         padding-right: 20px;

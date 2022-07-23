@@ -58,6 +58,10 @@
     cursor: pointer;
     width: 30px;
     height: 30px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .leftArrow:hover, .rightArrow:hover
@@ -213,6 +217,11 @@
 
 .addToCart, .changeCart
 {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
     align-items: center;
     width: 100%;
     display: flex;

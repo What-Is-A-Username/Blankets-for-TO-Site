@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../page-styles/blog.module.css'
+import * as styles from '../../page-styles/blog.module.css'
 import { filter, range } from 'lodash'
 
 export default({numPages, onPageClick, currentPage}) => {

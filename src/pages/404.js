@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import SEO from '../components/SEO'
 import StyledButton from '../components/styled-button'
 
-import styles from '../page-styles/404.module.css'
+import * as styles from '../page-styles/404.module.css'
 
 class FourOFourPage extends React.Component {
 

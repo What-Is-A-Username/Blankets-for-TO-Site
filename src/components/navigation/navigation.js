@@ -1,11 +1,11 @@
 import React from 'react'
 import { StaticQuery, navigate, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import styles from './navigation.module.css'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import * as styles from './navigation.module.css'
 import pageData from '../../pages/page-data.json'
 import NavigationItem from './navigation-item'
 import { Menu, X } from 'react-feather'
-import Cookies from 'universal-cookie'
+import Cookies from 'js-cookie'
 
 const Navigation = (props) => {
 	return (
@@ -15,10 +15,11 @@ const Navigation = (props) => {
                 {
                     file(relativePath: { eq: "bto_new_logo_transparent.png" }) {
                         childImageSharp {
-                            fluid(maxHeight: 100, quality: 100) {
-                                ...GatsbyImageSharpFluid
-                                ...GatsbyImageSharpFluidLimitPresentationSize
-                            }
+                            gatsbyImageData(
+                                layout: FULL_WIDTH
+                                placeholder: BLURRED
+                                height: 100
+                            )
                         }
                     }
                 }`
@@ -48,12 +49,16 @@ const NavBar = (propData) => {
     var isServer = typeof window === undefined;
     if (!isServer)
     {
-        var cookies = new Cookies(); 
-        cart = cookies.get('cart-items')
-        if (cart === undefined)
-            cookies.set('cart-items', [], {path: '/'})
-        else
-            cookies.set('cart-items', cart.filter(x => x !== undefined && x.count > 0), {path: '/'})
+        cart = Cookies.get('cart-items')
+        if (cart !== undefined) {
+            cart = JSON.parse(cart)
+            if (Array.isArray(cart))    
+            var cleanedCart = cart.filter(x => x !== undefined && x.count > 0)
+            Cookies.set('cart-items', JSON.stringify(cleanedCart), {path: '/'})
+        } else {
+            Cookies.set('cart-items', JSON.stringify([]), {path: '/'})
+            // console.log("Set cart items back to zero.")
+        }
     }
     
 
@@ -64,7 +69,7 @@ const NavBar = (propData) => {
                 <div className={styles.header}>
                     <div className={styles.images}> 
                         <div className={styles.logo} onClick={onClickLogo} >
-                            <Img fluid={logo.fluid}/>
+                            <GatsbyImage image={logo.gatsbyImageData} alt='Logo for Blankets for T.O.'/>
                         </div>
                         <div className={styles.toggle} onClick={changeState}>
                             {drawerActive ? 
@@ -80,7 +85,7 @@ const NavBar = (propData) => {
                                 drawerActive &&
                                 <div className={styles.images + ' ' + styles.dropdownTop} style={{backgroundColor: '#00000000'}}> 
                                     <div className={styles.logo} onClick={onClickLogo} >
-                                        <Img fluid={logo.fluid}/>
+                                        <GatsbyImage image={logo.gatsbyImageData} alt='Logo for Blankets for T.O.'/>
                                     </div>
                                     <div className={styles.toggle} onClick={changeState}>
                                         {drawerActive ? 
