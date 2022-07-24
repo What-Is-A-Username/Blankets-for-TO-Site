@@ -6,7 +6,7 @@ import * as styles from './article-preview.module.css'
 const ArticleCard = ({article, index}) => {
 	return (
 		<a href={`/blog/${article.slug}`} className={styles.alink} key={article.title}>
-				<Animation fade animationDelay={700 * index} style={{maxWidth: '300px'}} className={styles.alink}>
+				<Animation fade animationDelay={700 * index} className={styles.alink}>
 				<div className={styles.preview}>
 					<div className={styles.previewImage}>
 						{article.imagePreview != null ?

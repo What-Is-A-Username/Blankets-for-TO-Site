@@ -18,7 +18,9 @@ const Footer = (props) => {
 
 	const clickManager = () => {
 		try {
-			//displayPreferenceModal()
+			if (typeof window !== 'undefined') {
+				displayPreferenceModal()
+			}
 		}
 		catch {
 			console.log("Unable to display the cookie preference widget. Please try again later. Report to blanketsforto.site@gmail.com if issue persists.")

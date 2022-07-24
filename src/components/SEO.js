@@ -93,11 +93,11 @@ class SEO extends React.Component {
 			{doNotCrawl && <meta name="robots" content="noindex"/>}
 			{doNotCrawl && <meta name="googlebot" content="noindex"/>}
 
-			{/* <script
+			<script
 				type="text/javascript"
 				src="https://app.termly.io/embed.min.js"
 				data-website-uuid="01a08857-e482-4377-85cd-f142d9dba419"
-			></script> */}
+			></script>
 
 			{/* Global site tag (gtag.js) - Google Analytics */}
 			{/* <script async src="https://www.googletagmanager.com/gtag/js?id=${G-E7KS17RLEB}"></script>
@@ -108,7 +108,6 @@ class SEO extends React.Component {
 
 			{/* Curator Social Media Embedding */}
 			{this.state.domLoad && useCurator && <script type="text/javascript" charSet="UTF-8" src="https://cdn.curator.io/published/18d8088e-b13e-4fbe-a348-e56d6fcbf0a6.js"></script>}
-
 
 			{/* MailChimp Mailing List */}
 			{this.state.domLoad && useMailChimp && <script type="text/javascript" src="https://chimpstatic.com/mcjs-connected/js/users/c190e10f2b62c767274e1197b/52a4a6cc65ff988eefff98c51.js"></script>}

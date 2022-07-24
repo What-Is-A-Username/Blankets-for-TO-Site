@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import 'animate.css';
-import { round } from 'lodash';
+import { min, round } from 'lodash';
 
 const AnimationClass = ({children, 
     // animations 
@@ -10,7 +10,7 @@ const AnimationClass = ({children,
     zoom = false,
 
     // timing (in ms)
-    animationDelay = 0,
+    animationDelay = 100,
     animationDuration = 500,
 
     // callback
@@ -33,6 +33,7 @@ const AnimationClass = ({children,
 }) => {
 
     const [isDelayOver, setIsDelayOver] = useState(false);
+    animationDelay = min([100, animationDelay])
 
     const onViewChange = (inView, entry) => {
         if (inView) {
@@ -47,6 +48,8 @@ const AnimationClass = ({children,
         triggerOnce: true,
         rootMargin: '-15% 0px',
         trackVisibility: true,
+        threshold: 0,
+        delay: 100,
         onChange: onViewChange,
       });
 
@@ -91,6 +94,8 @@ const AnimationClass = ({children,
                 flexDirection: 'column',
                 width: '100%',
                 height: '100%',
+                minHeight: '1px',
+                minWidth: '1px',
                 justifyContent: doNotJustifyContentCenter ? 'center' : 'unset',
                 opacity: 0,
                 ...style
@@ -99,6 +104,8 @@ const AnimationClass = ({children,
             final_style = {
                 display: 'flex',
                 flexDirection: 'column',
+                minHeight: '1px',
+                minWidth: '1px',
                 width: '100%',
                 height: '100%',
                 justifyContent: doNotJustifyContentCenter ? 'unset' : 'center',
