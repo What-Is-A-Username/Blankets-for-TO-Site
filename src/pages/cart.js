@@ -46,8 +46,10 @@ export default class Cart extends React.Component {
 
     updateCookies = (newCartItems) => 
     {
-        var newCart = newCartItems.map(item => {return({slug: item.slug, count: item.count})})
-        Cookies.set('cart-items', JSON.stringify(newCart), {path: '/'})
+        if (typeof window !== 'undefined') {
+            var newCart = newCartItems.map(item => {return({slug: item.slug, count: item.count})})
+            Cookies.set('cart-items', JSON.stringify(newCart), {path: '/'})
+        }
     }
 
     next = () => {
@@ -131,8 +133,12 @@ export default class Cart extends React.Component {
         // var isServer = typeof window === undefined;
         // var cookies = isServer ? new Cookies(req.headers.cookie) : new Cookies();
         // var cartData = cookies.get('cart-items')
-        var cartData = JSON.parse(Cookies.get('cart-items'))
-        this.setState({cartItems: cartData})
+        if (typeof window !== 'undefined') {
+            var cartData = JSON.parse(Cookies.get('cart-items'))
+            this.setState({cartItems: cartData})
+        } else {
+            this.setState({cartItems: []})
+        }
     }
 
     render() {

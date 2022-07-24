@@ -3,6 +3,9 @@ require("dotenv").config({
 });
 
 module.exports = {
+  flags: {
+    PARALLEL_QUERY_RUNNING: false,
+  },
   siteMetadata: {
     title: 'Blankets for T.O.',
     author: 'Blankets for T.O.', 
@@ -15,7 +18,6 @@ module.exports = {
     ],
     twitterUsername: '@blanketsforto',
   },
-  pathPrefix: '/blankets-for-to-site',
   plugins: [
     "gatsby-transformer-remark",
     "gatsby-transformer-sharp",
@@ -25,6 +27,9 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: {
+        defaults: {
+          formats: [`auto`],
+        },
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
         host: process.env.CONTENTFUL_HOST

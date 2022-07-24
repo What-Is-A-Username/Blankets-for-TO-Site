@@ -36,11 +36,12 @@ export default class OrgMap extends React.Component {
 	componentDidUpdate() {
 		if (this.state.mapCenter === -1)
 			return
-		else
+		else if (typeof window !== 'undefined')
 			this.map = this.map.setView({ lon: this.mapLocations[this.state.mapCenter].coordinateLongitude, lat: this.mapLocations[this.state.mapCenter].coordinateLatitude })
 	}
 
 	componentDidMount() {
+		if (typeof window === 'undefined') return; 
 		this.map = L.map('mapid', { zoomControl: false, attributionControl: true, dragging: false, zoom: false, touchZoom: false, scrollWheelZoom: false})
 		var markerIcon = L.icon({
 			iconUrl: this.markerUrl,
@@ -87,7 +88,7 @@ export default class OrgMap extends React.Component {
 		this.map.on("load", 
 			() => { 
 				setTimeout(() => { 
-                    if (typeof window !== "undefined") {
+                    if (typeof window !== 'undefined') {
                         window.self.map.invalidateSize(); 
                     }
                 }, 500);
@@ -114,7 +115,7 @@ export default class OrgMap extends React.Component {
 				</div>
 				<div id="mapid" className={styles.leafletMap}>
 					{/* Show a message behind the map that would be visible if the map tiles did not load properly. */}
-					<p className={styles.errorText}>Map not loading? Try refreshing, enabling cookies, or disabling browser extensions.</p>
+					{/* <p className={styles.errorText}>Map not loading? Try refreshing, enabling cookies, or disabling browser extensions.</p> */}
 				</div>
 			</div>
 		)

@@ -187,14 +187,6 @@ class RootIndex extends React.Component {
 						placeholder: BLURRED
 					)			
 				}
-
-				leftBackgroundImage 
-				{
-					gatsbyImageData(
-						layout: FULL_WIDTH
-						placeholder: BLURRED
-					)
-				}
 			}
 		}
 	}

@@ -43,7 +43,7 @@ const AnimationClass = ({children,
         }
     }
 
-    const { ref, inView } = useInView({
+    const { ref, inView, entry } = useInView({
         triggerOnce: true,
         rootMargin: '-15% 0px',
         trackVisibility: true,
@@ -54,7 +54,7 @@ const AnimationClass = ({children,
     const noDir = !left && !right && !down && !up;
 
     // render the current animation?
-    const animationVisible = inView && isDelayOver;
+    const animationVisible = entry ? inView && isDelayOver : true;
 
     const getClasses = () => {
         if (!animationVisible) {

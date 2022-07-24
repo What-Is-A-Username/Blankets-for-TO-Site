@@ -15,12 +15,15 @@ class PageTemplate extends React.Component {
 
 	render() {
 		const post = get(this.props, 'data.contentfulPage')
-
+		
+		const assets = new Map(post.richTextBody.references.map(ref => [ref.contentful_id,ref]))
 		const options = {
 			renderNode: {
-				[BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields } } }) => {
-					if (fields.file['en-US'].contentType.startsWith('image/'))	
-						<CaptionedFigure fields={fields} hideCaption/>
+				[BLOCKS.EMBEDDED_ASSET]: node => {
+					const data = assets.get(node.data.target.sys.id)
+					if (data.file.contentType.startsWith('image/')) {
+						return(<CaptionedFigure gatsbyImageData={data.gatsbyImageData} title={data.title} description={data.description}/>)
+					}
 				},
 			},
 		};
@@ -45,7 +48,7 @@ class PageTemplate extends React.Component {
 					<div className="wrapper" >
 						<h1 className={styles.title}>{post.title}</h1>
 						<div className="richText" styles={{maxWidth: '800px'}}>
-							{post.richTextBody != null ? documentToReactComponents(post.richTextBody.raw, options) : <p>Error: Article not found.</p>}
+							{post.richTextBody != null ? documentToReactComponents(JSON.parse(post.richTextBody.raw), options) : <p>Error: Article not found.</p>}
 						</div>
 						<LinkSharing location={'https://blanketsforto.ca/blog/' + post.slug} />
 						<hr className={styles.horizontalLine}></hr>
@@ -71,6 +74,20 @@ export const DynamicPageQuery = graphql`
 			slug
 			richTextBody {
 				raw
+				references {
+					... on ContentfulAsset {
+						description
+						title
+						file {
+							contentType
+						}
+						gatsbyImageData(
+							layout: CONSTRAINED
+							width: 760
+						)
+						contentful_id
+					}
+				}
 			}
 			description {
 				childMarkdownRemark {

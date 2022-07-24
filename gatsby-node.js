@@ -60,8 +60,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  console.log(result)
-
   const posts = result.data.allContentfulBlogPost.nodes
 
   // Create blog posts pages

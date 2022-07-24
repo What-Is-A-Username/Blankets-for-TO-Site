@@ -99,9 +99,6 @@ class SEO extends React.Component {
 				data-website-uuid="01a08857-e482-4377-85cd-f142d9dba419"
 			></script> */}
 
-			{/* JQuery */}
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
 			{/* Global site tag (gtag.js) - Google Analytics */}
 			{/* <script async src="https://www.googletagmanager.com/gtag/js?id=${G-E7KS17RLEB}"></script>
 			<script>{"window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} 	gtag('js', new Date()); gtag('config', 'G-E7KS17RLEB');"}</script> */}

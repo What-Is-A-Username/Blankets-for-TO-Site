@@ -46,8 +46,7 @@ const NavBar = (propData) => {
 
     // set default cookies
     var cart = []
-    var isServer = typeof window === undefined;
-    if (!isServer)
+    if (typeof window !== 'undefined')
     {
         cart = Cookies.get('cart-items')
         if (cart !== undefined) {

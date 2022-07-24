@@ -39,6 +39,7 @@ class StoreItemTemplate extends React.Component {
 
     addToCart = () => 
     {
+        if (typeof window === 'undefined') return;
         var existingItems = this.state.cartItems
         var existing = existingItems.find(x => x.slug === this.item.slug)
         if (existing === undefined)
@@ -57,6 +58,7 @@ class StoreItemTemplate extends React.Component {
 
     plusCart = () => 
     {
+        if (typeof window === 'undefined') return;
         var existingItems = this.state.cartItems
         var existing = existingItems.find(x => x.slug === this.item.slug)
         if (existing !== undefined)
@@ -69,6 +71,7 @@ class StoreItemTemplate extends React.Component {
 
     minusCart = () => 
     {
+        if (typeof window === 'undefined') return;
         var existingItems = this.state.cartItems
         var existing = existingItems.find(x => x.slug === this.item.slug)
         if (existing !== undefined)
@@ -82,9 +85,13 @@ class StoreItemTemplate extends React.Component {
     componentDidMount() {
         // var isServer = typeof window === undefined;
         // var cookies = isServer ? new Cookies(req.headers.cookie) : new Cookies()
-        var existingItems = JSON.parse(Cookies.get('cart-items'))
-        var entry = existingItems.find(x => x.slug === this.item.slug)
-        this.setState({cartItems: existingItems, cartCount: entry === undefined ? 0 : entry.count})
+        if (typeof window === 'undefined') {
+            var existingItems = JSON.parse(Cookies.get('cart-items'))
+            var entry = existingItems.find(x => x.slug === this.item.slug)
+            this.setState({cartItems: existingItems, cartCount: entry === undefined ? 0 : entry.count})
+        } else {
+            this.setState({cartItems: [], cartCount: 0})
+        }
     }
 
 	render() {

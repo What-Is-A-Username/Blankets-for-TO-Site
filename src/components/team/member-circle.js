@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import * as styles from './member-circle.module.css'
 import emailImage from '../images/email.svg'

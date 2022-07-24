@@ -21,8 +21,9 @@ export default class Store extends React.Component {
         // var isServer = typeof window === undefined;
         // var cookies = isServer ? new Cookies(req.headers.cookie) : new Cookies(); 
         // this.setState({cartItems: cookies.get('cart-items')});
-        
-        this.setState({cartItems: JSON.parse(Cookies.get('cart-items'))});
+        if (typeof window !== 'undefined') {
+            this.setState({cartItems: JSON.parse(Cookies.get('cart-items'))});
+        }
     }
 
 	render() {
