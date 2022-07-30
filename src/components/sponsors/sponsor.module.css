@@ -2,7 +2,7 @@
 {
     display: flex;
     align-items: center;
-    
+    height: min-content;
 }
 
 .infoContainer h3, .infoContainer h5
@@ -32,6 +32,11 @@
         margin: 20px;
     }
 
+    .infoContainer 
+    {
+        height: 100%;
+    }
+
     .image, .image img
     {
         min-width: 250px;
@@ -54,10 +59,16 @@
 
 @media(max-width: 760px)
 {
+    .infoContainer 
+    {
+        height: min-content;
+    }
+
     .sponsorContainer 
     {
         flex-direction: column;
         margin: 40px 10px;
+        
     }
     
     .image, .image img
@@ -79,9 +90,11 @@
 {
     text-align: center;
     color: rgb(78, 78, 78);
+    height: min-content;
 }
 
-.mainLink svg {
+.mainLink svg 
+{
     height: 1.1em;
 }
 
@@ -95,6 +108,7 @@
     text-align: center;
     
 }
+
 .links > p
 {
     display: inline-flex;

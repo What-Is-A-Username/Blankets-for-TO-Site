@@ -87,32 +87,19 @@ const AnimationClass = ({children,
     }
 
     const getStyles = () => { 
-        var final_style = {}
+        var default_style = {
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
+            height: '100%',
+            minHeight: '1px',
+            minWidth: '1px',
+            justifyContent: doNotJustifyContentCenter ? 'unset' : 'center',
+            '--animate-duration': (round(animationDuration / 1000, 3)).toString().concat('s')
+        }
+        var final_style = Object.assign({}, default_style, style)
         if (!animationVisible) {
-            final_style = {
-                display: 'flex',
-                flexDirection: 'column',
-                width: '100%',
-                height: '100%',
-                minHeight: '1px',
-                minWidth: '1px',
-                justifyContent: doNotJustifyContentCenter ? 'center' : 'unset',
-                opacity: 0,
-                ...style
-            }
-        } else {
-            final_style = {
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: '1px',
-                minWidth: '1px',
-                width: '100%',
-                height: '100%',
-                justifyContent: doNotJustifyContentCenter ? 'unset' : 'center',
-                // alignItems: doNotAlignItemsCenter ? 'unset' : 'center',
-                '--animate-duration': (round(animationDuration / 1000, 3)).toString().concat('s'),
-                ...style
-            }
+            final_style = Object.assign({}, final_style, {opacity: 0})
         }
         return(final_style)
     }

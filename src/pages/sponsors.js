@@ -33,40 +33,42 @@ export default class Sponsors extends React.Component {
                         </div>
                         <div className='richText'/>
                     </Animation>
-                    <Animation animationDelay={500}>
-                        <div className={'richText'}>
-                        {
-                            preferredSponsors.length > 0 && 
-                            <React.Fragment>
-                                <h3 className={styles.titles}>{"Preferred Sponsor" + (preferredSponsors.length > 1 ? "s" : "")}</h3>
-                                <div className={styles.sponsorsGrid}>
-                                {
-                                    preferredSponsors.map((x, index) => {
-                                        return(
-                                            <SponsorIcon key={index} sponsorData={x}/>
-                                            )
-                                        })
-                                    }
-                                </div>
-                            </React.Fragment>
-                        }
-                        {
-                            defaultSponsors.length > 0 &&
-                            <React.Fragment>
-                            <h3 className={styles.titles}>Sponsors</h3>
+                    <div className={'richText'}>
+                    {
+                        preferredSponsors.length > 0 && 
+                        <React.Fragment>
+                            <h3 className={styles.titles}>{"Preferred Sponsor" + (preferredSponsors.length > 1 ? "s" : "")}</h3>
                             <div className={styles.sponsorsGrid}>
-                                {
-                                    defaultSponsors.map((x, index) => {
-                                        return(
+                            {
+                                preferredSponsors.map((x, index) => {
+                                    return(
+                                        <Animation fade style={{height: 'min-content'}}>
                                             <SponsorIcon key={index} sponsorData={x}/>
-                                            )
-                                        })
+                                        </Animation>
+                                        )
+                                    })
                                 }
-                                </div>
-                            </React.Fragment>
-                        }
-                        </div>
-                    </Animation>
+                            </div>
+                        </React.Fragment>
+                    }
+                    {
+                        defaultSponsors.length > 0 &&
+                        <React.Fragment>
+                        <h3 className={styles.titles}>Sponsors</h3>
+                        <div className={styles.sponsorsGrid}>
+                            {
+                                defaultSponsors.map((x, index) => {
+                                    return(
+                                        <Animation fade style={{height: 'min-content'}}>
+                                            <SponsorIcon key={index} sponsorData={x}/>
+                                        </Animation>
+                                        )
+                                    })
+                            }
+                            </div>
+                        </React.Fragment>
+                    }
+                    </div>
                 </div>
             </div> 
         </Layout>
