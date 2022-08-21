@@ -93,6 +93,7 @@ class SEO extends React.Component {
 			{doNotCrawl && <meta name="robots" content="noindex"/>}
 			{doNotCrawl && <meta name="googlebot" content="noindex"/>}
 
+			{/* Termly Cookie Consent */}
 			<script
 				type="text/javascript"
 				src="https://app.termly.io/embed.min.js"

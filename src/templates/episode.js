@@ -15,8 +15,6 @@ import { ChevronUp, ChevronDown } from 'react-feather'
 
 class EpisodeTemplate extends React.Component {
 
-	
-
 	state = { transcriptVisible: false }
 
 	toggleTranscript = () => {

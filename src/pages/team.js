@@ -20,18 +20,21 @@ class Team extends React.Component {
 		return (
 			<Layout location={this.props.location}>
 				<SEO title='Executive Team'
-					description='Meet the talented and motivated members of the team at Blankets for T.O. that makes all of our events possible.'/>
+					description='Meet the talented and motivated members of the team at Blankets for T.O. that makes all of our events possible.'
+					doNotCrawl/> 
 				<div className="sidebarabove"></div>
 				<div className="white-background">
 					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
 						<div className={styles.executiveList}>
 							{members.map(({ node }) => {
-								return (node.name !== "John Doe" ? 
-									<Animation fade left animationDelay={200} animationDuration={350} key={node.name}>
+								return ( 
+									node.name !== 'John Doe' ?
+									<Animation fade left animationDelay={200} animationDuration={350} key={node.name} style={{justifyContent: 'flex-start'}}>
 										<Member data={node}/> 
-									</Animation>
-								: null)
+									</Animation> :
+									null
+								)
 							})}
 						</div>
 					</div>
