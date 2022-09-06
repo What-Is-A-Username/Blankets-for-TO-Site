@@ -89,7 +89,6 @@ export default () => {
 							gatsbyImageData(
 								layout: FULL_WIDTH
 								placeholder: BLURRED
-								height: 100
 							)
 						}
                     }

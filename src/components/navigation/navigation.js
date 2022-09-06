@@ -18,7 +18,6 @@ const Navigation = (props) => {
                             gatsbyImageData(
                                 layout: FULL_WIDTH
                                 placeholder: BLURRED
-                                height: 100
                             )
                         }
                     }

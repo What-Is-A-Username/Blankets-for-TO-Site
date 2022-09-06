@@ -3,9 +3,6 @@ require("dotenv").config({
 });
 
 module.exports = {
-  flags: {
-    PARALLEL_QUERY_RUNNING: false,
-  },
   siteMetadata: {
     title: 'Blankets for T.O.',
     author: 'Blankets for T.O.', 
