@@ -181,7 +181,7 @@
 @media (max-width: 760px) { 
     .description {
         margin: 10px;
-        padding: 50px 10px 50px 10px; 
+        padding: 50px 0px; 
         border-radius: 15px;
     }
 }
@@ -250,6 +250,5 @@
 
 .donationColumn > div 
 {
-    padding: 15px;
     width: 100%;
 }

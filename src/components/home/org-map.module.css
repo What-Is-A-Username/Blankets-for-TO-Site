@@ -86,11 +86,10 @@
 {
     .infoBox 
     {
-        max-width: 90vw;
-        min-width: 250px;
+        width: 90%;
         margin-bottom: 5px;
         height: 200px;
-        padding: 50px 30px;
+        padding: 50px 5px;
     }
     .textBox
     {

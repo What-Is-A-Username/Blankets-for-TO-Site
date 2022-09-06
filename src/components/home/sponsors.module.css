@@ -64,6 +64,7 @@
     display: flex;
     flex-wrap: wrap;
     grid-auto-flow: row;
+    align-self: center;
     justify-content: center;
     width: 100%;
 }

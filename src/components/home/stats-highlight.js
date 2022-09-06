@@ -19,7 +19,7 @@ const StatsHighlight = ({donationItemCount}) => {
                     statsToDisplay.map(item =>
                         {
                             return(
-                                <Animation fade onReveal={() => { if (!counter) startCounter(true) }}>
+                                <Animation key={item.title} fade onReveal={() => { if (!counter) startCounter(true) }}>
                                     <div className={styles.item} key={`Statistics for ${item.title}`}>
                                         <Countup redraw className={styles.itemNumber} end={donationItemCount} useEasing separator='' duration={5} prefix={item.prefix ?? ''}></Countup>
                                         <h2 className={styles.itemTitle}>{item.title ?? ''}</h2>

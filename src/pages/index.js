@@ -79,8 +79,8 @@ class RootIndex extends React.Component {
 							<polygon points='0,0 100,5 100,100 0,95'/>
 							<defs>
 								<linearGradient id='turq_gradient'>
-									<stop offset='0' stop-color='#3d7f7f'/>
-									<stop offset='1' stop-color='#80acaf'/>
+									<stop offset='0' stopColor='#3d7f7f'/>
+									<stop offset='1' stopColor='#80acaf'/>
 								</linearGradient>
 							</defs>
 						</svg>

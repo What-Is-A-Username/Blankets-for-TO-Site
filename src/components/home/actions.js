@@ -47,7 +47,7 @@ const actionsRender = (props) => {
                         return(
                             idx % 2 === 1 ? 
                             // 1st and 3rd = picture right of text
-                            <div className={styles.actionContainer}>
+                            <div className={styles.actionContainer} key={action.title}>
                                         <div className={styles.infoTextRight}>
                                     <Animation fade left>
                                             <div className={styles.sketch}>
@@ -69,7 +69,7 @@ const actionsRender = (props) => {
                                         </div>
                             </div> 
                             : 
-                            <div className={styles.actionContainer}>
+                            <div className={styles.actionContainer} key={action.title}>
                                         <div className={styles.photo}>
                                     <Animation fade left>
                                             <GatsbyImage image={photoNode.childImageSharp.gatsbyImageData}
