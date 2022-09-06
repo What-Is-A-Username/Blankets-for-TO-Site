@@ -16,9 +16,7 @@ class Positions extends React.Component {
         const headerSubtitle = ''
         const headerTitle = 'Blankets for T.O. Membership'
 
-		const membershipInfo = get(this, 'props.data.allContentfulOrganizationInformation.nodes[0].membershipInformation')
-
-		const formLink = 'https://forms.gle/xDNYp3KzU1M9K1o87'
+		const { membershipInformation, memberFormLink } = get(this, 'props.data.allContentfulOrganizationInformation.nodes[0]')
 
 		return (
 			<Layout location={this.props.location}>
@@ -29,11 +27,11 @@ class Positions extends React.Component {
 					<div className="wrapper">
 						<div className={styles.membershipInfo}>
 							<Animation fade top>
-								<StyledButton link={formLink} buttonText='Sign up for membership' openInNewTab/>
+								<StyledButton link={memberFormLink} buttonText='Sign up for membership' openInNewTab/>
 							</Animation>
 							<Animation fade animationDelay={500}>
 								<div className="richText">
-									{membershipInfo !== undefined ? documentToReactComponents(JSON.parse(membershipInfo.raw)) : <p>Error: Articles not found.</p>}
+									{membershipInformation !== undefined ? documentToReactComponents(JSON.parse(membershipInformation.raw)) : <p>Error: Articles not found.</p>}
 								</div>
 							</Animation>
 						</div>
@@ -63,21 +61,7 @@ query PositionQuery {
 		  	membershipInformation {
 				raw
 			}
-		}
-	}
-	allContentfulPosition {
-		edges {
-			node {
-				title
-				positionDescription {
-					childMarkdownRemark {
-						html
-					}
-				}
-				requirements
-				submission
-				deadline(formatString: "MMMM Do, YYYY")
-			}
+			memberFormLink
 		}
 	}
 }
