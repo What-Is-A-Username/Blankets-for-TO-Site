@@ -21,22 +21,22 @@ class Gallery extends React.Component {
     }
 
     onClosePopup = () => {
-        this.setState({popup: false})
+        this.setState({ popup: false })
     }
 
     render() {
         const { displayTitle, images } = this.props.data
-        const displayDescription = this.props.data.displayDescription.displayDescription
+        const displayDescription = this.props.data.displayDescription
 
         return(
             <div className={styles.galleryContainer}>
                 {
-                    typeof displayDescription !== 'undefined' && displayDescription !== '' && 
+                    displayTitle && 
                     <h1 className={styles.title}>{displayTitle}</h1>
                 }
                 {
-                    typeof displayDescription !== 'undefined' && displayDescription !== '' &&
-                    <p className={styles.description}>{displayDescription}</p>
+                    displayDescription &&
+                    <p className={styles.description}>{displayDescription.displayDescription}</p>
                 }
                 <div className={styles.thumbs}>
                     {
@@ -52,9 +52,7 @@ class Gallery extends React.Component {
                 {
                     this.state.popup &&
                     <div className={styles.popup}>
-                        <div className={styles.popupBackground} onClick={() => this.onClosePopup()}>
-                        </div>
-                        <X className={styles.popupExit} onClick={() => this.onClosePopup()}/>
+                        <div className={styles.popupBackground} onClick={() => this.onClosePopup()}/>
                         <div className={styles.popupContent}>
                             <div className={styles.popupimage}>
                                 <GatsbyImage image={images[this.state.selected].gatsbyImageData}/>
@@ -68,6 +66,7 @@ class Gallery extends React.Component {
                                 <ChevronRight className={styles.rightArrow} onClick={this.onClickNext}/>
                             }
                         </div>
+                        <X className={styles.popupExit} onClick={() => this.onClosePopup()}/>
                     </div>
                 }
             </div>
