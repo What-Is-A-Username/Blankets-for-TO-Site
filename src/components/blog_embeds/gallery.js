@@ -55,7 +55,7 @@ class Gallery extends React.Component {
                         <div className={styles.popupBackground} onClick={() => this.onClosePopup()}/>
                         <div className={styles.popupContent}>
                             <div className={styles.popupimage}>
-                                <GatsbyImage image={images[this.state.selected].gatsbyImageData}/>
+                                <GatsbyImage image={images[this.state.selected].gatsbyImageData} style={{width: '1200px', maxWidth: '90vw', maxHeight: '80vh', display: 'flex', placeItems: 'center'}}/>
                             </div> 
                             {
                                 (this.state.selected > 0) &&
