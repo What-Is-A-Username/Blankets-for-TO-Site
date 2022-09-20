@@ -52,19 +52,19 @@ class Gallery extends React.Component {
                 {
                     this.state.popup &&
                     <div className={styles.popup}>
-                        <div className={styles.popupBackground} onClick={() => this.onClosePopup()}/>
+                        {
+                            (this.state.selected > 0) &&
+                            <ChevronLeft  className={styles.leftArrow} onClick={this.onClickPrev}/>
+                        }
+                        {
+                            (this.state.selected < this.state.length - 1) && 
+                            <ChevronRight className={styles.rightArrow} onClick={this.onClickNext}/>
+                        }
                         <div className={styles.popupContent}>
+                            <div className={styles.popupBackground} onClick={() => this.onClosePopup()}/>
                             <div className={styles.popupimage}>
-                                <GatsbyImage image={images[this.state.selected].gatsbyImageData} style={{width: '1200px', maxWidth: '90vw', maxHeight: '80vh', display: 'flex', placeItems: 'center'}}/>
+                                <GatsbyImage image={images[this.state.selected].gatsbyImageData} className={styles.popupimageDiv}/>
                             </div> 
-                            {
-                                (this.state.selected > 0) &&
-                                <ChevronLeft  className={styles.leftArrow} onClick={this.onClickPrev}/>
-                            }
-                            {
-                                (this.state.selected < this.state.length - 1) && 
-                                <ChevronRight className={styles.rightArrow} onClick={this.onClickNext}/>
-                            }
                         </div>
                         <X className={styles.popupExit} onClick={() => this.onClosePopup()}/>
                     </div>

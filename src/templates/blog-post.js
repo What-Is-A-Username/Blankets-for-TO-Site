@@ -123,6 +123,7 @@ export const pageQuery = graphql`
 						gatsbyImageData(
 							layout: CONSTRAINED
 							width: 760
+							quality: 100
 						)
 						contentful_id
 					}
@@ -141,10 +142,16 @@ export const pageQuery = graphql`
 						id
 						displayTitle
 						displayDescription {
-						  displayDescription
+						  	displayDescription
 						}
 						images {
-						  gatsbyImageData(layout: CONSTRAINED)
+						  gatsbyImageData(
+							backgroundColor: "#000000ff"
+							layout: CONSTRAINED
+							resizingBehavior: PAD
+							aspectRatio: 1.5
+							quality: 100
+						  )
 						}
 						internal {
 							type
