@@ -83,7 +83,7 @@ export const updateQuery = graphql`
 				}
 			}
 		}
-        blogHeader : allContentfulHeaderImage(filter: {pageName: {eq: "Team"}}, limit: 1) {
+        blogHeader : allContentfulHeaderImage(filter: {pageName: {eq: "About"}}, limit: 1) {
 			nodes {
 				image {
 					gatsbyImageData(

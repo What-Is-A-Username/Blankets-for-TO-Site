@@ -10,16 +10,16 @@ export default (props) => {
     // Text for the join us and contact us widgets
     const contactInfo = [
         {
-            title: "Join us", 
-            description: 'Become part of the Blankets For T.O. community and be part of the change! Want to join as a member? Interested in volunteering at events?',
-            link: '/positions',
-            buttonText: 'Become a Volunteer or Member' 
+            title: 'Donate', 
+            description: 'Make a monetary or item donation to the organization! Inquire about donating anything, from blankets to clothing to hygiene products.',
+            link: '/donate',
+            buttonText: 'Make a donation',
         },
         {
-            title: 'Contact us', 
-            description: 'Keep in touch and join the community to stay updated! Got an idea for an initiative? Want to collaborate with us? Send us a message via email or over social media!',
-            link: '/contact',
-            buttonText: 'Contact',
+            title: 'Join', 
+            description: 'Become part of the Blankets For T.O. community and be part of the change! Want to join as a member? Interested in volunteering at events?',
+            link: '/positions',
+            buttonText: 'Become a member' 
         }
     ]
 
