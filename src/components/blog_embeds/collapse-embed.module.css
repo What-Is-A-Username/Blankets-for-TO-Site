@@ -1,0 +1,22 @@
+.detailsBorder {
+    border: 2px solid var(--light_turq);
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.details > p {
+    margin: 0 15px 15px 15px;
+}
+
+.summary {
+    padding: 15px;
+    color: var(--light_red);
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+
+.summary:hover {
+    cursor: pointer;
+    color: var(--dark_red)
+}

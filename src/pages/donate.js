@@ -4,25 +4,12 @@ import get from 'lodash/get'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import * as styles from '../page-styles/about.module.css'
 import HeaderImage from '../components/header-image'
 import ContactForm from '../components/home/contact-form'
-import { BLOCKS } from '@contentful/rich-text-types'
+import { BLOCKS } from '@contentful/rich-text-types';
+import CollapseEmbed from '../components/blog_embeds/collapse-embed'
 
 class Donate extends React.Component {
-
-	// componentDidMount() {
-		// for (let index = 0; index < 10000; index++) {
-		// 	const element = document.getElementById("paragraph" + index.toString())
-		// 	if (element) {
-		// 		const newParent = document.getElementById("header" + index.toString())
-		// 		newParent.appendChild(element)
-		// 	} else {
-		// 		break;
-		// 	}
-			
-		// }
-	// }
 
 	render() {
 		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
@@ -30,24 +17,19 @@ class Donate extends React.Component {
 		const headerSubtitle = ''
 		
 		const donatePageData = get(this, 'props.data.allContentfulPage.nodes[0].richTextBody')
-		var last = 0;
+		const donatePageJSON = donatePageData ? JSON.parse(donatePageData.raw) : undefined;
+
+		const assets = new Map(donatePageData.references.map(ref => [ref.contentful_id,ref]))
 		const options = {
 			renderNode: {
-				[BLOCKS.HEADING_2]: (node) => {
+				[BLOCKS.EMBEDDED_ENTRY]: node => {
+					const data = assets.get(node.data.target.sys.id)
 					return(
-						<details id={"heading" + (last++).toString()}>
-							<summary>{node.content[0].value}</summary>
-						</details>
+						<CollapseEmbed data={data}/>
 					)
-				}
-				// [BLOCKS.PARAGRAPH]: (node) => {
-				// 	//return(documentToReactComponents(node, {}))
-				// 	// return(<p id={"paragraph" + last.toString()}>{node.content[0].value}</p>)
-				// }
+                }, 
 			}
 		}
-
-		console.log(JSON.parse(donatePageData.raw))
 
 		return (
 			<Layout location={this.props.location}>
@@ -56,8 +38,8 @@ class Donate extends React.Component {
 				<div className="white-background">
 					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
-						<div className={"richText " + styles.description} >
-							{donatePageData !== undefined ? documentToReactComponents(JSON.parse(donatePageData.raw), options) : <p>Error: Page data not found. Please let Blankets for T.O. know if this issue persists.</p>}
+						<div className={"richText"} style={{display: "block"}}>
+							{donatePageJSON ? documentToReactComponents(donatePageJSON, options) : <p>Error: Page data not found. Please let Blankets for T.O. know if this issue persists.</p>}
 						</div>
 					</div>
 					<div id='contact-form'>
@@ -92,6 +74,17 @@ export const donatePageQuery = graphql`
             nodes {
                 richTextBody {
                     raw
+					references {
+						... on ContentfulCollapseEmbed {
+							id
+							contentful_id
+							heading
+							body { 
+								raw
+							}
+						}
+					  
+					}
                 }
             }
         }
