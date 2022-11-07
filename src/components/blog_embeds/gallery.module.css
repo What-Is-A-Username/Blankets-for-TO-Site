@@ -33,9 +33,11 @@
     overflow: hidden;
 }
 
-.thumb:hover picture img 
-{
-    transform: scale(1.2) !important;
+@media (hover: hover) and (pointer: fine) {
+    .thumb:hover picture img 
+    {
+        transform: scale(1.2) !important;
+    }
 }
 
 .thumb picture img
@@ -89,10 +91,12 @@
     z-index: 12;
 }
 
-.leftArrow:hover, .rightArrow:hover, .popupExit:hover
-{
-    color: white;
-    cursor: pointer;
+@media (hover: hover) and (pointer: fine) {
+    .leftArrow:hover, .rightArrow:hover, .popupExit:hover
+    {
+        color: white;
+        cursor: pointer;
+    }
 }
 
 .leftArrow 

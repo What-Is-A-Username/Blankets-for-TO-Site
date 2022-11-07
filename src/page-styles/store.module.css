@@ -43,14 +43,20 @@
     .catalogueContainer { grid-template-columns: repeat(3, 2fr); }
 }
 
-@media(min-width: 1200px)
-{
-    .catalogueContainer { grid-template-columns: repeat(4, 2fr); }
-}
 
 @media(min-width: 1000px) and (max-width: 1200px)
 {
     .catalogueContainer { grid-template-columns: repeat(3, 2fr); }
+}
+
+@media(min-width: 1200px) and (max-width: 1400px)
+{
+    .catalogueContainer { grid-template-columns: repeat(4, 2fr); }
+}
+
+@media(min-width: 1400px)
+{
+    .catalogueContainer { grid-template-columns: repeat(5, 2fr); }
 }
 
 @media(min-width: 1000px)

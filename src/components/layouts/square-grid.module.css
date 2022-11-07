@@ -62,19 +62,21 @@
     transition: color 1.0s 0s;
 }
 
-.tile:hover .textBox
-{
-    background-color: rgba(224, 224, 224, 0.959);
-}
+@media (hover: hover) and (pointer: fine) {
+    .tile:hover .textBox
+    {
+        background-color: rgba(224, 224, 224, 0.959);
+    }
 
-.tile:hover .title, .tile:hover .description
-{
-   color: var(--dark_turq);
-}
+    .tile:hover .title, .tile:hover .description
+    {
+    color: var(--dark_turq);
+    }
 
-.tile:hover picture img 
-{
-    transform: scale(1.2) !important;
+    .tile:hover picture img 
+    {
+        transform: scale(1.2) !important;
+    }
 }
 
 .tile picture img

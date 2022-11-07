@@ -63,9 +63,11 @@
     font-style: italic;
 }
 
-.link > a:hover 
-{
-    text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+    .link > a:hover 
+    {
+        text-decoration: underline;
+    }
 }
 
 .form, fieldset
@@ -132,7 +134,9 @@
 	transition: color .1s;
 }
 
-.submitButton > input:hover, .submitButton > input:focus {
-	background-color: #ffffff;
-	color: var(--light_red);
+@media (hover: hover) and (pointer: fine) {
+    .submitButton > input:hover, .submitButton > input:focus {
+        background-color: #ffffff;
+        color: var(--light_red);
+    }
 }

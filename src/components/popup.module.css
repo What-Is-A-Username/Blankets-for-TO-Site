@@ -44,8 +44,10 @@
     cursor: pointer;;
 }
 
-.escapeButton:hover {
-    text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+    .escapeButton:hover {
+        text-decoration: underline;
+    }
 }
 
 .popup
@@ -107,7 +109,11 @@
     transition: all 0.23s ease-in-out 0s;
 }
 
-.button:hover {background-color:rgb(236, 12, 12);}
+@media (hover: hover) and (pointer: fine) {
+    .button:hover {
+        background-color:rgb(236, 12, 12);
+    }
+}
 
 .popup input:focus {border-color:#333;}
 

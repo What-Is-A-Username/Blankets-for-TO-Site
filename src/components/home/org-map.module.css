@@ -48,9 +48,11 @@
     user-select: none; 
 }
 
-.infoBox svg:hover 
-{
-    color: white;
+@media (hover: hover) and (pointer: fine) {
+    .infoBox svg:hover 
+    {
+        color: white;
+    }
 }
 
 .errorText 

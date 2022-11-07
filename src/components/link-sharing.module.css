@@ -37,10 +37,12 @@
     color: white;
 }
 
-.linkFieldButtonNormal:hover {
-    background-color: var(--light_red);
-    color: white;
-    cursor: pointer;
+@media (hover: hover) and (pointer: fine) {
+    .linkFieldButtonNormal:hover {
+        background-color: var(--light_red);
+        color: white;
+        cursor: pointer;
+    }
 }
 
 .link {
@@ -103,9 +105,11 @@
     align-items: center;
 }
 
-.linkCopyButton:hover svg
-{
-    transform: scale(1.2) !important;
+@media (hover: hover) and (pointer: fine) {
+    .linkCopyButton:hover svg
+    {
+        transform: scale(1.2) !important;
+    }
 }
 
 .linkField

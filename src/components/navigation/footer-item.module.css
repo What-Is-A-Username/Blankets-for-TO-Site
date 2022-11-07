@@ -15,8 +15,10 @@
 	color: rgb(66, 66, 66);
 }
 
-.footerItem a:hover{
-	color:var(--light_red);
+@media (hover: hover) and (pointer: fine) {
+    .footerItem a:hover{
+        color:var(--light_red);
+    }
 }
 
 .dropdownContainer {

@@ -166,9 +166,11 @@
 	color:#136bcf;
 }
 
-.infoText a:hover 
-{
-	text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+    .infoText a:hover 
+    {
+        text-decoration: underline;
+    }
 }
 
 .infoText a:visited

@@ -50,9 +50,11 @@
     margin-left: 5px;
 }
 
-.socialMediaEntry a:hover {
-    color: var(--light_red);
-    text-decoration-color: var(--light_red)
+@media (hover: hover) and (pointer: fine) {
+    .socialMediaEntry a:hover {
+        color: var(--light_red);
+        text-decoration-color: var(--light_red)
+    }
 }
 
 @media(min-width: 760px)

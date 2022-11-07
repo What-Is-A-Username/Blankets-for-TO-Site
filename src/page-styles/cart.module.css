@@ -1,7 +1,25 @@
+.layoutHeader 
+{
+    margin-top: 0;
+    font-weight: bold;
+}
+
 .header 
 {
     display: flex;
     flex-direction: row;
+}
+
+.cartFull
+{
+    visibility: visible;
+    height: auto;
+}
+
+.cartEmpty 
+{
+    visibility: hidden;
+    height: 0;
 }
 
 .cartList
@@ -14,16 +32,17 @@
 {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .totalTitle
 {
-    width: calc(85% - 15px);
+    width: calc(85%);
 }
 
 .totalTitle > p
 {
-    font-size: 25px;
+    font-size: 14px;
     padding-right: 15px;
     font-weight: bold;
     text-align: right;
@@ -31,7 +50,7 @@
 
 .totalNumber
 {
-    font-size: 25px;
+    font-size: 18px;
     width: 10%;
 }
 
@@ -45,7 +64,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    
 }
 
 .memberDiscountInfo > p
@@ -53,14 +71,34 @@
     margin: 0px 10px;
 }
 
+.memberDiscountInfo a
+{
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+@media (hover: hover) and (pointer: fine) 
+{
+    .memberDiscountInfo a:hover
+    {
+        text-decoration: underline;
+    }
+}
+
 .memberDiscountBox
 {
-    margin: 5px 40px 40px 40px;
+    margin-left: 40px;
 }
 
 .memberDiscountBox > input:checked ~ .checkmark
 {
     background-color: var(--light_red);
+}
+
+.memberDiscountBox > label
+{
+    font-size: 14px;
 }
 
 .proceedToCheckout > p 
@@ -75,23 +113,64 @@
     border-bottom: 1px solid rgb(109, 109, 109);
 }
 
-.name, .price, .countHeader > p, .total
+.name, .price, .count, .total
 {
-    font-size: 25px;
     margin-bottom: 10px;
     align-items: center;
 }
 
+.checkoutText > span 
+{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    display: block;
+}
+
+.checkoutText > p 
+{
+    font-size: 14px;
+    margin: 2px auto;
+}
+
 @media (min-width: 500px)
 {
-    .name, .price, .countHeader > p, .total
+    .name, .price, .count, .total
     {
-        font-size: 25px;
+        font-size: 20px;
     }
     .infoIcon
     {
         min-width: 32px;
         min-height: 32px;
+    }
+    .layout 
+    {
+        align-items: center;
+    }
+    .checkoutStep > div, .checkoutStep > div > div
+    {
+        padding: 0 5px;
+    }
+    .cartFull, .cartEmpty 
+    {
+        display: inline-block;
+        width: 55%;
+        box-sizing: border-box;
+        margin: 15px;
+        padding: 15px;
+    }
+    .checkoutPane
+    {
+        background-color: rgb(239, 239, 239);
+        border-radius: 5px;
+        display: inline-flex;
+        flex-direction: column;
+        vertical-align: top;
+        box-sizing: border-box;
+        width: 35%;
+        margin: 15px;
+        padding: 15px;
     }
 }
 
@@ -99,12 +178,20 @@
 {
     .name, .price, .countHeader > p, .total
     {
-        font-size: 18px;
+        font-size: 16px;
     }
     .infoIcon
     {
         min-width: 32px;
         min-height: 32px;
+    }
+    .checkoutStep
+    {
+        width: 100%;
+    }
+    .checkoutStep > div, .checkoutStep > div > div
+    {
+        padding: 0 5px;
     }
 }
 
@@ -137,26 +224,13 @@
     justify-content: center;
 }
 
-@media (min-width: 500px)
+.buttonRow > div 
 {
-    .checkoutStep
-    {
-        padding: 100px 50px;
-    }
-    .checkoutStep > div, .checkoutStep > div > div
-    {
-        padding: 0 5px;
-    }
+    margin: 0 5px;
 }
 
-@media (max-width: 500px)
+.copyOrderDetails
 {
-    .checkoutStep
-    {
-        padding: 25px;
-    }
-    .checkoutStep > div, .checkoutStep > div > div
-    {
-        padding: 0 5px;
-    }
+    background-color: var(--dark_turq) !important;
 }
+

@@ -25,9 +25,11 @@
     text-decoration: none;
 }
 
-.preview:hover {
-    background-color: #d8d8d8;
-    filter: brightness(90%);
+@media (hover: hover) and (pointer: fine) {
+    .preview:hover {
+        background-color: #d8d8d8;
+        filter: brightness(90%);
+    }
 }
 
 .previewImage img {

@@ -25,9 +25,7 @@
 	position: relative;
 }
 
-.cardParent {
-	margin: 10px;
-}
+
 
 @media(min-width: 1000px) {
 	.preview {
@@ -35,6 +33,18 @@
 		width: 100%;
 		max-width: 400px;
 		height: 100%;
+		display: flex;
+		text-decoration: none;
+		margin: 0;
+		box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+		transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+		border-radius: 15px;
+		border-color: #A0A0A0;
+		-moz-transition: all .2s ease-in;
+		-o-transition: all .2s ease-in;
+		-webkit-transition: all .2s ease-in;
+		transition: all .2s ease-in;
+		background: #ffffff; 
 	}
 	.previewText {
 		padding: 5px 20px 10px 20px;
@@ -61,8 +71,17 @@
 
 @media(max-width: 1000px) {
 	.preview {
-		flex-direction: row;
+		flex-direction: row-reverse;
 		max-width: 100%;
+		min-height: 150px;
+		display: flex;
+		text-decoration: none;
+		background: #ffffff; 
+	}
+	.previewText {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 	.previewParent {
 		flex-direction: column;
@@ -75,7 +94,7 @@
 		align-self: center;
 	}
 	.previewImage img {
-		border-radius: 15px;
+		border-radius: 10px;
 	}
 	.alink, .preview {
 		width: 100%;
@@ -88,7 +107,7 @@
 .previewTitle {
 	font-size: 1.2em;
 	font-weight: bold;
-	margin: 0px 0; 
+	margin: 0 5px 0 0; 
 }
 
 .previewDescription p {
@@ -115,40 +134,38 @@
     
 }
 
-.preview:hover {
-	background-color: #d8d8d8;
-	filter: brightness(90%);
-}
-
-.preview {
-	display: flex;
-	text-decoration: none;
-    margin: 0;
-	box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-	transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-	border-radius: 15px;
-	border-color: #A0A0A0;
-	-moz-transition: all .2s ease-in;
-	-o-transition: all .2s ease-in;
-	-webkit-transition: all .2s ease-in;
-	transition: all .2s ease-in;
-	background: #ffffff; 
-	max-width: 100%;
-}
-
-.previewParent {
-	margin: 10px;
+@media (hover: hover) and (pointer: fine) {
+	.preview:hover {
+		background-color: #d8d8d8;
+		filter: brightness(90%);
+	}
 }
 
 @media (max-width: 1000px) {
 	.previewImage {
-		margin: 10px 10px 10px 10px;
+		margin: 10px 0 10px 10px;
+	}
+
+	.previewParent {
+		margin: 10px 0;
+	}
+
+	.cardParent {
+		margin: 15px 5px;
 	}
 }
 
 @media (min-width: 1000px) {
 	.previewImage {
-		margin: 0px 0px 10px 0px;
+		margin: 0;
+	}
+
+	.previewParent {
+		margin: 10px;
+	}
+
+	.cardParent {
+		margin: 10px;
 	}
 }
 

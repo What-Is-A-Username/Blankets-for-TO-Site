@@ -14,8 +14,10 @@
     padding: 15px 15px;
 }
 
-.navigationItem a:hover{
-	color:var(--light_red);
+@media (hover: hover) and (pointer: fine) {
+	.navigationItem a:hover{
+		color:var(--light_red);
+	}
 }
 
 .dropdownContainer {
@@ -46,9 +48,11 @@
 		visibility: hidden; 
 	}
 
-	.navigationItem:hover .dropdownContainer {
-		visibility: visible; 
-		animation: fadeIn 0.4s
+	@media (hover: hover) and (pointer: fine) {
+		.navigationItem:hover .dropdownContainer {
+			visibility: visible; 
+			animation: fadeIn 0.4s
+		}
 	}
 	
 	.dropdownContainer

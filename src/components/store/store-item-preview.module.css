@@ -123,16 +123,18 @@
 	justify-content: center;
 }
 
-.preview:hover {
-	background-color: #d8d8d8;
-	filter: brightness(90%);
+@media (hover: hover) and (pointer: fine) {
+	.preview:hover {
+		background-color: #d8d8d8;
+		filter: brightness(90%);
+	}
 }
 
 .preview {
 	display: flex;
 	text-decoration: none;
     margin: 0;
-	box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+	box-shadow: 0 10px 12px rgba(0,0,0,.1), 5px 15px 10px rgba(0, 0, 0, 0.1);
 	transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
 	border-color: #A0A0A0;
 	-moz-transition: all .2s ease-in;

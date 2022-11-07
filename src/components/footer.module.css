@@ -56,8 +56,10 @@
 	text-decoration: none;
 }
 
-.navigationItem a:hover {
-	color:var(--light_red);
+@media (hover: hover) and (pointer: fine) {
+	.navigationItem a:hover {
+		color:var(--light_red);
+	}
 }
 
 
@@ -176,9 +178,11 @@
 	color: rgb(66, 66, 66);
 }
 
-.credits > a:hover, .credits > button:hover, .siteAuthor a:hover
-{
-	color: var(--light_red);
+@media (hover: hover) and (pointer: fine) {
+	.credits > a:hover, .credits > button:hover, .siteAuthor a:hover
+	{
+		color: var(--light_red);
+	}
 }
 
 .socialMedia {
@@ -200,10 +204,11 @@
 	opacity: 0.9;
 }
 
-.socialMediaEntry img:hover {
-	width: 35px;
-	opacity: 1.0;
+@media (hover: hover) and (pointer: fine) {
+	.socialMediaEntry img:hover {
+		width: 35px;
+		opacity: 1.0;
+	}
 }
-
 
 

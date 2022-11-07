@@ -30,9 +30,11 @@
   text-decoration: none;
 }
 
-.pdfFrame > p:hover 
-{
-  text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+  .pdfFrame > p:hover 
+  {
+    text-decoration: underline;
+  }
 }
 
 .pdfFrame iframe 

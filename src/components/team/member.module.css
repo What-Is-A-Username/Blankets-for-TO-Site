@@ -60,9 +60,11 @@
     text-decoration: none;
   }
 
-.memberContactLink:hover {
-    text-decoration: underline;
-    color: black;
+@media (hover: hover) and (pointer: fine) {
+    .memberContactLink:hover {
+        text-decoration: underline;
+        color: black;
+    }
 }
 
 .title {

@@ -27,8 +27,10 @@
   margin: 0 5px;
 }
 
-.pageNumberParent:hover {
-  cursor: pointer;
+@media (hover: hover) and (pointer: fine) {
+  .pageNumberParent:hover {
+    cursor: pointer;
+  }
 }
 
 .pageNumberItem > a:active {
@@ -40,6 +42,7 @@
   background-color: #ddd;
   color: var(--light_red);
 }
+
 
 .blog_list {
   display: flex;

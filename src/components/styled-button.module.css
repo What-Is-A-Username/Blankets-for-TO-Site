@@ -4,7 +4,6 @@
     box-shadow: 0 1px 4px rgba(84, 84, 84, 0.6);
     display: block;
     width: 290px;
-    
     text-decoration: none;
     margin: 5px auto 5px auto;
     padding: 7px;
@@ -27,7 +26,7 @@
 {
 	.whiteButton, .primaryButton
 	{
-		max-width: 290px;
+		max-width: min(95%, 290px);
 	}
 }
 
@@ -38,9 +37,11 @@
 	transition: color .1s;
 }
 
-.whiteButton:hover, .whiteButton:focus {
-	background-color: #ffffff;
-	color: var(--light_red);
+@media (hover: hover) and (pointer: fine) {
+	.whiteButton:hover, .whiteButton:focus {
+		background-color: #ffffff;
+		color: var(--light_red);
+	}
 }
 
 .primaryButton {
@@ -49,8 +50,10 @@
 	transition: background-color .2s;
 }
 
-.primaryButton:hover, .primaryButton:focus {
-	background-color: var(--dark_red);
+@media (hover: hover) and (pointer: fine) {
+	.primaryButton:hover, .primaryButton:focus {
+		background-color: var(--dark_red);
+	}
 }
 
 .links

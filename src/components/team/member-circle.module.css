@@ -42,9 +42,11 @@
     align-self: center;
 }
 
-.memberContactIcon:hover {
-    width: 35px;
-    height: 35px;
+@media (hover: hover) and (pointer: fine) {
+    .memberContactIcon:hover {
+        width: 35px;
+        height: 35px;
+    }
 }
 
 .memberContact p {
@@ -66,9 +68,11 @@
     text-decoration: none;
 }
 
-.memberContactLink:hover {
-    text-decoration: underline;
-    color: black;
+@media (hover: hover) and (pointer: fine) {
+    .memberContactLink:hover {
+        text-decoration: underline;
+        color: black;
+    }
 }
 
 .title {
@@ -105,8 +109,10 @@
     padding: 0px 0px 15px 0px;
 }
 
-.descriptionButton:hover {
-    font-weight: bold;
+@media (hover: hover) and (pointer: fine) {
+    .descriptionButton:hover {
+        font-weight: bold;
+    }
 }
 
 @media (min-width: 768px) {

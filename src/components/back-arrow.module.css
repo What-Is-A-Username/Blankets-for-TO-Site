@@ -16,8 +16,10 @@
     width: fit-content;
 }
 
-.arrowStyles:hover, .arrowStyles:hover > svg
-{
-    color: var(--light_red);
-    font-weight: bold;
+@media (hover: hover) and (pointer: fine) {
+    .arrowStyles:hover, .arrowStyles:hover > svg
+    {
+        color: var(--light_red);
+        font-weight: bold;
+    }
 }

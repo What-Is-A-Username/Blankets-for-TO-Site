@@ -28,9 +28,11 @@
     text-decoration: none;
 }
 
-.info a:hover 
-{
-    text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+    .info a:hover 
+    {
+        text-decoration: underline;
+    }
 }
 
 @media (max-width: 760px)

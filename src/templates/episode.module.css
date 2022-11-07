@@ -29,9 +29,11 @@
     width: fit-content;
 }
 
-.expandTranscript:hover 
-{
-    color: var(--dark_red);
+@media (hover: hover) and (pointer: fine) {
+    .expandTranscript:hover 
+    {
+        color: var(--dark_red);
+    }
 }
 
 .expandTranscript p 

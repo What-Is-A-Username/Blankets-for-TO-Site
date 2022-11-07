@@ -16,7 +16,9 @@
 	margin-bottom: 0px;
 }
 
-.summary:hover {
-    cursor: pointer;
-    color: var(--dark_red)
-}
+@media (hover: hover) and (pointer: fine) {
+    .summary:hover {
+        cursor: pointer;
+        color: var(--dark_red)
+    }
+}   
