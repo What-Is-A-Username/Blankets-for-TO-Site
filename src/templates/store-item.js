@@ -7,7 +7,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer' 
 
 import * as styles from '../templates/store-item.module.css'
-import { XCircle, ShoppingBag, ChevronLeft, ChevronRight, ShoppingCart, PlusSquare, MinusSquare, Info } from 'react-feather';
+import { XCircle, ShoppingBag, ChevronLeft, ChevronRight, ShoppingCart, PlusSquare, MinusSquare, Info, Plus, Check } from 'react-feather';
 import Cookies from 'js-cookie'
 import BackArrow from '../components/back-arrow'
 
@@ -85,7 +85,7 @@ class StoreItemTemplate extends React.Component {
     componentDidMount() {
         // var isServer = typeof window === undefined;
         // var cookies = isServer ? new Cookies(req.headers.cookie) : new Cookies()
-        if (typeof window === 'undefined') {
+        if (typeof window !== 'undefined') {
             var existingItems = JSON.parse(Cookies.get('cart-items'))
             var entry = existingItems.find(x => x.slug === this.item.slug)
             this.setState({cartItems: existingItems, cartCount: entry === undefined ? 0 : entry.count})
@@ -172,19 +172,24 @@ class StoreItemTemplate extends React.Component {
                                         this.item.isInStock ?
                                             this.state.cartCount === 0 ?
                                             <div className={styles.addToCart} onClick={this.addToCart}>
-                                                <ShoppingCart className={styles.icon_shoppingCart}/>
+                                                <Plus className={styles.icon_shoppingCart}/>
                                                 <p>Add to cart</p>
                                             </div> :
                                             <div className={styles.changeCart}>
-                                                <ShoppingCart className={styles.icon_shoppingCart}/>
-                                                <p className={styles.changeCartText}>This item is in your cart.</p>
+                                                <Check className={styles.icon_shoppingCart}/>
+                                                <p className={styles.changeCartText}>This item is in your cart. Quantity: </p>
                                                 <MinusSquare className={styles.icon_minus} onClick={this.minusCart}/>
                                                 <p>{this.state.cartCount}</p>
                                                 <PlusSquare className={styles.icon_plus} onClick={this.plusCart}/>
                                             </div>
                                         :
                                         null
+                                        
                                     }
+                                    <a className={styles.checkout} href='/cart'>
+                                        <ShoppingCart className={styles.icon_shoppingCart}/>
+                                        <p>Start checkout</p>
+                                    </a> 
                                 </div>
                             </div>
                         </div>

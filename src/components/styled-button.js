@@ -2,9 +2,9 @@ import React from "react"
 import PropTypes from 'prop-types'
 import * as styles from './styled-button.module.css'
 
-const StyledButton = ({buttonText, link, isWhite, openInNewTab}) => {
+const StyledButton = ({buttonText, link, isWhite, openInNewTab, children}) => {
     return(
-        <a href={link} className={isWhite ? styles.whiteButton : styles.primaryButton} target={openInNewTab ? '_blank' : ''} rel='noopener noreferrer'>{buttonText}</a>
+        <a href={link} className={isWhite ? styles.whiteButton : styles.primaryButton} target={openInNewTab ? '_blank' : ''} rel='noopener noreferrer'>{buttonText}{children}</a>
     );
 }
 

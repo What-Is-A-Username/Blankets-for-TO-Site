@@ -64,9 +64,11 @@
     -ms-user-select: none;
 }
 
-.leftArrow:hover, .rightArrow:hover
-{
-    color: var(--light_red);
+@media (hover: hover) and (pointer: fine) {
+    .leftArrow:hover, .rightArrow:hover
+    {
+        color: var(--light_red);
+    }
 }
 
 .leftArrow 
@@ -92,6 +94,7 @@
 {
     width: 100%;
     max-height: 100%;
+    border-radius: 15px;
 }
 
 .thumbnailRow
@@ -215,13 +218,12 @@
     color: white;
 }
 
-.addToCart, .changeCart
+.addToCart, .changeCart, .checkout
 {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-
     align-items: center;
     width: 100%;
     display: flex;
@@ -229,11 +231,18 @@
     max-width: 600px;
     border-radius: 5px;
     color: white;
+    margin: 10px auto;
 }
 
-.addToCart:hover
-{
-    background-color: var(--dark_red);
+@media (hover: hover) and (pointer: fine) {
+    .addToCart:hover
+    {
+        background-color: var(--dark_red);
+    }
+    .checkout:hover
+    {
+        background-color: #18776e;
+    }
 }
 
 .addToCart
@@ -250,4 +259,21 @@
 .icon_minus, .icon_plus
 {
     cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .icon_minus:hover, .icon_plus:hover {
+        scale: 1.2;   
+    }
+}
+
+.checkout
+{
+    background-color: var(--dark_turq);
+    text-decoration: none;
+}
+
+.checkout p 
+{
+    margin-left: 10px;
 }

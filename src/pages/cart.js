@@ -7,14 +7,14 @@ import * as styles from '../page-styles/cart.module.css'
 import Cookies from 'js-cookie';
 import CartItem from '../components/store/cart-item'
 import * as buttonStyles from '../components/styled-button.module.css'
-import { ArrowLeft, ArrowRight, Copy, DollarSign, Info } from 'react-feather'
+import { Copy, ExternalLink, Info } from 'react-feather'
 import BackArrow from '../components/back-arrow'
-import Animation from '../components/animate/animation'
+import StyledButton from '../components/styled-button'
 
 export default class Cart extends React.Component {
 
     allItems = get(this.props, 'data.allContentfulMerchItem.nodes')
-    state = { step: 0, refresh: false, isMember: false, copied: false, cartItems: [] }
+    state = { refresh: false, isMember: false, copied: false, cartItems: [] }
 
     changeMembershipStatus = () => 
     {
@@ -52,35 +52,7 @@ export default class Cart extends React.Component {
         }
     }
 
-    next = () => {
-        this.setState({step: this.state.step + 1})
-    }
-
-    previous = () => {
-        this.setState({step: Math.max(this.state.step - 1, 0)})
-    }
-
-    checkoutProcessStep = (children, step) => {
-        return(
-            <div className={styles.checkoutStep}>
-                {
-                    this.state.step === step ? 
-                        <Animation fade>
-                            <h1>Step {step}</h1>
-                            {children}
-                        </Animation>
-                    :
-                        <React.Fragment>
-                            <h1>Step {step}</h1>
-                            {children}
-                        </React.Fragment>
-                }
-                
-            </div>
-        )
-    }
-
-    generateList = (total) => {
+    generateList = () => {
         var items = this.state.cartItems.length > 0 ? this.state.cartItems.map(
             data =>
             {
@@ -130,9 +102,6 @@ export default class Cart extends React.Component {
 
     componentDidMount()
     {
-        // var isServer = typeof window === undefined;
-        // var cookies = isServer ? new Cookies(req.headers.cookie) : new Cookies();
-        // var cartData = cookies.get('cart-items')
         if (typeof window !== 'undefined') {
             var cartData = JSON.parse(Cookies.get('cart-items'))
             this.setState({cartItems: cartData})
@@ -143,7 +112,6 @@ export default class Cart extends React.Component {
 
     render() {
         const formLink = 'https://forms.gle/6pMnKaWJMQKRrwY77'
-        const interacLink = 'https://www.interac.ca/en/consumers/products/interac-e-transfer/'
 
         var itemsInCart = this.state.cartItems.length > 0; 
         var newCartItems = this.state.cartItems.length > 0 ? this.state.cartItems.map(
@@ -172,33 +140,37 @@ export default class Cart extends React.Component {
 
 				<div className="white-background">
 					<div className="wrapper">
-						<h2>Your Shopping Cart</h2>
-                            
-                            <div style={{visibility: itemsInCart ? 'visible' : 'hidden', height: itemsInCart ? 'auto' : 0}}>
-                                <BackArrow text='Continue shopping' link='/store'/>
+                        <BackArrow text={itemsInCart ? 'Continue browsing' : 'Browse items'} link='/store'/>
+                        <div className={styles.layout}>
+                            {
+                                !itemsInCart &&
+                                <div className={styles.emptyCart}>
+                                    <p>There are no items in your shopping cart.</p>
+                                </div>
+                            }
+
+                            <div className={itemsInCart ? styles.cartFull : styles.cartEmpty}>
+                                <h2 className={styles.layoutHeader}>Order Cart</h2>
                                 <div className={styles.header}>
                                     <p className={styles.name}>Item</p>
                                     <p className={styles.price}>Price</p>
                                     <div className={styles.countHeader}>
-                                        <p>Quantity</p>
+                                        <p className={styles.count}>Quantity</p>
                                     </div>
                                     <p className={styles.total}>Total</p>
                                 </div>
                                 <div className={styles.cartList}>
                                     {
-                                        newCartItems.length > 0 ?
-                                             newCartItems.map(x => {
+                                        newCartItems.length > 0 &&
+                                            newCartItems.map(x => {
                                             return(
                                                 <CartItem 
                                                 cartItem={x} 
                                                 plusQuantity={(data) => this.plusQuantity(data)}
                                                 minusQuantity={(data) => this.minusQuantity(data)}
-                                                canChange={this.state.step === 0}
                                                 />
                                             )
                                         })
-                                        : 
-                                        null
                                     }
                                     </div>
                                     <div className={styles.totalBar}>
@@ -207,92 +179,41 @@ export default class Cart extends React.Component {
                                     </div>
                                     <p className={styles.totalNumber}>${grandTotal.toFixed(2)}</p>
                                 </div>
-                                <div style={{margin: '5vh 0'}}>
+                            </div >
+                            {
+                                itemsInCart && 
+                                <div className={styles.checkoutPane}>
+                                    <h2 className={styles.layoutHeader}>Checkout</h2>
                                     <div className={styles.memberDiscountInfo}>
                                         <Info className={styles.infoIcon}/>
-                                        <p>Are you a member of Blankets for T.O.? Members are eligible for a discount on applicable items. <a href='/positions'>More info here.</a></p>
+                                        <a href='/positions'>Are you a member of Blankets for T.O.?</a>
                                     </div>
                                     <div className={styles.memberDiscountBox}>
                                         <input type="checkbox" id="membership" name="membership" value="Membership" onChange={() => this.changeMembershipStatus()}/>
-                                        <label for="membership"> I am a member of Blankets for T.O.</label>
+                                        <label for="membership">Yes, claim member discount</label>
                                     </div>
-                                </div>
-                                {
-                                    this.state.step === 0 && itemsInCart ? 
-                                    <div className={styles.proceedToCheckout}>
-                                        <p>Confirm your cart items before proceeding to checkout.</p>
-                                        <div className={buttonStyles.primaryButton} onClick={this.next}>
-                                            <DollarSign style={{margin: '0 5px'}}/>
-                                            Proceed to Checkout
+                                    <div className={styles.checkoutText}>
+                                        <span>Step 1: Check</span>
+                                        <p>Look over and double-check your order cart.</p>
+                                        <span>Step 2: Send</span>
+                                        <p>To send your order, copy your order details and use it to fill out our Google Form</p>
+                                        <div className={buttonStyles.primaryButton + ' ' + styles.copyOrderDetails} onClick={() => this.copyOrderList(grandTotal)}>
+                                            {this.state.copied ? 'Order copied to clipboard!' : 'Copy order details'}
+                                            <Copy style={{margin: '0 5px'}}/>
                                         </div>
+                                        <StyledButton openInNewTab link={formLink}>
+                                            Go to Google Form
+                                            <ExternalLink style={{margin: '0 5px'}}/>
+                                        </StyledButton>
+                                        <span>Step 3: Done!</span>
+                                        <p>If the form has been submitted, your order is now being processed. Thanks for your support!</p>
+                                        <p>To stay updated on the status of your order, please look out for emails from us. You will receive an email about your order status and pickup arrangements.</p>
                                     </div>
-                                    :
-                                    null 
-                                }
-                                {
-                                    this.state.step >= 1 ?
-                                    this.checkoutProcessStep(
-                                        <React.Fragment>
-                                            <p>Confirm your cart items before proceeding to checkout.</p>
-                                            <div>
-                                                <p>{this.generateList(this.state.cartItems, grandTotal)}</p>
-                                            </div>
-                                        </React.Fragment>, 1) 
-                                    :
-                                    null
-                                }
-                                {
-                                    this.state.step >= 2 ?
-                                    this.checkoutProcessStep(
-                                        <React.Fragment>
-                                            <p>In order to finish sending your order, you will need to complete a Google form. Read below for more information.</p>
-
-                                            <p>When prompted by the form to copy your order details, copy your order by pressing below.</p>
-                                            <div className={buttonStyles.primaryButton} onClick={() => this.copyOrderList(grandTotal)}>
-                                                <Copy style={{margin: '0 5px'}}/>
-                                                {this.state.copied ? 'Order copied to clipboard!' : 'Copy order details'}
-                                            </div>
-                                            
-                                            <p>To complete the form, you will have to pay the order via Interact e-transfer. Learn more about e-transfer and payment security here: </p>
-                                            <a href={interacLink}>{interacLink}</a>
-
-                                            <p>The link to the form is found below:</p>
-                                            <a href={formLink} target='_blank' rel='noopener noreferrer'>{formLink}</a>
-                                        </React.Fragment>
-                                        , 2) 
-                                    :
-                                    null
-                                }
-                                {
-                                    this.state.step === 3 ?
-                                    this.checkoutProcessStep(
-                                        <React.Fragment>
-                                            <p>Have you submitted the form? If so, your order is now being processed! Thank you for your contribution to Blankets for T.O.!</p>
-                                            <p>To stay updated on the status of your order, please look out for emails from blanketsforto @ gmail.com. Send us an email to inquire about your order status and order pickup arrangements.</p>
-                                        </React.Fragment>
-                                        , 3) : null
-                                }
-                                <div className={styles.buttonRow} >
-                                    {this.state.step >= 1 && this.state.step <= 2 ?
-                                    <div className={buttonStyles.primaryButton} onClick={this.previous}>
-                                        <ArrowLeft style={{margin: '0 5px'}}/>
-                                        Previous
-                                    </div> : null }
-                                    {this.state.step >= 1 && this.state.step <= 2 ?
-                                    <div className={buttonStyles.primaryButton} onClick={this.next}>
-                                        Next
-                                        <ArrowRight style={{margin: '0 5px'}}/>
-                                    </div> : null }
                                 </div>
-                            </div>
-                            <div className={styles.emptyCart} style={{visibility: itemsInCart ? 'hidden' : 'visible'}}>
-                                <p>There are no items in your shopping cart.</p>
-                                <BackArrow text='Go back to the store page' link='/store'/>
-                            </div>
+                            }
+                        </div>
 					</div>
 				</div>    
-                
-
             </Layout>
         )
     }
