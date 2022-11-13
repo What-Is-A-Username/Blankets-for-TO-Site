@@ -30,7 +30,9 @@
     height: 250px;
     position: relative;
     max-width: 100%;
-    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.4)
+    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .textBox 

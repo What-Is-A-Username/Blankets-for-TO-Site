@@ -163,7 +163,7 @@
     .checkoutPane
     {
         background-color: rgb(239, 239, 239);
-        border-radius: 5px;
+        border-radius: 15px;
         display: inline-flex;
         flex-direction: column;
         vertical-align: top;

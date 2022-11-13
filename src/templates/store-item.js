@@ -130,10 +130,10 @@ class StoreItemTemplate extends React.Component {
                                 <div className={thumbnailRow}>
                                     {
                                         this.item.thumbs &&
-                                        this.item.thumbs.map((thumb, index) => {
+                                        this.item.thumbs.map((thumbData, index) => {
                                             return(
                                                 <div onClick={() => this.selectImage(index)} className={index === this.state.currentImage ? selectedThumb : thumb} key={index}>
-                                                    <GatsbyImage image={thumb.gatsbyImageData} alt={thumb.description}/>
+                                                    <GatsbyImage image={thumbData.gatsbyImageData} alt={thumbData.description}/>
                                                 </div>
                                             )
                                         })
@@ -186,10 +186,13 @@ class StoreItemTemplate extends React.Component {
                                         null
                                         
                                     }
-                                    <a className={checkout} href='/cart'>
-                                        <ShoppingCart className={icon_shoppingCart}/>
-                                        <p>Start checkout</p>
-                                    </a> 
+                                    {
+                                        this.state.cartItems && this.state.cartItems.length > 0 &&
+                                        <a className={checkout} href='/cart'>
+                                            <ShoppingCart className={icon_shoppingCart}/>
+                                            <p>Start checkout</p>
+                                        </a> 
+                                    }
                                 </div>
                             </div>
                         </div>

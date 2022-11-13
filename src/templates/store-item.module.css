@@ -183,7 +183,7 @@
     text-align: left;
     font-size: 1.2em;
     font-weight: bold;
-    color: black;
+    color: rgb(79, 79, 79);
 }
 
 .description > p
@@ -229,7 +229,7 @@
     display: flex;
     justify-content: center;
     max-width: 600px;
-    border-radius: 5px;
+    border-radius: 10px;
     color: white;
     margin: 10px auto;
 }

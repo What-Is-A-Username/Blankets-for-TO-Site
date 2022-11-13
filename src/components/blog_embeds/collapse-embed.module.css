@@ -1,7 +1,7 @@
 .detailsBorder {
     border: 2px solid var(--light_turq);
     margin: 20px auto;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 .details > p {
