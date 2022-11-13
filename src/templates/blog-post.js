@@ -1,21 +1,21 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import SEO from '../components/SEO'
-import get from 'lodash/get'
 import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
-import LinkSharing from '../components/link-sharing'
+import get from 'lodash/get'
+import SEO from '../components/SEO'
 
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import * as styles from '../templates/blog-post.module.css'
-
-import { BlogTagBar } from '../components/blog_search/tag'
-
-import CaptionedFigure from '../components/blog_embeds/captioned-figure'
 import readingTime from 'reading-time'
-import QuestionEmbed from '../components/blog_embeds/question'
+
+import BlogTagBar from '../components/blog_search/blog-tag-bar'
+import ArticlePreview from '../components/article-preview'
+import CaptionedFigure from '../components/blog_embeds/captioned-figure'
+import LinkSharing from '../components/link-sharing'
 import GalleryEmbed from '../components/blog_embeds/gallery'
+import QuestionEmbed from '../components/blog_embeds/question'
+
+import * as styles from '../templates/blog-post.module.css'
 
 class BlogPostTemplate extends React.Component {
 
@@ -77,7 +77,7 @@ class BlogPostTemplate extends React.Component {
 					/>
 					<div className="wrapper">
 						<h1 className={styles.title}>{post.title}</h1>
-						<BlogTagBar tags={post.tags} clickable={true}></BlogTagBar>
+						<BlogTagBar tags={post.tags ?? []} clickable={true}></BlogTagBar>
 						<p className={styles.publishDate}>{`by ${post.authorName} on ${post.publishDate}`}</p>
 						<p className={styles.publishDate}>{`Estimated reading time: ${timeToRead} minute` + (timeToRead !== 1 ? 's' : '')}</p>
 						<div className={'richText ' + styles.bodyParent}>
@@ -145,13 +145,14 @@ export const pageQuery = graphql`
 						  	displayDescription
 						}
 						images {
-						  gatsbyImageData(
-							backgroundColor: "#000000ff"
-							layout: CONSTRAINED
-							resizingBehavior: PAD
-							aspectRatio: 1.5
-							quality: 100
-						  )
+							description
+							gatsbyImageData(
+								backgroundColor: "#000000ff"
+								layout: CONSTRAINED
+								resizingBehavior: PAD
+								aspectRatio: 1.5
+								quality: 100
+							)
 						}
 						internal {
 							type

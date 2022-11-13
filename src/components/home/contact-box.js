@@ -1,9 +1,7 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import StyledButton from '../styled-button'
 
-import * as styles from './contact-box.module.css'
+import {slideshow, contactBox, contactBoxSide, contactBoxSideText, contactBoxTitle, contactBoxDescription, buttonRow } from './contact-box.module.css'
 
 export default (props) => {
 
@@ -24,15 +22,15 @@ export default (props) => {
     ]
 
     return(
-        <div className={styles.slideshow}>
-            <div className={styles.contactBox}>
+        <div className={slideshow}>
+            <div className={contactBox}>
                 {contactInfo.map(x => {
                     return(
-                        <div className={styles.contactBoxSide} key={x.title}>
-                            <div className={styles.contactBoxSideText}>
-                                <h2 className={styles.contactBoxTitle}>{x.title}</h2>
-                                <p  className={styles.contactBoxDescription}>{x.description}</p>
-                                <div className={styles.buttonRow}>
+                        <div className={contactBoxSide} key={x.title}>
+                            <div className={contactBoxSideText}>
+                                <h2 className={contactBoxTitle}>{x.title}</h2>
+                                <p  className={contactBoxDescription}>{x.description}</p>
+                                <div className={buttonRow}>
                                 <StyledButton  link={x.link} buttonText={x.buttonText} isWhite/>
                                 </div>
                             </div>

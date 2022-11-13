@@ -1,16 +1,18 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import SEO from '../components/SEO'
-import get from 'lodash/get'
 import Layout from '../components/layout'
-import LinkSharing from '../components/link-sharing'
+import get from 'lodash/get'
+import SEO from '../components/SEO'
+import { GatsbyImage } from 'gatsby-plugin-image'
+
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import * as styles from '../templates/chapter.module.css'
-import BackArrow from '../components/back-arrow'
+
 import masterContactTemplate from '../pages/contact-info.json'
+import BackArrow from '../components/back-arrow'
 import CaptionedFigure from '../components/blog_embeds/captioned-figure'
+import LinkSharing from '../components/link-sharing'
+import * as styles from '../templates/chapter.module.css'
 
 class ChapterTemplate extends React.Component {
 
@@ -74,7 +76,7 @@ class ChapterTemplate extends React.Component {
 						<h1 className={styles.title}>{chapterName}</h1>
 						<div className={styles.horizontal}>
 							<div className={styles.logo}>
-								<GatsbyImage image={chapterLogoFluid.gatsbyImageData}/> 
+								<GatsbyImage image={chapterLogoFluid.gatsbyImageData} alt={`Logo for ${chapterName}`}/> 
 							</div>
 							
 							<div className={styles.info}>

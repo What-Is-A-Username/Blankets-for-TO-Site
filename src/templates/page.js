@@ -3,13 +3,15 @@ import { graphql } from 'gatsby'
 import SEO from '../components/SEO'
 import get from 'lodash/get'
 import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
-import LinkSharing from '../components/link-sharing'
 
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import * as styles from '../templates/blog-post.module.css'
+
+import ArticlePreview from '../components/article-preview'
 import CaptionedFigure from '../components/blog_embeds/captioned-figure'
+import LinkSharing from '../components/link-sharing'
+
+import * as styles from '../templates/blog-post.module.css'
 
 class PageTemplate extends React.Component {
 

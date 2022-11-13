@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql, navigate } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import * as styles from './footer.module.css'
+import { footer, footerTop, left, right, logoPadding, logoStyle, socialMedia, socialMediaEntry, navigation, credits }  from './footer.module.css'
 import pageData from '../pages/page-data.json'
 import FooterItem from './navigation/footer-item'
 import contactData from '../pages/contact-info.json'
@@ -28,20 +28,20 @@ const Footer = (props) => {
 	}
 
 	return (
-		<footer role="contentinfo" className={styles.footer}>
-			<div className={styles.footerTop}>
-				<div className={styles.left}>
-					<div className={styles.logoPadding}>
-						<div className={styles.logo} onClick={onClickLogo}>
+		<footer role="contentinfo" className={footer}>
+			<div className={footerTop}>
+				<div className={left}>
+					<div className={logoPadding}>
+						<div className={logoStyle} onClick={onClickLogo}>
 							<GatsbyImage image={logo.gatsbyImageData} alt='Logo for Blankets for T.O.'/>
 						</div>
 					</div>
 					
-					<div className={styles.socialMedia}>
+					<div className={socialMedia}>
 						{
 							contactInfo.map((x, i) => {
 								return (
-									<div className={styles.socialMediaEntry} key={x.platform}>
+									<div className={socialMediaEntry} key={x.platform}>
 										<a href={x.link}
 											target='_blank'
 											rel='noopener noreferrer'>
@@ -53,15 +53,15 @@ const Footer = (props) => {
 						}
 					</div>
 				</div>
-				<div className={styles.right}>
-					<ul className={styles.navigation}>
+				<div className={right}>
+					<ul className={navigation}>
 					{
 						pages.map((page) => { return (<FooterItem page={page} key={page.desc}/>)})
 					}
 					</ul>
 				</div>
 			</div>
-			<div className={styles.credits}>
+			<div className={credits}>
 				<a href='/credits'>Media Credits and Attribution</a>
 				<a href="https://app.termly.io/notify/2f159730-6b96-4595-81a4-860a387d21ae">
   					DSAR, Do not sell my info

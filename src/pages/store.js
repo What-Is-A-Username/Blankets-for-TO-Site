@@ -1,16 +1,17 @@
 import React from 'react'
+import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
-import Layout from '../components/layout'
-import * as styles from '../page-styles/store.module.css'
-import StoreItemPreview from '../components/store/store-item-preview'
+
 import { ShoppingCart } from 'react-feather'
+import StoreItemPreview from '../components/store/store-item-preview'
 import Cookies from 'js-cookie'
+import HeaderImage from '../components/header-image'
 import StyledButton from '../components/styled-button'
 import { sum } from 'lodash'
-import HeaderImage from '../components/header-image'
 
+import * as styles from '../page-styles/store.module.css'
 
 export default class Store extends React.Component {
 
@@ -69,7 +70,7 @@ export default class Store extends React.Component {
                         <div className={styles.catalogueContainer}>
                             {storeItems.map(item =>
                                 {
-                                    return(<StoreItemPreview storeitem={item}/>)
+                                    return(<StoreItemPreview storeitem={item} key={item.itemName}/>)
                                 }
                             )}
                         </div>
@@ -86,6 +87,7 @@ export const StoreQuery = graphql`
             nodes {
                 slug
                 mainPreview {
+                    description
                     gatsbyImageData(
                         layout: FULL_WIDTH
                         placeholder: BLURRED

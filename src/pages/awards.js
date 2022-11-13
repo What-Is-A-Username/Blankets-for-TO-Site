@@ -3,10 +3,10 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Layout from '../components/layout'
 import SEO from '../components/SEO'
-import * as styles from '../page-styles/positions.module.css'
+
+import Animation from '../components/animate/animation'
 import Award from '../components/awards/award'
 import HeaderImage from '../components/header-image'
-import Animation from '../components/animate/animation'
 
 export default class Awards extends React.Component {
 
@@ -25,7 +25,7 @@ export default class Awards extends React.Component {
 				<div className="white-background">
                     <HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
-						<div className={styles.membershipInfo}>
+						<div>
                             <Animation fade animationDelay={500}>
 							    <div className='richText'>
                                     <p style={{paddingBottom: '30px'}}>{intro}</p>
@@ -34,7 +34,7 @@ export default class Awards extends React.Component {
 							{
                                 awardData.map((award) => {
                                     return(
-                                       <Animation fade animationDelay={300}>
+                                       <Animation fade animationDelay={300} key={award.awardName}>
                                            <Award awardData={award}/>
                                        </Animation>
                                        )

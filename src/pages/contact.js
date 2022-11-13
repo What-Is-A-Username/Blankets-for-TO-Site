@@ -9,7 +9,6 @@ import ContactForm from '../components/home/contact-form'
 import contactData from '../pages/contact-info.json'
 
 import * as styles from '../page-styles/contact.module.css'
-import StyledButton from '../components/styled-button'
 
 import { ExternalLink } from 'react-feather'
 
@@ -35,7 +34,7 @@ class Contact extends React.Component {
 										<div className={styles.socialMediaEntry} key={x.platform}>
 											<a href={x.link} target='_blank' rel='noopener noreferrer'>
 												<img src={x.icon} alt={x.platform + ' Icon'} />
-												<p className={styles.socialMediaLink}>{x.nameEntry}<ExternalLink/></p>
+												<p>{x.nameEntry}<ExternalLink/></p>
 											</a>
 										</div>
 									)

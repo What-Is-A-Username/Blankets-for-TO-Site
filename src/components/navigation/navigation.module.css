@@ -32,11 +32,11 @@
 	align-items: center;
 }
 
-.logo {
+.logoStyle {
 	cursor: pointer;
 }
 
-.images, .logo, .logo img, .logo div {
+.images, .logoStyle, .logoStyle img, .logoStyle div {
 	max-height: 100%;
 }
 
@@ -47,12 +47,12 @@
 
 @media(max-width: 760px) {
 
-	.logo, .logo img, .logo div {
+	.logoStyle, .logoStyle img, .logoStyle div {
 		height: 60px;
 		width: 60px;
 	}
 
-	.logo 
+	.logoStyle 
 	{
 		height: 100%;
 		align-items: center;
@@ -140,9 +140,9 @@
 	}
 }
 
-/* Logo size  */
+/* logoStyle size  */
 @media (min-width: 1200px) {
-	.logo, .logo img, .logo div {
+	.logoStyle, .logoStyle img, .logoStyle div {
 		width: 90px;
 		height: 90px;
 	}
@@ -150,7 +150,7 @@
 
 @media (min-width: 760px) and (max-width: 1200px)
 {
-	.logo, .logo img, .logo div {
+	.logoStyle, .logoStyle img, .logoStyle div {
 		width: 75px;
 		height: 75px;
 	}

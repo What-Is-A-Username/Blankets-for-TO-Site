@@ -3,13 +3,14 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
+
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { BLOCKS } from '@contentful/rich-text-types';
+
+import Animation from '../components/animate/animation'
+import HeaderImage from '../components/header-image'
 
 import * as styles from '../page-styles/about.module.css'
-import { BLOCKS } from '@contentful/rich-text-types';
-import HeaderImage from '../components/header-image'
-import Animation from '../components/animate/animation'
-
 class About extends React.Component {
 
 	state = { showRecentAnnualReport: false }

@@ -1,15 +1,15 @@
 import React from 'react'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import * as styles from './collapse-embed.module.css'
+import { detailsBorder, details, summary } from './collapse-embed.module.css'
 
 const CollapseEmbed = ({data}) => {
 
     const {heading, body} = data
 
     return(
-        <div className={styles.detailsBorder}>
-            <details className={styles.details}>
-                <summary className={styles.summary}>{heading}</summary>
+        <div className={detailsBorder}>
+            <details className={details}>
+                <summary className={summary}>{heading}</summary>
                 {documentToReactComponents(JSON.parse(body.raw), {})}
             </details>
         </div>

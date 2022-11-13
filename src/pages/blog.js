@@ -1,15 +1,17 @@
 import React from 'react'
-import { graphql, navigate } from 'gatsby'
-import get from 'lodash/get'
+import { graphql } from 'gatsby'
 import Layout from '../components/layout'
-import ArticleEntry from '../components/blog-list'
+import get from 'lodash/get'
 import SEO from '../components/SEO'
-import QueryString from 'query-string'
-import { SearchTools } from '../components/blog_search/tag'
-import * as styles from '../page-styles/blog.module.css'
-import _, { clamp, ceil } from 'lodash'
-import PageControls from '../components/blog_search/page-controls'
+
+import ArticleEntry from '../components/blog-list'
 import HeaderImage from '../components/header-image'
+import PageControls from '../components/blog_search/page-controls'
+import QueryString from 'query-string'
+import SearchTools from '../components/blog_search/search-tools'
+
+import _, { clamp, ceil } from 'lodash'
+import * as styles from '../page-styles/blog.module.css'
 
 class BlogIndex extends React.Component {
 
@@ -202,6 +204,7 @@ export const blogPageQuery = graphql`
 					authorName
 					tags
 					imagePreview {
+						description
 						gatsbyImageData(
 							width: 400,
 							height: 400,

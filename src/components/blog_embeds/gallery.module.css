@@ -53,7 +53,7 @@
     height: 100vh;
     top: 0;
     left: 0;
-    z-index: 9;
+    z-index: 301;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,7 +66,7 @@
     left: 0;
     height: 100vh;
     width: 100vw;
-    z-index: 11;
+    z-index: 303;
 }
 
 .popupContent 
@@ -75,10 +75,8 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 10;
     height: 100vh;
     width: 100vw;
-    
 }
 
 .leftArrow, .rightArrow
@@ -88,7 +86,7 @@
     background-color: var(--dark_red);
     border-radius: 5px;
     color: var(--light_red);
-    z-index: 12;
+    z-index: 304;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -127,7 +125,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 99;
 }
 
 .popupimage 
@@ -138,7 +135,6 @@
     justify-content: center;
     width: min(90%, 135vh);
     height: 90vh;
-    z-index: 12;
 }
 
 .popupimage div, .popupimage img 

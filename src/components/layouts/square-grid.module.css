@@ -1,4 +1,4 @@
-.imageOverlay, .link
+.imageOverlay, .linkStyle
 {
     display: block;
     position: absolute;
@@ -13,7 +13,7 @@
     background-color: rgba(0, 0, 0, 0.438);
 }
 
-.link
+.linkStyle
 {
     cursor: pointer;
 }
@@ -45,7 +45,7 @@
     transition: background-color 1.0s 0s; 
 }
 
-.title
+.titleStyle
 {
     color: white;
     text-align: center;
@@ -54,7 +54,7 @@
     font-weight: bold;
 }
 
-.description
+.descriptionStyle
 {
     color: white;
     text-align: center;
@@ -68,7 +68,7 @@
         background-color: rgba(224, 224, 224, 0.959);
     }
 
-    .tile:hover .title, .tile:hover .description
+    .tile:hover .titleStyle, .tile:hover .descriptionStyle
     {
     color: var(--dark_turq);
     }

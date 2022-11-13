@@ -1,6 +1,6 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import * as styles from './member-circle.module.css'
+import { memberCard, memberPortrait, memberInformation, name, title, memberContact, memberContactEntry, memberContactIcon, memberContactLink } from './member-circle.module.css'
 import emailImage from '../images/email.svg'
 import twitterImage from '../images/twitter.svg'
 import facebookImage from '../images/facebook.svg'
@@ -21,6 +21,8 @@ export default class MemberCircle extends React.Component {
         this.setState({showDescription: false}); 
     }
 
+    
+
     render() {
         const { data } = this.props;
 
@@ -33,24 +35,24 @@ export default class MemberCircle extends React.Component {
             { alt: "GitHub", link: data.githubLink, icon: githubImage },
             { alt: "Website", link: data.websiteLink, icon: websiteImage }
         ]
-        
+
         return(
-            <div className={styles.memberCard}>
+            <div className={memberCard}>
                 {data.photo === null ? 
-                    <img className={styles.memberPortrait} src={placeholderPortrait} alt={`Placeholder portrait of ${data.title}`}></img>
+                    <img className={memberPortrait} src={placeholderPortrait} alt={`Placeholder portrait of ${data.title}`}></img>
                     :  
-                    <GatsbyImage className={styles.memberPortrait} image={data.photo.gatsbyImageData} alt={`Portrait of ${data.title}`}/>
+                    <GatsbyImage className={memberPortrait} image={data.photo.gatsbyImageData} alt={`Portrait of ${data.title}`}/>
                 }
-                <div className={styles.memberInformation}>
-                    <h3 className={styles.name}>{data.name}</h3>
-                    <h4 className={styles.title}>{data.title}</h4>
-                    <div className={styles.memberContact}>
+                <div className={memberInformation}>
+                    <h3 className={name}>{data.name}</h3>
+                    <h4 className={title}>{data.title}</h4>
+                    <div className={memberContact}>
                         {
                             contact.map(x => { return(
                                 x.link && 
-                                <div className={styles.memberContactEntry} key={data.name+" "+x.alt}>
-                                    <a className={styles.memberContactLink} href={x.alt !== "Email" ? x.link : `mailto:${x.link}`} target="_blank" rel="noopener noreferrer">
-                                        <img className={styles.memberContactIcon} src={x.icon} alt={`${x.alt} Icon`}/>
+                                <div className={memberContactEntry} key={data.name+" "+x.alt}>
+                                    <a className={memberContactLink} href={x.alt !== "Email" ? x.link : `mailto:${x.link}`} target="_blank" rel="noopener noreferrer">
+                                        <img className={memberContactIcon} src={x.icon} alt={`${x.alt} Icon`}/>
                                     </a>
                                 </div> 
                             )})

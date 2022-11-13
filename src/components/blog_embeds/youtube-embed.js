@@ -1,11 +1,11 @@
 import React from 'react'
-import * as styles from './youtube-embed.module.css'
+import { iframeParent } from './youtube-embed.module.css'
 
 const YoutubeEmbed = ({data}) =>
 {
     const { watchKey } = data
     return (
-        <div className={styles.parent}>
+        <div className={iframeParent}>
             {console.warn('iframe missing a unique `title` attribute')}
             <iframe src={`https://www.youtube.com/embed/${watchKey}`} width="560" height="315" frameBorder="0"></iframe>
         </div>

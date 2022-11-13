@@ -1,4 +1,4 @@
-.parent 
+.iframeParent 
 {
     display: flex;
     flex-direction: column;
@@ -7,11 +7,3 @@
     align-items: center;
 }
 
-@media (max-width: 500px)
-{
-    .iframeParent iframe 
-    {
-        width: 100%;
-        max-width: 100%;
-    }
-}

@@ -1,0 +1,44 @@
+.pageNumberParent {
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    pointer-events: none;
+    padding: 0px;
+  }
+  
+  .pageNumberItem > a, .selectedPageItem > a, .pageLabel > a {
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .pageNumberItem > a {
+    pointer-events: all;
+    color: black;
+  }
+  
+  .selectedPageItem > a {
+    color: white; 
+    background-color: var(--light_red);
+  }
+  
+  .pageNumberItem
+  {
+    margin: 0 5px;
+  }
+  
+  @media (hover: hover) and (pointer: fine) {
+    .pageNumberParent:hover {
+      cursor: pointer;
+    }
+  }
+  
+  .pageNumberItem > a:active {
+    background-color: lightgray;
+    color: var(--light_red);
+  }
+  
+  .pageNumberItem > a:hover:not(.active) {
+    background-color: #ddd;
+    color: var(--light_red);
+  }

@@ -1,12 +1,12 @@
 import React from 'react'
 import SquareGridItem from "./square-grid-item"
-import * as styles from './square-grid.module.css'
+import { gridContainer } from './square-grid.module.css'
 import PropTypes from 'prop-types'
 
 const SquareGrid = ({content}) => 
 {
     return(
-        <div className={styles.gridContainer}>
+        <div className={gridContainer}>
             {
                 content.map((x, index) => {
                     return(

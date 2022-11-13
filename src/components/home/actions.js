@@ -2,7 +2,7 @@ import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { StaticQuery, graphql } from 'gatsby'
 import Animation from '../animate/animation'
-import * as styles from './actions.module.css'
+import {actionContainer, infoTextLeft, infoTextRight, sketch, photo } from './actions.module.css'
 
 const actionsRender = (props) => {
 
@@ -37,7 +37,7 @@ const actionsRender = (props) => {
     const photos = props.allFile.edges.map(edge => edge.node);
 
     return(
-        <div className={styles.parentContainer}>
+        <div>
             {
                 actionInfo.map((action, idx) =>
                     {
@@ -47,10 +47,10 @@ const actionsRender = (props) => {
                         return(
                             idx % 2 === 1 ? 
                             // 1st and 3rd = picture right of text
-                            <div className={styles.actionContainer} key={action.title}>
-                                        <div className={styles.infoTextRight}>
+                            <div className={actionContainer} key={action.title}>
+                                        <div className={infoTextRight}>
                                     <Animation fade left>
-                                            <div className={styles.sketch}>
+                                            <div className={sketch}>
                                                 <GatsbyImage image={sketchNode.childImageSharp.gatsbyImageData}
                                                     style={{maxWidth: "100%", maxHeight: "100%"}}
                                                     imgStyle={{ objectFit: "contain"}}
@@ -60,7 +60,7 @@ const actionsRender = (props) => {
                                             <p>{action.description}</p>
                                     </Animation>
                                         </div>
-                                        <div className={styles.photo}>
+                                        <div className={photo}>
                                     <Animation fade right>
                                             <GatsbyImage image={photoNode.childImageSharp.gatsbyImageData}
                                             imgStyle={{ objectFit: "contain", borderRadius: "15px"}}
@@ -69,17 +69,17 @@ const actionsRender = (props) => {
                                         </div>
                             </div> 
                             : 
-                            <div className={styles.actionContainer} key={action.title}>
-                                        <div className={styles.photo}>
+                            <div className={actionContainer} key={action.title}>
+                                        <div className={photo}>
                                     <Animation fade left>
                                             <GatsbyImage image={photoNode.childImageSharp.gatsbyImageData}
                                             imgStyle={{ objectFit: "contain", borderRadius: "15px"}}
                                             alt={`Homepage photo `}/>
                                     </Animation>
                                         </div>
-                                        <div className={styles.infoTextLeft}>
+                                        <div className={infoTextLeft}>
                                     <Animation fade right>
-                                            <div className={styles.sketch}>
+                                            <div className={sketch}>
                                                 <GatsbyImage image={sketchNode.childImageSharp.gatsbyImageData}
                                                     style={{maxWidth: "100%", maxHeight: "100%"}}
                                                     imgStyle={{objectFit: "contain" }}

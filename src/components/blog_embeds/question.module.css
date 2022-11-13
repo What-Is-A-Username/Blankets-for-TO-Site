@@ -11,13 +11,11 @@
     color: var(--dark_turq)
 }
 
-.question
+.questionStyle
 {
     margin: 5px 0;
     font-size: 16px;
 }
-
-
 
 .option > p
 {

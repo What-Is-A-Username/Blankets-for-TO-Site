@@ -12,7 +12,7 @@
 	overflow: hidden;
 }
 
-.logo, .logoPadding {
+.logoStyle, .logoPadding {
 	cursor: pointer;
 	display: flex;
 	justify-content: center;
@@ -63,9 +63,9 @@
 }
 
 
-/* Logo size  */
+/* logoStyle size  */
 @media (min-width: 1200px) {
-	.logo {
+	.logoStyle {
 		width: 150px;
 		height: 150px;
 	}
@@ -73,7 +73,7 @@
 
 @media (min-width: 900px) and (max-width: 1200px)
 {
-	.logo {
+	.logoStyle {
 		width: 100px;
 		height: 100px;
 		align-self: center;
@@ -91,7 +91,7 @@
 
 @media (max-width: 900px)
 {
-	.logo {
+	.logoStyle {
 		width: 75px;
 		height: 75px;
 		align-self: center;
@@ -140,7 +140,7 @@
 		display: inline-flex;
 	}
 
-	.logo {
+	.logoStyle {
 		flex-grow: 1;
 	}
 

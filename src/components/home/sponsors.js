@@ -1,9 +1,11 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import * as styles from './sponsors.module.css'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import StyledButton from '../styled-button'
+
 import Animation from '../animate/animation'
+import StyledButton from '../styled-button'
+
+import { logoContainer, alink, logo, sponsorBox, title, preferredSponsorsTitle, secondarySponsorsTitle, divider } from './sponsors.module.css'
 
 export default () => {
 
@@ -14,12 +16,12 @@ export default () => {
     
     const constructSponsorRow = (sponsorList) => {
         return(
-            <div className={styles.logoContainer}>
+            <div className={logoContainer}>
                 {sponsorList.map((x, i) => {
                     return(
-                        <a className={styles.alink} target="_blank" rel="noopener noreferrer" key={x.name}>
+                        <a className={alink} target="_blank" rel="noopener noreferrer" key={x.name}>
                             <Animation fade delay={150}>
-                                <div className={styles.logo}>
+                                <div className={logo}>
                                     <GatsbyImage imgStyle={{ objectFit: "contain" }} alt={x.name} image={x.logo.gatsbyImageData}/>
                                 </div> 
                             </Animation>
@@ -31,18 +33,18 @@ export default () => {
     }
 
     return(
-        <div className={styles.sponsorBox}>
+        <div className={sponsorBox}>
             <Animation fade>
-            <h1 className={styles.title}>Thank you to our sponsors for their support!</h1>
+            <h1 className={title}>Thank you to our sponsors for their support!</h1>
             {preferredSponsors.length > 0 && 
-                <h2 className={styles.preferredSponsorsTitle}>
+                <h2 className={preferredSponsorsTitle}>
                     {"Preferred Sponsor" + (preferredSponsors.length > 1 ? "s" : "")}
                 </h2> 
             }
             {preferredSponsors.length > 0 && constructSponsorRow(preferredSponsors)}
-            {defaultSponsors.length > 0 && <div className={styles.divider}></div>}
+            {defaultSponsors.length > 0 && <div className={divider}></div>}
             {defaultSponsors.length > 0 && 
-                <h2 className={styles.secondarySponsorsTitle}>
+                <h2 className={secondarySponsorsTitle}>
                     {"Sponsor" + (defaultSponsors.length > 1 ? "s" : "")}
                 </h2>
             }

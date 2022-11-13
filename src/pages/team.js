@@ -2,11 +2,13 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Layout from '../components/layout'
-import Member from '../components/team/member-circle'
 import SEO from '../components/SEO'
-import * as styles from '../page-styles/team.module.css'
-import HeaderImage from '../components/header-image'
+
 import Animation from '../components/animate/animation'
+import HeaderImage from '../components/header-image'
+import Member from '../components/team/member-circle'
+
+import * as styles from '../page-styles/team.module.css'
 
 class Team extends React.Component {
 	

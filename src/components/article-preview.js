@@ -1,10 +1,12 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import * as styles from './article-preview.module.css'
 import PropTypes from 'prop-types'
-import StyledButton from './styled-button'
-import ArticleCard from './article-card' 
+
 import Animation from '../components/animate/animation'
+import ArticleCard from './article-card' 
+import StyledButton from './styled-button'
+
+import { updates, title, previewParent } from './article-preview.module.css'
 
 const renderFunc = (articles, excludeSlug) => {
 
@@ -16,11 +18,11 @@ const renderFunc = (articles, excludeSlug) => {
 	}
 
 	return (
-		<div className={styles.updates}>
+		<div className={updates}>
 			<Animation bounce left>
-				<h2 className={styles.title}>Keep updated with our latest articles</h2>
+				<h2 className={title}>Keep updated with our latest articles</h2>
 			</Animation>
-			<div className={styles.previewParent}>
+			<div className={previewParent}>
 				{articles.map((article, index) => {
 					return (
 						article.node.slug === excludeSlug || rendered >= 3 ?

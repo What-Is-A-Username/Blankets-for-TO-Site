@@ -1,0 +1,20 @@
+.blogTag, .clickableBlogTag
+{
+    text-decoration: none;
+    display: flex;
+    border-radius: 20px;
+    line-height: 1px;
+    padding: 0px 15px 0px 15px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(212, 212, 212);
+    color: rgb(109, 109, 109); 
+    cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .clickableBlogTag:hover {
+        background-color: var(--light_red);
+        color: white;
+    }
+}

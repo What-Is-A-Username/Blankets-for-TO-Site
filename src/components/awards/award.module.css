@@ -20,7 +20,7 @@
     {
         flex-direction: row;
     }
-    .image, .image img
+    .imageContainer, .imageContainer img
     {
         min-width: 400px;
         max-width: 400px;
@@ -37,7 +37,7 @@
         align-items: center;
     }
     
-    .image, .image img
+    .imageContainer, .imageContainer img
     {
         width: 90vw;
         max-width: 400px;
@@ -49,7 +49,6 @@
         text-align: center;
     }
 }
-
 
 
 .infoContainer

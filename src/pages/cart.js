@@ -3,13 +3,14 @@ import get from 'lodash/get'
 import { graphql } from 'gatsby'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
-import * as styles from '../page-styles/cart.module.css'
+
+import BackArrow from '../components/back-arrow'
 import Cookies from 'js-cookie';
 import CartItem from '../components/store/cart-item'
-import * as buttonStyles from '../components/styled-button.module.css'
 import { Copy, ExternalLink, Info } from 'react-feather'
-import BackArrow from '../components/back-arrow'
 import StyledButton from '../components/styled-button'
+import * as buttonStyles from '../components/styled-button.module.css'
+import * as styles from '../page-styles/cart.module.css'
 
 export default class Cart extends React.Component {
 
@@ -165,9 +166,10 @@ export default class Cart extends React.Component {
                                             newCartItems.map(x => {
                                             return(
                                                 <CartItem 
-                                                cartItem={x} 
-                                                plusQuantity={(data) => this.plusQuantity(data)}
-                                                minusQuantity={(data) => this.minusQuantity(data)}
+                                                    cartItem={x} 
+                                                    plusQuantity={(data) => this.plusQuantity(data)}
+                                                    minusQuantity={(data) => this.minusQuantity(data)}
+                                                    key={x.slug}
                                                 />
                                             )
                                         })
@@ -190,7 +192,7 @@ export default class Cart extends React.Component {
                                     </div>
                                     <div className={styles.memberDiscountBox}>
                                         <input type="checkbox" id="membership" name="membership" value="Membership" onChange={() => this.changeMembershipStatus()}/>
-                                        <label for="membership">Yes, claim member discount</label>
+                                        <label htmlFor="membership">Yes, claim member discount</label>
                                     </div>
                                     <div className={styles.checkoutText}>
                                         <span>Step 1: Check</span>
@@ -201,7 +203,7 @@ export default class Cart extends React.Component {
                                             {this.state.copied ? 'Order copied to clipboard!' : 'Copy order details'}
                                             <Copy style={{margin: '0 5px'}}/>
                                         </div>
-                                        <StyledButton openInNewTab link={formLink}>
+                                        <StyledButton openInNewTab link={formLink} buttonText=''>
                                             Go to Google Form
                                             <ExternalLink style={{margin: '0 5px'}}/>
                                         </StyledButton>

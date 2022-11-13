@@ -2,7 +2,7 @@ import React from 'react'
 import base from './base.css'
 import Navigation from './navigation/navigation'
 
-import * as styles from './layout.module.css'
+import { innerContainer } from './layout.module.css'
 import Footer from './footer'
 
 class Template extends React.Component {
@@ -11,7 +11,7 @@ class Template extends React.Component {
 		return (
 			<div style={{ width: "100%"}}>
 				<Navigation>
-					<div className={styles.innerContainer}>
+					<div className={innerContainer}>
 						{children}
 					</div>
 					<Footer/>

@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import * as styles from '../components/screen-container.module.css'
+import { screenContainer, enforceHeight }from '../components/screen-container.module.css'
 
 const ScreenContainer = (props, {normalHeight}) => {
 	return(
-		<div className={styles.screenContainer + ' ' + (!normalHeight ? styles.enforceHeight : '')}>
+		<div className={screenContainer + ' ' + (!normalHeight ? enforceHeight : '')}>
 			{props.children}
 		</div>
 	)

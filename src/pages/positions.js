@@ -1,13 +1,14 @@
 import React from 'react'
+import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
-import Layout from '../components/layout'
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import SEO from '../components/SEO'
-import * as styles from '../page-styles/positions.module.css'
-import StyledButton from '../components/styled-button'
-import HeaderImage from '../components/header-image'
+
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+
 import Animation from '../components/animate/animation'
+import HeaderImage from '../components/header-image'
+import StyledButton from '../components/styled-button'
 
 class Positions extends React.Component {
 	render() {
@@ -25,7 +26,7 @@ class Positions extends React.Component {
 				<div className="white-background">
 					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
-						<div className={styles.membershipInfo}>
+						<div>
 							<Animation fade top>
 								<StyledButton link={memberFormLink} buttonText='Sign up for membership' openInNewTab/>
 							</Animation>

@@ -3,15 +3,14 @@ import { graphql } from 'gatsby'
 import SEO from '../components/SEO'
 import get from 'lodash/get'
 import Layout from '../components/layout'
-import LinkSharing from '../components/link-sharing'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-import SpotifyEmbed from '../components/blog_embeds/spotify-embed'
-
-import * as blogStyles from './blog-post.module.css'
-import * as styles from './episode.module.css'
 import BackArrow from '../components/back-arrow'
+import LinkSharing from '../components/link-sharing'
+import SpotifyEmbed from '../components/blog_embeds/spotify-embed'
 import { ChevronUp, ChevronDown } from 'react-feather'
+
+import * as styles from './episode.module.css'
 
 class EpisodeTemplate extends React.Component {
 
@@ -41,10 +40,10 @@ class EpisodeTemplate extends React.Component {
 					/>
 					<div className="wrapper">
 						<BackArrow text='Browse all episodes' link='/podcasts'/>
-						<h1 className={blogStyles.title}>{`Episode ${episode.episodeNumber}: ${episode.episodeName}`}</h1>
-						<p className={blogStyles.publishDate}>{episode.publishDate}</p>
-						<div className={'richText ' + blogStyles.bodyParent}>
-							<div className={blogStyles.body}>
+						<h1 className={styles.title}>{`Episode ${episode.episodeNumber}: ${episode.episodeName}`}</h1>
+						<p className={styles.publishDate}>{episode.publishDate}</p>
+						<div className={'richText ' + styles.bodyParent}>
+							<div className={styles.body}>
 								{episode.richDescription != null ? documentToReactComponents(JSON.parse(episode.richDescription.raw)) : <p>Error: Episode description not found.</p>}
 							</div>
 						</div>
@@ -52,7 +51,7 @@ class EpisodeTemplate extends React.Component {
 						<SpotifyEmbed data={episode.spotifyEpisode}/>
 						<h3 className={styles.subtitle}>Resource Links and Show Notes</h3>
 						<div className={'richText'}>
-							<div className={blogStyles.body}>
+							<div className={styles.body}>
 								{episode.richTextResources != null ? documentToReactComponents(JSON.parse(episode.richTextResources.raw)) : <p>Error: Episode description not found.</p>}
 							</div>
 						</div>
@@ -70,8 +69,8 @@ class EpisodeTemplate extends React.Component {
 										</div>
 									</div>
 								}
-								<div className={'richText' + ' ' + (this.state.transcriptVisible ? styles.transcriptVisible : styles.transcriptInvisible)} >
-									<div className={blogStyles.body}>
+								<div className={'richText' + ' ' + (this.state.transcriptVisible ? '' : styles.transcriptInvisible)} >
+									<div className={styles.body}>
 										{episode.richTextTranscript != null ? documentToReactComponents(JSON.parse(episode.richTextTranscript.raw)) : <p>Error: Episode description not found.</p>}
 									</div>
 								</div>

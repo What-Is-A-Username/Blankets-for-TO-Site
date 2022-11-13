@@ -4,12 +4,14 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
 import { GatsbyImage } from 'gatsby-plugin-image'
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer' 
 
-import * as styles from '../templates/store-item.module.css'
+import BackArrow from '../components/back-arrow'
 import { XCircle, ShoppingBag, ChevronLeft, ChevronRight, ShoppingCart, PlusSquare, MinusSquare, Info, Plus, Check } from 'react-feather';
 import Cookies from 'js-cookie'
-import BackArrow from '../components/back-arrow'
+
+import { layout, preview, carousel, leftArrow, rightArrow, image, thumbnailRow, selectedThumb, thumb, information, name, price, priceAmount, priceCurrency, memberPrice, description, inventory, icon_shoppingBag, icon_redx, addToCart, icon_minus, icon_plus, checkout, icon_shoppingCart, changeCart} from '../templates/store-item.module.css'
 
 class StoreItemTemplate extends React.Component {
 
@@ -83,8 +85,6 @@ class StoreItemTemplate extends React.Component {
     }
 
     componentDidMount() {
-        // var isServer = typeof window === undefined;
-        // var cookies = isServer ? new Cookies(req.headers.cookie) : new Cookies()
         if (typeof window !== 'undefined') {
             var existingItems = JSON.parse(Cookies.get('cart-items'))
             var entry = existingItems.find(x => x.slug === this.item.slug)
@@ -108,86 +108,86 @@ class StoreItemTemplate extends React.Component {
                         doNotCrawl
                     />
                     <div className="wrapper">
-                        <div className={styles.layout}>
-                            <div className={styles.preview}>
-                                <div className={styles.carousel}>
+                        <div className={layout}>
+                            <div className={preview}>
+                                <div className={carousel}>
                                     {
                                         this.state.numImages > 1 &&
-                                        <ChevronLeft className={styles.leftArrow} onClick={() => this.onPrev()}/>
+                                        <ChevronLeft className={leftArrow} onClick={() => this.onPrev()}/>
                                     }
                                     {
                                         this.state.numImages > 0 &&
-                                        <div className={styles.image}>
-                                            <GatsbyImage image={this.item.images[this.state.currentImage].gatsbyImageData}/>
+                                        <div className={image}>
+                                            <GatsbyImage image={this.item.images[this.state.currentImage].gatsbyImageData} alt={this.item.images[this.state.currentImage].description}/>
                                         </div>
                                     }
                                     
                                     {
                                         this.state.numImages > 1 &&
-                                        <ChevronRight className={styles.rightArrow} onClick={() => this.onNext()}/>
+                                        <ChevronRight className={rightArrow} onClick={() => this.onNext()}/>
                                     }
                                 </div>
-                                <div className={styles.thumbnailRow}>
+                                <div className={thumbnailRow}>
                                     {
                                         this.item.thumbs &&
                                         this.item.thumbs.map((thumb, index) => {
                                             return(
-                                                <div onClick={() => this.selectImage(index)} className={index === this.state.currentImage ? styles.selectedThumb : styles.thumb} key={index}>
-                                                    <GatsbyImage image={thumb.gatsbyImageData}/>
+                                                <div onClick={() => this.selectImage(index)} className={index === this.state.currentImage ? selectedThumb : thumb} key={index}>
+                                                    <GatsbyImage image={thumb.gatsbyImageData} alt={thumb.description}/>
                                                 </div>
                                             )
                                         })
                                     }
                                 </div>
                             </div>
-                            <div className={styles.information}>
-                                <h1 className={styles.name}>{this.item.itemName}</h1>
-                                <div className={styles.price}>
-                                    <p className={styles.priceAmount}>${this.item.itemPrice.toFixed(2)}</p>
-                                    <p className={styles.priceCurrency}>CAD</p>
+                            <div className={information}>
+                                <h1 className={name}>{this.item.itemName}</h1>
+                                <div className={price}>
+                                    <p className={priceAmount}>${this.item.itemPrice.toFixed(2)}</p>
+                                    <p className={priceCurrency}>CAD</p>
                                 </div>
                                 {
                                     this.item.memberItemPrice < this.item.itemPrice &&
-                                    <div className={styles.memberPrice}>
+                                    <div className={memberPrice}>
                                         <Info/>
                                         <p>Members get a discounted price of ${this.item.memberItemPrice.toFixed(2)}</p>
                                     </div>
                                 }
-                                <div className={styles.description}>
+                                <div className={description}>
                                     {this.item.itemDescription != null ? documentToReactComponents(JSON.parse(this.item.itemDescription.raw), {renderNode:{}}) : null}
                                 </div>
                                 {
                                     this.item.isInStock ?
-                                    <div className={styles.inventory}>
-                                        <ShoppingBag className={styles.icon_shoppingBag}/>
-                                        <p className={styles.icon_shoppingBag}>Available in stock.</p>
+                                    <div className={inventory}>
+                                        <ShoppingBag className={icon_shoppingBag}/>
+                                        <p className={icon_shoppingBag}>Available in stock.</p>
                                     </div>:
-                                    <div className={styles.inventory}>
-                                        <XCircle className={styles.icon_redx}/>
-                                        <p className={styles.icon_redx}>This item is out of stock or no longer sold.</p>
+                                    <div className={inventory}>
+                                        <XCircle className={icon_redx}/>
+                                        <p className={icon_redx}>This item is out of stock or no longer sold.</p>
                                     </div>
                                 }
                                 <div>
                                     {
                                         this.item.isInStock ?
                                             this.state.cartCount === 0 ?
-                                            <div className={styles.addToCart} onClick={this.addToCart}>
-                                                <Plus className={styles.icon_shoppingCart}/>
+                                            <div className={addToCart} onClick={this.addToCart}>
+                                                <Plus className={icon_shoppingCart}/>
                                                 <p>Add to cart</p>
                                             </div> :
-                                            <div className={styles.changeCart}>
-                                                <Check className={styles.icon_shoppingCart}/>
-                                                <p className={styles.changeCartText}>This item is in your cart. Quantity: </p>
-                                                <MinusSquare className={styles.icon_minus} onClick={this.minusCart}/>
+                                            <div className={changeCart}>
+                                                <Check className={icon_shoppingCart}/>
+                                                <p>This item is in your cart. Quantity: </p>
+                                                <MinusSquare className={icon_minus} onClick={this.minusCart}/>
                                                 <p>{this.state.cartCount}</p>
-                                                <PlusSquare className={styles.icon_plus} onClick={this.plusCart}/>
+                                                <PlusSquare className={icon_plus} onClick={this.plusCart}/>
                                             </div>
                                         :
                                         null
                                         
                                     }
-                                    <a className={styles.checkout} href='/cart'>
-                                        <ShoppingCart className={styles.icon_shoppingCart}/>
+                                    <a className={checkout} href='/cart'>
+                                        <ShoppingCart className={icon_shoppingCart}/>
                                         <p>Start checkout</p>
                                     </a> 
                                 </div>
@@ -210,12 +210,14 @@ export const StoreItemQuery = graphql`
         contentfulMerchItem(slug: {eq: $slug}) {
             slug
             images {
+                description
                 gatsbyImageData(
                     layout: FULL_WIDTH
                     placeholder: BLURRED
                 )
             }
             thumbs : images {
+                description
                 gatsbyImageData(
                     layout: FULL_WIDTH
                     placeholder: BLURRED

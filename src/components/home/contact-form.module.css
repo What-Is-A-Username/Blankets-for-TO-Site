@@ -38,12 +38,12 @@
     font-weight: bold;
 }
 
-.description
+.descriptionStyle
 {
     font-size: 18px;
 }
 
-.title, .description, .link
+.title, .descriptionStyle, .link
 {
     text-align: center;
     color: white;

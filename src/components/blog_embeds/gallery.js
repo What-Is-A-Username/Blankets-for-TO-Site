@@ -1,7 +1,7 @@
 import React from 'react' 
 import { GatsbyImage } from 'gatsby-plugin-image'
-import * as styles from './gallery.module.css'
 import { ChevronLeft, ChevronRight, X } from 'react-feather'
+import {galleryContainer, title, description, thumbs, thumb, popup, popupContent, popupBackground, popupimage, leftArrow, rightArrow, popupExit } from './gallery.module.css'
 
 class Gallery extends React.Component {
 
@@ -29,21 +29,21 @@ class Gallery extends React.Component {
         const displayDescription = this.props.data.displayDescription
 
         return(
-            <div className={styles.galleryContainer}>
+            <div className={galleryContainer}>
                 {
                     displayTitle && 
-                    <h1 className={styles.title}>{displayTitle}</h1>
+                    <h1 className={title}>{displayTitle}</h1>
                 }
                 {
                     displayDescription &&
-                    <p className={styles.description}>{displayDescription.displayDescription}</p>
+                    <p className={description}>{displayDescription.displayDescription}</p>
                 }
-                <div className={styles.thumbs}>
+                <div className={thumbs}>
                     {
                         images.map((x, index) => {
                             return(
-                                <div className={styles.thumb} onClick={() => this.onSelectThumb(index)}>
-                                    <GatsbyImage image={x.gatsbyImageData}/>
+                                <div className={thumb} onClick={() => this.onSelectThumb(index)} key={`Gallery preview ${index}`}>
+                                    <GatsbyImage image={x.gatsbyImageData} alt={x.description}/>
                                 </div>
                             )
                         })
@@ -51,22 +51,23 @@ class Gallery extends React.Component {
                 </div>
                 {
                     this.state.popup &&
-                    <div className={styles.popup}>
+                    <div className={popup}>
+                        
+                        <div className={popupContent}>
+                            <div className={popupBackground} onClick={() => this.onClosePopup()}/>
+                            <div className={popupimage}>
+                                <GatsbyImage image={images[this.state.selected].gatsbyImageData} alt={images[this.state.selected].description}/>
+                            </div> 
+                        </div>
                         {
                             (this.state.selected > 0) &&
-                            <ChevronLeft  className={styles.leftArrow} onClick={this.onClickPrev}/>
+                            <ChevronLeft  className={leftArrow} onClick={this.onClickPrev}/>
                         }
                         {
                             (this.state.selected < this.state.length - 1) && 
-                            <ChevronRight className={styles.rightArrow} onClick={this.onClickNext}/>
+                            <ChevronRight className={rightArrow} onClick={this.onClickNext}/>
                         }
-                        <div className={styles.popupContent}>
-                            <div className={styles.popupBackground} onClick={() => this.onClosePopup()}/>
-                            <div className={styles.popupimage}>
-                                <GatsbyImage image={images[this.state.selected].gatsbyImageData} className={styles.popupimageDiv}/>
-                            </div> 
-                        </div>
-                        <X className={styles.popupExit} onClick={() => this.onClosePopup()}/>
+                        <X className={popupExit} onClick={() => this.onClosePopup()}/>
                     </div>
                 }
             </div>

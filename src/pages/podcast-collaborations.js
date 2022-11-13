@@ -3,13 +3,16 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
+
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import * as styles from '../page-styles/podcasts.module.css'
 import { BLOCKS } from '@contentful/rich-text-types';
-import HeaderImage from '../components/header-image'
+
 import BackArrow from '../components/back-arrow'
+import HeaderImage from '../components/header-image'
 import SpotifyEmbed from '../components/blog_embeds/spotify-embed'
 import YoutubeEmbed from '../components/blog_embeds/youtube-embed'
+
+import * as styles from '../page-styles/podcasts.module.css'
 
 class PodcastCollaborations extends React.Component {
 	render() {

@@ -3,10 +3,12 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
-import * as styles from '../page-styles/podcasts.module.css'
+
 import HeaderImage from '../components/header-image'
-import SquareGrid from '../components/layouts/square-grid'
 import PodcastCard from '../components/podcasts/podcast-card'
+import SquareGrid from '../components/layouts/square-grid'
+
+import * as styles from '../page-styles/podcasts.module.css'
 
 class Podcasts extends React.Component {
 	render() {
@@ -64,7 +66,7 @@ export const podcastQuery = graphql`
                 richDescription {
                     raw
                 }
-                publishDate
+                publishDate(formatString: "MMMM Do, YYYY")
                 spotifyEpisode {
                     link
                 }

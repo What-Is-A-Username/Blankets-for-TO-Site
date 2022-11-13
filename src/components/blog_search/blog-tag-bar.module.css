@@ -1,0 +1,12 @@
+.blogTagContainer
+{
+    display: flex;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+/* Spacing between tag elements */
+.blogTagContainer > div 
+{
+    margin: 2px;
+}

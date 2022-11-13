@@ -1,5 +1,5 @@
 import React from 'react'
-import * as styles from '../home/org-map.module.css'
+import { mapContainer, title, description, infoBox, textBox, infoBoxTitle, infoBoxAddress, infoBoxDescription, leafletMap } from './org-map.module.css'
 import { ChevronRight, ChevronLeft } from 'react-feather';
 import L from 'leaflet'
 import 'leaflet-polylinedecorator'
@@ -101,21 +101,21 @@ export default class OrgMap extends React.Component {
 		this.numLocations = this.mapLocations.length;
 		const locationInfo = this.mapLocations[this.state.selectedLocation]
 		return (
-			<div className={styles.mapContainer}>
-				<h1 className={styles.title}>See where we have donated</h1>
-				<p className={styles.description}>We directly connect with shelters and organizations throughout the GTA, donating essential items to those in need.</p>
-				<div className={styles.infoBox}>
+			<div className={mapContainer}>
+				<h1 className={title}>See where we have donated</h1>
+				<p className={description}>We directly connect with shelters and organizations throughout the GTA, donating essential items to those in need.</p>
+				<div className={infoBox}>
 					<ChevronLeft onClick={() => this.onLast()} width={30} height={30} />
-					<div className={styles.textBox}>
-						<h1 className={styles.infoBoxTitle}>{locationInfo.name}</h1>
-						<p className={styles.infoBoxAddress}>{locationInfo.street}, {locationInfo.city}, {locationInfo.provinceState} </p>
-						<p className={styles.infoBoxDescription}>{locationInfo.description.description}</p>
+					<div className={textBox}>
+						<h1 className={infoBoxTitle}>{locationInfo.name}</h1>
+						<p className={infoBoxAddress}>{locationInfo.street}, {locationInfo.city}, {locationInfo.provinceState} </p>
+						<p className={infoBoxDescription}>{locationInfo.description.description}</p>
 					</div>
 					<ChevronRight onClick={() => this.onNext()} width={30} height={30} />
 				</div>
-				<div id="mapid" className={styles.leafletMap}>
+				<div id="mapid" className={leafletMap}>
 					{/* Show a message behind the map that would be visible if the map tiles did not load properly. */}
-					{/* <p className={styles.errorText}>Map not loading? Try refreshing, enabling cookies, or disabling browser extensions.</p> */}
+					{/* <p className={errorText}>Map not loading? Try refreshing, enabling cookies, or disabling browser extensions.</p> */}
 				</div>
 			</div>
 		)

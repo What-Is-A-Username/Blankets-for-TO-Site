@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery, navigate, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import * as styles from './navigation.module.css'
+import { scrollDisable, blocker, header, images, logoStyle, toggle, hamburger, navExpand, navigation, fadeIn, fadeOut, dropdownTop } from './navigation.module.css'
 import pageData from '../../pages/page-data.json'
 import NavigationItem from './navigation-item'
 import { Menu, X } from 'react-feather'
@@ -61,34 +61,34 @@ const NavBar = (propData) => {
     
 
     return (
-        <div className={drawerActive ? styles.scrollDisable : ''} style={{minHeight: '100vh'}}>
-            {drawerActive && <div className={styles.blocker} onClick={changeState}></div>}
+        <div className={drawerActive ? scrollDisable : ''} style={{minHeight: '100vh'}}>
+            {drawerActive && <div className={blocker} onClick={changeState}></div>}
             <nav role="navigation">
-                <div className={styles.header}>
-                    <div className={styles.images}> 
-                        <div className={styles.logo} onClick={onClickLogo} >
+                <div className={header}>
+                    <div className={images}> 
+                        <div className={logoStyle} onClick={onClickLogo} >
                             <GatsbyImage image={logo.gatsbyImageData} alt='Logo for Blankets for T.O.'/>
                         </div>
-                        <div className={styles.toggle} onClick={changeState}>
+                        <div className={toggle} onClick={changeState}>
                             {drawerActive ? 
                             null :
-                            <Menu className={styles.hamburger}/>}
+                            <Menu className={hamburger}/>}
                         </div>
                     </div>
                     
-                    <div className={styles.navExpand}>
-                        <ul className={styles.navigation + ' ' + (drawerActive ? styles.fadeIn : styles.fadeOut)}
+                    <div className={navExpand}>
+                        <ul className={navigation + ' ' + (drawerActive ? fadeIn : fadeOut)}
                             style={drawerActive ? { } : { }}>
                             {
                                 drawerActive &&
-                                <div className={styles.images + ' ' + styles.dropdownTop} style={{backgroundColor: '#00000000'}}> 
-                                    <div className={styles.logo} onClick={onClickLogo} >
+                                <div className={images + ' ' + dropdownTop} style={{backgroundColor: '#00000000'}}> 
+                                    <div className={logoStyle} onClick={onClickLogo} >
                                         <GatsbyImage image={logo.gatsbyImageData} alt='Logo for Blankets for T.O.'/>
                                     </div>
-                                    <div className={styles.toggle} onClick={changeState}>
+                                    <div className={toggle} onClick={changeState}>
                                         {drawerActive ? 
-                                        <X className={styles.hamburger} color='red'/> :
-                                        <Menu className={styles.hamburger}/>}
+                                        <X className={hamburger} color='red'/> :
+                                        <Menu className={hamburger}/>}
                                     </div>
                                 </div>
                             }

@@ -1,7 +1,7 @@
-import React, { setState } from 'react'
+import React from 'react'
 import PropTypes from "prop-types" 
 
-import * as styles from './link-sharing.module.css'
+import { linkContainer, socials, twitterShareButton, link, linkField, linkIcon, linkFieldButtonClicked, linkFieldButtonNormal, linkCopyButton } from './link-sharing.module.css'
 import { Check, Copy, Facebook, Link, Twitter } from 'react-feather'
 
 class LinkSharing extends React.Component {
@@ -31,27 +31,27 @@ class LinkSharing extends React.Component {
         const shareIconsSize = 20;
 
         return (
-            <div className={styles.linkContainer}>
-                <div className={styles.socials}>
-                    <a className={styles.twitterShareButton} href={"https://twitter.com/intent/tweet?url="+ encodeURIComponent(this.props.location)} target="_blank" title="Share on Twitter">
+            <div className={linkContainer}>
+                <div className={socials}>
+                    <a className={twitterShareButton} href={"https://twitter.com/intent/tweet?url="+ encodeURIComponent(this.props.location)} target="_blank" title="Share on Twitter">
                         <Twitter size={shareIconsSize}/>
                         Tweet
                     </a>
                     
-                    <a className={styles.twitterShareButton} href={"https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(this.props.location)} target="_blank" title="Share on Facebook">
+                    <a className={twitterShareButton} href={"https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(this.props.location)} target="_blank" title="Share on Facebook">
                         <Facebook size={shareIconsSize}/>
                         Share
                     </a>
                     
                 </div>
-                <div className={styles.link}>
-                    <div className={styles.linkField}>
-                        <p className={styles.linkIcon} onClick={this.state.linkCopied ? () => {} : () => this.copyLink()} title="Copy this page's link">
+                <div className={link}>
+                    <div className={linkField}>
+                        <p className={linkIcon} onClick={this.state.linkCopied ? () => {} : () => this.copyLink()} title="Copy this page's link">
                             <Link size={shareIconsSize} color='white'/>
                         </p>
                         <input type="text" value={this.props.location} id="linkAddress" readOnly />
-                        {/* <button className={this.state.linkCopied ? styles.linkFieldButtonClicked : styles.linkFieldButtonNormal} onClick={() => this.copyLink()}>{this.state.linkCopied ? "Copied!" : <Copy/>}</button> */}
-                        <p className={styles.linkCopyButton} onClick={this.state.linkCopied ? () => {} : () => this.copyLink()} title="Copy this page's link">
+                        {/* <button className={this.state.linkCopied ? linkFieldButtonClicked : linkFieldButtonNormal} onClick={() => this.copyLink()}>{this.state.linkCopied ? "Copied!" : <Copy/>}</button> */}
+                        <p className={linkCopyButton} onClick={this.state.linkCopied ? () => {} : () => this.copyLink()} title="Copy this page's link">
                             {this.state.linkCopied ?
                             <Check color='limegreen' size={shareIconsSize*1.25}/> :
                             <Copy size={shareIconsSize} color='white'/>}
