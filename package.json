@@ -38,7 +38,7 @@
     "netlify-cli": "^10.0.0"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=17.0.0"
   },
   "keywords": [
     "homelessness",
@@ -53,7 +53,7 @@
   },
   "scripts": {
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "dev": "gatsby develop",
+    "dev": "gatsby develop -H 127.0.0.1",
     "build": "gatsby build",
     "heroku-postbuild": "gatsby build",
     "serve": "gatsby serve",
