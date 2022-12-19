@@ -1,0 +1,27 @@
+.gridLayout {
+    display: grid;
+}
+
+@media (max-width: 480px) {
+    .gridLayout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+    .gridLayout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    .gridLayout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .gridLayout {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

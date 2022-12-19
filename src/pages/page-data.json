@@ -25,9 +25,13 @@
         },
         {
             "to": "/updates",
-            "desc": "Updates",
+            "desc": "News",
             "children": 
             [
+                {
+                    "to": "/events",
+                    "desc": "Events Calendar"
+                },
                 { 
                     "to": "/blog", 
                     "desc": "Blog" 

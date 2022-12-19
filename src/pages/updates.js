@@ -13,16 +13,22 @@ class Updates extends React.Component {
 		const headerSubtitle = ''
 		
         const content = [ 
+			{
+                title: "Check upcoming events",
+                link: "/events",
+                description: "Browse upcoming and recent events organized by us.",
+                gatsbyImageData: get(this, 'props.data.eventsHeader.nodes[0].image.gatsbyImageData'),
+            },
             {
                 title: "Read our blog",
                 link: "/blog",
-                description: "Read about past initiatives, current news and educational content from Blankets for T.O.",
+                description: "Read about past initiatives, current news and educational content from us.",
                 gatsbyImageData: get(this, 'props.data.blogHeader.nodes[0].image.gatsbyImageData'),
             },
             {
                 title: "Listen to our official podcast",
                 link: "/podcasts",
-                description: "Learn about homelessness in Toronto and how Blankets for T.O. was founded.",
+                description: "Learn about homelessness in Toronto and how our organization was founded.",
                 gatsbyImageData: get(this, 'props.data.podcastsHeader.nodes[0].image.gatsbyImageData'),
             },
             {
@@ -61,6 +67,16 @@ export const updateQuery = graphql`
         site {
 			siteMetadata {
 				title
+			}
+		}
+		eventsHeader : allContentfulHeaderImage(filter: {pageName: {eq: "Events"}}, limit: 1) {
+			nodes {
+				image {
+					gatsbyImageData(
+						layout: FULL_WIDTH
+						placeholder: BLURRED
+					)
+				}
 			}
 		}
 		updateHeader : allContentfulHeaderImage(filter: {pageName: {eq: "About"}}, limit: 1) {

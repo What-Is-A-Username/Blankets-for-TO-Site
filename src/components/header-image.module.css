@@ -1,8 +1,8 @@
 .parent
 {
     position: relative;
-    height: calc(30vw);
-    min-height: 350px;
+    height: calc(33vw);
+    min-height: 200px;
     width: 100%;
     object-fit: contain;
     padding: 0;

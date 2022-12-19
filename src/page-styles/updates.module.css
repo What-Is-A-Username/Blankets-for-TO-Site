@@ -10,7 +10,7 @@
 
 .textBox
 {
-    background-color: rgba(0, 0, 0, 0.438);
+    background-color: rgba(0, 0, 0, 0.745);
 }
 
 .link
@@ -40,21 +40,21 @@
     position: relative;
     align-items: center;
     justify-content: center;
-    transition: background-color 1.0s 0s; 
+    transition: background-color 0.5s 0s; 
 }
 
 .title
 {
     color: white;
     text-align: center;
-    transition: color 1.0s 0s;
+    transition: color 0.5s 0s;
     font-weight: bold;
 }
 
 .description
 {
     color: white;
-    transition: color 1.0s 0s;
+    transition: color 0.5s 0s;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -76,7 +76,7 @@
 
 .tile picture img
 {
-    transition: transform 1.0s ease !important;
+    transition: transform 0.5s ease !important;
 }
 
 @media (min-width: 700px)
