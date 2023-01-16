@@ -4,7 +4,6 @@
     max-height: calc(100vh - 110px);
     position: relative;
     overflow: hidden;
-    margin: 0 0 10vh 0; 
 }
 
 .infoBox 
@@ -38,7 +37,6 @@
 
 .multipleMethodTitle 
 {
-    padding: 15vh 0 0 0;
     position: relative;
 }
 
@@ -71,7 +69,10 @@
 {
     .infoBoxText 
     {
-        padding: 3%
+        padding: 3%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .infoBoxText > h2 
     {
@@ -153,6 +154,12 @@
     justify-items: center;
 }
 
+.description > h2 {
+    color: var(--peach);
+    text-align: center;
+    font-weight: bold;
+}
+
 .mapContainer polygon { 
     fill: url(#turq_gradient)
 }
@@ -184,17 +191,6 @@
         padding: 50px 0px; 
         border-radius: 15px;
     }
-}
-
-.description p {
-    color: white;
-    text-align: center;
-}
-
-.description h2 {
-    color: var(--peach);
-    text-align: center;
-    font-weight: bold;
 }
 
 .instagram {

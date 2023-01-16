@@ -17,6 +17,7 @@ import Sponsors from '../components/home/sponsors'
 import StatsHighlight from '../components/home/stats-highlight'
 import StyledButton from '../components/styled-button'
 import * as styles from '../page-styles/index.module.css'
+import EventsBanner from '../components/home/banner'
 
 class RootIndex extends React.Component {
 
@@ -36,6 +37,7 @@ class RootIndex extends React.Component {
 			<Layout location={this.props.location}>
 				<SEO title='Home' description='Blankets for T.O. is a non-profit organization at the University of Toronto providing support to those in need and combatting stigma surrounding homelessness.' useMailChimp useCurator childElements={leaflet}/>
 				<div className='white-background'>
+					<EventsBanner/>
 					<div className={styles.title}>
 						<div className={styles.image}>
 							<GatsbyImage className={styles.backgroundImage} image={organizationBlurb.frontPageImage.gatsbyImageData} alt='Homepage image for Blankets for T.O.'/>			
@@ -52,7 +54,7 @@ class RootIndex extends React.Component {
 
 					<div className={styles.descriptionContainer}>
 						<svg width='100%' height='100%' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'>
-							<polygon points='0,5 100,0 100,95 0,100'/>
+							<polygon points='0,0 100,0 100,95 0,100'/>
 							<defs>
 								<linearGradient id='red_gradient'>
 									<stop offset='0' stopColor='#bb4a3c'/>

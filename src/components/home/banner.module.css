@@ -1,0 +1,41 @@
+.banner {
+    display: flex;
+    background-image: linear-gradient(to bottom right, #cf2b2b, #df5a45);
+    padding: 5vh 10vw;
+}
+
+.title {
+    font-weight: bold;
+    color: rgb(232, 232, 232);
+}
+
+.description {
+    color: white;
+}
+
+@media(max-width: 760px) {
+    .title {
+        font-size: 1.5em;
+    }
+    .banner {
+        flex-direction: column;
+    }
+    .textBox, .buttonBox {
+        width: 100%;
+    }
+}
+
+@media(min-width: 760px) {
+    .banner {
+        flex-direction: row;
+    }
+    .textBox {
+        width: 70%;
+        padding: 0 20px;
+    }
+    .buttonBox {
+        width: auto;
+        display: grid;
+        align-items: center;
+    }
+}

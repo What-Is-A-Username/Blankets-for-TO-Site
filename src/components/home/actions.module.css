@@ -89,7 +89,7 @@
         visibility: hidden;
     }
 
-    .infoTextLeft h1, .infoTextRight h1
+    .infoTextLeft h1, .infoTextRight h1, .infoTextLeft p, .infoTextRight p
     {
         text-align: center;
     }
