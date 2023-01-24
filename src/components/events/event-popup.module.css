@@ -7,25 +7,22 @@
     height: 100vh;
 }
 
+.textContent {
+    width: 100%;
+}
+
 .blocker {
     display: absolute;
     width: inherit;
     height: inherit;
-    /* pointer-events: none; */
     background-color: rgba(0, 0, 0, 0.266);
 }
 
 .modal {
     border-radius: 15px;
     position: fixed;
-    
     background-color: white;
     box-shadow: 0 10px 12px rgba(0,0,0,.1), 5px 15px 10px rgba(0, 0, 0, 0.1);
-    /* border: 1px var(--light_red) solid ; */
-}
-
-.textContent {
-    padding-right: 2em;
 }
 
 @media (max-width: 760px) {
@@ -39,7 +36,7 @@
 
 @media (max-width: 1000px) {
     .modalLayout {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
     .textContent {
         margin-top: 25px;
@@ -58,7 +55,7 @@
 
 @media (min-width: 1000px) {
     .modalLayout {
-        grid-template-columns: 300px auto;
+        flex-direction: row;
     }
     .textContent {
         margin: 0 2em 0 2em;
@@ -66,7 +63,7 @@
 }
 
 .modalPadding {
-    margin: 50px;
+    margin: 50px 30px 30px 30px;
     height: calc(100% - 100px);
     overflow: auto;
     box-sizing: border-box;
@@ -79,14 +76,14 @@
 }
 
 .modalLayout {
-    display: grid;
-    grid-auto-flow: row;
+    margin-right: 15px;
+    display: flex;
 }
 
 .closeButton {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 10px;
+    right: 10px;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -101,11 +98,14 @@
     margin-top: 0;
 }
 
+.image {
+    margin-right: 15px;
+}
+
 .image, .image div, .image img {
-    height: 300px;
-    width: 300px;
-    max-height: 100%;
-    max-width: 100%;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
     border-radius: 15px;
 }
 
