@@ -30,7 +30,7 @@ export default class Store extends React.Component {
 	render() {
 
         const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
-        const headerSubtitle = 'Every mask or sticker purchased goes towards funding blankets and other necessities that will be donated to homeless individuals, as we work to alleviate homelessness in the GTA.'
+        const headerSubtitle = 'Purchases go towards funding donations for the homeless community.'
         const headerTitle = 'Merchandise Store'
         
 		const storeItems = get(this, 'props.data.allContentfulMerchItem.nodes')

@@ -7,14 +7,14 @@ export default({numPages, onPageClick, currentPage}) => {
         <div>
             {numPages > 0 ?
             <ul className={pageNumberParent}>
-                <div className={pageLabel}><a>Page</a></div>
+                <div className={pageLabel}><span>Page</span></div>
                 {
                     range(1, numPages+1).map((index) => {
                         return(
                             <div className={index == currentPage ? selectedPageItem : pageNumberItem} 
                                 onClick={() => onPageClick(index)}
                                 key={"Page" + index}>
-                                <a>{index}</a>
+                                <span>{index}</span>
                             </div>
                         )
                     })

@@ -54,11 +54,11 @@ const Footer = (props) => {
 					</div>
 				</div>
 				<div className={right}>
-					<ul className={navigation}>
+					<div className={navigation}>
 					{
 						pages.map((page) => { return (<FooterItem page={page} key={page.desc}/>)})
 					}
-					</ul>
+					</div>
 				</div>
 			</div>
 			<div className={credits}>
