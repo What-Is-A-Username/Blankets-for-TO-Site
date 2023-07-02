@@ -174,11 +174,6 @@ class RootIndex extends React.Component {
 		{
 			nodes 
 			{
-				childContentfulOrganizationInformationOrganizationFrontBlurbTextNode 
-				{
-					organizationFrontBlurb
-				}
-
 				donationItemCount : donationItemCounter
 				
 				frontPageImage 
