@@ -6,18 +6,18 @@
     padding: 0px;
   }
   
-  .pageNumberItem > a, .selectedPageItem > a, .pageLabel > a {
+  .pageNumberItem > span, .selectedPageItem > span, .pageLabel > span {
     padding: 5px 10px;
     text-decoration: none;
     border-radius: 5px;
   }
   
-  .pageNumberItem > a {
+  .pageNumberItem > span {
     pointer-events: all;
     color: black;
   }
   
-  .selectedPageItem > a {
+  .selectedPageItem > span {
     color: white; 
     background-color: var(--light_red);
   }
@@ -33,12 +33,12 @@
     }
   }
   
-  .pageNumberItem > a:active {
+  .pageNumberItem > span:active {
     background-color: lightgray;
     color: var(--light_red);
   }
   
-  .pageNumberItem > a:hover:not(.active) {
+  .pageNumberItem > span:hover:not(.active) {
     background-color: #ddd;
     color: var(--light_red);
   }

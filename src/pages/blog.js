@@ -135,7 +135,8 @@ class BlogIndex extends React.Component {
 		return(
 			<Layout location={this.props.location}>
 	 			<SEO title='Updates and Blog'
-					description='Browse articles published by Blankets for T.O., including summaries of past events and informational articles about homelessness.'/>
+					description='Browse articles published by Blankets for T.O., including summaries of past events and informational articles about homelessness.'
+					cannonical='/blog/'/>
 				<div className="white-background">
 					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">

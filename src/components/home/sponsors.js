@@ -19,13 +19,13 @@ export default () => {
             <div className={logoContainer}>
                 {sponsorList.map((x, i) => {
                     return(
-                        <a className={alink} target="_blank" rel="noopener noreferrer" key={x.name}>
+                        <div className={alink} key={x.name}>
                             <Animation fade delay={150}>
                                 <div className={logo}>
                                     <GatsbyImage imgStyle={{ objectFit: "contain" }} alt={x.name} image={x.logo.gatsbyImageData}/>
                                 </div> 
                             </Animation>
-                        </a>
+                        </div>
                     )
                 })} 
             </div>

@@ -25,6 +25,8 @@ class SEO extends React.Component {
 
 	state = { domLoad: false}
 
+	
+
 	componentDidMount()
 	{
 		this.setState({domLoad: true})
@@ -51,14 +53,14 @@ class SEO extends React.Component {
 		const seo = {
 			title: title || defaultTitle,
 			description: description || defaultDescription,
-			url: `${siteUrl}${pathname}`,
+			url: `${siteUrl}${pathname.pathname}`,
 			keywords: keywords,
 			// Open Graph Meta Tags
 			metaImage: metaImage ? `https:${metaImage}` : `${contentfulOrganizationInformation.defaultPreviewImage.file.url}`,
 			metaType: metaType,
 			twitterUsername: twitterUsername,
 		}
-				
+						
 		return (
 			<Helmet
 				htmlAttributes={{
