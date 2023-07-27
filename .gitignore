@@ -65,7 +65,6 @@ public
 
 # Contentful config and error files
 .contentful.json
-contentful/migrations
 contentful/config.json
 contentful-import-error-log-**.json
 
