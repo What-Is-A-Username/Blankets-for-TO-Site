@@ -63,8 +63,11 @@ public
 # Gatsby cache folder
 .cache
 
-# Contentful config file
+# Contentful config and error files
 .contentful.json
+contentful/migrations
+contentful/config.json
+contentful-import-error-log-**.json
 
 # Local Netlify folder
 .netlify

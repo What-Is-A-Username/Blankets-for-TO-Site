@@ -1,0 +1,21 @@
+{
+    "spaceId": "SPACE_ID",
+    "environmentId": "ENV_ID",
+    "managementToken": "CONTENTFUL_CONTENT_MANAGEMENT_TOKEN",
+    "deliveryToken": "CONTENTFUL_CONTENT_DELIVERY_TOKEN",
+    "exportDir": "./contentful/",
+    "saveFile": true,
+    "contentFile": "export.json",
+    "includeDrafts": false,
+    "includeArchived": false,
+    "skipContentModel": false,
+    "skipContent": true,
+    "skipRoles": true,
+    "skipWebhooks": true,
+    "contentOnly": false,
+    "downloadAssets": false,
+    "host": "api.contentful.com",
+    "errorLogFile": "./contentful/config-error.log",
+    "useVerboseRenderer": false,
+    "max-allowed-limit": 1000
+}

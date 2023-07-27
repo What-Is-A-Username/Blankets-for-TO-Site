@@ -33,10 +33,6 @@
     "reading-time": "^2.0.0-1",
     "universal-cookie": "^4.0.4"
   },
-  "devDependencies": {
-    "contentful-import": "^8.0.0",
-    "netlify-cli": "^10.0.0"
-  },
   "engines": {
     "node": ">=17.0.0"
   },
@@ -58,8 +54,6 @@
     "heroku-postbuild": "gatsby build",
     "serve": "gatsby serve",
     "postinstall": "node ./bin/hello.js",
-    "setup": "node ./bin/setup.js",
-    "netlify:login": "netlify login",
-    "netlify:deploy": "netlify deploy -d public -p"
+    "setup": "node ./bin/setup.js"
   }
 }
