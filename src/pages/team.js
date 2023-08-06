@@ -48,45 +48,36 @@ class Team extends React.Component {
 
 export default Team
 
-export const teamPositionQuery = graphql`
-    query TeamQuery {
-      	site {
-			siteMetadata {
-				title
-			}
-    	}
-		allContentfulExecutive(sort : {fields: [isFounder, name], order: DESC}) {
-			edges {
-				node {
-					name
-					isFounder
-					title
-					email
-					facebookLink
-					instagramLink
-					twitterLink
-					linkedInLink
-					websiteLink
-					githubLink
-					photo
-					{
-						gatsbyImageData(
-							layout: FULL_WIDTH
-							placeholder: BLURRED
-						)
-					}
-				}
-			}
-		}
-		allContentfulHeaderImage(filter: {pageName: {eq: "Team"}}, limit: 1) {
-            nodes {
-				image {
-					gatsbyImageData(
-						layout: FULL_WIDTH
-						placeholder: BLURRED
-					)
-				}
-			}
-		}
-  	}
-`
+export const teamPositionQuery = graphql`query TeamQuery {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+  allContentfulExecutive(sort: [{isFounder: DESC}, {name: ASC}]) {
+    edges {
+      node {
+        name
+        isFounder
+        title
+        email
+        facebookLink
+        instagramLink
+        twitterLink
+        linkedInLink
+        websiteLink
+        githubLink
+        photo {
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+        }
+      }
+    }
+  }
+  allContentfulHeaderImage(filter: {pageName: {eq: "Team"}}, limit: 1) {
+    nodes {
+      image {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+      }
+    }
+  }
+}`

@@ -56,33 +56,27 @@ export default () => {
     )
 }
 
-const SponsorsQuery = graphql`
-    query SponsorsQuery {
-        allContentfulSponsor(sort: {fields: name}) {
-            edges {
-                node {
-                    name 
-                    logo {
-                        gatsbyImageData(
-                            layout: FULL_WIDTH
-                            placeholder: BLURRED
-                            height: 100
-                        )
-                    }
-                    sponsorType
-                    description {
-                        childMarkdownRemark {
-                            html
-                        }
-                    }
-                    mainLink
-                    links {
-                        childMarkdownRemark {
-                            html
-                        }
-                    }
-                }
-            }
+const SponsorsQuery = graphql`query SponsorsQuery {
+  allContentfulSponsor(sort: {name: ASC}) {
+    edges {
+      node {
+        name
+        logo {
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, height: 100)
         }
+        sponsorType
+        description {
+          childMarkdownRemark {
+            html
+          }
+        }
+        mainLink
+        links {
+          childMarkdownRemark {
+            html
+          }
+        }
+      }
     }
-`
+  }
+}`

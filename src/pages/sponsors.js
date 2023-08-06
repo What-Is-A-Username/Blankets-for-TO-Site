@@ -79,41 +79,32 @@ export default class Sponsors extends React.Component {
     }
 }
 
-export const SponsorsQuery = graphql`
-query SponsorsPageQuery {
-    allContentfulHeaderImage(filter: {pageName: {eq: "Sponsors"}}, limit: 1) {
-        nodes {
-            image {
-                gatsbyImageData(
-                    layout: FULL_WIDTH
-                    placeholder: BLURRED
-                )
-            }
-        }
+export const SponsorsQuery = graphql`query SponsorsPageQuery {
+  allContentfulHeaderImage(filter: {pageName: {eq: "Sponsors"}}, limit: 1) {
+    nodes {
+      image {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+      }
     }
-    allContentfulSponsor(sort: {fields: name}) {
-        nodes {
-            name
-            sponsorType
-            logo {
-                gatsbyImageData(
-                    layout: FULL_WIDTH
-                    placeholder: BLURRED
-                )
-            }
-            description {
-                childMarkdownRemark {
-                    html
-                }
-            }
-            mainLink
-            links {
-                childMarkdownRemark {
-                    html
-                }
-            }
-        }   
-            
+  }
+  allContentfulSponsor(sort: {name: ASC}) {
+    nodes {
+      name
+      sponsorType
+      logo {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+      }
+      description {
+        childMarkdownRemark {
+          html
         }
+      }
+      mainLink
+      links {
+        childMarkdownRemark {
+          html
+        }
+      }
     }
-`
+  }
+}`

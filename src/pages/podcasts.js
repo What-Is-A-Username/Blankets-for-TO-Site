@@ -46,32 +46,30 @@ class Podcasts extends React.Component {
 
 export default Podcasts
 
-export const podcastQuery = graphql`
-	query PodcastQuery {
-		allContentfulHeaderImage(filter: {pageName: {eq: "Podcasts"}}, limit: 1) {
-            nodes {
-				image {
-					gatsbyImageData(
-						layout: FULL_WIDTH
-						placeholder: BLURRED
-					)
-				}
-			}
-		}
-        allContentfulPodcast(sort: {order: ASC, fields: episodeNumber}, filter: {podcastSeries: {eq: "Beyond the Blankets"}}) {
-            nodes {
-                slug
-                episodeName
-				episodeNumber
-                richDescription {
-                    raw
-                }
-                publishDate(formatString: "MMMM Do, YYYY")
-                spotifyEpisode {
-                    link
-                }
-            }
-        }
-	}
-`
+export const podcastQuery = graphql`query PodcastQuery {
+  allContentfulHeaderImage(filter: {pageName: {eq: "Podcasts"}}, limit: 1) {
+    nodes {
+      image {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+      }
+    }
+  }
+  allContentfulPodcast(
+    sort: {episodeNumber: ASC}
+    filter: {podcastSeries: {eq: "Beyond the Blankets"}}
+  ) {
+    nodes {
+      slug
+      episodeName
+      episodeNumber
+      richDescription {
+        raw
+      }
+      publishDate(formatString: "MMMM Do, YYYY")
+      spotifyEpisode {
+        link
+      }
+    }
+  }
+}`
 

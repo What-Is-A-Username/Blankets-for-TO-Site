@@ -48,33 +48,24 @@ export default class Awards extends React.Component {
 	}
 }
 		
-export const awardPageQuery = graphql`
-query AwardQuery {
-    allContentfulHeaderImage(filter: {pageName: {eq: "Awards"}}, limit: 1) {
-        nodes {
-            image {
-                gatsbyImageData(
-                    layout: FULL_WIDTH
-                    placeholder: BLURRED
-                )
-            }
-        }
-    }
-    allContentfulAward(sort: {fields: date, order: DESC}) {
-        nodes {
-            awardName
-            date(formatString: "MMMM YYYY")
-            description {
-            description
-        } 
-        image {
-            gatsbyImageData(
-                layout: FULL_WIDTH
-                placeholder: BLURRED
-            )
-        }
+export const awardPageQuery = graphql`query AwardQuery {
+  allContentfulHeaderImage(filter: {pageName: {eq: "Awards"}}, limit: 1) {
+    nodes {
+      image {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
       }
     }
   }
-  
-`
+  allContentfulAward(sort: {date: DESC}) {
+    nodes {
+      awardName
+      date(formatString: "MMMM YYYY")
+      description {
+        description
+      }
+      image {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+      }
+    }
+  }
+}`

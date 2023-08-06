@@ -169,52 +169,50 @@ class BlogIndex extends React.Component {
 
 export default BlogIndex
 
-export const blogPageQuery = graphql`
-	query BlogIndexQuery {
-		site {
-			siteMetadata {
-				title
-			}
-		}
-		allContentfulHeaderImage(filter: {pageName: {eq: "Blog"}}, limit: 1) {
-            nodes {
-				image {
-					gatsbyImageData(
-						layout: FULL_WIDTH
-						placeholder: BLURRED
-					)
-				}
-			}
-		}
-		allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }, filter: {articleType: {ne: "Page"}, previewOnly: {ne: true}},) {
-			edges {
-				node {
-					title
-					slug
-					richTextBody {
-						raw
-					}
-					publishDateValue : publishDate
-					publishDate(formatString: "MMMM Do, YYYY")      
-					description {
-						childMarkdownRemark {
-							html
-						}
-					}
-					articleType
-					authorName
-					tags
-					imagePreview {
-						description
-						gatsbyImageData(
-							width: 400,
-							height: 400,
-							layout: CONSTRAINED	
-							placeholder: BLURRED				
-						)
-					}
-				}
-			}
-		}
-	}
-`
+export const blogPageQuery = graphql`query BlogIndexQuery {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+  allContentfulHeaderImage(filter: {pageName: {eq: "Blog"}}, limit: 1) {
+    nodes {
+      image {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+      }
+    }
+  }
+  allContentfulBlogPost(
+    sort: {publishDate: DESC}
+    filter: {articleType: {ne: "Page"}, previewOnly: {ne: true}}
+  ) {
+    edges {
+      node {
+        title
+        slug
+        richTextBody {
+          raw
+        }
+        publishDateValue: publishDate
+        publishDate(formatString: "MMMM Do, YYYY")
+        description {
+          childMarkdownRemark {
+            html
+          }
+        }
+        articleType
+        authorName
+        tags
+        imagePreview {
+          description
+          gatsbyImageData(
+            width: 400
+            height: 400
+            layout: CONSTRAINED
+            placeholder: BLURRED
+          )
+        }
+      }
+    }
+  }
+}`

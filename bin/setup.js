@@ -1,3 +1,4 @@
+// Note: Using non-ESM versions for inquirer (v8) and chalk (v4)
 const inquirer = require("inquirer");
 const chalk = require("chalk");
 const path = require("path");

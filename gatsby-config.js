@@ -3,6 +3,7 @@ require("dotenv").config({
 });
 
 module.exports = {
+  trailingSlash: 'always',
   siteMetadata: {
     title: 'Blankets for T.O.',
     author: 'Blankets for T.O.', 
