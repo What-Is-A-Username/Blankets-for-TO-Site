@@ -10,10 +10,10 @@ class EventPopup extends React.Component {
         const { eventData, onClose } = this.props;
 
         const articles = eventData.articles ? eventData.articles.map(article => {
-            const { sys: { contentType: { sys: { id: entryType } } } } = article
-            if (entryType === 'blogPost') {
+            const { sys: { contentType: { sys: { id: type } } } } = article
+            if (type === 'blogPost') {
                 return { ...article, type: article.articleType, fullSlug: `/blog/${article.slug}` }
-            } else if (entryType === 'page') {
+            } else if (type === 'page') {
                 return { ...article, type: 'Page', fullSlug: `/pages/${article.slug}` }
             } else {
                 return { ...article, type: 'Link', fullSlug: `/${slug}` }
@@ -52,10 +52,10 @@ class EventPopup extends React.Component {
                                         <>
                                             <strong className={subtitle}>Read more</strong>
                                             {
-                                                eventData.articles.map((article) => {
+                                                articles.map((article) => {
                                                     return (
                                                         <div key={article.fullSlug}>
-                                                            <a className={articleLink} href={article.fullSlug}>{article.title}</a>
+                                                            <span>({article.type}) <a className={articleLink} href={article.fullSlug}>{article.title}</a></span>
                                                         </div>
                                                     )
                                                 })
