@@ -21,8 +21,6 @@ export default class MemberCircle extends React.Component {
         this.setState({showDescription: false}); 
     }
 
-    
-
     render() {
         const { data } = this.props;
 
@@ -35,6 +33,7 @@ export default class MemberCircle extends React.Component {
             { alt: "GitHub", link: data.githubLink, icon: githubImage },
             { alt: "Website", link: data.websiteLink, icon: websiteImage }
         ]
+        console.log(data)
 
         return(
             <div className={memberCard}>

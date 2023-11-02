@@ -169,6 +169,7 @@ export const EventsQuery = graphql`
                     gatsbyImageData(
                         layout: FULL_WIDTH
                         placeholder: BLURRED
+                        quality: 80
                     )
                 }
             }

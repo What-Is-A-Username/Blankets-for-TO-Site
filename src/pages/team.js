@@ -68,7 +68,7 @@ export const teamPositionQuery = graphql`query TeamQuery {
         websiteLink
         githubLink
         photo {
-          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 50)
         }
       }
     }
@@ -76,7 +76,7 @@ export const teamPositionQuery = graphql`query TeamQuery {
   allContentfulHeaderImage(filter: {pageName: {eq: "Team"}}, limit: 1) {
     nodes {
       image {
-        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 80)
       }
     }
   }
