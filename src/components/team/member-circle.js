@@ -33,7 +33,7 @@ export default class MemberCircle extends React.Component {
             { alt: "GitHub", link: data.githubLink, icon: githubImage },
             { alt: "Website", link: data.websiteLink, icon: websiteImage }
         ]
-        console.log(data)
+        // console.log(data)
 
         return(
             <div className={memberCard}>

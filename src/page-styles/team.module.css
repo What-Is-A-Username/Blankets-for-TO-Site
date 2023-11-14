@@ -6,3 +6,7 @@
     overflow: visible;
     height: auto;
 }
+
+.teamTitle {
+    text-align: center !important;
+}

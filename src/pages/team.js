@@ -11,39 +11,59 @@ import Member from '../components/team/member-circle'
 import * as styles from '../page-styles/team.module.css'
 
 class Team extends React.Component {
-	
-	render() {
-		const members = get(this, 'props.data.allContentfulExecutive.edges')
 
-		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
-        const headerSubtitle = ''
-        const headerTitle = 'Team'
+  render() {
+    const members = get(this, 'props.data.allContentfulExecutive.edges')
 
-		return (
-			<Layout location={this.props.location}>
-				<SEO title='Executive Team'
-					description='Meet the talented and motivated members of the team at Blankets for T.O. that makes all of our events possible.'
-					doNotCrawl/> 
-				<div className="sidebarabove"></div>
-				<div className="white-background">
-					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
-					<div className="wrapper">
-						<div className={styles.executiveList}>
-							{members.map(({ node }) => {
-								return ( 
-									node.name !== 'John Doe' ?
-									<Animation fade left animationDelay={200} animationDuration={350} key={node.name} style={{justifyContent: 'flex-start'}}>
-										<Member data={node}/> 
-									</Animation> :
-									null
-								)
-							})}
-						</div>
-					</div>
-				</div>
-			</Layout>
-		)
-	}
+    const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
+    const headerSubtitle = ''
+    const headerTitle = 'Team'
+
+    const teamOrder = ['Founders', 'Co-Presidents', 'Marketing Team', 'External Team', 'Internal Team']
+    let teams = [] 
+    teamOrder.forEach((key) => {
+      teams.push({
+        title: key,
+        members: members.filter(member => member.node.team === key)
+      })
+    })
+
+    return (
+      <Layout location={this.props.location}>
+        <SEO title='Executive Team'
+          description='Meet the talented and motivated members of the team at Blankets for T.O. that makes all of our events possible.'
+          doNotCrawl />
+        <div className="sidebarabove"></div>
+        <div className="white-background">
+          <HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle} />
+          <div className="wrapper">
+              {
+                teams.map((team) => {
+                  return(
+                    <div>
+                      <h2 className={styles.teamTitle}>{team.title}</h2>
+                      <div className={styles.executiveList}>
+                        {
+                          team.members.map(({ node }) => {
+                            return (
+                              node.name !== 'John Doe' ?
+                                <Animation fade left animationDelay={200} animationDuration={350} key={node.name} style={{ justifyContent: 'flex-start' }}>
+                                  <Member data={node} />
+                                </Animation> :
+                                null
+                            )
+                          })
+                        }
+                      </div>
+                    </div>
+                  )
+                })
+              }
+          </div>
+        </div>
+      </Layout>
+    )
+  }
 }
 
 export default Team
@@ -61,6 +81,7 @@ export const teamPositionQuery = graphql`query TeamQuery {
         isFounder
         title
         email
+        team
         facebookLink
         instagramLink
         twitterLink
