@@ -1,7 +1,7 @@
 .parent
 {
     position: relative;
-    height: calc(33vw);
+    height: 33vw;
     min-height: 200px;
     width: 100%;
     object-fit: contain;

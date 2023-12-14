@@ -1,7 +1,10 @@
 .title {
     width: 100%;
-    height: 100%;
-    max-height: calc(100vh - 110px);
+    height: 80vh;
+    height: -moz-calc(100vh - 110px);
+    height: -webkit-calc(100vh - 110px);
+    height: -o-calc(100vh - 110px);
+    height: calc(100vh - 110px);
     position: relative;
     overflow: hidden;
 }
@@ -19,6 +22,7 @@
     background: -webkit-linear-gradient(0.25turn, var(--left), var(--right));
     background:    -moz-linear-gradient(0.25turn, var(--left), var(--right));
     background:         linear-gradient(0.25turn, var(--left), var(--right));
+    overflow: hidden;
 }
 
 .infoBoxText 

@@ -64,6 +64,10 @@
 
 .modalPadding {
     margin: 50px 30px 30px 30px;
+    height: 120%;
+    height: -moz-calc(100% - 100px);
+    height: -webkit-calc(100% - 100px);
+    height: -o-calc(100% - 100px);
     height: calc(100% - 100px);
     overflow: auto;
     box-sizing: border-box;

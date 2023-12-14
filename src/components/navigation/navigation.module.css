@@ -104,6 +104,10 @@
 	} 
 	
 	.scrollDisable {
+		height: 95vh;
+		height: -moz-calc(100vh - 70px);
+		height: -webkit-calc(100vh - 70px);
+		height: -o-calc(100vh - 70px);
 		height: calc(100vh - 70px);
 		overflow: hidden;
 	}

@@ -31,10 +31,8 @@ const Footer = (props) => {
 		<footer role="contentinfo" className={footer}>
 			<div className={footerTop}>
 				<div className={left}>
-					<div className={logoPadding}>
-						<div className={logoStyle} onClick={onClickLogo}>
-							<GatsbyImage image={logo.gatsbyImageData} alt='Logo for Blankets for T.O.'/>
-						</div>
+					<div className={logoStyle} onClick={onClickLogo}>
+						<GatsbyImage image={logo.gatsbyImageData} alt='Logo for Blankets for T.O.'/>
 					</div>
 					
 					<div className={socialMedia}>

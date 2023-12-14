@@ -33,12 +33,13 @@ export default class MemberCircle extends React.Component {
             { alt: "GitHub", link: data.githubLink, icon: githubImage },
             { alt: "Website", link: data.websiteLink, icon: websiteImage }
         ]
-        // console.log(data)
 
         return(
             <div className={memberCard}>
                 {data.photo === null ? 
-                    <img className={memberPortrait} src={placeholderPortrait} alt={`Placeholder portrait of ${data.title}`}></img>
+                    <div className={memberPortrait}>
+                        <img src={placeholderPortrait} alt={`Placeholder portrait of ${data.title}`}/>
+                    </div>
                     :  
                     <GatsbyImage className={memberPortrait} image={data.photo.gatsbyImageData} alt={`Portrait of ${data.title}`}/>
                 }
