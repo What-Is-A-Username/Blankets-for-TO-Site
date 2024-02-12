@@ -51,7 +51,7 @@ const actionsRender = (props) => {
                                     <Animation fade left>
                                         <div className={sketch}>
                                             <GatsbyImage image={sketchNode.childImageSharp.gatsbyImageData}
-                                                style={{ maxWidth: "100%", maxHeight: "100%" }}
+                                                style={{ maxWidth: "100%"}}
                                                 imgStyle={{ objectFit: "contain" }}
                                                 alt={`Homepage sketch `} />
                                         </div>
@@ -80,7 +80,7 @@ const actionsRender = (props) => {
                                     <Animation fade right>
                                         <div className={sketch}>
                                             <GatsbyImage image={sketchNode.childImageSharp.gatsbyImageData}
-                                                style={{ maxWidth: "100%", maxHeight: "100%" }}
+                                                style={{ maxWidth: "100%" }}
                                                 imgStyle={{ objectFit: "contain" }}
                                                 alt={`Homepage sketch `} />
                                         </div>

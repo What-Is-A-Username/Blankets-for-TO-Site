@@ -19,27 +19,14 @@
   max-height: 300px;
 }
 
-.pdfFrame
+.pdfLink:hover 
 {
-  width: 100%;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-.pdfFrame > p
+.pdfLink
 {
   color: var(--light_red);
   text-decoration: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .pdfFrame > p:hover 
-  {
-    text-decoration: underline;
-  }
-}
-
-.pdfFrame iframe 
-{
-  min-height: 600px;
-  height: 80vh; 
-  width: 100%;
 }

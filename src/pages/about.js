@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
 import Layout from '../components/layout'
+import { ExternalLink } from 'react-feather'
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from '@contentful/rich-text-types';
@@ -13,8 +14,6 @@ import HeaderImage from '../components/header-image'
 import * as styles from '../page-styles/about.module.css'
 class About extends React.Component {
 
-	state = { showRecentAnnualReport: false }
-
 	render() {
 
 		const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
@@ -23,20 +22,14 @@ class About extends React.Component {
 		
 		const aboutPage = get(this, 'props.data.allContentfulOrganizationInformation.nodes[0].aboutPage')
 
-		const onToggle = () => 
-		{
-			this.setState({showRecentAnnualReport: !this.state.showRecentAnnualReport})
-		}
-
 		const assets = new Map(aboutPage.references.map(ref => [ref.contentful_id,ref]))
 		const options = {
 			renderNode: {
 				[BLOCKS.EMBEDDED_ASSET]: node => {
 					const data = assets.get(node.data.target.sys.id)
 					return(
-						<div className={styles.pdfFrame}>
-							<p onClick={onToggle}>{"Click here to " + (this.state.showRecentAnnualReport ? "hide" : "show") + ` the ${data.title}`}</p>
-							{this.state.showRecentAnnualReport && <iframe title='PDF file of a recent Blankets for T.O. annual report' src={data.file.url}></iframe>}
+						<div>
+							<a className={styles.pdfLink} href={data.file.url} target="_blank" rel='noopener noreferrer'>{`${data.title}`} (.pdf) <ExternalLink size='14'/></a>
 						</div>
 					)
 				}
