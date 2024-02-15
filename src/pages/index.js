@@ -24,8 +24,6 @@ class RootIndex extends React.Component {
 		const allContentfulOrganizationInformation = get(this, 'props.data.allContentfulOrganizationInformation.nodes')
 		const organizationBlurb = allContentfulOrganizationInformation[0];
 		const mapLocations = get(this, 'props.data.allContentfulDonationLocation.nodes')
-		const instagramLink = ContactInfo.contact.find(entry => entry.platform === 'Instagram').link
-		const twitterLink = ContactInfo.contact.find(entry => entry.platform === 'Twitter').link
 		const leaflet = [
 			<link rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css'
 				integrity='sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=='
@@ -34,7 +32,7 @@ class RootIndex extends React.Component {
 
 		return (
 			<Layout location={this.props.location}>
-				<SEO title='Home' description='Blankets for T.O. is a non-profit organization at the University of Toronto providing support to those in need and combatting stigma surrounding homelessness.' useMailChimp useCurator childElements={leaflet} />
+				<SEO title='Home' description='Blankets for T.O. is a non-profit organization at the University of Toronto providing support to those in need and combatting stigma surrounding homelessness.' useMailChimp childElements={leaflet} />
 				<div className='white-background'>
 					<div className={styles.title}>
 						<div className={styles.image}>
@@ -112,24 +110,6 @@ class RootIndex extends React.Component {
 					</div>
 
 					<Sponsors />
-
-					{/* Instagram Feed */}
-					<div className={styles.instagram} id='social-feed'>
-						<Animation bounce top>
-							<h2 className={styles.instagramTitle}>Keep updated with our feed</h2>
-							<div className={styles.instagramPosts}>
-								<div id='curator-feed-default-feed-layout'>
-									<a href='https://curator.io' target='_blank' className='crt-logo crt-tag'>
-										Powered by Curator.io
-									</a>
-								</div>
-							</div>
-							<div className={styles.btnRow}>
-								<StyledButton link={instagramLink} buttonText='Visit us on Instagram' openInNewTab />
-								<StyledButton link={twitterLink} buttonText='Visit us on Twitter' openInNewTab />
-							</div>
-						</Animation>
-					</div>
 
 					<div id='contact-form'>
 						<ContactForm />

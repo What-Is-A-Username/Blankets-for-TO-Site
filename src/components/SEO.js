@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO_Wrapper = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, cannonical, doNotCrawl}) => 
+const SEO_Wrapper = ({childElements, title, description, metaImage, metaType, meta, useMailChimp, cannonical, doNotCrawl}) => 
 {
 	return(
 		<SEO childElements={childElements}
@@ -13,7 +13,6 @@ const SEO_Wrapper = ({childElements, title, description, metaImage, metaType, me
 		metaImage={metaImage}
 		metaType={metaType}
 		useMailChimp={useMailChimp}
-		useCurator={useCurator}
 		cannonical={cannonical}
 		doNotCrawl={doNotCrawl}
 		pathname={useLocation()}
@@ -48,7 +47,7 @@ class SEO extends React.Component {
 			twitterUsername,
 		} = site.siteMetadata
 
-		const {pathname, childElements, title, description, metaImage, metaType, meta, useMailChimp, useCurator, cannonical, doNotCrawl} = this.props
+		const {pathname, childElements, title, description, metaImage, metaType, meta, useMailChimp, cannonical, doNotCrawl} = this.props
 		
 		const seo = {
 			title: title || defaultTitle,
@@ -109,9 +108,6 @@ class SEO extends React.Component {
 			{/* Search Console */}
 			<meta name="google-site-verification" content="H85FiZN3YyU6tHavccegyjHzxSSC6kc_7d22i6IDx2Y"/>
 
-			{/* Curator Social Media Embedding */}
-			{this.state.domLoad && useCurator && <script type="text/javascript" charSet="UTF-8" src="https://cdn.curator.io/published/18d8088e-b13e-4fbe-a348-e56d6fcbf0a6.js"></script>}
-
 			{/* MailChimp Mailing List */}
 			{this.state.domLoad && useMailChimp && <script type="text/javascript" src="https://chimpstatic.com/mcjs-connected/js/users/c190e10f2b62c767274e1197b/52a4a6cc65ff988eefff98c51.js"></script>}
 			{childElements}
@@ -127,7 +123,6 @@ SEO_Wrapper.defaultProps = {
 	metaImage: undefined,
 	metaType: `website`,
 	useMailChimp: false,
-	useCurator: false,
 	cannonical: undefined, 
 	doNotCrawl: false, 
 }
@@ -140,7 +135,6 @@ SEO_Wrapper.propTypes = {
 	metaType: PropTypes.string,
 	meta: PropTypes.arrayOf(PropTypes.object),
 	useMailChimp: PropTypes.bool,
-	useCurator: PropTypes.bool,
 	cannonical: PropTypes.string,
 	doNotCrawl: PropTypes.bool, 
 }
