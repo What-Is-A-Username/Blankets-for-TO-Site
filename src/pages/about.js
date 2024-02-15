@@ -25,6 +25,7 @@ class About extends React.Component {
 		const assets = new Map(aboutPage.references.map(ref => [ref.contentful_id,ref]))
 		const options = {
 			renderNode: {
+				// Currently only supports PDF
 				[BLOCKS.EMBEDDED_ASSET]: node => {
 					const data = assets.get(node.data.target.sys.id)
 					return(
@@ -68,14 +69,14 @@ export const aboutPageQuery = graphql`
 			nodes {
 				aboutPage {
 				  	raw
-					  references{
+					references {
 						contentful_id
 						title
 						file {
 							url
 							fileName
 							contentType
-						  }
+						}
 					}
 				}
 			}
@@ -88,14 +89,6 @@ export const aboutPageQuery = graphql`
 						placeholder: BLURRED
 					)
 				}
-			}
-		}
-		recentAnnualReport : allContentfulAsset(filter: {file: {contentType: {eq: "application/pdf"}}, title: {eq: "2021 Blankets for T.O. Annual Report"}}) {
-			nodes {
-				file {
-					url
-				}
-				title
 			}
 		}
 	}
