@@ -17,6 +17,7 @@ import Sponsors from '../components/home/sponsors'
 import StatsHighlight from '../components/home/stats-highlight'
 import StyledButton from '../components/styled-button'
 import * as styles from '../page-styles/index.module.css'
+import { sum } from 'lodash'
 
 class RootIndex extends React.Component {
 
@@ -29,6 +30,7 @@ class RootIndex extends React.Component {
 				integrity='sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=='
 				crossorigin='' key='leafletcss' />,
 		]
+		const donationItemCount = sum(mapLocations.map(loc => loc.itemsDonated))
 
 		return (
 			<Layout location={this.props.location}>
@@ -66,7 +68,7 @@ class RootIndex extends React.Component {
 
 					<ScreenContainer id='donation-counter'>
 						<div className={styles.donationColumn} >
-							<StatsHighlight donationItemCount={organizationBlurb.donationItemCount} />
+							<StatsHighlight donationItemCount={donationItemCount} />
 							<div className={styles.btnRow}>
 								<StyledButton link='/donate' buttonText='Make a donation today' />
 							</div>
@@ -148,14 +150,15 @@ export const pageQuery = graphql`
 				{
 					description
 				}
+				donationYear
+				month
+				itemsDonated
 			}
 		}
 		allContentfulOrganizationInformation 
 		{
 			nodes 
 			{
-				donationItemCount : donationItemCounter
-				
 				frontPageImage 
 				{
 					gatsbyImageData(

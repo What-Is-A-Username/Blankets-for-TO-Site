@@ -1,5 +1,5 @@
 import React from 'react'
-import { mapContainer, title, description, infoBox, textBox, infoBoxTitle, infoBoxAddress, infoBoxDescription, leafletMap } from './org-map.module.css'
+import { mapContainer, title, description, infoBox, textBox, infoBoxTitle, infoBoxAddress, infoBoxDescription, leafletMap, infoBoxPage } from './org-map.module.css'
 import { ChevronRight, ChevronLeft } from 'react-feather';
 import L from 'leaflet'
 import 'leaflet-polylinedecorator'
@@ -110,6 +110,7 @@ export default class OrgMap extends React.Component {
 						<h1 className={infoBoxTitle}>{locationInfo.name}</h1>
 						<p className={infoBoxAddress}>{locationInfo.street}, {locationInfo.city}, {locationInfo.provinceState} </p>
 						<p className={infoBoxDescription}>{locationInfo.description.description}</p>
+						<p className={infoBoxPage}>{this.state.selectedLocation + 1} / {this.props.mapLocations.length}</p>
 					</div>
 					<ChevronRight onClick={() => this.onNext()} width={30} height={30} />
 				</div>

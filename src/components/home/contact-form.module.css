@@ -55,6 +55,7 @@
 {
     display: flex;
     justify-content: center;
+    font-weight: bold;
 }
 
 .link > a 
@@ -145,4 +146,11 @@
         background-color: #ffffff;
         color: var(--light_red);
     }
+}
+
+.spamWarning {
+    color: #ffffff;
+    font-size: 0.8em;
+    text-align: center;
+    margin: 0;
 }

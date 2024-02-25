@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql, navigate } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { footer, footerTop, left, right, logoPadding, logoStyle, socialMedia, socialMediaEntry, navigation, credits }  from './footer.module.css'
+import { creditsBar, footer, footerTop, left, right, copyright, logoStyle, socialMedia, socialMediaEntry, navigation, credits }  from './footer.module.css'
 import pageData from '../pages/page-data.json'
 import FooterItem from './navigation/footer-item'
 import contactData from '../pages/contact-info.json'
@@ -62,7 +62,7 @@ const Footer = (props) => {
 			<div className={credits}>
 				<a href='/credits'>Media Credits and Attribution</a>
 				<a href="https://app.termly.io/notify/2f159730-6b96-4595-81a4-860a387d21ae">
-  					DSAR, Do not sell my info
+					DSAR, Do not sell my info
 				</a>
 				<button
 					className="termly-cookie-preference-button"
@@ -71,8 +71,10 @@ const Footer = (props) => {
 				>
 					Manage Cookie Preferences
 				</button>
-  
 			</div>  
+			<p className={copyright}>©2019-2024 Blankets for Toronto (BTO)</p>
+
+			
 		</footer>
 	)
 }

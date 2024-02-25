@@ -104,15 +104,9 @@
     width: var(--size); 
     height: var(--size); 
     top: 45%;
-    top: calc(50% - 0.5 * var(--size)); 
-    top: -moz-calc(50% - 0.5 * var(--size)); 
-    top: -webkit-calc(50% - 0.5 * var(--size)); 
-    top: -o-calc(50% - 0.5 * var(--size)); 
+    top: calc(50% - 0.5 * var(--size));
     left: -20px;
-    left: calc(-2 * var(--offset)); 
-    left: -moz-calc(-2 * var(--offset));
-    left: -webkit-calc(-2 * var(--offset));
-    left: -o-calc(-2 * var(--offset));
+    left: calc(-2 * var(--offset));
 }
 
 .rightArrow 
@@ -120,8 +114,10 @@
     --size: 50px; --offset: -10px; 
     width: var(--size); 
     height: var(--size);
+    top: 45%;
     top: calc(50% - 0.5 * var(--size)); 
-    left: calc(100% - var(--size) + 2 * var(--offset));
+    right: -20px;
+    right: calc(-3 * var(--offset));
 }
 
 .popupExit 

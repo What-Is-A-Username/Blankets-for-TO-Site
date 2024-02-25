@@ -1,19 +1,20 @@
 import React from 'react';
 import Animation from '../animate/animation'
-import { formContainer, textBox, title, descriptionStyle, link, field, submitButton, form, fieldset } from './contact-form.module.css'
+import { ExternalLink } from 'react-feather';
+import { formContainer, textBox, title, descriptionStyle, link, field, submitButton, form, fieldset, spamWarning } from './contact-form.module.css'
 
 export default ({shortenInfo = false}) => {
-    const description = 'Have any questions or inquiries? Send us a message by using this form.'
+    const description = 'Have any questions or inquiries? Send us a message via email or from here!'
     return (
         <Animation fade left>
             <div id='contact-form' className={formContainer}>
                 <div className={textBox}>
-                    <h1 className={title}>Send us a direct message</h1>
+                    <h1 className={title}>Send us a message</h1>
                     <p className={descriptionStyle}>{description}</p>
                     {
                         !shortenInfo && 
                         <div className={link}>
-                            <a href='/contact'>We're also reachable via social media and email!</a>
+                            <a href='/contact'>Our visit our contact page<ExternalLink style={{marginLeft: '5px', marginTop: '5px'}}/></a>
                         </div>
                     }
                 </div>
@@ -36,6 +37,7 @@ export default ({shortenInfo = false}) => {
                     </fieldset>
                     <div className={submitButton}>
                         <input type="submit" value="Send" />
+                        <p className={spamWarning}>* When submitting, you may be asked to complete a captcha to help us reduce spam. Thanks!</p>
                     </div>
                 </form>
             </div>
