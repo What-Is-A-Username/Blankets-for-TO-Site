@@ -45,12 +45,12 @@
 
     /* Visibility of nested menu items */
 	.navigationItem .dropdownContainer {
-		visibility: hidden; 
+		display: none;
 	}
 
 	@media (hover: hover) and (pointer: fine) {
 		.navigationItem:hover .dropdownContainer {
-			visibility: visible; 
+			display: inline-block;
 			animation: fadeIn 0.4s
 		}
 	}
@@ -83,8 +83,7 @@
 
 @media (min-width: 1200px) {
 	.navigationItem {
-        margin: 0 20px; 
-		padding: 0 20px;
+        margin: 0 30px; 
     }
 } 
 

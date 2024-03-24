@@ -44,8 +44,8 @@ export default class MemberCircle extends React.Component {
                     <GatsbyImage className={memberPortrait} image={data.photo.gatsbyImageData} alt={`Portrait of ${data.title}`}/>
                 }
                 <div className={memberInformation}>
-                    <h3 className={name}>{data.name}</h3>
-                    <h4 className={title}>{data.title}</h4>
+                    <span className={name}>{data.name}</span>
+                    <span className={title}>{data.title}</span>
                     <div className={memberContact}>
                         {
                             contact.map(x => { return(
