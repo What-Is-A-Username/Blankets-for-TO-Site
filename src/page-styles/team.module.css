@@ -1,10 +1,21 @@
 .executiveList {
     display: grid;
     align-items: top;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-auto-columns: auto;
     overflow: visible;
     height: auto;
+}
+
+@media (min-width: 760px) {
+    .executiveList {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .executiveList {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .teamTitle {

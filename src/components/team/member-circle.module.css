@@ -1,10 +1,12 @@
 .memberCard {
     background: transparent;
     width: 90%; 
+    max-width: 150px;
     display: flex;
     align-items: center;
     justify-items: center;
     flex-direction: column;
+    margin: 0 auto auto auto;
 }
 
 .memberInformation {
@@ -13,15 +15,12 @@
     align-self: baseline;
     justify-content: stretch;
     width: 100%;
-    font-size: 1.0em;
 }
 
 .memberPortrait {
-    margin-top: 15px;
-    width: 200px;
-    height: 200px;
-    min-width: 150px;
-    min-height: 150px;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -81,7 +80,8 @@
     margin: 0px auto 0px 0px;
     color: black;
     text-align: center;
-    width: 100%
+    width: 100%;
+    font-size: 12px;
 }
 
 .description, .description > p, .descriptionFaded {
@@ -100,6 +100,8 @@
     text-align: center;
     margin: 0px;
     color:black;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .descriptionButton {
