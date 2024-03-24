@@ -6,6 +6,10 @@
     flex-direction: column;
 }
 
+.leafletMap {
+    z-index: 2;
+}
+
 .mapViewport {
     width: 100%;
     display: flex;

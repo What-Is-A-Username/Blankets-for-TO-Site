@@ -14,7 +14,7 @@ export default ({shortenInfo = false}) => {
                     {
                         !shortenInfo && 
                         <div className={link}>
-                            <a href='/contact'>Our visit our contact page<ExternalLink style={{marginLeft: '5px', marginTop: '5px'}}/></a>
+                            <a href='/contact'>Or visit our contact page <ExternalLink style={{marginLeft: '5px', marginTop: '5px'}}/></a>
                         </div>
                     }
                 </div>
@@ -22,18 +22,18 @@ export default ({shortenInfo = false}) => {
                     <fieldset id="fs-frm-inputs" className={fieldset}>
                         <div className={field}>
                             <label htmlFor="full-name">Your Name</label>
-                            <input type="text" name="name" id="full-name" placeholder="Firstname Lastname" required="" />
+                            <input type="text" name="name" id="full-name" placeholder="Firstname Lastname" required aria-required/>
                         </div>
                         <div className={field}>
                             <label htmlFor="email-address">Contact Email Address</label>
-                            <input type="email" name="_replyto" id="email-address" placeholder="email@domain.com" required="" />
+                            <input type="email" name="_replyto" id="email-address" placeholder="email@domain.com" required aria-required/>
                         </div>
                         <div className={field}>
                             <label htmlFor="message">Message</label>
-                            <textarea rows="5" name="message" id="message" placeholder="Dear Blankets for T.O.," required=""></textarea>
+                            <textarea rows="5" name="message" id="message" placeholder="Dear Blankets for T.O.," required aria-required></textarea>
                         </div>
                         <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission" />
-                        <input type="text" name="_gotcha" style={{display: 'none'}}/>
+                        <input type="text" name="_gotcha" style={{display: 'none'}} required aria-required/>
                     </fieldset>
                     <div className={submitButton}>
                         <input type="submit" value="Send" />
