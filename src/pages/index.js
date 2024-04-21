@@ -4,7 +4,7 @@ import Layout from '../components/layout'
 import get from 'lodash/get'
 import SEO from '../components/SEO'
 import { GatsbyImage } from 'gatsby-plugin-image'
-
+import EventsBanner from '../components/home/banner'
 import Animation from '../components/animate/animation'
 import Actions from '../components/home/actions'
 import ArticlePreview from '../components/article-preview'
@@ -36,6 +36,11 @@ class RootIndex extends React.Component {
 			<Layout location={this.props.location}>
 				<SEO title='Home' description='Blankets for T.O. is a non-profit organization at the University of Toronto providing support to those in need and combatting stigma surrounding homelessness.' useMailChimp childElements={leaflet} />
 				<div className='white-background'>
+					<EventsBanner
+						titleText='Donate to our Package Fundraiser'
+						descriptionText='Funds raised will be used to purchase essential items, like clothing and blankets, for those in need. Open until at least May.'
+						link='https://gofund.me/7cf7ddde'
+					/>
 					<div className={styles.title}>
 						<div className={styles.image}>
 							<GatsbyImage className={styles.backgroundImage} image={organizationBlurb.frontPageImage.gatsbyImageData} alt='Homepage image for Blankets for T.O.' />
