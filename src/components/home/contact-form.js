@@ -33,7 +33,7 @@ export default ({shortenInfo = false}) => {
                             <textarea rows="5" name="message" id="message" placeholder="Dear Blankets for T.O.," required aria-required></textarea>
                         </div>
                         <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission" />
-                        <input type="text" name="_gotcha" style={{display: 'none'}} required aria-required/>
+                        <input type="text" name="_gotcha" style={{display: 'none'}}/>
                     </fieldset>
                     <div className={submitButton}>
                         <input type="submit" value="Send" />
