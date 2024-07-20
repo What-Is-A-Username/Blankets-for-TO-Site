@@ -13,6 +13,7 @@ import ContactForm from '../components/home/contact-form'
 import ContactInfo from './contact-info.json'
 import OrganizationMap from '../components/home/org-map'
 import ScreenContainer from '../components/screen-container'
+import ScrollToTop from '../components/scroll-to-top'
 import Sponsors from '../components/home/sponsors'
 import StatsHighlight from '../components/home/stats-highlight'
 import StyledButton from '../components/styled-button'
@@ -36,11 +37,11 @@ class RootIndex extends React.Component {
 			<Layout location={this.props.location}>
 				<SEO title='Home' description='Blankets for T.O. is a non-profit organization at the University of Toronto providing support to those in need and combatting stigma surrounding homelessness.' useMailChimp childElements={leaflet} />
 				<div className='white-background'>
-					<EventsBanner
+					{/* <EventsBanner
 						titleText='Donate to our Package Fundraiser'
 						descriptionText='Funds raised will be used to purchase essential items, like clothing and blankets, for those in need. Open until at least May.'
 						link='https://gofund.me/7cf7ddde'
-					/>
+					/> */}
 					<div className={styles.title}>
 						<div className={styles.image}>
 							<GatsbyImage className={styles.backgroundImage} image={organizationBlurb.frontPageImage.gatsbyImageData} alt='Homepage image for Blankets for T.O.' />
@@ -121,6 +122,8 @@ class RootIndex extends React.Component {
 					<div id='contact-form'>
 						<ContactForm />
 					</div>
+
+					<ScrollToTop/>
 				</div>
 			</Layout>
 		)

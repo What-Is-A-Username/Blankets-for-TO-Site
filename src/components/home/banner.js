@@ -3,6 +3,7 @@ import { ExternalLink } from 'react-feather';
 import StyledButton from '../styled-button';
 import { banner, textBox, buttonBox, title, description } from './banner.module.css'
 
+// Events banner to show on homepage or any other page.
 const EventsBanner = ({titleText, descriptionText, children, link }) => {
     return(
         <div className={banner}>
