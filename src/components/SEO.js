@@ -98,7 +98,7 @@ class SEO extends React.Component {
 			<script
 				type="text/javascript"
 				src="https://app.termly.io/embed.min.js"
-				data-website-uuid="01a08857-e482-4377-85cd-f142d9dba419"
+				data-website-uuid={process.env.TERMLY_COOKIE_CONSENT}
 			></script>
 
 			{/* Global site tag (gtag.js) - Google Analytics */}
@@ -106,10 +106,10 @@ class SEO extends React.Component {
 			<script>{"window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} 	gtag('js', new Date()); gtag('config', 'G-E7KS17RLEB');"}</script> */}
 			
 			{/* Search Console */}
-			<meta name="google-site-verification" content="H85FiZN3YyU6tHavccegyjHzxSSC6kc_7d22i6IDx2Y"/>
+			<meta name="google-site-verification" content={process.env.GOOGLE_SITE_VERIFICATION}/>
 
 			{/* MailChimp Mailing List */}
-			{this.state.domLoad && useMailChimp && <script type="text/javascript" src="https://chimpstatic.com/mcjs-connected/js/users/c190e10f2b62c767274e1197b/52a4a6cc65ff988eefff98c51.js"></script>}
+			{this.state.domLoad && useMailChimp && <script type="text/javascript" src={process.env.MAILCHIMP_MAILING_LIST_SCRIPT_SRC}></script>}
 			{childElements}
 			</Helmet>
 		)

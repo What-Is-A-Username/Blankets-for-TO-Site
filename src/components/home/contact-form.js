@@ -18,7 +18,7 @@ export default ({shortenInfo = false}) => {
                         </div>
                     }
                 </div>
-                <form className={form} id="fs-frm" name="simple-contact-form" acceptCharset="utf-8" action={`https://formspree.io/f/xzbopvpw`} method="post">
+                <form className={form} id="fs-frm" name="simple-contact-form" acceptCharset="utf-8" action={process.env.FORMSPREE_ACTION_LINK} method="post">
                     <fieldset id="fs-frm-inputs" className={fieldset}>
                         <div className={field}>
                             <label htmlFor="full-name">Your Name</label>

@@ -68,6 +68,9 @@ public
 contentful/config.json
 contentful-import-error-log-**.json
 
+# Contentful export
+export
+
 # Local Netlify folder
 .netlify
 
