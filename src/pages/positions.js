@@ -27,9 +27,9 @@ class Positions extends React.Component {
 					<HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle}/>
 					<div className="wrapper">
 						<div>
-							<Animation fade top>
+							{/* <Animation fade top>
 								<StyledButton link={memberFormLink} buttonText='Sign up for membership' openInNewTab/>
-							</Animation>
+							</Animation> */}
 							<Animation fade animationDelay={500}>
 								<div className="richText">
 									{membershipInformation !== undefined ? documentToReactComponents(JSON.parse(membershipInformation.raw)) : <p>Error: Articles not found.</p>}

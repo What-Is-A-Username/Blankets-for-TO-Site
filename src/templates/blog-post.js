@@ -16,6 +16,7 @@ import GalleryEmbed from '../components/blog_embeds/gallery'
 import QuestionEmbed from '../components/blog_embeds/question'
 
 import * as styles from '../templates/blog-post.module.css'
+import ScrollToTop from '../components/scroll-to-top'
 
 class BlogPostTemplate extends React.Component {
 
@@ -89,6 +90,7 @@ class BlogPostTemplate extends React.Component {
 						<hr className={styles.horizontalLine}></hr>
 						{/* Updates */}
 						<ArticlePreview excludeSlug={post.slug}></ArticlePreview>
+						<ScrollToTop/>
 					</div>
 				</div>
 			</Layout>
